@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单</title>
+</head>
+<body>
+  <form action="https://www.kuazhu.com/">
+<fieldset>
+	<legend>表单</legend>   
+
+	<p>	
+<label for="username">  用户名  </label>  
+					 <!--  点击文字，获取光标  --> 
+
+
+  				<!-- value是默认输入的文字	 -->
+  	<input type="text" name="name" value="鲤鱼" id="username" list="name">
+			<!-- 	关联详细提示信息 -->
+  	<datalist id='name' > 
+  	<option>张三</option>
+	<option>李四</option>
+	<option>王五</option>
+	 	</datalist>
+  	<!-- value 指定内容 
+
+	
+
+  		vadio  单选    --></p>
+  	<p>
+	密码 :
+	<input type="password" name="password">
+	</p>
+
+
+
+<p>   					<!-- checked默认选中 -->
+	<input type="radio" name="sex" value="0" checked="checked" >	男
+	<input type="radio" name="sex" value="1">  女
+		<input type="radio" name="sex" value="2"> 不难
+		
+</p>
+		爱好
+		<input type="checkbox" name="bobbit" value="0" >玩
+
+	<input type="checkbox" name="bobbit" value="1" >玩qq
+	<input type="checkbox" name="bobbit" value="2" >玩电脑
+							<!--name，和value是服务器接收数据用的。
+							和样式无关，用于后台。  -->
+	<p>
+		<input type="button" name="" value="点我" >   
+		<!-- value是按钮上面的值 -->
+		<input type="submit"  >  
+					<!-- 发送选的信息到指定的地址 -->
+		<input type="reset"  value="清空">
+		<!-- 恢复 -->
+	</p>	
+		<p>
+		<input type="image"  src="./5.jpg">
+		<!-- src里面直接写图片的地址 -->
+		</p>
+			<!-- 图片 -->
+	<p>隐藏但是会提交给后台数据
+	<input type="hidden" name="">
+	<!-- 不显示，但是提交一些数据给后台 -->
+	</p>	
+	<p>邮箱email
+	<input type="email" name="email" value="aa@qq.com">
+	</p>
+	<p>需要输入网址
+	<input type="url" name="url">
+<!-- 校验网站 -->
+	</p>
+	<p>输入数字
+	<input type="number" name="age">
+	<!-- 数字 -->
+	</p>
+	<p>输入颜色
+	<input type="color" name="color">
+	<!-- 	颜色 -->	
+	</p>	
+	<p>输入日期
+		<input type="date" name="date">
+		<!-- 生日日期   日期选择 -->
+	</p>
+	
+	
+<p>有提示输入信息
+
+<input type="text" id='dizhi ' list="add">
+<!-- 这是提示输入的信息 -->
+<datalist id="add">
+	 	<option>zhangsan</option>
+	<option>zhangsan</option>
+	<option>zhangsan</option>
+
+</datalist>
+
+<select name="suiyi">   
+	<!-- 产生一个下拉列表,随便 -->
+
+	<optgroup label="提示信息">
+		<option value="s"> 北京</option>
+	<option value="s"> 北京</option>
+	<option value="s"  selected> 上海</option>
+	</optgroup>		<!-- 	默认选 -->
+
+<optgroup label="二二二">
+	<option value="s"> 天津</option>
+	<option value="s"> 北京</option>
+	<option value="s"> 北京</option>
+
+</optgroup>
+
+	</select>
+</p>
+
+<p>
+输入框
+<textarea name="" id=""  cols="40" rows="20" >
+	text
+</textarea>
+</p>
+
+  </form>
+
+
+</fieldset>
+</body>
+
+
+</html>
