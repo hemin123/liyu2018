@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选择器</title>
+	<style >
+/*	p:first-child{
+
+	color: red;
+}
+	p:last-child{
+
+	color: red;
+}*/
+	/*	p:nth-child(odd){
+		color: tomato;
+	}	*/
+	/*odd是基数选中even是偶数选中*/
+				/*	p:nth-child(3n+0){
+					color: blue;
+				}*/
+				/*三的倍数变色；*/
+/*	p:only-child{ 
+	color:blue; 
+		}	*/
+		/*唯一一个元素的话被选中*/
+
+	/*-上面不区分类型------------------------------------下面区分类型---*/
+	p:first-of-type{
+		color: red;
+	}	
+	p:last-of-type{
+		color: red;
+	}
+	p:nth-last-of-type(3){
+		color: red;
+	}
+	p:only-of-type{
+		color: blue;
+	}
+/*--------------------------------------------------*/
+/*	[title|='sss']{
+		color: yellow;
+	}*/
+/*------------------------------------------------*/
+	a:link{
+		color: blue;
+	}
+	a:hover{
+		color: yellow;
+	}
+	a:active{
+			color: black;
+		}
+	a:visited{
+		color: red;
+	}
+
+	div:before{
+		content: "你好";
+	}
+	input：focus{
+		outline color: yellow;
+	}
+	</style>
+</head>
+<body>
+<div>
+	ss
+	<h1>hhh</h1>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+</div>
+<div>
+	<h1>hhh</h1>
+<!-- 	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p>
+	<p>我是段落</p> -->
+	<p>我是段落</p>
+</div>
+<!-- ----------------------------------------- -->
+
+		<a href="#" title="1">a1</a>
+		<a href="#" title="sss">a2</a>
+		<a href="#" title="sss-s">a3</a>
+		<a href="#" title="sss  shh">a4</a>
+</body>
+</html>
