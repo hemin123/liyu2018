@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>背景色</title>
+	<style type="text/css">
+		div{width: 1800px;
+			height: 800px;
+			/*background-color: blue;
+			background-image: url(http://img5.imgtn.bdimg.com/it/u=846009922,1542338809&fm=27&gp=0.jpg);*/
+			/*background-repeat: repeat-x|repeat-y;*/
+			/*默认平铺*/
+			/*background-repeat: no-repeat;*/
+			/*这样就不平铺了*/
+			background-attachment: scroll;
+			background-position: right center;
+		/*	background:背景颜色 背景图片 平铺设置 背景图片固定 图片定位*/
+		/*background-image: url(5.jpg);*/
+		background: red url(1.jpg) no-repeat scroll center center;
+					/*不行*/
+			/*background-position: 50px 50px;*/
+			background-position: content;
+
+		}
+
+		li{
+			width: 50px;
+			height: 50px;
+			border:1px solid red;
+			background-color:blue;
+			list-style:none ;
+			background-image: url(9.jpg);
+
+		}
+
+	</style>
+</head>
+<body>
+<div></div>
+<img src="5.jpg">>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

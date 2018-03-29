@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>163</title>
+	<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.clearfix:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0px;
+        visibility: hidden;
+    }
+	/*头部*/
+		.hed {
+			width: 1000px;
+			height: 60px;
+			/*border: 1px solid #000;*/
+			background-color: #e6f0fa;
+			margin: 0 auto;
+
+		}
+
+		.hed .logo{
+			width: 200px;
+			height: 60px;
+			/*border: 1px solid #000;*/
+			/*background-color: green;*/
+			float:left;
+			color: #2E9fE6;
+			margin-left: 20px;
+
+		}
+		.hed .english{
+			width: 300px;
+			height: 50px;
+			/*border: 1px solid #000;*/
+			float: right;
+			margin: 3px;
+		}
+		.hed .english .kong{
+			width: 300px;
+			height: 15px;
+		}
+		  div .english a{
+			margin-left: 8px;
+			padding: 3px;
+			margin-top: 4px;
+			font-size: 3px;
+		}
+		.hed .logo	.logo1{
+			
+			/*border: 1px solid #000;*/
+			font-size: 44px;
+			float: left;
+			
+				
+		}
+		.hed .logo	.logo2{
+			
+			/*border: 1px solid #000;*/
+			float: right;
+			font-size: 24px;
+			margin-top: 8px;
+			margin-right: 7px;
+			
+		}
+		.hed .logo	.logo3{
+			/*width: 50px;
+			height: 20px;*/
+			/*border: 1px solid #000;*/
+			float: right;
+			font-size: 10px;
+			margin-right: 18px;
+			
+		}
+		/*中部*/
+		.bod{width: 1000px;
+			height: 530px;
+		/*	border: 1px solid #000;*/
+			margin: 0 auto;
+
+		}
+		.bod .imag{
+				width: 350px;
+				height: 250px;
+				background-color: gray;
+				float: left;
+				margin-top: 110px;
+				margin-left: 200px; 
+		}
+		/*第一部分登录文字*/
+		.bod .deng {
+			width: 280px;
+				height: 350px;
+				
+				border: 1px solid gray;
+				float: right;
+				margin-top: 80px;
+				margin-right: 100px;
+				/*margin-top : 15px;*/
+
+			
+
+		}
+		.bod .deng .deng1{
+			border-bottom: 1px solid gray;
+					height: 50px;
+					margin-bottom: 0px;
+					margin-left: 18px;
+					margin: 0px;
+
+					
+		}
+			/*空盒子*/
+		.bod .deng .deng1 .kong1{
+			height: 15px;
+		}
+		/*登录文字格式设置*/
+		.bod .deng .deng1 a {
+			
+			font-size: 18px;
+			margin-left: 25px;
+
+		}
+		/*输入框*/
+		.bod .deng .deng2{
+			width: 280px;
+			/*height: 400px;*/
+
+		}
+			.bod .deng .deng2 input{
+				width: 220px;
+				height: 30px;
+				margin: 30px 20px 0px 20px;
+
+		}
+		.bod .deng .deng2 label{
+		
+			display: block;
+			float: right;
+			position: absolute;
+			/*position: absolute;这句话啥意思，位置。
+			可以让文字现在在输入框上面*/
+			font-size: 15px;
+			color: #aaa;
+			margin-top: 35px;
+			margin-left: 22px;
+
+
+		}
+		/*单选框*/
+		.bod .deng .deng2 .password{
+				margin-bottom: 0px;
+			}
+		.bod .deng .deng2 p input{
+			width: 20px;   /*框大小*/
+			margin-top: 0px;
+			float: left;
+		}
+
+		.bod  .deng  .deng2  p .t{
+			font-size:10px;
+
+			float: left;
+		}
+		/*登录*/
+		.bod .deng .deng2 .submit{
+				width: 150px;
+				height: 50px;
+			margin: 30px 20px 30px 0px;
+			background-color: #5a96dc;
+
+
+		}
+		/*div .bod  .deng div .deng3
+		{
+			border: 12px solid black;
+			width: 200px;
+			height: 20px;
+		}*/
+			 div #zhushi a{
+			margin-left: 6px;
+			font-size: 3px;
+			/*width: 200px;
+			height: 20px;*/
+		}
+			 div #zhushi {
+			 	margin-left: 60px;
+			 }
+
+
+		/*尾部*/
+		.end{width: 1000px;
+			height: 30px;
+			/*border: 1px solid #000;*/
+			margin: 0 auto;
+			background-color: #e6f0fa;
+				text-align: center;
+				/*让文字跑到中间*/
+
+
+		}
+		.end a {
+				font-size: 10px;
+
+				
+		}
+		.end span{color: gray;
+			font-size: 12px;
+
+		}
+
+	</style>
+</head>
+<body>
+	<!-- <head class="h2ed">
+		为啥直接给head里面写，没有效果啊
+	</head> -->
+	<div class="hed">
+		<div class="logo">
+			<span class="logo1">MOil</span>
+			<span class="logo2">QQ邮箱</span>
+			<span class="logo3">mail.qq.com</span>
+			
+		</div>
+		<div class="english">
+			<div class="kong"></div>
+			<a href="#">基本版</a>|	
+			<a href="#">English</a>|	
+			<a href="#">手机版</a>|
+			<a href="#">企业邮箱</a>
+		</div>
+		
+	</div>
+	<div class="bod">
+		<div class="imag">
+			<img src="1.png">
+		</div>
+		<div class="deng">
+			<div class="deng1">
+				<p class="kong1"></p>
+				<a href="#">快速登录</a>
+				<a href="#">账号密码登录</a>
+			</div>
+			<div class="deng2 ">
+				<label>支持QQ号/邮箱/手机号登录
+				</label>
+				<input type="text" name="22" >
+				<label>QQ密码</label>
+				<input class="password" type="password" name="" >
+
+				<p>
+				<input type="checkbox" name="" value="单选">
+				<p class="t">下次自动登录</p>
+			
+
+				<input type="sumit" name="" value="登录" class="submit">
+			</div>
+			<div class="deng3" id="zhushi">
+				<a href="#">忘了密码？</a>|
+				<a href="#">注册新账号</a>|
+				<a href="#">意见反馈</a>
+
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="end">
+
+		<a href="#">关于腾讯</a>|
+		<a href="#">服务条款</a>|
+		<a href="#">客服中心</a>|
+		<a href="#">联系我们</a>|
+		<a href="#">帮助中心</a>|
+		<span>@1998 - 2018 Tencent Inc.All Rights Reserved.</span>
+			
+		</div>
+		
+
+</body>
+</html>
