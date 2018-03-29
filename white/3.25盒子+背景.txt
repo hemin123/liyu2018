@@ -1,0 +1,83 @@
+盒子模型，行高
+
+/*line-height: 20px;*/
+	/*设置行间距*/
+
+
+
+
+margin  可以设置居中，盒子外面距离设置。
+
+
+盒子阴影
+
+boxshadow  10px 10px  10px  2px；
+
+
+
+box-shadow: 水平距离 垂直距离 模糊距离 阴影大小 阴影颜色 内外阴影;
+
+
+圆角（画圆）
+1.
+border-top-left-radius:取值1 [取值2];
+
+指定的半径大于边框的时候，就会出现两个圆角。
+2.
+border-radius:取值1(左上 右上 右下 左下)/[取值2(左上 右上 右下 左下)];
+
+
+
+
+
+
+
+
+
+list-style：none；
+去掉小圆点
+
+
+溢出处理
+
+overflow
+white-space
+text-overflow 
+
+
+
+last-bottom：none
+
+
+
+格式:
+background:背景颜色 背景图片 平铺设置 背景图片固定 图片定位
+
+注意点:复合样式中的属性可以都写，也可以省略，也可以交换位置，但是图片定位的两个属性要写在一起不能拆开
+
+
+
+background-position
+左右上下移动的距离。
+
+
+
+背景图
+background-image: url(）
+
+
+图片显示
+<img src="5.jpg">>
+
+
+background-size：80px  80px；
+
+background-size：auto  80px；
+      		content刚好包括
+
+background-size  cover
+		刚好覆盖
+
+ul>li*4
+
+

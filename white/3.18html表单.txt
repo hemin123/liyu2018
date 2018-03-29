@@ -1,0 +1,179 @@
+表格
+table    单标签
+  设置标题caption
+tr     td列
+tr     td行
+
+边框
+border="1"  边框
+表格的样式（长宽）是由内容来决定的
+
+width="50"  总体宽度
+
+height=“200px”
+
+单元格宽度自动分配
+
+align对齐方式center 中间  right右对齐  left左对齐
+		
+
+align水平对齐设置 table/tr/td
+	加在tsble里面只有第一行可以居中，第二行靠左
+
+valign 高度对齐center中间   bottom底部   top最上面
+
+谁离得近听谁的
+对齐方式在tr 和td中进行设置，只能在tr  td中进行设置
+
+
+边距    只能在table里面设置
+内边距<内容与边框>cellpadding=10px
+外边距<单元格之间> cellspacing=2px
+怎么设置
+默认值是多少一个像素内10px   外2px
+
+
+设置颜色
+
+bgcolor=“color”
+
+设置细线边框表格
+就是设置背景色为黑色，然后让两个细线合并到一块。
+
+<tr>*td*5)
+
+表格标题设置
+caption，双标签，中间可以加特效，添加在table下面tr上面
+
+加粗居中行设置
+td是普通的行  th是加粗居中的行
+
+第一行可以添加外标签<thead>，看起来更完整。
+<tbody>
+<tfoot>也是看起来完整
+
+
+单元格合并
+行
+cospan=“2”  //写几个合并几个
+列
+rowspan
+
+都是在td里面写，还需要把合并后多的单元格删除掉
+行
+td colspan=“3”
+
+--------------------------------------------------------
+表单学习
+	
+form 标签里面进行下面操作，
+  <form action="https://www.kuazhu.com/">
+
+		
+ input标签是输入框。
+type是样式
+
+
+password  输入框  用来让用户输入信息。
+	
+1.text  文本          value是默认输入的文字
+
+2.password   密码
+
+3.radio   单选按钮       checked默认选择选中
+
+4.checkbox  多选  复选框
+
+
+
+name 咱们随便起
+
+value   值
+
+name，和value是服务器接收数据用的。
+和样式无关，用于后台。 
+
+
+
+	单选按钮
+<input type="radio" name="sex" value="1">  女
+
+<input type="checkbox" name="bobbit" value="2" >玩
+
+
+type格式设置
+
+reset 清空
+
+button
+
+submit
+
+image
+
+hidden
+
+
+email 填写信息需要是邮箱格式 value设置填写默认邮箱
+
+url
+
+
+number
+
+color
+
+
+date
+
+-------------------------------------------
+
+label点击文字，获取光标
+
+
+
+datalist  提示信息让他们输入
+
+select    下拉列表  默认选择怎么弄
+	option
+
+
+
+输入框textarea，需要指定长宽，可以伸缩，拉长拉短
+<textarea name="" id=""  cols="40" rows="20" >
+	text
+</textarea>
+
+
+
+
+标题
+legend
+放body下面。
+
+
+边框
+fieldset
+
+
+
+
+快捷输入(tr>th*5)*3  写出来以后按住tab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

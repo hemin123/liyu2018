@@ -1,0 +1,111 @@
+盒子模型
+
+
+边框设置
+方法
+/*方法一*/
+	/*border: 22px  solid red;*/
+	/*bord是边框线。颜色，宽度*/
+
+方法二  按类型*/
+		border-width:  30px  10px  20px;
+		border-color: red  ;
+		border-style:solid;*/
+
+
+/*方法三  选中边框*/
+	border-top: 10px solid blue;
+	border-right:10px solid red;
+	border-bottom: 20px solid green;
+	border-left:10px solid tomato;*/
+
+/*方法四  每个都详细进行设置*/
+	/*border-top-width: 
+	border-top-color:;
+	border-top-style: 
+	border-bottom-width:;
+	border-botttom-color:;
+	border-bottom-style: */
+-------------------------------------------------
+
+下面的都不懂
+外边距（不会）
+
+padding  子元素             会让整个框变大
+margin   两个元素之间
+
+普通元素不改属性，情况下。元素上下方向上存在重叠现象。
+
+
+
+外边框的传递
+
+
+
+
+容易整体移动  的解决方法
+overflow：hidden
+
+border-top：1px solid gray；
+
+padding- top：1px
+
+----------------------------------------
+
+盒子内容
+
+
+width
+weight可以写百分比
+
+写一个元素，占多少空间可以计算出来。
+
+方法二
+box-sizing  boxer-box
+用这个标签，不让元素出来
+
+
+--------------------------------------
+水平居中
+
+
+padding  设置
+
+
+
+	margin-letf设置左右距离（需要计算）
+
+
+
+自动计算
+margin： 0 auto；
+
+只能水平用，不能垂直用。
+
+
+
+text-align：center  文本居中
+让容器中的文本居中。
+---------------------------------------------
+
+
+清除默认的边距
+不清的话，不利于计算，
+
+*{  
+	margin；0；
+	padding：0；
+		}
+
+div，p，body{  
+	margin；0；
+	padding：0；
+		}
+
+老师总结好了一份，
+
+
+
+
+
+

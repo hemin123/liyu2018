@@ -1,0 +1,159 @@
+div 标签
+
+网页布局，配合css用
+
+属性 class
+
+
+
+
+
+行内元素测试
+
+meter标签  进度
+
+min
+max
+value
+
+
+时间标签
+time
+	<time> </time>
+	<time datetime=11.22  pubdate> 
+
+	<span> </span>
+
+
+这三个的区别，不知道区别，
+
+
+
+进度条标签
+progress
+
+	属性
+	value  50    max=100 值
+
+
+--------------------------------------------
+多个空格，如何保留啊
+字符实体
+&nbsp; 保留空格
+&lt;  保留<号
+&cope;
+
+<a>您好！&nbsp;&nbsp;&lt;  </a>
+
+
+没出来效果
+
+
+
+-----------------------
+
+元信息标签meta
+
+SEO网站优化
+
+浏览器适配
+
+添加服务
+
+
+
+属性
+name
+http-equiv
+contect
+
+
+
+元信息
+keywords  关键词
+
+
+写在title上面
+
+<mate  name="keywords" content= "it javascript">
+content需要与 name连用
+
+ discription 
+
+<mate  name=" discription" content= "it javascript">
+
+
+
+renderer  内核
+
+Comtent-Type
+
+
+refresh
+五秒后跳转指定地址
+作用:用http头部内容控制页面重定向
+格式:
+<meta http-equiv="Refresh" content="5;url=https://www.kuazhu.com" />
+
+
+
+---------------------------------------------------
+属性
+
+全局属性 style
+局部属性
+条件属性
+
+onclick=" this.style.color='yellow'"
+
+
+
+------------------------------
+css
+样式
+1.内部样式两种
+一种是
+ <p style="color: blue; font-size: 44px">随机</p>
+一种是  先声明
+<style >
+p{
+	color: red;
+	font-size: 24px;
+}
+body里面直接写
+<p>测试</p>
+</style>
+2.外部样式一种
+	引用外部文件
+<link rel="stylesheet" type="text/css" href="3.20.3.css">
+3.导入样式一种
+	用的不多，作为了解
+
+----------------------------------------------
+文字的样式
+font-stype ：italic （倾斜的）/normal正常的  文字
+
+文字加粗
+font-weight：blod；加粗 lighter(细线)  100  800
+
+字体大小
+font-size：30px；
+
+设置字体
+text 
+
+自定义字体
+
+font-family：STSong。STHeiti；
+
+中文字体
+英文字体 Arial
+
+
+
+文字属性缩写  
+
+font：样式 加粗  大小 字体
+font: 800 24px STHeiti;
+按顺序连写，写到最后。
+

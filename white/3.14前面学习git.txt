@@ -1,0 +1,70 @@
+github
+远程仓库
+
+免费的仓库，用来提交git保存的文件到服务器
+
+账号1565417293@qq.com
+密码 h18838463015
+4408160090
+15603871127
+
+git remote add origin https://github.com/hemin123/liyu2018.git
+
+关联
+
+ git push -u origin master
+
+推 上去到github
+
+第二次就可以用git push 
+
+上面显示的时间是最后commit的时间
+
+git remote -v 
+查看当前绑定 
+git   remote rm  origin
+
+第二种
+git push -u 地址 
+推送到github
+
+
+克隆
+复制链接 地址
+git clone +地址
+   这个操作可以下载下来 github的源码
+
+
+SSH 使用
+生成 公钥  密钥  
+github 申请公钥  
+省去输入密码，只能本台电脑才可以。
+本地有密钥。
+
+ssh-keygen -t rsa -C  '1565417293@qq.com'
+
+不要输入密码
+
+进入
+cd .ssh
+
+打开那个文件
+ cat id rsa .pub
+
+cat    文件夹名字
+
+
+
+
+
+
+
+git push  出错的解决方案
+http://blog.csdn.net/Ltime/article/details/70224456
+
+从提示可以看出，是由于两者不同步，因此需要先pull，进行合并然后在进行push，
+因此先使用
+git pull --rebase origin master
+将远程文件同步下来。
+然后再执行推送
+git push -u origin master

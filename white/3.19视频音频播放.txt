@@ -1,0 +1,137 @@
+
+<meta charset="UTF-8">
+
+图片显示标签
+<img src=""> 
+		可以写本地地址也可以写网址
+属性如下
+alt 图片没有显示出来的时候显示什么信息，在这里面进行设置
+width  宽度设置，等比例缩放
+height   高度设置
+title 提示信息，鼠标放上去的时候显示。
+
+地址设定
+相对地址，  ../上一级地址   ./文件夹/1.jpg
+绝对地址   “c:/user/”
+
+
+oo7/5.jpg
+007/a/at/1.jpg
+008/b/b1/b11/3.jpg
+---------------------------------------------------p
+视频播放
+1.
+<video src=“”></video>
+2.
+<video >
+	<source src="images/s1.ogg" type="video/ogg"></video>>
+	<source src="images/s1.mp4" type="video/mp4"></video>>
+
+</video>
+
+
+html5media插件，在不支持video标签的时候让播放视频，需要这个插件
+
+
+
+
+
+autoplay  自动播放
+loop  循环
+ muted     静音
+controls  进度条
+
+width
+height
+
+preload   预加载
+
+poster=“”  没播放时候显示图片
+
+
+
+video标签的属性介绍:
+>> * src: 需要播放的视频地址
+>> * autoplay: 是否需要自动播放视频
+>> * controls: 是否需要显示控制条
+>> * poster: 视频没有播放之前显示的占位图片
+>> * loop: 一般用于做广告视频, 视频播放完毕之后是否需要循环播放
+>> * preload: 预加载视频, 但是需要注意preload和autoplay相冲, 如果设置了autoplay属性, 那么preload属性就会失效
+>> * muted:静音
+>> * width/height: 和img标签中的一模一样
+
+
+--------------------------------------
+
+audio音频播放
+
+
+
+---------------------------------------
+
+a标签
+一个页面跳转另一个页面
+
+<a href=“”>提示信息可以是图片</a>
+
+
+超链接
+跳转的目标的地址
+可以是网络地址也可以是是本地地址1.html
+title   提示信息，鼠标放上去的时候就会提示
+
+
+target  _blank 新标签页打开      _self  当前标签页打开（默认）
+
+
+假链接
+1.<a href= "#">假链接</a>
+  <a href= "#">点击一下就会回到顶部</a>
+2.<a href= "JavaScript:">假链接回不到顶部，可以写进代码</a>
+假链接
+
+
+
+<br>换行符
+
+<h1 id='center'></h1>
+
+
+
+<a href ="#center">跳转到中间</a>
+
+页面跳转
+<a href="2.html">跳转到第二个界面</a>
+<a href="2.html#center">跳转到第二个界面</a>
+
+
+base
+<base href="www.kuazhu.com">
+base是基础地址，默认跳转的地址
+
+<a href="">不写东西，就会自动跳转到默认的base地址
+
+
+有base，全部相对地址都会受影响/
+	所有相对地址都会在base地址上面去叠加。
+
+
+
+
+
+
+git  新建不被跟踪的文件
+
+vim  .gitignore
+
+
+
+touch  .gitignore
+
+在这个文件夹里面写路径，这个路径就不会被跟踪
+
+
+
+
+
+

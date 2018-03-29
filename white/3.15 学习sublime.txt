@@ -1,0 +1,77 @@
+
+
+下载https://www.sublimetext.com/3
+
+输入ctrl然后按住ctrl+~点
+https://packagecontrol.io/installation#st2
+复制粘贴口令
+
+安装包
+
+
+Package Control Messages
+
+install然后emmet css    emmet
+
+
+
+syncedsidebar
+
+markdown preview
+
+
+输入remote找到要卸载的包
+
+
+
+请求过程
+
+复述
+
+数据请求过程
+域名发出请求    请求服务器，服务器处理，回应 下载，显示下来。加载多少显示多少
+
+
+
+
+w3c
+
+h5 2018年合并，命名
+制定过程曲折。所以网站源码，有的不和规范
+浏览器比较开放，啥标准都容纳。
+开发者应保守
+
+根标签<html>
+标签head  显示适配，sco
+数据集charset   翻译成浏览器认识的语言
+	UTF-8 翻译能力最强
+
+快捷键  ctrl \  注释
+
+meta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

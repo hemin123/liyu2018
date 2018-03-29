@@ -1,0 +1,110 @@
+定位流
+
+绝对定位  脱离标准流
+会有位置移动。
+
+postion：absolute；
+
+bottom
+top
+left
+
+
+bottom和top同时出现
+会生效
+
+left 优先
+top优先
+
+span
+脱离标准流
+可以设置width  height
+跟随在块状元素后面。不会跑到块状元素上面。
+
+相对于浏览器/进行的定位
+
+
+
+绝对定位相对于浏览器，设置盒子没有用
+
+
+
+，包不住
+
+脱离标准流，处于定位流中。
+
+
+
+相对定位		不脱离标准流
+postion  relative；
+
+
+
+postion  relative；
+有这个属性就会以它为参照
+找离他最近的具有postion属性的父辈元素
+
+
+固定定位		脱离标准流
+		fixed
+
+静态定位static		默认
+
+
+
+复员素
+
+
+
+绝对定位参考body  定位
+，就是首屏（第一次打开的时候屏幕的bottom，top）
+
+
+绝对定位元素水平居中。
+
+margin 0 auto   只能在标准流中使用。
+
+绝对定位absolute  脱离标准流
+postion absolute
+left：50%
+margin-left ： -50（自身宽度的一半） 
+	
+---------------------------------------------
+background-image：
+background-repeat：no-repeat
+不会平铺一大堆。默认平铺一大堆；
+----------------------------------  
+固定定位
+postion：fixed；	脱离标准流
+top
+bottom
+left
+right
+
+span可以设置宽高了
+
+
+固定定位不会跟随滚动条滚动
+固定定位相对于浏览器
+
+
+
+--------------------------------------------------
+
+相对定位relative》标准流
+
+
+结构上后面元素盖住前面元素
+
+z-index默认0
+
+越大越优先。
+
+
+
+
+
+
+
+
+

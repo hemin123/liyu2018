@@ -1,0 +1,128 @@
+人工智能需要算法
+照着代码敲出来了是假象，并没有学会。
+要自己理解了去写。
+
+前端70%  后端25%  就业指导5%
+后端比较难。后端作为了解。
+后端想要学的，老师给指导
+
+技能20%  应用80%
+
+
+谷歌浏览器打开网页快吗
+
+编辑器 用sublime
+
+
+
+
+2018.3.12
+git  分布式版本控制工具
+    用来管理代码。
+ps  用来测量 切图 修图
+
+
+html  超文本标记语言  浏览器沟通的语言，       结构
+		标记  就是标签是浏览器能识别的文字
+
+css 层叠样式表                            样式
+
+
+javascript   脚本语言                  行为
+	与用户交互的
+  前端  后端  都会用，有些许差别
+
+
+dos   
+命令行  查询目录的命令 ls（list）
+
+查询当前路径  
+
+改变目录 cd 文件名
+	cd直接回车，回到 {家目录}  就是光标到用户那个文件夹
+新建目录  mkdir 文件名
+查询当前路径   pwd
+
+2018.3.13版本控制
+
+git --config global user.name +名字
+
+git --config global user.email  1565417293@qq.com
+
+git config user.name 
+ 
+git config user.name 
+
+git 
+
+ls  -ls 列举所有文件
+
+
+git init  初始化  新建了一个git 隐藏文件
+		git 仓库
+cd .git/  进入
+
+git status   查看状态
+
+在当前路径，才可以继续进行跟踪操作
+ git add text.txt   跟踪text文件   跟踪
+git add. 跟踪当前目录全部文件 
+  工作区放到暂存区             文件 红变绿
+
+git  commit -m 'add text file '   提交版本库（仓库），方便下一次找
+  	如果没有用户名邮箱 操作会失败
+		这个操作会把暂存区放到工作区
+     
+text文件夹下面手动新建text.txt   还有.git文件，然后进行  跟踪和提交。
+
+
+
+git只可以跟踪纯文本  不可以跟踪word
+
+1工作区 
+2版本库 就是 .git 文件夹 git  commit 
+3暂存区    就是刚才的git add操作，完成的
+
+
+nothing 个to commit, working tree clean
+暂存区没内容          工作区干净
+
+上面是添加
+下面是如何删除
+git rm text.txt  删内容
+       工作区  版本库都可以这样删
+有改动 就可以放到暂存区
+
+添加到暂存区就会变绿了
+
+重命名
+
+git mv test .txt  text2.text
+	原名		新名字
+撤销修改
+
+git  checkout  --text.txt           工作区改动撤销
+提交到版本库保存的状态。
+没放暂存区的时候
+
+git reset HEAD  text.txt
+         绿色变成红色  把         暂存区改动插销
+
+添加版本库以后，如果想撤销
+git reset  --hard  HEAD              版本库改动插销
+
+		回到当前版本
+		HEAD相当于指针
+
+git reset  --hard  +版本号，回到那个版本
+
+
+git  log看改动     q退出
+
+
+
+
+git  reflog     找回id
+回到旧版本以后，用这个找回最新
+
+
