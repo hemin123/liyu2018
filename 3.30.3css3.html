@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css3复合样式</title>
+	<style type="text/css">
+		/*过度*/
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		
+			/*transition: width  3s  linear 2s,height 3s linear 2s;*/
+			/*两个效果同时复合样式进行设置*/
+			transition: all 3s;
+			/*所有的过度效果都设置成了3秒*/
+		}
+		div:hover{
+			width: 500px;
+			height: 500px;
+			background-color: pink;
+
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+
+</body>
+</html>

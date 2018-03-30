@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	ul{
+		width: 1000px;
+		height:500px;
+		border: 1px solid #000;
+	}
+		ul li{
+			width: 80px;
+			height: 80px;
+			background-color: red;
+			margin: 10px;
+			list-style: none;
+			transition-property: margin;
+			transition-duration: 3s;
+
+		}
+		ul:hover  li{
+			margin-left: 800px;
+		}
+		ul li:nth-child(1){
+			/*transition: margin-left 3s ease;*/
+			transition-timing-function: ease;
+		}ul li:nth-child(2){
+			/*transition: margin-left 3s ease-in;*/
+			transition-timing-function: ease-in;
+		}ul li:nth-child(3){
+			/*transition: margin-left 3s;*/
+			transition-timing-function: ease-in-out;
+		}ul li:nth-child(4){
+			transition-timing-function: ease-out;
+		}ul li:nth-child(5){
+			transition-timing-function: cubic-bezier(x1,y1,x2,y2);
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

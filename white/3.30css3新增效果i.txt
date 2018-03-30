@@ -1,0 +1,12 @@
+
+
+hover属性
+使用
+div:hover{  	}
+
+延时设置
+
+transition-property: width;
+			指定哪个变化
+			/*1有变化 2指定宽度  3时间*/transition-duration: 3s; 
+			指定时间
