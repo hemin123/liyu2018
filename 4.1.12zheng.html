@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正方体</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border:1px solid #000;
+			margin: 100px auto;
+			position: relative;
+			transform:rotateX(0deg) ;
+			transform:rotateY(0deg) ;
+			/*perspective: 500PX;*/
+			transform-style: preserve-3d;
+
+		}
+		ul li{
+			width: 200px;
+			height: 200px;
+			border:1px solid #000;
+			list-style: none;
+			text-align: center;
+			line-height: 200px;
+			position: absolute;
+
+		}
+
+		ul li:nth-child(1){
+			background-color: red;
+			transform: translateY(-100px) rotateX(90deg) ;
+		}ul li:nth-child(2){
+			background-color: pink;
+		transform: translateY(100px) rotateX(-90deg) ;
+		}ul li:nth-child(3){
+			transform: rotateY(-90deg) translateZ(100px);
+			background-color: green;
+		}ul li:nth-child(4){
+			transform: rotateY(-270deg) translateZ(100px);
+			background-color: gray;
+		}ul li:nth-child(5){
+			transform: rotateY(180deg) translateZ(100px);
+			background-color: yellow;
+		}ul li:nth-child(6){
+			transform: rotate(0deg) translateZ(100px);
+			background-color: tomato;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+
+</body>
+</html>

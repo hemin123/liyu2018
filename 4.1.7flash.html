@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>动画制作</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}	
+	div{
+		width: 100px;
+		height: 100px;
+		animation-name: sport;
+		background-color: red;
+		animation-duration: 2s;
+		animation-delay: 2s;
+		/*延时*/
+		animation-iteration-count: 4;
+		/*执行两次*/
+		/*animation-direction: normal;*/
+		animation-direction:alternate;
+
+	}
+		@keyframes sport {
+			from{
+				width: 100px;
+			}
+			to{
+				width: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片</title>
+	<style type="text/css">
+		ul{
+
+			height: 500px;
+			background-color: blue;
+			margin-top: 50px;
+			position: relative;
+			line-height: 200px;
+			text-align: center;
+			
+
+
+		}
+		ul li{
+			display: inline-block;
+			list-style: none;
+			width: 150px;
+			height: 200px;
+			margin-left: 40px;
+			border: 1px solid #000;
+			border-radius: 5px;
+			margin-top: 130px;
+			/*line-height: 200px;
+			text-align: center;*/
+		
+		}
+		ul li img{
+			width: 150px;
+			height: 200px;
+				box-sizing: border-box;
+		}
+		ul li:nth-child(1){
+			transform: rotate(10deg);
+		}ul li:nth-child(2){
+			transform: rotate(50deg);
+		}ul li:nth-child(3){
+			transform: rotate(80deg);
+		}ul li:nth-child(4){
+			transform: rotate(-10deg);
+		}ul li:nth-child(5){
+			transform: rotate(100deg);
+		}
+			ul li:hover{
+			transform: rotate(0deg) scale(1.5);
+				opacity:1;
+			z-index: 2;
+		}
+		ul:hover{
+			opacity: 0.5;
+		}
+			/*透明度变不过来*/
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src=".\image\1.jpeg"></li>
+		<li><img src=".\image\2.jpeg"></li>
+		<li><img src=".\image\3.jpeg"></li>
+		<li><img src=".\image\4.jpeg"></li>
+		<li><img src=".\image\5.jpeg"></li>
+	</ul>
+
+</body>
+</html>

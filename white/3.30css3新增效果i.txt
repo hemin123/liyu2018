@@ -1,12 +1,98 @@
-
+过渡效果
 
 hover属性
 使用
 div:hover{  	}
 
-延时设置
+1延时设置
 
 transition-property: width;
 			指定哪个变化
 			/*1有变化 2指定宽度  3时间*/transition-duration: 3s; 
 			指定时间
+
+
+2多个同时设置
+颜色等，各种都可以进行设置。
+同时写两个，后面会覆盖前面的。
+多个应该同时写
+transition-property: width，color;
+*/transition-duration: 3s，3s;
+
+
+三个属性同时写才会有效果。
+
+3延时属性
+*/transition-delay: 3s;
+
+
+
+4速度效果
+
+
+ul li5个
+做出来五个方块
+*/transition-property：margin-left
+*/transition-duration: 3s;
+
+transition-timing-function：ease；
+				ease-in
+				ease-out
+				ease-in-out
+
+		cubic-
+函数很少用							
+
+
+
+复合样式
+
+/*属性 速度 延时时间*/
+			
+transition: width  3s  linear 2s,height 3s linear 2s;
+		
+/*属性 速度 延时时间*/
+			transition: wi
+transition：all  3s；
+
+
+步骤
+1网页
+2布局
+3添加效果  触发修改属性
+5最后过度	给触发的属性添加过度效果
+
+
+过渡小案例
+
+		box-size：border找不到了
+
+
+ul li img  {
+height：100%
+	}
+这样就不出去了
+
+
+这样就不出去了
+ul{
+overflow：hidden；
+	}
+
+小案例
+所有图片变小，然后再放大一个。
+
+
+
+ul：hover  li{
+width
+}
+ul  li：hover{
+
+width：
+	}
+
+
+
+
+

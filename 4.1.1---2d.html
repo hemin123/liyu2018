@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>出彩  2d的使用</title>
+	<style type="text/css">
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 1000px;
+			height: 500px;
+			border: 1px solid #000;
+
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 100px;
+			background-color: blue;
+			margin: 0 auto;
+			margin-top: 50px;
+			line-height: 100px;
+			text-align: center;
+
+		}
+		ul li:nth-child(2){
+		/*	translate:20px;*/
+		transform:  rotate(45deg); 
+
+		}ul li:nth-child(3){
+		/*	translate:20px;*/
+		transform: translate(50%,50%); 
+		}
+		ul li:nth-child(4){
+		/*	translate:20px;*/
+		transform: scale(2,2);
+	/*	transform: scale(2);*/
+					/*缩放*/
+		}
+		
+		ul li:nth-child(5){
+		/*	translate:20px;*/
+		transform:  rotate(45deg) translate(50%,50%); 
+		/*同时写多个，只执行一个*/
+		}
+
+
+	</style>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li>旋转</li>
+	<li>平移</li>
+	<li>拉伸</li>
+	<li>复合</li>
+</ul>
+
+
+</body>
+</html>

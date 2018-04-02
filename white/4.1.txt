@@ -1,0 +1,264 @@
+css3   2d			
+
+平移
+translate:20px;
+
+
+旋转
+
+transform:  rotate(45deg); 
+
+
+参考点设置
+transform -orgin：100px 100px；
+transform -orgin：50%  50% ；
+transform -orgin：center  center ；
+transform -orgin：left  bottom ；
+
+指定旋转的轴向。
+
+transform:  rotateX(45deg);
+transform:  rotateY(45deg); 
+transform:  rotateZ(45deg); (默认)
+
+
+
+
+
+
+为了看到透视的效果，可以在父元素上面 加透视距离
+补充
+父元素加透视
+perspective 500px
+透视
+
+
+平移
+
+
+transform: translate(50%,50%); 
+
+
+拉伸
+
+transform: scale(2,2);
+
+
+
+
+复合样式
+
+会跟着坐标系一起旋转
+
+
+先xuanzhuan'再按旋转后的坐标系进行移动。
+
+先后顺序，按照写的顺序执行
+
+
+案例
+图片倒下
+
+布局
+放图片
+加透视
+加hover
+加过度
+
+barder—reduis
+
+
+<div> <img> </div>
+
+
+
+示例2
+
+
+
+
+
+inline-block就会使得他们，中间没间距
+
+
+图片太大
+可以设置
+
+img{
+width
+height
+
+hidden
+
+boxsizIng：border-box
+
+}
+
+
+ul和li
+
+ul：hover{
+
+
+opacity：1； 透明度设置
+	}
+
+hover：li{
+t'ransform ： rotate（0deg）   scale（1.2）；
+z-intex：2；
+
+opacity：0.5； 透明度设置
+
+}
+
+这样缩放图片		box-sizing: border-box;
+
+
+先设置ul：hover
+
+再设置ul li：hover
+
+
+
+display：none；
+就不显示了。
+
+
+案例三
+
+一级菜单
+鼠标放上去之前是反180°的
+
+放上去 转过来
+
+
+子选择器
+
+line-height
+text-align
+
+
+翻转菜单
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------
+
+
+动画制作
+三要素
+时间
+变化
+名称
+
+其他属性
+延时
+
+执行次数animation— iteration-  count
+animation-iteration-count: 2;
+
+一直执行
+
+
+			normal    无限循环
+animation direction：alternate；
+往返
+-----------------------------
+
+复合样式
+对象
+时间
+次数
+animation:动画的名称 动画的执行时间 动画的速度 延迟时间 动画的执行次数 是否执行往返动画;
+
+
+动画暂停
+div：hover{
+animation -play-state：paused
+}
+
+--------------------------------
+方式er   百分比动画
+
+margin移动
+postion移动
+
+transform: translate(50%,50%); 平移
+
+
+百分比动画
+
+@keyframes sport 
+{
+			
+0%{
+				top: 0;
+				left:0;
+			
+}
+			
+25%{
+}
+50%{
+}
+
+
+
+}
+
+
+
+
+作业
+流动图三张
+
+animation：sport  4s  linear  0s  infinite  normal
+
+
+
+ul：hover  li{
+
+animation-play-status：paused；
+
+
+}
+
+------------------------------------------------
+
+3d基本使用
+
+
+transform-
+
+
+transform-style：
+preserve-3d
+
+
+正方体
+
+居中
+line-height：200px
+text-align：center
+
+
+相对定位绝对定位
+就全部到一块了。
+
+ul li：nth-child（）{
+background-color：
+transform： rotateY（90deg）  translate（-100px）
+}
+
+
+
+
+先沿着x轴旋转，90 180  270  360
+然后再进行移动，就可以让字体都是正的了。
+

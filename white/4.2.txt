@@ -1,0 +1,132 @@
+正方体变长方体
+
+方法一改宽度
+
+
+方法二拉伸
+scale拉伸
+transform: translateY(-100px) rotateX(90deg) scale(2,1) ;
+
+
+
+图片太大如何让进去。
+
+ul  li  img{
+width：200px；
+height：200px；
+}
+
+
+给图片设置宽度高度，
+
+
+
+---------------------css基本结束-----------------
+
+
+常见字体
+格式
+
+eot
+woff
+ttf
+
+
+自定义字体，
+@font-face{
+			font-family: 'textfont';
+			src:url(./fonts/);
+font-style：italic；
+		}
+
+可以定义本地的字体，也可以下链接，定义网络字体。
+
+
+写两套字体，一套不加粗，一套加粗
+
+
+
+font-weight: bold;加粗的效果，和字体库带的加粗效果不一样。
+
+
+
+加粗字体和普通字体，family上面设置的名字不变，
+@font-face{
+font-family: 'textfont';
+src:url(./fonts/Sansation_Light.eot),
+url(./fonts/Sansation_Light.ttf);
+font-style: italic;
+				
+		}	
+
+@font-face{
+font-family: 'textfont';
+src:url(./fonts/Sansation_bold.eot),
+url(./fonts/Sansation_bold.ttf);
+font-style: italic;
+		}
+
+
+
+不加的话，加粗会按系统默认的加粗效果，执行。
+
+-------------------------------------------
+字体
+网络图标使用
+
+
+
+两种方法调用
+	<link rel="stylesheet" type="text/css" href=".\fonts\css\fontawesome-all.css">
+	<i class="fas fa-camera-retro"></i>
+	<i class="fas">&#xfa83;</i>
+
+fas fa-这以部分不会变，可以调用全网的图片。
+
+-------------------------------------------
+
+小案例
+平滑过渡页面
+做一个滑动的网站。
+
+radio
+
+子代选择器
+#ctr1，#ctr2+a{
+	left：0%
+
+	}
+》con
+
+
+checked
+
+需要只能选中一个
+
+文字还要进行关联。
+
+display：none  直接移除；
+
+ap
+
+
+透明度
+/*opacity: 0;*/
+/*隐藏图标*/
+
+
+
+text-dec
+
+
+
+
+
+
+
+
+
+
+
+input：chece
+

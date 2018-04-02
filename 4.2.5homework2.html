@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>平滑过渡界面</title>
+	<link rel="stylesheet" type="text/css" href=".\fonts\css\fontawesome-all.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+	
+
+		.con input , .con a{
+				width: 20%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: fixed;
+		}
+		.con input{
+			width: 10px;
+			margin-left: 10%;
+		}
+
+		.con a{
+			background-color: red;
+
+		}
+		#crt1,#crt1+a{
+			left: 0%;}
+		#crt2,#crt2+a{
+			left: 20%;
+		}#crt3,#crt3+a{
+			left: 40%;
+		}#crt4,#crt4+a{
+			left: 60%;
+		}#crt5,#crt5+a{
+			left: 80%;
+		}
+
+		.con a{
+			z-index: 10;
+			font-size: 
+			text-align:;
+			text-dec
+			fontfamily
+		}
+		.con input{
+			z-index: 1000;
+			/*opacity: 0;*/
+			/*隐藏图标*/
+		}
+		.con input:checked + a {
+			background-color: yellow;
+			/*这是一个伪类选择器
+			哪个被 选中，哪个变成黄色*/
+		}
+		
+
+	</style>
+</head>
+<body>
+		<div class="con">
+			<input type="radio" name="radio-set" id='crt1' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt2' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt3' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt4' checked="checked">
+			<a href="#">home7</a>
+			<input type="radio" name="radio-set" id='crt5' checked="checked">
+			<a href="#">home</a>
+		</div>
+</body>
+</html>

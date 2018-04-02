@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义字体</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		@font-face{
+			font-family: 'textfont';
+			src:url(./fonts/Sansation_Light.eot),
+				url(./fonts/Sansation_Light.ttf);
+				font-style: italic;
+				
+		}	
+
+			@font-face{
+			font-family: 'textfont';
+			src:url(./fonts/Sansation_bold.eot),
+			url(./fonts/Sansation_bold.ttf);
+				font-style: italic;
+		}
+		div{width: 200px;
+			height: 200px;
+			border: 1px  solid  #000;
+			margin: 50px auto;
+			font-family: 'textfont';
+			font-weight: bold;
+			/*加粗*/
+			font-style: italic;
+			/*样式*/
+
+		}
+
+
+	</style>
+
+</head>
+<body>
+	<div>
+		hello,世界。
+	</div>
+
+</body>
+</html>

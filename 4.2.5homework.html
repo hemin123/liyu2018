@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>平滑过渡界面</title>
+	<link rel="stylesheet" type="text/css" href=".\fonts\css\fontawesome-all.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+	
+
+		.con input , .con a{
+				width: 20%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			position: fixed;
+		}
+		.con input{
+			width:20%;
+			height: 50px;
+			opacity: 0;
+		
+		}
+		.con a{
+			background-color: red;
+
+		}
+		
+		.con a:nth-child(2) ,input:nth-child(1){
+			left: 20%;
+		}
+		.con a:nth-child(4) ,input:nth-child(3){
+			left: 40%;
+		}
+		.con a:nth-child(6) ,input:nth-child(5){
+			left: 60%;
+		}
+		.con a:nth-child(8) ,input:nth-child(7){
+			left: 80%;
+		}
+		.con a:nth-child(10) ,input:nth-child(9){
+			left: 0%;
+		}
+		.con a{
+			z-index: 10;
+			font-size: 
+			text-align:;
+			text-dec
+			font-family
+		}
+		.con input{
+			z-index: 1000;
+			/*opacity: 0;*/
+			/*隐藏图标*/
+		}
+		.con input:checked + a,.con input:hover + a {
+			background-color: yellow;
+		/*	这是一个伪类选择器
+			哪个被 选中，哪个变成黄色*/
+		}
+		.con input:hover + a {
+			background-color: gray;
+		}
+.con input:hover + a {
+			background-color: yellow;
+		/*	这是一个伪类选择器
+			哪个被 选中，哪个变成黄色*/
+		}
+		
+
+
+	</style>
+</head>
+<body>
+		<div class="con">
+			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<a href="#">home</a>
+			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<a href="#">home</a>
+		</div>
+</body>
+</html>
