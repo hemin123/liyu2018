@@ -1,0 +1,156 @@
+大作业  mi.com或者t.tt
+
+五人一组
+
+分成四组
+页面定稿4.8
+
+
+
+
+.content，.panel{
+
+height：100%；
+
+	}
+
+
+
+
+#ctr4：checked~。contect{
+transform:
+
+translateY（-400%）；
+
+}
+
+#home{
+background-image:url(images/gg.png)
+}
+
+
+#ctr1:checked ~ .contect #home{
+animation sport   0.5s linear 0s noral;
+
+
+}
+
+@key   sport{
+from{
+透明度设置
+}
+to{
+pac
+}
+
+}
+
+
+radion
+coffee
+
+
+user
+
+
+
+
+
+
+------------------------------------------------------
+
+用ssh克隆的话，直接就可以再上传。
+touch  hello.txt
+
+
+git  remote  -v
+
+查看绑定
+
+
+
+
+git  log  
+
+主分支master
+
+创建分支
+
+组员在另外一个分支开发。
+
+
+
+
+head是一个指针，指向最新提交的版本，。
+
+
+head指向
+master
+
+head指向
+dev
+先指向的是dev，然后进行测试，成功了再上传master
+
+
+
+新建
+git  branch dev
+查看在哪个分支
+git branch
+
+
+git checkout dev指针移到暂存区
+
+
+git  checkout  master指针移到master主分支
+
+转移
+
+
+
+新建文件
+touch  aa.txt
+
+
+
+head——》master-》
+
+head——》dev - 》
+
+
+
+vim  jello.txt 新建文件
+
+指针转移，然后提交。
+
+
+
+分支合并
+
+git merge dev
+
+
+同时在master  dev push
+发生冲突了。的话，需要解决
+
+
+vim 
+
+
+
+
+
+
+
+git branch  -d  dev删除分支
+
+
+git
+
+
+
+
+
+
+
+clear

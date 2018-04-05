@@ -10,6 +10,20 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
+
+
+		html, body  ,.con{
+			height: 100%;
+
+		}
+		/*给整个界面设置高度，然后给.con设置，才能够有效果*/
+
+		#crt{
+			overflow: hidden;
+		}/*.con{
+			overflow: hidden;
+		}*/
+		/*.con 里面设置的溢出了，如果高度设置规范的话，不需要。*/
 	
 
 		.con input , .con a{
@@ -18,10 +32,11 @@
 			line-height: 50px;
 			text-align: center;
 			position: fixed;
+			top: 0;
+			/*top必须设置*/
+		
 		}
 		.con input{
-			width:20%;
-			height: 50px;
 			opacity: 0;
 		
 		}
@@ -57,36 +72,67 @@
 			/*opacity: 0;*/
 			/*隐藏图标*/
 		}
-		.con input:checked + a,.con input:hover + a {
-			background-color: yellow;
-		/*	这是一个伪类选择器
-			哪个被 选中，哪个变成黄色*/
-		}
+		
+
 		.con input:hover + a {
 			background-color: gray;
 		}
-.con input:hover + a {
+
+	.con input:checked +a{
 			background-color: yellow;
 		/*	这是一个伪类选择器
 			哪个被 选中，哪个变成黄色*/
 		}
-		
+		.content{
+			margin-top: 50px;
+			/*。son溢出了，*/
+		}
 
+		 .content, .nei{
+			height: 100%;
+			background-color: pink;
+			/*margin-top: 50px;*/
+		}
+		#crt1:checked~.content{
+			transform: translateY(100%);
+		}
+		#crt2:checked~.content{
+					transform: translateY(200%);
+				}
+		#crt3:checked~.content{
+						transform: translateY(300%);
+					}
+		#crt4:checked~.content{
+						transform: translateY(400%);
+					}
+		#crt5:checked~.content{
+						transform: translateY(0%);
+					}
 
 	</style>
 </head>
 <body>
+	
 		<div class="con">
-			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<input type="radio" name="radio-set" id='crt1'>
 			<a href="#">home</a>
-			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<input type="radio" name="radio-set" id='crt2' >
 			<a href="#">home</a>
-			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<input type="radio" name="radio-set" id='crt3' >
 			<a href="#">home</a>
-			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<input type="radio" name="radio-set" id='crt4' >
 			<a href="#">home</a>
-			<input type="radio" name="radio-set" id='crt' checked="checked">
+			<input type="radio" name="radio-set" id='crt5' checked="checked" >
 			<a href="#">home</a>
+		
+		<div class="content">
+			<section class="nei" id="s3">444444444444</section>
+			<section class="nei" id="s4">444444444444</section>
+			<section class="nei" id="s5">444444444444</section>
+			<section class="nei" id="s6">444444444444</section>
+			<section class="nei" id="s7">444444444444</section>
+			
+		</div>	
 		</div>
 </body>
 </html>
