@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js2</title>
+	<style>
+		div{
+			width: 200px;
+			height: 50px;
+			background-color: #ccc;
+			display: none;
+		}
+	/*	input:hover+div{
+			display: inline-block;
+		}*/
+		/*版本一*/
+
+
+	</style>
+</head>
+<body>
+<!-- <input type="checkbox" name=""> -->
+					<!-- 版本一 -->
+
+<!-- . 就是的  的意思 -->
+<!-- 
+<input type="checkbox" name=""  
+onmouseover="box.style.display='block';"
+onmouseout="box.style.display='none';"> -->
+
+<!-- 效果一样 -->
+
+<input type="checkbox" name=""  
+onmouseover="document.getElementById('box').style.display='block';"
+onmouseout="document.getElementById('box').style.display='none';">
+
+
+
+
+
+<!-- 通过id获取元素 -->
+<div id="box">
+	伪类安全考虑
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

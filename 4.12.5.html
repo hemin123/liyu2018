@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class </title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		
+		}
+		.cls{
+			background-color: yellow;
+		}
+		/*点击时候更换背景*/
+
+	</style>
+	<script>
+	
+	function addClass(){
+		document.getElementById('box').className = 'cls';
+	}
+
+
+	function addclass(){
+		document.getElementById('box').class='cls';
+	}
+	// script中添加类的时候要用className，不可以用class
+	
+	</script>
+
+
+</head>
+<body>
+
+		<div onclick="addclass()" id="box" >
+	伪类安全考虑
+</div>
+</body>
+</html>
