@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js外部文件</title>
+	<style>
+	div{
+		width:55px;
+		height: 55px;
+		background-color: red;
+	}
+	.cl{
+		background-color: yellow;
+	}
+	</style>
+	<!-- <script type="text/javascript" src="4.13.js"></script> -->
+	<!-- 调用外部文件 -->
+	<script>
+		
+		 function tored(){
+		 	document.getElementById('box').style.background = 'pink';
+		 }
+
+	document.getElementById('box').onclick = tored;
+	// 必须写到box下面才可以
+
+		
+
+
+		// function tored(){
+		// 	document.getElementById('box').background = 'pink';
+		// }
+			
+			// document.getElementById('box').className = 'cl';
+			// 添加类，必须写到box 下面才可以，
+
+
+		
+	</script>
+</head>
+<body>
+	<div id="box" ></div>
+
+
+
+</body>
+</html>

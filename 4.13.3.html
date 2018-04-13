@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js</title>
+	<style>
+	div{
+		width:55px;
+		height: 55px;
+		background-color: red;
+	}
+
+	</style>
+	<!-- <script type="text/javascript" src="4.13.js"></script> -->
+	<!-- 调用外部文件 -->
+	<script>
+		window.onload = function(){
+		   function tored(){
+		 	document.getElementById('box').style.background = 'pink';
+		 }
+		 
+		document.getElementById('box').onclick = tored ;
+		}
+		// 点击一下执行一个函数。
+		// 可以执行，没错误，但是没调用外部文件。
+
+
+	</script>
+</head>
+<body>
+	<div id="box"  ></div>
+
+</body>
+</html>

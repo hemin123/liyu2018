@@ -1,0 +1,113 @@
+查看分支
+
+git  master
+
+git  push
+同时提交多个分支。
+
+
+
+
+
+git checkout -b dev origin/dev
+
+切换到dev分支，并且让dev分支与主分支进行关连。
+
+
+
+vim aa.txt 编辑aa
+
+
+两个分支同时进行改动。
+
+
+如果你在更改时候有人提交了。提交就会出错。
+
+
+
+git  pull 拉。拉来远程库的代码。
+
+如果git pull提示“no tracking information”,则说明本地分支和远程分支的链接关系没有创建,用以下命令建立链接后再用git pull
+
+合并分支时候
+Esc 
+shift + :
+w
+q
+
+
+-------------------------------------------------------
+
+做项目步骤
+
+推荐插件
+auto 作者信息，
+每次写代码，
+
+
+
+
+
+
+学会咋样分析，先分析再写
+
+
+包裹一层，在里面设置居中。
+
+width
+height
+margin-left
+
+
+
+ul
+ li
+float 水平排版
+
+
+center-align
+
+margin ：2em；
+em符号是字体的符号
+em符号，的用法
+
+
+清除浮动
+
+复制粘贴
+
+
+
+a
+转换为行内块状
+
+paddingleft  给输入框留空隙
+
+
+
+
+&gs；&gt；
+
+不知道啥意思
+
+大于号  小于号
+
+
+
+
+
+
+cursor:pointer;
+鼠标放上去变成小手
+
+
+
+
+图标大小用fontsize调整
+
+
+高度
+宽度
+绝对定位
+两个盒子一样大
+这样就限制图片大小了

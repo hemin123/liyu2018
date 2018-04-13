@@ -1,0 +1,66 @@
+
+
+设置高度也是清除浮动的一种方式
+
+
+用伪类
+写盒子中间的小竖线
+
+
+.line:after {
+content:'';
+width:70px;
+display:block;
+postion:relate
+background:#000
+
+top:0;
+left:0;
+	}
+
+
+
+
+.line:before {
+content:'';
+width:70px;
+display:block;
+postion:relate
+background:#000
+
+top:0;
+left:0;
+	}
+
+用来加格式
+
+
+
+	font-weight: 400;
+改大小
+
+
+
+&lt；
+&gt；
+
+
+
+
+人家用的自定义字体，咱们用的大于号
+
+--------------------------------------------------------------
+
+4.10又讲一遍4.9
+伪类的使用
+
+
+省略号不会
+
+
+
+蒙版
+相对定位绝对定位
+
+设置top=0	left=0
+蒙版透明度设置
