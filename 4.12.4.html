@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>js2</title>
+	<title>js实现多个css改变</title>
 	<style>
 		div{
 			width: 200px;
@@ -12,18 +12,18 @@
 
 	</style>
 	<script>
-		function toBlue(){
-			document.getElementById('box').style.width='400px';
-			document.getElementById('box').style.height='400px' ; 		
-			document.getElementById('box').style.background='pink';
+		// function toBlue(){
+		// 	document.getElementById('box').style.width='400px';
+		// 	document.getElementById('box').style.height='400px' ; 		
+		// 	document.getElementById('box').style.background='pink';
 
-		}
-		function toRed(){
-			document.getElementById('box').style.width='200px';
-			document.getElementById('box').style.height='200px' ; 		
-			document.getElementById('box').style.background='red';
+		// }
+		// function toRed(){
+		// 	document.getElementById('box').style.width='200px';
+		// 	document.getElementById('box').style.height='200px' ; 		
+		// 	document.getElementById('box').style.background='red';
 
-		}
+		// }
 		//方法二
 	// function toBlue(){ var rod = document.getElementById('box');
 	// 						// 定义
@@ -36,8 +36,8 @@
 	// 		document.getElementById('box').style.width='200px';
 	// 		document.getElementById('box').style.height='200px' ; 		
 	// 		document.getElementById('box').style.background='red';
-
 	// 	}
+
 		//方法三
 
 		// function sayhi(){
@@ -53,15 +53,15 @@
 
 
 
-	<!-- <div id="box" 
+	<div id="box" 
 	onmousemove="document.getElementById('box').style.width='400px';document.getElementById('box').style.height='400px' ; 					document.getElementById('box').style.background='pink'" >
 	伪类安全考虑
-</div> -->
+</div>
 <!-- 方法一 -->
 
 
-		<div id="box" onmouseout="toRed()" onmouseover="toBlue()" >
+	<!-- 	<div id="box" onmouseout="toRed()" onmouseover="toBlue()" >
 	伪类安全考虑
-</div>
+</div> -->
 </body>
 </html>

@@ -1,0 +1,69 @@
+浏览器组成
+
+1.shell就是壳
+2.内核 一般都是用c++写的
+     组成
+	渲染引擎
+	js引擎
+	其他模块
+
+
+
+谷歌浏览器js引擎V8，V8可以直接把js代码转换为机器码二进制
+
+，
+
+
+V8引擎
+
+
+
+编译
+.obj文件是机器码
+
+
+
+解释性语言js  php  py
+逐行翻译，执行速度慢
+
+
+
+js 特性
+
+js三大组成
+
+--------------------------------------------
+
+js控制页面元素
+
+
+
+
+。style.width='400px';
+
+function addClass(){
+document.getElementById('box').className = 'cls';
+	}
+
+
+function addclass(){
+document.getElementById('box').class='cls';
+	}
+	// script中添加类的时候要用className，不可以用class
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

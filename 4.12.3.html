@@ -2,14 +2,27 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>js属性</title>
+	<title>js点击变换文字</title>
 </head>
 <body>
 	<input type="text" value="我是内容" id="txt">
-	<input type="button" name="" value="内容" onclick="doocument.getElementById('box')">
-	<div id="box" >
-	伪类安全考虑
-</div>
+	<input type="button" name="" value="内容" onclick="document.getElementById('txt').value='我是提示信息';">
 
 </body>
 </html>
+
+											
+
+
+<!-- 复制老师的代码 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js修改属性</title>
+</head>
+<body>
+	<input type="text" value="我是内容" id='txt'>
+	<input type="button" value="添加内容" onclick="document.getElementById('txt').style.title='我是点击的内容'; ">
+</body>
+</html> -->

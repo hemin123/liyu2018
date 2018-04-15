@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>星</title>
+	<style type="text/css">
+		.sp{
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+
+		}
+			.st{
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			color: red;
+			/*background-color: red;*/
+
+		}
+	</style>
+	<!-- window.onload =function(){ -->
+<script type="text/javascript">
+	// window.onload = function(){
+		
+		for(var i=1; i<8; i++){
+				var str='';
+				for(var k=1;k<8-i;k++)
+					// str=str+"&nbsp;";
+				str=str+"<span class='sp'></span>";
+
+				for (var j = 1; j < i; j++) {
+					// str= str+'*';
+					str=str+"<span class='st'>*</span>";
+				}
+				// 两种方法，可以完成，注释的是另一种方法。
+			document.write(str);	
+			document.write('<br>');
+
+		}
+// }
+</script>
+
+</head>
+<body>
+
+
+
+</body>
+</html>

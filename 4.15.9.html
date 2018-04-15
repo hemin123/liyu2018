@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>innerHTML使用</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var otxt =document.getElementById('txt');
+			var obtn =document.getElementById('btn');
+			var obox =document.getElementById('box');
+
+			obtn .onclick= function(){
+			obox.innerHTML = otxt.value
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt">
+<input type="button" name="" value="提交" id="btn">
+<div id="box"></div>
+
+</body>
+</html>

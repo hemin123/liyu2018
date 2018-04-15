@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡</title>
+	<style>
+		div{
+			width: 150px;
+			height: 150px;
+			background-color: #ccc;
+			display: none;
+		}
+		.btn1{
+			background-color: yellow;
+		}
+
+
+	</style>
+	<script type="text/javascript">
+window.onload = function(){
+		var abtn =document.getElementsByTagName('input');
+		var adiv =document.getElementsByTagName('div');
+
+		for (var i = 0; i < abtn.length; i++) {
+
+		abtn[i].index = i;
+		abtn[i].onclick =function(){
+		
+			console.log(this)
+			
+				
+	
+			for (var j = 0; j< abtn.length; j++) {
+				abtn[j].className='';
+				adiv[j].style.display='none';
+				// abtn[i].style.backgroundColor='';
+			}
+		
+			// this.style.background = 'yellow';
+				this.className= 'btn1';
+			adiv[this.index].style.display='block';
+		}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="按钮" id="btn" class="btn1">
+		<input type="button" name="" value="按钮" id="btn">
+		<input type="button" name="" value="按钮" id="btn">
+		<input type="button" name="" value="按钮" id="btn">
+		<div style="display: block;">内容10</div>
+		<div>内容2</div>
+		<div>内容3</div>
+		<div>内容4</div>
+</body>
+</html>
