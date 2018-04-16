@@ -27,50 +27,26 @@
 			line-height: 80px;
 			font-size: 24px;
 		}
-		#box2{
+		.box{
 			width: 260px;
 			height: 100px;
 			background-color: #c5baba;
 			margin: 0px auto;
-
 			
 		}
-		.active{
-			background-color:#fff;
-			color:#000;
-		}
+		
 
 	</style>
 
 	<script type="text/javascript">
-
-window.onload = function(){
 		var ali=document.getElementsByTagName('li');
-		var odiv=document.getElementById('box2');
-													// 一个o
-		var arr=['一月','二月','三月','四月','五月','六月','一月','二月','三月','四月','五月','六月']
-		for(var i=0; i< 12;i++){
-			ali[i].index=i+1;
-		ali[i].onmouseover=function (){
-			for(var j=0;j<12 ;j++)
-			{
-			ali[j].className='';
-			}
-		this.className='active';
+onmouseover="document.getElementById('box').style.display='block';"
+onmouseout="document.getElementById('box').style.display='none';"
 
-		// odiv.innerHTML ="<h2>"+this.index+"月</h2><p>去玩</p>";
-			// odiv.innerHTML ="<br>";
-		odiv.innerHTML ="<h2>"+arr[this.index-1]+"</h2><p>"+arr[this.index-1]+"去玩</p>";
-
-	}
-}
-
-
-}
 	</script>
 </head>
 <body>
-	<div class="box">
+	<div>
 		<ul>
 			<li>1</li>
 			<li>2</li>
@@ -85,14 +61,12 @@ window.onload = function(){
 			<li>11</li>
 			<li>12</li>
 		</ul>
-			<div id="box2">
-			<h2>1月</h2>
+		<div class="box">
 			<p>
-				玩
+				
 			</p>
 
 		</div>
-	
 	</div>
 
 </body>

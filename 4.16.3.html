@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>求和</title>
+	<script type="text/javascript">
+		window.onload =function(){
+		var otxt1 = document.getElementById('txt1');
+		var otxt2 = document.getElementById('txt2');
+		var obtn = document.getElementById('btn');
+			// 默认object类型
+		obtn.onclick = function(){
+		/*
+			alert(typeof otxt1);
+			// string字符串   类型
+			alert(otxt1.value+otxt2.value);
+			var a='-125a45p454a4548';
+			alert( typeof  parseInt(a));
+			alert( parseInt(a));
+			// 转换为number类型，
+			// 是不是 不是数字isNaN（）    真的话 不是数字
+			alert( a);
+		*/
+		alert(parseInt(otxt1.value)+parseInt(otxt2.value))
+		 var value1 = parseInt(otxt1.value);
+		 var value2 = parseInt(otxt2.value);
+		 if (isNaN(value1)) 
+		 	alert('输入有误')
+		 
+		  else if (isNaN(value2)) 
+		 	alert('输入有误')
+					 
+		   else alert(parseInt(otxt1.value)+parseInt(otxt2.value))
+}
+
+		}
+	</script>
+</head>
+<body>
+
+<input type="text" name="" id="txt1" value="4">
+
+<input type="text" name="" id="txt2" value="5">
+
+<input type="text" name="" id="txt1">
+
+<input type="button" name="" id="btn">
+</body>
+</html>

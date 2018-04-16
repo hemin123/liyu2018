@@ -1,0 +1,59 @@
+switch语句
+
+
+switch（）{	}
+
+if 简写
+
+条件 ？  语句一 ：  语句二
+
+
+加引号就是字符串，不加引号就是数字
+
+
+
+var abtn3 =document.getElementById('btn3');	
+
+id取出来
+
+var al= document.getElementsByTagName('li');
+			// 定义数组
+
+alert(al.length)取数组长度
+
+
+
+选项卡
+
+点击事件
+abtn{j}.classname='';
+adiv[j].style.display='none';
+
+
+
+
+做乘法表
+
+js内容输出到屏幕上面
+
+
+
+2月的存在
+二月天气好；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
