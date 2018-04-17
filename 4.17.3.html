@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>秒传时间</title>
+	<script type="text/javascript">
+		var time =3766;
+		var  h =  parseInt(time/3600);
+		// 强转类型    转换为字符串
+		var m =parseInt((time%3600)/60);
+		var s =parseInt((time%3600)%60);
+		if (h<10) {
+			h="0"+h;
+		}if (m<10) {
+			m="0"+m;
+		}if (s<10) {
+			s="0"+s;
+		}
+		// alert(h);
+		// alert(m);
+		// alert(s);
+		alert(h+':'+m+':'+s);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
