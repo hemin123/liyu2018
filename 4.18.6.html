@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取设置样式</title>
+	<style>
+		#box{
+			width: 50px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+		.col{
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		window.onload =function(){
+			var obtn1 = document.getElementById('btn1');	
+			var obtn2 = document.getElementById('btn2');
+				var obtn3 = document.getElementById('btn3');
+
+					var obox = document.getElementById('box');
+
+
+//alert( getComputedStyle(obox,false)['width'] );
+
+ alert (obox.style.background);
+ // 这样取只能取到行间样式。css取不到
+
+
+// 每定义一个函数，函数的参数就会放到arguments数组里面。
+
+function css (obj,attr,value){
+if(arguments.length == 2){
+	//return getComputedStyle(obj,false)[attr]; 
+	return getComputedStyle(arguments[0],false)[arguments[1]]; 
+}
+else{
+	//return obj.style[attr]=value;
+	 arguments[0].style[arguments[1]]=arguments[2];
+	}
+}
+					obtn1.onclick = function(){
+						obox.style.background ='red';
+					}
+					// 设置的是行间样式，优先级高
+					obtn2.onclick = function(){
+							alert(css(obox,'width'));
+					}
+					// 添加类，设置样式、、
+					obtn3.onclick =function(){
+						// alert (obox.style.background);
+						// 只能获取行间样式，通过类的话，获取不到
+						alert(css(obox,'width','400px'));
+
+
+
+					//alert( getComputedStyle(obox,false)['width'] );
+						// 计算获取颜色
+						// 获取
+						//alert(css( getComputedStyle(obox,'width' ));
+						
+					}
+	}
+				</script>
+			
+</head>
+<body>
+<input type="button" name="" id="btn1">
+<input type="button" name="" id="btn2">
+<input type="button" name="" id="btn3">
+<div id="box"></div>
+</body>
+</html>

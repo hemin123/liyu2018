@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数组定义</title>
+	<script type="text/javascript">
+		var arr1 = new Array(1,2,5,4);
+		console.log(arr1);
+		var arr =[1,2,3,4,4,5,6,7];
+		console.log(arr);
+
+		arr.length = 5;
+		console.log(arr);
+		//arr.length = 0;    //清空数组
+		//console.log(arr);
+		arr.push(100);
+		console.log(arr);
+		arr.pop();
+		// 删末尾元素
+		arr.unshift();
+
+		arr.shift();
+		// 添加在头部
+		arr.splice(1,2);
+		// 删除   从第一个开始，删掉两个
+		arr.splice(1,0,22,55);
+		// 插入
+		arr.join('##');
+		// 不影响数组里面的值，用指定字符连接字符串
+		console.log(arr.join('##')  );
+
+		var arr3 =arr.slice(2,5);
+		console.log(arr3)
+		// 截取  创建新数组
+		console.log(arr.indexOf(4) );
+		// 查找，查数值，返回对应的下标
+		console.log(arr.LastIndexOf(2) );
+		// 从后往前 
+	</script>
+</head>
+<body>
+
+</body>
+</html>
