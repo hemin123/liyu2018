@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>设置属性</title>
+	<script type="text/javascript">
+		window.onlod =function () {
+			obtn.onclick = function(){
+				var obtn = document.getElementById('btn');;
+				var otxt = document.getElementById('text');
+				otxt.setAttribute('value','456');
+				// 设置属性
+				otxt .removeAttribute('value');
+
+			
+
+			}
+			
+		}
+	</script>
+</head>
+<body>
+<input type="button" name="" id="btn" value="设置">
+<input type="text" name="" id="text" value="123">
+</body>
+</html>

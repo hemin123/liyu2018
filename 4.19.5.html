@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>隐藏父元素</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var al =document.getElementById('uli');
+		var aa= document.getElementsByTagName('a');
+		aa.onclick =function(){
+			this.parentNode.style.display =none;
+		}
+
+	</script>
+</head>
+<body>
+<ul id="uli">
+	<li>aaa<a href="javascript">hide</a></li>
+	<li>aaa<a href="javascript">hide</a></li>
+	<li>aaa<a href="javascript">hide</a></li>
+	<li>aaa<a href="javascript">hide</a></li>
+</ul>
+</body>
+</html>

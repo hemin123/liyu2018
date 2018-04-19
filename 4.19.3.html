@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取DOM元素</title>
+	
+	<style type="text/css">
+		li{
+			list-style: none;
+			width: 50px;
+			height: 50px;
+			border: 1px solid #000;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oul  =document.getElementById('ui');
+			var al  = oul.childNodes;
+			var all =oul.children;
+			//获取子节点
+
+			console.log (al);
+			console.log (all);
+			for (var i = 0; i < al.length; i++) {
+
+				console.log(al[i].nodeType)
+				// text 3  li  1
+				if (al[i].nodeType==1) {
+				al[i].style.background = 'red';}
+				// 为啥加上if条件就可以了。
+			}
+			console.log()
+		}
+	</script>
+</head>
+<body>
+<ul id="ui">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
