@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js创建元素</title>
+	<script type="text/javascript">
+		window.onload =function(){
+			var otxt =document.getElementById('txt');
+var obtn =document.getElementById('btn');
+var oul =document.getElementById('uli');
+
+obtn.onclick =function(){
+	var oli= document.createElement('li');
+	oli = otxt.value;
+	console.log(oli);
+	// 动态创建元素；
+	}
+/*
+	obtn.onclick =function(){
+	var oli= document.createElement('li');
+	oli.innerHTML = otxt.value;
+	console.log(oli);
+	// 动态创建元素；oli,oul.firstElementchild;
+	oul.insertBefore(oli,oul.firstElementchild);
+	oul.insertBefore(oli,oul.child[0]);
+
+	}
+*/
+
+
+
+		}
+	</script>
+</head>
+<body>
+<input type="text" name="" id="txt">
+<input type="button" value="创建"  id="btn" name="">
+ <ul id="uli">
+ 	<li>1</li>	<li>2</li>	<li>3</li>
+ </ul>
+</body>
+</html>

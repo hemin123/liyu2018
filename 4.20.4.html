@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>指定删除行</title>
+	<script type="text/javascript">
+			
+			window.onload =function(){
+			var otxt =document.getElementById('txt');
+var obtn =document.getElementById('btn');
+var obtn2 =document.getElementById('btn2');
+var oul =document.getElementById('uli');
+
+obtn.onclick =function(){
+	var oli= document.createElement('li');
+	// •	创建元素
+	oli.innerHTML = otxt.value;
+	console.log(oli);
+
+	var oa =document.createElement('a');
+	oa.innerHTML ='del';
+	//oa.href ='javascript:;'
+	oa.href ='#';
+
+	oa.onclick =function(){
+		oul.removeChild(oli);
+		// 删除元素
+	} 
+	oli.appendChild(oa);
+	oul.appendChild(oli);
+	// 追加元素	
+
+}
+
+
+}
+	</script>
+</head>
+<body>
+<input type="text" id="txt" name="" id="btn">
+<input type="button" id="btn" name="" id="btn2">
+<ul id="uli">
+ 	<li>1</li>	<li>2</li>	<li>3</li>
+</body>
+</html>

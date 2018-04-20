@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		function  show(){
+			alert(1);
+		}	
+		setTimeout(function(){
+			alert(2);
+		},2000)
+		 show();
+
+
+
+
+
+		 // 同步的执行完以后再执行异步的
+		 //就是先执行同步的程序，执行完再执行定时器，以及其他的程序
+		 // 单线程
+
+
+
+
+
+
+
+		 setTimeout(show,2000);
+		 // 调用时候不需要写括号，匿名函数，不需要写。
+
+		 // 延时两秒执行函数
+
+
+
+
+		 setTimeout(function(){
+			alert(5);
+		},1000)
+
+
+		 setTimeout(function(){
+			console.log(1);
+		},0)
+		 console.log(2);
+
+		 window.onload =function(){
+	var obtn = document.getElementById('btn');
+	var obtn2 = document.getElementById('btn2');
+		obtn.onclick = function(){
+			timer =setTimeout(function(){
+				console.log('aaaaa');
+			},5000)
+		}
+obtn2.onclick = function(){
+			timer =setTimeout(function(){
+				console.log('aaaaa');
+			},5000)
+			clearTimeout(timer);
+		}
+
+		 }
+
+	</script>
+</head>
+<body>
+	<input type="button" value="提交" id="btn">
+	<input type="button" value="提交" id="btn2">
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>搜索案例</title>
+	<style>
+		/*li{
+			width: 100%;
+			height: 50px;
+
+		}*/
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var otxt = document.getElementById('txt');	
+			var obtn = document.getElementById('btn');
+			var ouli = document.getElementById('uli');
+			var ali = ouli.children;
+				
+			obtn.onclick =function() {
+				var stxt =otxt.value.toLowerCase();
+				
+				for (var i = 0; i < ali.length; i++) {
+				var sss= ali[i].innerHTML.toLowerCase();	
+					if(sss == stxt){
+						ali[i].style.background = 'yellow';
+					 }//else{
+					// 	ali[i].style.background = '';
+					// }
+				}
+
+				// for (var i = 0; i < ali.length; i++) {
+				// 	//if(ali .search(stxt)!=-1)
+				// 	if(ali[i].innerHTML== otxt.value){
+				// 		ali[i].style.background = 'yellow';
+				// 	}else{
+				// 		ali[i].style.background = '';
+				// 	}
+				// }
+				// 函数把字符串转换为小写，
+
+
+				// for (var i = 0; i < ali.length; i++){
+				// 	// 清空
+				// }
+				// for (var i = 0; i < ali.length; i++) {
+					
+				// 	if(ali .search(stxt)!=-1)
+
+				// 	{
+				// 		ali[i].style.background = 'yellow';
+				// 	}
+				// }
+
+
+
+
+
+
+
+			}	
+			
+			
+		}
+	</script>
+</head>
+<body>
+<input type="text" name="" id="txt">
+<input type="button" value="提交" id="btn">
+<ul id="uli">
+	<li>tt</li>
+	<li>e</li>
+	<li>gg</li>
+	<li>fs</li>
+	<li>sgdgb</li>
+	<li>呵呵</li>
+</ul>
+</body>
+</html>

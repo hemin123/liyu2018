@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>删除元素</title>
+	<script type="text/javascript">
+		
+		window.onload =function(){
+			var ouli =document.getElementById('uli');
+
+			var oa =document.getElementsByTagName('a');
+
+			for (var i = 0; i < oa.length; i++) {
+				oa[i].onclick = function(){
+					ouli.removeChild(this.parentNode);
+					// 删除元素
+				}
+			}
+
+
+
+
+		}
+	</script>
+</head>
+<body>
+<ul id="uli">
+	<li>1<a href="javascipt:;">del</a></li>
+	<li>2<a href="javascipt:;">del</a></li>
+	<li>3<a href="javascipt:;">del</a></li>
+	<li>4<a href="javascipt:;">del</a></li>
+</ul>
+</body>
+</html>
