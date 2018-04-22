@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮廓图焦点图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		#box {
+			width: 1200px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 20px auto; 
+			position: relative;
+			cursor: pointer;
+		}
+		#box  #img li{
+			list-style: none;
+			position: absolute;
+			width: 1200px;
+			height: 500px;
+
+		}
+			#box li img{
+			width: 1200px;
+			height: 500px;
+
+		}
+		span {background-color: gray;
+			padding: 10px 5px;
+			font-size: 20px;
+			
+		}
+		.left{position: absolute;
+			left: 0px;
+			top: 230px;
+			
+		}
+
+		.right{position: absolute;
+			right: 0px;
+			top: 240px;
+			
+		}
+		
+		#boxs{width: 100px;
+			height: 30px;
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			z-index: 33;
+			/*border: 1px solid #000;*/
+		}
+		#boxs li{
+			width: 10px;
+			height: 10px;
+			border: 2px solid #000;
+			background-color: #gray;
+			border-radius: 50%;
+			list-style: none;
+			display: inline-block;
+			z-index: 33;
+			margin-left: 10px;
+
+		}
+		.active{
+			border: 2px solid #fff;
+			background-color: #ff6700;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			var abtn1 =document.getElementById('btn1');
+			var abtn2 =document.getElementById('btn2');
+			var aimg =document.getElementById('img').children;
+			var abox =document.getElementById('box');
+			var aboxs =document.getElementById('boxs').children;
+
+
+			var now=0;
+		abtn1.onclick =function(){			
+			now--;
+			if (now<0) {
+				now= aimg.length-1;	}				
+			tab();
+		}	
+		abtn2.onclick =function(){		
+			now++;
+			if (now>=aimg.length) {
+				now= 0;		}			
+			tab();
+		}
+		function tab(){
+			for (var i = 0; i < aimg.length; i++) {
+				aboxs[i].className='';
+				aimg[i].style.zIndex =0; }
+
+			aimg[now].style.zIndex =30;
+			aboxs[now].className='active';
+		}
+		for (var i = 0; i < aboxs.length; i++) {
+			aboxs[i].index=i;
+			aboxs[i].onclick=function(){
+				now=this.index;
+				tab();
+			}
+		}
+
+		timer=setInterval(function(){
+			abtn2.onclick();
+		},1000	)
+		obox.onmouseover =function(){
+			clearInterval(timer);
+		}
+		obox.onmouseout =function(){
+		timer=setInterval(function(){
+			abtn2.onclick();
+		},1000	)
+		}
+		
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="img">
+			<li style="z-index: 2;"><img src="./images/jd1.jpg" alt=""></li>
+			<li><img src="./images/jd2.jpg" alt=""></li>
+			<li><img src="./images/jd3.jpg" alt=""></li>
+		</ul>
+
+		<span style="z-index:222;" class="left" id="btn1">&lt;</span>
+		<span style="z-index: 222;" class="right" id="btn2">&gt;</span>
+		<ul id="boxs">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+	</div>
+
+</body>
+</html>

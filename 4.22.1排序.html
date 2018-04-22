@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>内容排序</title>
+	<script type="text/javascript">
+		window.onload =function () {
+		var obtn =document.getElementById('btn');	
+		var oul1 =document.getElementById('uli');
+		var oul2 =document.getElementById('uli2');
+		var ali = oul1.children;
+
+
+
+		obtn.onclick =function(){
+			//var  oli =uli1.firstElementChild;
+
+			// oul1.removeChild(oli);
+			// oul2.appendChild(oul1);
+			// oul1.appendChild(oli);
+
+			//console.log(ali);
+
+			var arr=[];
+			for (var i = 0; i < ali.length; i++) {
+				arr.push(ali[i]);
+			}
+
+			arr.sort(function(oli1,oli2){
+				var n1 =oli1.innerHTML;	
+				var n2 =oli2.innerHTML;	
+			return n1-n2;  //隐式转化。转化为数字类型
+			//字符串类型，写的html是字符串类型
+			})
+			for (var i = 0; i < arr.length; i++) {
+				//ali[i]=arr[i];
+				oul1.appendChild(arr[i]);
+			}
+
+
+
+
+			console.log(ali);
+			//arr.sort();
+			console.log(arr);
+			// sort是数组排序，可以对数组进行排序。
+			//arr存放的li，不可以进行排序。存放的是字符串不可以用sort排序
+		}
+
+
+
+
+
+
+
+
+
+
+		}
+	</script>
+</head>
+<body>
+
+<input type="button" name="" value="排序" id="btn">
+
+<ul id="uli">
+	<li>2</li>
+	<li>373</li>
+	<li>25</li>
+	<li>67</li>
+</ul>
+<ul id="uli2"></ul>
+</body>
+</html>

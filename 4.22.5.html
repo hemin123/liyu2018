@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>err</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#fa{
+			width: 450px;
+			height: 50px;
+			background-color: pink;
+			position: relative;
+			top: 650px;
+			left: -400px;
+
+		
+		}
+		#son{width: 50px;
+			height: 50px;
+			background-color: #000;
+			position: absolute;
+			right: 0px;
+
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var timer =null;
+			var speed=0;
+			var s=0;
+		function animation (){  
+
+
+		 }
+			clearInterval(timer);
+			
+				var ofa =document.getElementById('fa');
+				var oson =document.getElementById('son');
+				// if (s==0) {
+				// 	speed= 5;
+				// }else{
+				// 	speed= -5;
+				// }
+				ofa.onmouseover =function(){
+				
+				timer =setInterval(function(){
+					if (Math.abs(0-ofa.offsetLeft)<=Math.abs(5) ) {
+					ofa.style.left='0px';
+					clearInterval(timer);
+
+				}else{
+					ofa.style.left=ofa.offsetLeft+'-5px';}
+				
+				},30)
+			}
+
+					ofa.onmouseout =function(){
+						//s=1
+									ofa.style.left='-400px';
+								}
+
+
+
+
+
+			
+		
+
+
+	}
+	</script>
+</head>
+<body>
+<div id="fa">
+	<div id="son"></div>
+</div>
+</body>
+</html>

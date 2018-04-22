@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+			left: 800px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			var obtn =document.getElementById('btn');
+			var odiv =document.getElementById('div');
+			var timer =null;
+			var speed= 0;
+			obtn.onclick = function(){
+				//odiv.style.left ='300px';
+
+
+				// alert(odiv.offsetweight);
+				// alert(odiv.offsetWidth);
+				// alert(odiv.offsetleft);
+				
+						//clearInterval(timer);
+				if (odiv.offsetLeft>=300) {
+					speed= -5;
+				}else{
+					speed= 5;
+				}
+				timer = setInterval(function(){
+					 if (Math.abs(300-odiv.offsetLeft)<=Math.abs(speed) ){
+					 	odiv.style.left ='300px';
+						clearInterval(timer);
+					}else{
+					odiv.style.left = odiv.offsetLeft+speed+'px';
+				}
+
+				},30		)
+
+
+
+
+
+
+
+			}
+
+		}
+	</script>
+
+</head>
+<body>
+<input type="button" name="" value="动画" id="btn">
+<div id="div"></div>
+</body>
+</html>
