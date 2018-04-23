@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>固定</title>
+	<style type="text/css">
+	div{
+		width: 50px;
+		height: 50px;
+		background-color: red;
+		position: absolute;
+		/*bottom: 0px;*/
+		right: 0px;
+	}	
+	body{
+		height: 5000px;
+	}
+	</style>
+	<script type="text/javascript">
+		window.onsroll =window.onresize =window.onload =function(){
+			var obox=document.getElementById('box');
+			var obox1=document.getElementById('box1');
+			var top1=document.body.scrollTop || document.documentElement.scrollTop;
+			var top2 =window.innerHeight;
+			console.log(top1+'##'+top2);
+			obox.style.top=top1+top2 - box.offsetHeight+'px';
+			// box.offsetHeight 取高度
+			// box.style.height  这样取只能取到行间样式
+
+
+			console.log(obox.style.top);
+
+			obox1.style.top=top1+top2;
+			console.log(obox1.style.top);
+			obox1.style.top='50px';
+
+		}
+	</script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+</body>
+</html>

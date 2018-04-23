@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>duo</title>
+	<style type="text/css">
+		div{
+			width: 50px;
+			height: 50px;
+			/*border: 1px solid #000;*/
+			background-color: red;
+			margin: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function animation(obj,target){
+			var timer =null;
+			clearInterval(timer);
+			timer =setInterval(function(){
+			var curr =parseFloat(getComputedStyle(obj,false)['width']);
+				// 返回值是字符串					
+				var speed =0;
+				if (curr>target) {
+					speed= -10;
+				}else{
+					speed =10;
+				}
+				if (Math.abs(target-curr)<=Math.abs(speed)) {
+					clearInterval(timer);
+					obj.style.width= target;
+				}else{
+				obj.style.width=curr+speed +'px';}
+		},30)
+		}
+		window.onload =function(){
+			var obox1 =document.getElementById('box1');	
+			var obox2 =document.getElementById('box2');
+			var obox3 =document.getElementById('box3');
+			obox1.onmouseover = function(){
+
+				animation(obox1,200);
+			}
+			obox1.onmouseout = function(){
+
+				animation(obox1,50);
+			}
+
+
+
+
+
+
+
+}
+		
+	</script>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+</body>
+</html>

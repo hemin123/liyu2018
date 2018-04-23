@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>浏览器宽高获取</title>
+	<style>
+		div{
+			width: 5000px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			document.onclick =function(){
+				// document是整个浏览器
+				console.log(window.innerWindth);
+				console.log(window.innerHeight);
+				console.log(window.innerWindth);
+				console.log(document.body.srolltop);//距离上边距离
+			
+				// 滚动区域document.body.scrollTop || document.documentElement.scrollTop;
+				// 可视区域window.innerHeight
+
+					自身高度
+
+					top+itop-div自身高度
+					window.onsroll =function(){}
+					拉动滚动条
+
+					window.onresize =function(){}
+					拉动屏幕，改变屏幕宽高
+
+
+			}
+		}
+	</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>
