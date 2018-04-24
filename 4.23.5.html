@@ -16,6 +16,26 @@
 	}
 	</style>
 	<script type="text/javascript">
+		function animation(obj,target){
+			var timer =null;
+			clearInterval(timer);
+			timer =setInterval(function(){
+			var curr =parseFloat(getComputedStyle(obj,false)['height']);
+				// 返回值是字符串					
+				var speed =0;
+				if (curr>target) {
+					speed= -10;
+				}else{
+					speed =10;
+				}
+				if (Math.abs(target-curr)<=Math.abs(speed)) {
+					clearInterval(timer);
+					obj.style.height= target+'px';
+				}else{
+				obj.style.height=curr+speed +'px';}
+		},30)
+		}
+
 		window.onsroll =window.onresize =window.onload =function(){
 			var obox=document.getElementById('box');
 			var obox1=document.getElementById('box1');

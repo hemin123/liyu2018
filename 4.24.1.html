@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>滚动导航</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#top{
+			width: 100%;
+			height: 100px;
+			background-color: red;
+			position: relative;
+		}#bd{
+			width: 100%;
+			height: 0px;
+			background-color: pink;
+			position: fixed;
+			top: 0px;
+		}#btm{
+			width: 100%;
+			height: 1200px;
+			/*background-color: yellow;*/
+		}
+	</style>
+	<script type="text/javascript">
+
+		function animation(obj,attr,target){
+			var timer =null;
+			clearInterval(timer);
+			timer =setInterval(function(){
+			var curr =parseFloat(getComputedStyle(obj,false)[attr]);
+				// 返回值是字符串					
+				var speed =0;
+				if (curr>target) {
+					speed= -10;
+				}else{
+					speed =10;
+				}
+				if (Math.abs(target-curr)<=Math.abs(speed)) {
+					clearInterval(timer);
+					obj.style[attr]= target+'px';
+				}else{
+				obj.style[attr]=curr+speed +'px';}
+		},30)
+		}
+
+		window.onload =function () {
+			
+		}
+		var state =false;
+		window.onscroll  =function(){
+			var odiv =document.getElementById('bd');
+			var itop = document.body.scrollTop || document.documentElement.scrollTop;
+			
+			console.log(itop);
+			
+			if (itop>=100) {
+				if (!state) {
+				//odiv.style.height='100px';
+				animation(odiv,'height',100);
+					state=true;
+
+				}
+			}
+			else{
+				if (state) {
+				//odiv.style.height='0px';
+				animation(odiv,'height',0);
+				state = false;}
+			}
+
+		}
+	</script>
+</head>
+<body>
+		<div id="top"></div>
+		<div id="bd"></div>
+		<div id="btm">hhhhhhhhhhh</div>
+</body>
+</html>

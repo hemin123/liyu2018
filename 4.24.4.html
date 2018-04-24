@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>变速</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: relative;
+			opacity: 0.5;
+		}
+		#line{
+			width: 1px;
+			height: 800px;
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			left: 300px;
+			background-color: #000;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+
+			var obtn = document.getElementById('btn');
+			var obox =document.getElementById('box1');
+			var timer = null;
+			obtn.onclick =function(){
+				clearInterval(timer);
+
+				timer = setInterval(function(){
+					var speed =(1-obox.offsetLeft)/10;
+				var curr =parseFloat(getComputedStyle(obox,false)['opacity']*100)
+					curr = Math.round(curr);
+					var speed =(100-curr)/6;
+					speed =speed>0 ?Math.ceil(speed) :Math.floor(speed);
+
+					if (!speed) {
+						clearInterval(timer);
+					}else{
+						obox.style.opacity =(curr+speed)/100;
+
+					}
+					//console.log(obox.style.left);
+					console.log(obox.offsetLeft);
+
+
+
+
+
+
+				},30)
+			}
+
+
+
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="减速"  name="">
+	<div id="box1"></div>
+	<div id="line"></div>
+</body>
+</html>
