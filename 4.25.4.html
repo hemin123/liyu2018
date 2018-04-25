@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>发布效果</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+		height: 50px;
+		width: 100%;
+		border-bottom: 1px dashed #000;
+	}
+</style>
+<script scr="animation.js">
+</script>
+<script type="text/javascript">
+	window.onload =function(){
+		var otxt =document.getElementById('txt');
+		var obtn =document.getElementById('btn');
+		var oul =document.getElementById('uli');
+		obtn.onclick =function(){
+			var oli =document.createElement('li');
+			oli.innerHTML =otxt.value;
+			otxt.value ='';
+			oul.insertBefore(oli,oul.firstElementchild);
+			oli.style.height ='0px';
+			//oli.style.opacity= 0;
+			animation(oli,{'height':50},false);
+			animation(oli,{'opacity':100},true);
+
+
+
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" name="" id="txt">
+<input type="button" id="btn" value="anniu" name="">
+<ul id="uli"></ul>
+</body>
+</html>
