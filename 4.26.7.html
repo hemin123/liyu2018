@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鼠标事件</title>
+	<style type="text/css">
+		#nei{
+			width: 50px;
+			height: 50px;
+	background-color: red;
+	position: absolute;	}
+
+	</style>
+	<script type="text/javascript">
+	
+			window.onload = function(){
+		
+		var onei = document.getElementById('nei');
+		document.onmouseover = function(ev){
+  			
+				 var even = ev ||event ;
+				 console.log('x;',even.clientX);
+				 console.log('y;',even.clientY);
+				 onei.style.left=even.clientX+'px';
+				 onei.style.top=even.clientY+'px';
+				 // //法一
+			
+		}
+
+
+
+	}
+
+
+	</script>
+</head>
+<body>
+<div id="nei"></div>
+</body>
+</html>

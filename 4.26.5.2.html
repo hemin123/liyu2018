@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<style type="text/css">
+		#nei{
+			width: 50px;
+			height: 700px;
+	background-color: red;	}
+
+	</style>
+<script type="text/javascript">
+	window.onload = function(){
+		var obtn = document.getElementById('btn');
+		var onei = document.getElementById('nei');
+		obtn.onclick = function(){
+			onei.style.display ='block';
+			document.stopPropagation();
+			//alert('bbbtn');
+		}
+	document.onclick = function(){
+			onei.style.display ='none';
+			//alert('bbbtsssn');
+		}
+
+	}
+</script>
+</head>
+<body>
+	<input type="button" id="btn" name="">
+	<div id="nei"></div>
+
+</body>
+</html>

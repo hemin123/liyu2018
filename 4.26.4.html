@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>点击</title>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			document.onclick = function(){
+				console.log('x;',event.clientX);
+				console.log('y;',event.clientY);
+			}
+			document.onclick = function(ev){
+				console.log('x;',ev.clientX);
+				console.log('y;',ev.clientY);
+			}
+			document.onclick = function(ev){
+				var even = ev ||event ;
+				console.log('x;',even.clientX);
+				console.log('y;',even.clientY);
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
