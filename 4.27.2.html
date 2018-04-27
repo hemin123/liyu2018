@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>右键菜单</title>
+	<style type="text/css">
+		#menu{
+			width: 40px;
+			height: 80px;
+			background-color: red;
+			display: block;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			var omenu =document.getElementById('menu')
+			document.oncontextmenu = function(ev){
+				var oevent =ev||event;
+				//alert(1);
+				return false;
+				oevent.preventDefault();
+				omenu.style.display='block';
+				omenu.style.left=oevent.clientX+'px';
+				omenu.style.left=offsetleft+'px';
+
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="menu"></div>
+</body>
+</html>

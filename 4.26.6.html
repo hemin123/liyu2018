@@ -11,16 +11,20 @@
 
 	</style>
 	<script type="text/javascript">
-		function getpoint (xy){
-			var oevent =ev || event;
-			var itop = document.body.scrollTop || document.documentElement.scrollTop+oevent.clientY;
+		function getpoint (ev){
+			
+			var itop = document.body.scrollTop || document.documentElement.scrollTop;
 			var ileft = document.body.scrollLeft || document.documentElement.scrollLeft;
-			return ({x:ileft+oevent.clientX,y:itop+oevent.clientY}) ;
+			return ({x:ileft+ev.clientX,y:itop+ev.clientY}) ;
 		}
 			window.onload = function(){
 		
 		var onei = document.getElementById('nei');
-		 onei[]
+		document.onmousemove = function(ev){
+				var oevent = ev || event;
+				var oPoint = getpoint(oevent);
+				onei.style.left = oPoint.x + 'px';
+				onei.style.top = oPoint.y+ 'px';	}	 
 
 
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>键盘移动物体</title>
+	<style>
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			document.onkeydown =function(ev){
+				var oevent = ev|| event;
+				console.log(oevent.keyCode);
+
+				//alert()
+
+			if (oevent.keyCode== 39 &&oevent.ctrlKey&&oevent.shiftKey) {
+				alert('ss');
+				console.log("oevent.keyCode");}
+
+			if (oevent.keyCode== 39) {
+				var obox=document.getElementById('box');
+				console.log('ddd');
+				obox.style.left=obox.offsetLeft+2+'px';
+				
+
+				}
+
+			
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+
+</body>
+</html>
