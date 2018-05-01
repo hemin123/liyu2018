@@ -3,7 +3,7 @@
 <head>
 	<title>鼠标事件</title>
 	<style type="text/css">
-		#nei{
+		div{
 			width: 50px;
 			height: 50px;
 	background-color: red;
@@ -21,34 +21,30 @@
 		}
 			window.onload = function(){
 		
-		var onei = document.getElementById('nei');
+		var adiv = document.getElementsByTagName('div');
 		document.onmousemove = function(ev){
 				var oevent = ev || event;
-
-				//onei.style.left=oevent.clientX+'px';
-				//onei.style.top=oevent.clientY+'px';
-				     //版本一
-
-
-
-
-
 				var oPoint = getpoint(oevent);
-				onei.style.left = oPoint.x + 'px';
-				onei.style.top = oPoint.y+ 'px';	
-				//版本二
 
+				adiv[0].style.left=oPoint.x+'px';
+				adiv[0].style.top=oPoint.y+'px';
+
+			for (var i = adiv.length-1; i>0; i--) {
+					adiv[i].style.left = adiv[i-1].offsetLeft + 'px';
+					adiv[i].style.top = adiv[i-1].offsetTop+ 'px';
+					//style.left。取行间样式
+					// /offsetleft取才可以取出去
+					}
 			}	 
-
-
-
 	}
 
 
 	</script>
 </head>
 <body>
-<div id="nei"></div>
+<div id="nei"></div><div id="nei"></div><div id="nei"></div><div id="nei"></div><div id="nei"></div>
+
+<div id="nei"></div><div id="nei"></div><div id="nei"></div><div id="nei"></div><div id="nei"></div>
 
 </body>
 </html>

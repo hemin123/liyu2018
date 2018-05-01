@@ -4,18 +4,11 @@
 	<title>拖拽</title>
 	<style type="text/css">
 	*{
-		margin: 0;
-		padding: 0;
+
 	}
-		#box2{
-			width: 800px;
-			height: 500px;
-			background-color: pink;
-			position: relative;
-			margin: 20px auto;
-		}#box{
-			width: 50px;
-			height: 50px;
+		#box{
+			width: 150px;
+			height: 150px;
 			background-color: red;
 			position: absolute;
 		}
@@ -26,52 +19,49 @@
 			var disx=0;
 			var disy=0;
 			obox.onmousedown =function(ev){
+				// 鼠标按下触发的事件
+
 				//alert(1);
 				var oevent =ev||event;
 				disx=oevent.clientX-obox.offsetLeft;
 				disy=oevent.clientY-obox.offsetTop;
 				console.log(disx+"##"+disy);
-				var obox3=document.creatElement('div');
-				obox3.className='box';
-				obox3.style.width=obox.offsetWidth+'px';
-				obox3.style.height=obox.offsetHeight+'px';
-
+				
 
 				document.onmousemove =function(ev){
-				//alert(1);
 				var oevent =ev||event;
+				var l=oevent.clientX-disx;
+				var t=oevent.clientY-disy;
+				console.log(l+"##"+t);
+				if (l<0) {
+					l=0;
+				}
+				if (t<0) {}
+				//alert(1);
+				
 				
 				obox.style.left=oevent.clientX-disx+'px';
 				obox.style.top=oevent.clientY-disy+'px';
-				var l= oevent.clientX-disx;
-				var t= oevent.clientY-disy;
-					if (l<50) {
-						l=0;
-					}else if((l+50)>window.innerWidth)
-					if (t<5) {
-						t=0;
-					}
+
 
 			}
-
-			
-			}
-
-			
-
-			
-
-			obox.onmouseup =function(){
+		document.onmouseup =function(){
 				//alert(1);
-				document.onmousemove=null;
-				obox.onmouseup=null;
+				document.onmousemove= null;
+				document.onmouseup=null;
 
 			}
+			
+			}
+
+			
+
+	
 		}
 	</script>
 </head>
 <body>
-	<div id="box"></div>	<div id="box2"></div>
+	<div id="box"></div>
 
 </body>
 </html>

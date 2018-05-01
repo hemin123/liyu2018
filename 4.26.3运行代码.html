@@ -2,21 +2,28 @@
 <html>
 <head>
 	<title>运行代码</title>
+	<!-- 新打开一个界面运行输入的代码 -->
 	<script type="text/javascript">
 		window.onload = function (){
 			var otxt =document.getElementById('txt');
 			var obtn =document.getElementById('btn');
+
 			obtn.onclick = function(){
+				var val=otxt.value;
+				var owin=window.open('about:blank');
+				owin.document.write(val);
+
 
 			}
+			window.location='https://www.kuazhu.con'
 		}
 	</script>
 </head>
 <body>
-	<textarea id="txt" >
+	<textarea id="txt" cols="30" rows="10">
 		
 	</textarea>
-	<input type="button" name="" id="btn">
+	<input type="button" name="" id="btn" value="运行">
 
 
 </body>

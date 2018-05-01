@@ -27,9 +27,20 @@
 			if (oevent.keyCode== 39) {
 				var obox=document.getElementById('box');
 				console.log('ddd');
-				obox.style.left=obox.offsetLeft+2+'px';
-				
-
+				obox.style.left=obox.offsetLeft+2+'px';		
+				}
+			if (oevent.keyCode== 37) {
+				var obox=document.getElementById('box');
+				console.log('ddd');
+				obox.style.left=obox.offsetLeft-2+'px';		
+				}
+			if (oevent.keyCode== 40) {
+				var obox=document.getElementById('box');
+				obox.style.top=obox.offsetTop+2+'px';		
+				}
+			if (oevent.keyCode== 38) {
+				var obox=document.getElementById('box');
+				obox.style.top=obox.offsetTop-2+'px';		
 				}
 
 			

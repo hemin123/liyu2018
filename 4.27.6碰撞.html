@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<style type="text/css">
+	*{
+
+	}
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+		}
+		#boxs{
+			width: 750px;
+			height: 500px;
+			background-color: pink;
+			
+			margin: 60px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		function checkKiss(obox,oboxs){
+			if(oboxs.offsetTop<obox.offsetTop+obox.offsetHeight&&oboxs.offsetLeft<obox.offsetLeft+obox.offsetWidth&&oboxs.offsetTop+oboxs.offsetHeight>obox.offsetTop&&oboxs.offsetLeft+oboxs.offsetWidth>obox.offsetLeft){
+					return true;
+				}else{
+					
+					return false;
+				}
+
+		}
+		window.onload =function(){
+			var obox =document.getElementById('box');
+			var oboxs =document.getElementById('boxs');
+			var disx=0;
+			var disy=0;
+			obox.onmousedown =function(ev){
+				// 鼠标按下触发的事件
+
+				//alert(1);
+				var oevent =ev||event;
+				disx=oevent.clientX-obox.offsetLeft;
+				disy=oevent.clientY-obox.offsetTop;
+				console.log(disx+"##"+disy);
+				
+
+				document.onmousemove =function(ev){
+				var oevent =ev||event;
+				var l=oevent.clientX-disx;
+				var t=oevent.clientY-disy;
+				console.log(l+"##"+t);
+				if (l<0) {
+					l=0;
+				}
+				if (t<0) {}
+				//alert(1);
+				
+				
+				obox.style.left=oevent.clientX-disx+'px';
+				obox.style.top=oevent.clientY-disy+'px';
+
+
+				// if(oboxs.offsetTop<obox.offsetTop+obox.offsetHeight&&oboxs.offsetLeft<obox.offsetLeft+obox.offsetWidth&&oboxs.offsetTop+oboxs.offsetHeight>obox.offsetTop&&oboxs.offsetLeft+oboxs.offsetWidth>obox.offsetLeft){
+				// 	oboxs.style.backgroundColor='skyblue';
+				// }else{
+				// 	oboxs.style.backgroundColor='pink';
+				// }
+
+				if(checkKiss(obox,oboxs)){
+				oboxs.style.backgroundColor='skyblue';
+				}else{
+					oboxs.style.backgroundColor='pink';
+				}
+
+			}
+		document.onmouseup =function(){
+				//alert(1);
+				document.onmousemove= null;
+				document.onmouseup=null;
+
+			}
+			
+			}
+
+			
+
+	
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="boxs"></div>
+
+</body>
+</html>

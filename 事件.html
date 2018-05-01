@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件</title>
+	<script type="text/javascript">
+		window.onload= function () {
+			// document.body.onclick =function(){
+			// 	alert('222');
+			// }
+			// body 默认没有高度，点击不到
+
+			// document.onclick=function(){
+			// 	alert('222');
+			// }
+			// 这个可以点击到
+
+			// document.onclick=function(){
+			// 	console.log(document.childNodes[1]);
+			// 	console.log(document.childNodes[0]);
+			// }
+			document.onclick= function(ev){
+				console.log('X:',event.clientX);
+				console.log('Y:',event.clientY);
+					// 谷歌
+				console.log('X:',ev.clientX);
+				console.log('Y:',ev.clientY);
+					//火狐
+				var oevent =ev|| event;
+				console.log('X:',oevent.clientX);
+				console.log('Y:',oevent.clientY);
+					//处理兼容性
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

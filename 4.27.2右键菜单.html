@@ -7,21 +7,31 @@
 			width: 40px;
 			height: 80px;
 			background-color: red;
-			display: block;
+			display: none;
+			position: absolute;
 		}
 	</style>
 	<script type="text/javascript">
 		window.onload =function(){
 			var omenu =document.getElementById('menu')
 			document.oncontextmenu = function(ev){
+				//设置右键菜单
+				
+				// 默认菜单
+				//return false;  阻止默认法一
+				// oevent.preventDefault();阻止默认法二
 				var oevent =ev||event;
 				//alert(1);
-				return false;
+
+				//return false;
 				oevent.preventDefault();
 				omenu.style.display='block';
 				omenu.style.left=oevent.clientX+'px';
-				omenu.style.left=offsetleft+'px';
+				omenu.style.top=oevent.clientY+'px';
 
+			}
+			document.onclick =function(){
+				omenu.style.display='none';
 			}
 		}
 	</script>

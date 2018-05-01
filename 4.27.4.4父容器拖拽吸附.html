@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<style type="text/css">
+	*{
+
+	}
+	#father{
+		width: 600px;
+		height: 600px;
+		background-color: pink;
+		position: relative;
+		margin: 30px auto;
+	}
+		#box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			var obox =document.getElementById('box');
+			var ofa =document.getElementById('father');
+			var disx=0;
+			var disy=0;
+			obox.onmousedown =function(ev){
+				// 鼠标按下触发的事件
+
+				//alert(1);
+				var oevent =ev||event;
+				disx=oevent.clientX-obox.offsetLeft;
+				disy=oevent.clientY-obox.offsetTop;
+				console.log(disx+"##"+disy);
+				
+
+				document.onmousemove =function(ev){
+				var oevent =ev||event;
+				var l=oevent.clientX-disx;
+				var t=oevent.clientY-disy;
+				console.log(l+"##"+t);
+				if (l<40) {
+					l=0;
+				}else if(l+40>ofa.offsetWidth-obox.offsetWidth){
+					l=ofa.offsetWidth - obox.offsetWidth;
+				}
+				if (t<40) {
+					t=0;
+				}else if (t+40>ofa.offsetHeight-obox.offsetHeight){
+					t=ofa.offsetHeight-obox.offsetHeight;
+				}
+				//alert(1);
+				
+				
+				obox.style.left=l+'px';
+				obox.style.top=t+'px';
+
+
+			}
+		document.onmouseup =function(){
+				//alert(1);
+				document.onmousemove= null;
+				document.onmouseup=null;
+
+			}
+			
+			}
+
+			
+
+	
+		}
+	</script>
+</head>
+<body>
+	<div id="father">
+	<div id="box"></div>
+	</div>
+</body>
+</html>

@@ -2,24 +2,29 @@
 <html>
 <head>
 	<title>
-		
+		会有冒泡事件，需要消除冒泡现象
 	</title>
 	<style type="text/css">
 		#nei{
 			width: 50px;
 			height: 700px;
-	background-color: red;	}
+	background-color: red;	display: none;}
 
 	</style>
 <script type="text/javascript">
 	window.onload = function(){
 		var obtn = document.getElementById('btn');
 		var onei = document.getElementById('nei');
-		obtn.onclick = function(){
+		obtn.onclick = function(ev){
+			var oevent = ev ||event;
 			onei.style.display ='block';
-			document.stopPropagation();
+			oevent.stopPropagation();
 			//alert('bbbtn');
+
+//这里需要消除冒泡现在，不让点击事件传递给父元素
 		}
+
+		
 	document.onclick = function(){
 			onei.style.display ='none';
 			//alert('bbbtsssn');
@@ -29,8 +34,8 @@
 </script>
 </head>
 <body>
-	<input type="button" id="btn" name="">
-	<div id="nei"></div>
+	<input type="button" id="btn" value="菜单" name="">
+	<div id="nei" ></div>
 
 </body>
 </html>

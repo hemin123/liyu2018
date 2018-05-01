@@ -19,6 +19,8 @@
 			var disx=0;
 			var disy=0;
 			obox.onmousedown =function(ev){
+				// 鼠标按下触发的事件
+
 				//alert(1);
 				var oevent =ev||event;
 				disx=oevent.clientX-obox.offsetLeft;
@@ -33,13 +35,19 @@
 				console.log(l+"##"+t);
 				if (l<0) {
 					l=0;
+				}else if(l>window.innerWidth-obox.offsetWidth){
+					l=window.innerWidth - obox.offsetWidth;
 				}
-				if (t<0) {}
+				if (t<0) {
+					t=0;
+				}else if (t>window.innerHeight-obox.offsetHeight){
+					t=window.innerHeight-obox.offsetHeight;
+				}
 				//alert(1);
 				
 				
-				obox.style.left=oevent.clientX-disx+'px';
-				obox.style.top=oevent.clientY-disy+'px';
+				obox.style.left=l+'px';
+				obox.style.top=t+'px';
 
 
 			}
