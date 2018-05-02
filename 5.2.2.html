@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>滚动条</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 500px;
+		height: 50px;
+		background-color: red;
+		position: absolute;
+
+	}
+	#boxs{
+		width: 500px;
+		height: 500px;
+		background-color: blue;
+		position: relative;
+		/*margin-top:50px;*/
+		opacity: 1;
+		top: 50px;
+		box-sizing: border-box;
+		overflow: hidden;
+
+	}
+	#boxs2{
+		width: 500px;
+		height: 1000px;
+		background-color: yellow;
+		position: relative;
+		top: 0px;
+		overflow: hidden;
+box-sizing: border-box;
+
+		/*margin-top:50px;*/
+		
+
+	}
+	#btn{width: 50px;
+		height: 50px;
+		background-color: pink;
+		position: relative;
+
+
+	}
+
+		
+	</style>
+	<script type="text/javascript">
+
+		window.onload= function(){
+			var obox =document.getElementById('box');
+			var oboxs =document.getElementById('boxs');
+			var oboxs2 =document.getElementById('boxs2');
+			var obtn =document.getElementById('btn');
+		obtn.onmousedown =function(ev){
+			var oEvent =ev||event;
+			var disx=oEvent.clientX-obtn.offsetLeft;
+		console.log(disx+"##");
+		var l=0;
+			document.onmousemove = function(ev){
+				var oEvent =ev||event;
+				 l = oEvent.clientX-disx;
+			console.log(l+"##");
+
+			if (l<0) {
+				l=0;
+			 }else if(l>obox.offsetWidth-obtn.offsetWidth){
+			 	l=obox.offsetWidth-obtn.offsetWidth;
+			 }
+
+			 var s=l/(obox.offsetWidth-obtn.offsetWidth) * 500;
+			 
+			  console.log(s);
+			  oboxs2.style.top= -s+'px';
+			  
+
+
+				obtn.style.left=l+'px';
+		oboxs2.onmousewheel = function(ev){
+					// 鼠标滚动事件
+			var oEvent =ev||event;
+			//console.log(oEvent.wheelDelta);
+				if (oEvent.wheelDelta>0) {
+					l=l+10;
+				}else{
+					l=l-10;
+				}
+			if (l<0) {
+				l=0;
+			 }else if(l>obox.offsetWidth-obtn.offsetWidth){
+			 	l=obox.offsetWidth-obtn.offsetWidth;
+			 }
+
+
+			 var s=l/(obox.offsetWidth-obtn.offsetWidth)* 500;
+			 console.log(s);
+
+			
+			 if (s<0) {
+			 	s=0
+			 }
+			  oboxs2.style.top= -s+'px';
+
+
+				obtn.style.left=l+'px';
+
+		}
+
+
+
+		}
+		
+			document.onmouseup =function(){
+				document.onmousemove =null;
+				document.onmouseup =null;
+
+			}
+		}
+		
+}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" id="btn">
+	</div>
+	<div id="boxs">
+		<div id="boxs2">
+			如果你是要链接到同样主机的资源，你可以使用相对路径：
+
+See my [About](/about/) page for details.
+参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：
+
+This is [an example][id] reference-style link.
+你也可以选择性地在两个方括号中间加上一个空格：
+
+This is [an example] [id] reference-style link.
+接着，在文件的任意处，你可以把这个标记的链接内容定义出来：
+
+[id]: http://example.com/  "Optional Title Here"
+链接内容定义的形式为：
+
+方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字
+接着一个冒号
+接着一个以上的空格或制表符
+接着链接的网址
+选择性地接着 title 内容，可以用单引号、双引号或是括弧包着
+下面这三种链接的定义都是相同：
+
+[foo]: http://example.com/  "Optional Title Here"
+[foo]: http://example.com/  'Optional Title Here'
+[foo]: http://example.com/  (Optional Title Here)
+请注意：有一个已知的问题是 Markdown.pl 1.0.1 会忽略单引号包起来的链接 title。
+
+链接网址也可以用方括号包起来：
+
+[id]: <http://example.com/>  "Optional Title Here"
+你也可以把 title 属性放到下一行，也可以加一些缩进，若网址太长的话，这样会比较好看：
+
+[id]: http://example.com/longish/path/to/resource/here
+    "Optional Title Here"
+网址定义只有在产生链接的时候用到，并不会直接出现在文件之中。
+
+链接辨别标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：
+
+[link text][a]
+[link text][A]
+隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 "Google" 链接到 google.com，你可以简化成：
+
+		</div>
+	</div>
+
+</body>
+</html>

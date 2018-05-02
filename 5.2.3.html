@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>奋斗的小鸟</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 30px;
+		height: 30px;
+		background-color: red;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		margin-left: -15px;
+	}
+	.topline{
+		width: 50px;
+		height: 100px;
+		background-color: green;
+		position: absolute;
+		left: 99%;
+		top: 0;
+	}
+	.btmline{
+		width: 50px;
+		height: 100px;
+		background-color: green;
+		position: absolute;
+		left: 99%;
+		bottom: 0px;
+	}
+		
+	</style>
+	<script type="text/javascript">
+		var move=null;
+	function getnum(min,max){
+			return Math.round(min+(max-min)*Math.random(min,max));
+		}	
+
+
+		window.onload =function(){
+			var obox =document.getElementById('box');
+			var creat=null;
+			var ss=100;
+			clearInterval(creat);
+			creat= setInterval(function(){
+
+			var otopline =document.createElement('div');
+			var obtmline =document.createElement('div');
+			otopline.className='topline';
+			obtmline.className='btmline';
+			var h=getnum(300,500);
+			otopline.style.height=h+'px';
+			console.log(window.innerHeight);
+			obtmline.style.height=window.innerHeight-h-200+'px';
+			// innerHeight取的不对
+			document.body.appendChild(otopline);
+			document.body.appendChild(obtmline);
+			//创建
+
+			var ss=ss-5;
+			
+			
+			
+			
+
+
+			},300)
+			var moveline=null;
+			var otopline =document.getElementsByTagName('topline');
+			var obtmline =document.getElementsByTagName('btmline');
+			moveline= setInterval(function(){
+				for (var i = 0; i < otopline.length; i++) {
+				otopline[i].style.left=otopline[i].style.left*100-2+'%';
+				obtmline[i].style.left=obtmline[i].style.left*100-2+'%';}
+
+			},300)
+		
+
+
+
+
+			clearInterval(move);
+			var speed=0;
+			move= setInterval(function(){
+			 speed+=1;
+			 t=obox.offsetTop+speed;
+			 obox.style.top=t+'px';
+
+			 // document.onkeydown= function(){
+			 // 	speed-=1;
+			 // }
+
+			},30)
+			 document.onkeydown= function(){
+			 	speed-=16;
+			 }
+
+		}
+	</script>
+</head>
+<body>
+
+<div id="box"></div>
+
+</body>
+</html>
