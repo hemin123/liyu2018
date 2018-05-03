@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件调用方法</title>
+	<style type="text/css">
+		div{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script type="text/javascript">
+		function show(){
+			alert(111);
+		}
+		window.onload= function(){
+		var odiv =document.getElementById('div');
+		// odiv.onclick = function(){
+		// 	alert(1);
+		// 	window.onload = function(){
+		// 		alert(2);
+		// 	}
+		// 	//打不出来两个
+		// }
+
+		odiv.addEventListener('click',show,false)
+		//添加事件
+
+		odiv.addEventListener('click',function(){
+			alert(2);
+		},false)
+
+		odiv.removeEventListener('click',show,false)
+		//移除事件
+}
+	</script>
+</head>
+<body>
+<!-- <div onclick="show()" ></div> -->
+<div id="div"></div>
+</body>
+</html>

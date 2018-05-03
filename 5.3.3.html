@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件的委托</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var uli = document.getElementById('uli');
+			var aa = uli.getElementsByTagName('a');
+
+			// uli.addEventListener('click',show,false)
+			// function show(){
+			// 	show(11);
+			// }
+			uli.addEventListener('click',function(ev){
+				var oevent = ev||event;
+				oul.removeChild(this.append)
+			})
+
+
+		}
+	</script>
+</head>
+<body>
+<ul id="uli">
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	<li>li1<a href="javascript:;">del</a></li>
+	
+</ul>
+</body>
+</html>

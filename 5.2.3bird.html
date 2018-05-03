@@ -52,6 +52,8 @@
 			var obtmline =document.createElement('div');
 			otopline.className='topline';
 			obtmline.className='btmline';
+			otopline.data = 100;
+
 			var h=getnum(300,500);
 			otopline.style.height=h+'px';
 			console.log(window.innerHeight);
@@ -61,29 +63,24 @@
 			document.body.appendChild(obtmline);
 			//创建
 
-			var ss=ss-5;
-			
-			
-			
-			
-
 
 			},300)
 
 			var moveline=null;
-			var otopline =document.getElementsByClassName('topline');
-			var obtmline =document.getElementsByClassName('btmline');
-			otopline.leftData = 100;
+			
+			
 
 			clearInterval(moveline);
 			moveline= setInterval(function(){
-				
-				for (var i = 0; i < otopline.length; i++) {
+			var atopline =document.getElementsByClassName('topline');
+			var abtmline =document.getElementsByClassName('btmline');
+				for (var i = 0; i < atopline.length; i++) {
 					//alert(otopline[i].leftData);
-				otopline[i].style.left=otopline[i].style.left*100-2+'%';
-				obtmline[i].style.left=otopline[i].leftData - 1 + '%';
-					otopline[i].leftData = otopline[i].leftData - 1;
-					console.log(otopline[i].leftData);
+				// otopline[i].style.left=otopline[i].style.left*100-2+'%';
+				// obtmline[i].style.left=otopline[i].leftData - 1 + '%';
+				abtmline[i].style.left = atopline[i].style.left = atopline[i].data - 1 + '%';
+					atopline[i].data = atopline[i].data - 1;
+					console.log(atopline[i].leftdata);
 				}
 
 			},30)
