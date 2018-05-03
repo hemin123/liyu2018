@@ -69,15 +69,24 @@
 
 
 			},300)
-			var moveline=null;
-			var otopline =document.getElementsByTagName('topline');
-			var obtmline =document.getElementsByTagName('btmline');
-			moveline= setInterval(function(){
-				for (var i = 0; i < otopline.length; i++) {
-				otopline[i].style.left=otopline[i].style.left*100-2+'%';
-				obtmline[i].style.left=obtmline[i].style.left*100-2+'%';}
 
-			},300)
+			var moveline=null;
+			var otopline =document.getElementsByClassName('topline');
+			var obtmline =document.getElementsByClassName('btmline');
+			otopline.leftData = 100;
+
+			clearInterval(moveline);
+			moveline= setInterval(function(){
+				
+				for (var i = 0; i < otopline.length; i++) {
+					//alert(otopline[i].leftData);
+				otopline[i].style.left=otopline[i].style.left*100-2+'%';
+				obtmline[i].style.left=otopline[i].leftData - 1 + '%';
+					otopline[i].leftData = otopline[i].leftData - 1;
+					console.log(otopline[i].leftData);
+				}
+
+			},30)
 		
 
 
