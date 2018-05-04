@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oinput = document.getElementById('username');
+			var otxt = document.getElementById('txt');
+			var obtn = document.getElementById('btn');
+			var ok=false;
+			var data=['ton','sss','hhhh'];
+
+			oinput.onfocus = function(){
+				otxt.style.color= 'green';
+				otxt.innerHTML='输入用户名';
+
+			}
+			oinput.onblur= function(){
+				//if (oinput.value==123) 
+				if (oinput.value.length==6) 
+				{
+				otxt.style.color= 'green';
+				otxt.innerHTML='输入用户名正确';
+				ok=true;
+				}else{
+				otxt.style.color= 'red';
+				otxt.innerHTML='输入用户名错误';
+				}
+			}	
+			obtn.onclick= function(){
+				alert('gogo');
+				if (!ok) {
+					return false;
+				}
+			}
+
+				//内容有变化，失去焦点 onchange事件
+				//按下去按键触发onkeydown抬起onkeyup
+				// 按下去字符触发  oninput 
+			oinput.oninput = function(){
+				
+				for (var i = 0; i < data.length; i++) {
+					var oli= document.createElement('li');
+					var olist=document.getElementById('list');
+					oli.innerHTML= data[i];
+					olist.appendChild(oli);
+					// oli.onclick= function(){
+					// oinput.value=this.innerHTML;
+					// otxt.style.color= 'green';
+					// otxt.innerHTML='输入用户名正确';
+					//}
+						
+
+
+					
+				}
+				
+
+			}
+
+		}	
+	</script>
+</head>
+<body>
+	<form action="http"></form>
+	<p>
+
+		<input type="text" id="username">
+		<span id="txt"></span>
+		<ul id="list">
+			<li>hhh</li>
+		</ul>
+		
+	</p>
+	<p>
+		<input type="submit" id="btn">
+		<input type="reset" id="btn3">
+	</p>
+
+</body>
+</html>
