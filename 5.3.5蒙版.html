@@ -40,6 +40,7 @@
 			omast.style.display='block';
 			document.body.style.overflow='hidden';
 			oevent.stopPropagation();
+//阻止冒泡
 
 		}
 		document.onclick= function(){
@@ -47,6 +48,13 @@
 			omast.style.display='none';
 			document.body.style.overflow='auto';
 
+		}
+		obox.onclick= function(ev){
+			var oevent = ev||event;
+			oevent.stopPropagation();
+		}
+		obtn2.onclick= function(){
+			window.location='https://www.kuazhu.com/learnCourse';
 		}
 	}
 

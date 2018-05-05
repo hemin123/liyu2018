@@ -7,6 +7,7 @@
 			var oinput = document.getElementById('username');
 			var otxt = document.getElementById('txt');
 			var obtn = document.getElementById('btn');
+			var oForm = document.getElementById('form1');
 			var ok=false;
 			var data=['ton','sss','hhhh'];
 
@@ -33,9 +34,18 @@
 					return false;
 				}
 			}
+			// 补充事件
+			oForm.onsubmit = function(){
+				alert('aa');
+			}
+			
+			oForm.onreset = function(){
+				alert('bb');
+			}
 
 				//内容有变化，失去焦点 onchange事件
 				//按下去按键触发onkeydown抬起onkeyup
+
 				// 按下去字符触发  oninput 
 			oinput.oninput = function(){
 				
@@ -48,12 +58,23 @@
 					// oinput.value=this.innerHTML;
 					// otxt.style.color= 'green';
 					// otxt.innerHTML='输入用户名正确';
-					//}
+					// ok= true;
+					// }
+					olist.onclick= function(ev){
+					var oevent = ev||event;
+					console.log(oevent.target);
+					oinput.value=oevent.target.innerHTML;
+					otxt.style.color= 'green';
+					 otxt.innerHTML='输入用户名正确';
+					  ok= true;
+
+					}
 						
 
 
 					
 				}
+					
 				
 
 			}
@@ -62,7 +83,7 @@
 	</script>
 </head>
 <body>
-	<form action="http"></form>
+	<form action="https://www.kuazhu.com" id='form1'>
 	<p>
 
 		<input type="text" id="username">

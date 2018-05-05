@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件的委托</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var uli = document.getElementById('uli');
+			var aa = uli.getElementsByTagName('a');
+		
+
+			for (var i = 0; i < aa.length; i++) {
+				aa[i].onclick= function(){
+				uli.removeChild(this.parentNode);
+				}
+			}
+			//方法一
+			//绑定事件是一种很消耗性能的方法
+
+
+			// uli.addEventListener('click',show,false)
+			// function show(){
+			// 	alert(99);
+			// }	
+			//增加点击事件，
+
+
+			// uli.addEventListener('click',function(ev){
+			// 	var oevent = ev|| window.event;
+			// 	//oul.removeChild(this.append)
+			// 	console.log(oevent.target);
+			// uli.removeChild(oevent.target.parentNode);
+			// },false)
+
+			//方法二
+			//冒泡。点击a上传给li，在li写事件
+			//oevent.target取到点击的li
+			//只绑定了一个事件，parentNode获取儿子
+
+
+		}
+	</script>
+</head>
+<body>
+<ul id="uli">
+	<li>li1<a href="javascript:;">del1</a></li>
+	<li>li2<a href="javascript:;">del2</a></li>
+	<li>li3<a href="javascript:;">del3</a></li>
+	<li>li4<a href="javascript:;">del4</a></li>
+	<li>li5<a href="javascript:;">del5</a></li>
+	<li>li6<a href="javascript:;">del6</a></li>
+	<li>li7<a href="javascript:;">del7</a></li>
+	<li>li8<a href="javascript:;">del8</a></li>
+	
+</ul>
+</body>
+</html>

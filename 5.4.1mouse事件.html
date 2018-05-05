@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用事件</title>
+	<style type="text/css">
+		#father{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+			border:  1px solid #000;
+		}
+		#son{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			margin: 100px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function (){
+			var oFather = document.getElementById('father');
+			var oSon = document.getElementById('son');
+			//  oevent.target
+			//mouseenter   leave
+
+			oFather.addEventListener('mouseover',function(ev){
+				oevent= ev||event;
+				console.log(oevent.target,'mouseover');
+			})
+			oFather.addEventListener('mouseout',function(ev){
+				oevent= ev||event;
+				console.log(oevent.target,'mouseout');
+			})
+			//这个会区分，fathet和son，到底是在哪
+			//oevent.target取出来到底是在哪个标签上面，具体到鼠标点的标签
+			//5.3.3.1用到了target
+
+
+
+
+			// oFather.addEventListener('mouseenter',function(){
+			// 	console.log('mouseenter');
+			// },false)
+			// oFather.addEventListener('mouseleave',function(){
+			// 	console.log('mouseleave');
+			// })	
+			//作为一个整体，进入和退出
+
+
+
+		}
+	</script>
+</head>
+<body>
+<div id="father">
+	<div id="son"></div>
+</div>
+</body>
+</html>

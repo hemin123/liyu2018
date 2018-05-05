@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件属性</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		#father{
+			width: 500px;
+			height: 5000px;
+			
+			/*不加边框会有奇怪的效果*/
+
+
+		}
+		
+	</style>
+	<script type="text/javascript">
+		window.onload= function(){
+			document.onclick = function(ev){
+				var oevent=ev||event;
+				//相对浏览器当前界面
+				console.log('oevent.clientX'+oevent.clientX);
+				console.log('oevent.clientY'+oevent.clientY);
+				//相对整页浏览器
+				console.log('oevent.pageX'+oevent.pageX);
+				console.log('oevent.pageY'+oevent.pageY);
+				//相对屏幕
+				console.log('oevent.screenX'+oevent.screenX);
+				console.log('oevent.screenY'+oevent.screenY);
+			}	
+		}
+	</script>
+
+</head>
+<body>
+	<div id="father">
+	
+	</div>
+
+
+</body>
+</html>
