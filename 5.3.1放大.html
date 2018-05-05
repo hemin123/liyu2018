@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>放大镜</title>
 	<style type="text/css">
 	*{
@@ -9,14 +10,17 @@
 	}
 
 	#box{
-		width: 450px;
+		width: 350px;
 		
 		border:1px solid #000;
+		position: relative;
+		/*margin: 20px;*/
 	}
 	#div{
-		width: 450px;
-		height: 450px;
-		position: relative;
+		width: 350px;
+		height: 350px;
+		
+
 	}
 	#div img{
 		width: 100%;
@@ -30,20 +34,24 @@
 		cursor: pointer;
 	}
 	#list ul .active{
-		border:1px solid #ff6700;
+		border:2px solid #ff6700;
+	}
+	#list{
+		height: 60px;
 	}
 	#list li img{
 		width: 54px;
 		height: 54px;
 	}
 	#mark{
-		width: 200px;
-		height: 200px;
+		width: 150px;
+		height: 150px;
 		background :rgba(255,255,0,0.5);
 		position: absolute;
 		top: 0;
 		left: 0;
 		cursor: move;
+		/*display: none;*/
 
 	}
 	#bigbox{
@@ -51,13 +59,15 @@
 		height: 550px;
 		position:absolute;
 		top: 0px;
-		left: 450px;
+		left: 350px;
 		overflow: hidden;
+		border:1px solid #ccc;
+
 
 	}
 	#bigbox img{
-		width: 550px;
-		height: 550px;
+		width: 950px;
+		height: 950px;
 		position: absolute;
 
 	}
@@ -65,45 +75,104 @@
 	</style>
 	<script type="text/javascript">
 		function $(id) {
-			return document.getElementById('id');
+			return document.getElementById(id);
 		}
 		window.onload = function(){
 			var ali=$('list').getElementsByTagName('li');
-			var osmallbox =$();
-			for (var i = 0; i < ali.length; i++) {
-				ali[i].index=1;}
-			ali[i].onmouseover =function(){
-					for (var i = 0; i < ali.length; i++) {
-						ali[i].className='';
-					}
-					this.className='active';
-					osmallbox.children[0].src=this.index+'.jpg';
+			var osmallbox =$('div');
+			var obigbox =$('bigbox');
+			var omark=$('mark');
 
-					
-				}
-			
+			//console.log(ali);
+			for (var i = 0; i < ali.length; i++) {
+				ali[i].index = i;
+			ali[i].onmouseover =function(){
+					for (var j = 0; j < ali.length; j++) {
+						ali[j].className='';
+						}
+					this.className='active';
+					//osmallbox.children[0].src='./images/min' +i+'.jpg';
+					//函数里面取不到i
+				osmallbox.children[0].src="./images/min" +this.index+".jpg";
+				obigbox.children[0].src="./images/min" +this.index+".jpg";				
+			}	
 		}
+		osmallbox.onmouseover=function(ev){
+			var oevent= ev||event;
+			
+			omark.style.display='block';
+			obigbox.style.display='block';
+			var l=oevent.clientX-omark.offsetLeft;
+			var t=oevent.clientY-omark.offsetTop;
+			osmallbox.onmousemove= function(ev){
+			var oevent= ev||event;
+			// var lk=oevent.clientX-l;
+			// var tk=oevent.clientY-t;
+			var lk=oevent.clientX-omark.offsetLeft*0.5;
+			var tk=oevent.clientY-omark.offsetTop*0.5;
+			//不懂为啥这样写，
+			
+			if (lk<=0) {
+				lk=0;
+			}
+			else if (lk>osmallbox.offsetWidth-omark.offsetWidth) {
+				lk=osmallbox.offsetWidth-omark.offsetWidth;
+			}
+			if (tk<0) {
+				tk=0;
+			}
+			else if (tk>osmallbox.offsetHeight-omark.offsetHeight) {
+				tk=osmallbox.offsetHeight-omark.offsetHeight;
+			}
+			console.log(lk+'##'+tk);
+			omark.style.left=lk+'px';
+			omark.style.top=tk+'px';
+
+
+			var oBigImg = obigbox.children[0];
+					
+				
+			var percentX =  lk / (omark.offsetWidth - osmallbox.offsetWidth);
+			var percentY =  tk / (omark.offsetHeight - osmallbox.offsetHeight);
+			oBigImg.style.left =  percentX * (oBigImg.offsetWidth - obigbox.offsetWidth)+'px';
+					
+			oBigImg.style.top =  percentY * (oBigImg.offsetHeight - obigbox.offsetHeight)+'px';
+
+
+			}
+
+			
+
+
+		}
+		osmallbox.onmouseout= function(){
+				omark.style.display='none';
+				obigbox.style.display='none';
+			
+			}
+
+	}
 		
 	</script>
 </head>
 <body>
 	<div id='box'>
-	<div id="div">
-		<img src="./images/da5.3.jpg" alt="">
-		<span id="mark"></span>
+		<div id="div">
+			<img src="./images/min0.jpg" alt="">
+			<span id="mark"></span>
+		</div>
+		<div id="list">
+			<ul>
+				<li class="active"><img src="./images/list0.jpg" alt=""></li>
+				<li><img src="./images/list1.jpg" alt=""></li>
+				<li><img src="./images/list2.jpg" alt=""></li>
+				
+			</ul>
+		</div>
+		<div id="bigbox">
+			<img src="./images/max0.jpg" alt="">
+		</div>
 	</div>
-	<div id="list">
-		<ul>
-			<li class="active"><img src="./images/damin.jpg" alt=""></li>
-			<li><img src="./images/damin1.jpg" alt=""></li>
-			<li><img src="./images/damin2.jpg" alt=""></li>
-			
-		</ul>
-	</div>
-	<div id="bigbox">
-		<img src="./images/damax.jpg" alt="">
-	</div>
-</div>
 
 </body>
 </html>
