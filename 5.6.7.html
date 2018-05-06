@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型</title>
+	<script type="text/javascript">
+		//创建对象，全部都可以用
+
+		//在函数上面加方法
+window.onload = function (){
+		var arr= Array[1,55,4,16,21];
+
+		Array.prototype.su = function() {
+			var result = 0;
+			for (var i = 0; i < this.length; i++) {
+				// result +=this[i];
+				result=999;
+				alert(1);
+
+			}
+			return result;
+		}
+		
+		// alert(arr.sum());
+		arr.su();
+		// var arr1= Array[2,55,4,16,21];
+		// console.log(arr1.sum);
+		Number.prototype.add = function(num){return(this+num);}
+		console((3).add(15))
+
+
+
+		//person。类  构造函数，一个对象，一个示例
+}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

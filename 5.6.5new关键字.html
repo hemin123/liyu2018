@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>new关键字</title>
+	<script type="text/javascript">
+		function show (){
+			//var this = new Object;
+			console.log(this);
+			//默认会创建在window下面
+			// return this;
+		}
+		show();
+		//不用new创建的话，会创建到window下面。
+	    new show();
+	    //用new创建的话，会自动定义成obj然后返回回去。
+
+
+	     var res1 = show();
+	     console.log(res1);
+
+	     //没有返回值，这里是undenfine
+	     var res =  new show();
+	      console.log(res);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

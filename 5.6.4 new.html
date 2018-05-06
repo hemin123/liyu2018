@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>创建对象3</title>
+	<script type="text/javascript">
+		//用函数创建对象
+		function createPerson(name,age){
+			var obj = new Object();
+			obj.name = name;
+			obj.age = age;
+			
+			// 创建对象，进行加工，然后返回
+			obj.show= function(){
+				console.log("i am"+ this.name);
+			}
+			obj.shows= function(){
+				console.log("i am"+ this.age);
+			}
+			return obj;
+		}
+		var p = new createPerson('tom',18);
+		console.log(p);
+		p.show();
+		p.shows();
+		//连个打出来的应该不一样
+		var p2 = new createPerson('ttt',88);
+		console.log(p2);
+		p2.show();
+		p2.shows();
+		//系统是用new创建，这种是用函数创建。都有同一个方法进行创建，    不可取
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>创建对象</title>
+	<!-- 不可取，会乱，会覆盖 -->
+	<script type="text/javascript">
+		var person = new Array(1,1,15,5,8,6);
+		person.name= 'tom';
+		person.age=18;
+		person.sayhi= function () {
+			console.log('hello');
+		}
+		person.sayhi();
+		person.sort= function(){
+			var result = 0;
+			console.log(this);
+
+
+		}
+		console.log(person.sort());
+		console.log(person);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

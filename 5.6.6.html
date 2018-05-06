@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>创建对象3</title>
+	<script type="text/javascript">
+		//用全局变量创建对象
+		function createPerson(name,age){
+			var obj = new Object();
+			obj.name = name;
+			obj.age = age;
+			
+			
+			return obj;
+		}
+		this.show=show;
+		this.shows=shows;
+
+		function show(){
+			console.log('hhhss'+this.name);
+		}
+		function shows(){
+			console.log('hhhss'+this.name);
+		}
+		//定义全局的变量和方法
+
+
+		var p = createPerson('tom',18);
+		console.log(p.name);
+		show();
+		shows();
+	
+		var p2 = createPerson('ttt',88);
+		console.log(p2.name);
+		show();
+		shows();
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>
