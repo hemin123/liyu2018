@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性的定义</title>
+	<script type="text/javascript">
+		var obj ={
+
+		}
+		console.log(obj);
+		Object.defineProperty(obj,"name",{value:"name1",
+			enumerable:true, //枚举
+			writable:true,  //可写
+			configurable:true//修改属性权限
+	});
+		// obj.name="tom";
+		console.log(obj.name);
+
+		for(key in obj){
+			console.log(key);
+		}
+
+		//	Object.defineProperty(obj,"name",{value:"name1",enumerable});
+		//这样定义的话，可以被枚举（for in循环）可以写入  可以被删除
+		//这三个都是false，需要改成true
+		//这时候和 这样定义obj.name="tom";一样
+
+		Object.getOwnPropertyDescriptor(obj,name);
+		//查看属性权限，写的没用
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

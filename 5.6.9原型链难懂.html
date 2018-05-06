@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>原型链</title>
+	<script type="text/javascript">
+		function person (name ,age){
+			this.name=name;
+			this.age= age;
+
+		}
+		console.log(person.prototype);
+		//系统自动添加的属性
+		//一但有构造函数，系统会自动的给构造函数添加一个原型对象prototype
+		console.log(person.prototype.constructor==person);
+		//系统会给原型对象上添加一个constructor对象(prototype.constructor)，就是构造器，整个构造器指向构造函数本身
+		
+		console.log(person.prototype.__proto__);
+		//系统会给原型对象上添加另外一个__proto__的对象(prototype.proto)
+		console.log(person.prototype.__proto__==Object.prototype);
+		//该对象指向Object的原型对象(Object.prototype)
+
+
+		console.log(Object.prototype.constructor == Object);
+		console.log(Object.prototype.__proto__);
+		//Object的原型对象(Object.prototype) 里面也有constructor对象和__proto__对象,constructor对象指向Object自己，__proto__对象指向null
+		//对象的实例有自己的属性和方法,同时系统会给对象实例添加__proto__对象，__proto__对象对象就是构造函数的原型对象
+//		实例对象的__proto__对象-->		构造函数的原型对象，构造函数的原型对象的__proto__-->Object的原型对象，Object的原型对象的__proto__ -->null
+
+
+
+		var p1= new person('rr',45);
+		console.log('7::',p1);
+		console.log('8::',p1.__proto__);
+
+		var p2= new person('rrhh',245);
+		//不加new就不会有proto属性
+				console.log('7::',p2);
+				console.log('8::',p2.__proto__);
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

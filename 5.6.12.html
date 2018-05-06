@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性的定义</title>
+	<script type="text/javascript">
+		var obj ={
+
+		}
+		console.log(obj);
+		Object.defineProperties(obj,{
+			"name":
+			{value:'tom', 
+			enumerable:true,
+			writable:true,
+			onfigurable:true
+		},
+		"age":{	value:'tom2', 
+			enumerable:true,
+			writable:true,
+			onfigurable:true
+		}
+
+
+
+	});
+		// obj.name="tom";
+		console.log(obj.name);
+		for(key in obj){
+			console.log(key);
+		}
+
+	
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
