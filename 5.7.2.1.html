@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对象拷贝</title>
+	<script type="text/javascript">
+		var obj1 ={
+			name:"tom",
+			age:18
+		}
+		var obj2=obj1;
+		obj2.se='h4';
+		console.log(obj2);
+		var obj3={};
+		for(key in obj1){
+			obj3[key]=obj1[key];
+			console.log(key);
+		}
+		console.log(obj3);
+		obj3.hh='hhh';
+		console.log(obj3);
+		console.log(obj1);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

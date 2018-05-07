@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object.creat</title>
+	<!-- 新创建一个对象，直接就可以传进去__proto__ -->
+	<script type="text/javascript">
+		var obj={ name:'tom'};
+		var obj2=Object.create(obj);
+		console.log(obj2);
+		console.log(obj2.__proto__==obj);
+		//obj2会有与obj一样
+		var obj3=Object.create(null);
+		//这样创建一个真真正正的空对象。
+		var obj4={};
+		//默认还有__proto__属性
+		console.log(obj3);
+		console.log(obj4);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

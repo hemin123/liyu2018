@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>补充，改变this指向</title>
+	<script type="text/javascript">
+		//改变this三种方法
+		function show(n1,m1){
+			console.log(this);
+			//属于谁，this就是谁。
+		}
+		show();
+		//输出window
+		//show.call();
+		//call等价于show
+		show.call({name:"tom"},100,200);
+		//			this 接收变量值n1   m1
+		show.apply ({name:"tom"},[200,500]);
+		//			this  接收数组n1  m1
+		var fn=show.bind({name:"tom"});
+		console.log(fn);
+		//返回一个函数。this
+		fn();
+
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
