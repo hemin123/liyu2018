@@ -12,15 +12,17 @@
 		//输出window
 		//show.call();
 		//call等价于show
-		show.call({name:"tom"},100,200);
+		//show.call({name:"tom"},100,200);
 		//			this 接收变量值n1   m1
-		show.apply ({name:"tom"},[200,500]);
+		//show.apply ({name:"tom"},[200,500]);
 		//			this  接收数组n1  m1
-		var fn=show.bind({name:"tom"});
-		
+		console.log(this);
+		var  fn=show.bind({name:"tom"});
+		console.log(this);
+
 		console.log(fn);
 		//返回一个函数。this
-		fn();
+		//fn();
 
 
 

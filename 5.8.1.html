@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡</title>
+	<!-- 面向过程改造成面向对象 -->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#btn{
+			overflow: hidden;
+		}
+		#btn li{
+			list-style: none;
+			margin-left: 5px;
+			width: 40px;
+			height: 20px;
+			background-color: #000;
+			color: white;
+			border-radius: 20px;
+			float: left;
+			margin-top: 10px;
+			border: 1px solid #000;
+		}
+		.active{
+			background-color: red;
+			z-index: 5
+		}
+
+		#content li{
+			width: 500px;
+			height: 300px;
+			/*display: none;*/
+			list-style: none;
+			border:1px solid #000;
+			margin: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		// 		new tab('btn','content');
+		// }
+		// function tab(btnid,contentid){
+		// 	var 
+		//
+		var obtn = null;
+		var ocon= null;
+		window.onload = function(){
+			new tab;
+			console.log(tab);
+		}
+function tab(){
+		 this.obtn =document.getElementById('btn').children;
+	
+		 this.ocon =document.getElementById('content').children;
+		var _self=this;
+		for (var i = 0; i < this.obtn.length; i++) {
+			this.obtn[i].index=i;
+			
+			this.obtn[i].onclick =this.fnclick;
+			console.log(tab);
+			//_self.fnclick(this);
+
+			//this.obtn[i].onclick =this.fnclick.bind(this,this.abtn[i]);
+		}
+			 tab.prototype.fnclick= function(obtns){
+				console.log(this);
+				for (var j = 0; j < this.obtn.length; j++) {
+					this.obtn[j].className = '';
+					this.ocon[j].style.display = 'none';
+
+				}
+				
+			 this.obtn[obtns.index].className = 'active';
+			this.ocon[obtns.index].style.display = 'block';
+
+			}
+		
+
+}
+		
+	</script>
+</head>
+<body>
+<input type="button" name="">
+<ul id="btn">
+	<li>btn1</li>
+	<li>btn1</li>
+	<li>btn1</li>
+	<li>btn1</li>
+	
+</ul>
+<ul id="content">
+	<li>con1</li>
+	<li>con1</li>
+	<li>con1</li>
+	<li>con1</li>
+	
+</ul>
+
+</body>
+</html>

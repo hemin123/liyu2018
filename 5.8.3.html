@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<!-- 面向过程改成面向对象 -->
+	<style type="text/css">
+	*{
+
+	}
+		#box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		var obox = null;
+		var disx=0;
+		var disy=0;
+window.onload = function(){
+	new fla();
+}
+		function fla(){
+			 obox =document.getElementById('box');
+			
+		obox.onmousedown = down;
+			
+	
+	}
+	function down(ev){
+			var oevent =ev||event;
+				disx=oevent.clientX-obox.offsetLeft;
+				disy=oevent.clientY-obox.offsetTop;
+				console.log(disx+"##"+disy);
+				
+
+				document.onmousemove =move;
+			document.onmouseup = up;
+	}
+	function move(ev){
+			var oevent =ev||event;
+				var l=oevent.clientX-disx;
+				var t=oevent.clientY-disy;
+				console.log(l+"##"+t);
+				obox.style.left=oevent.clientX-disx+'px';
+				obox.style.top=oevent.clientY-disy+'px';
+
+	}
+	function  up(ev){
+		document.onmousemove= null;
+				document.onmouseup=null;
+	}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型链继承</title>
+	<script type="text/javascript">
+	function person(name,age){
+		this.name=name;
+		this.age=age;
+		
+	}
+	person.prototype.showName = function() {
+		console.log('i am'+this.name)
+	};
+	// person.prototype.showAge = function() {
+	// 	console.log('i am'+this.age)
+	// };
+
+	function student(name,age,className){
+		person.call(this,name,age);
+		//s属性继承
+		this.className=className;
+	}
+
+
+
+
+
+		Object.defineProperty(person.prototype,"showAge",{value:function(){
+		console.log("i am"+this.age+"year");
+		}});
+
+		var obj= Object.create(person.prototype);
+		student.prototype = obj;
+		student.prototype.constructor = student;
+		student.prototype.showClassName = function(){
+			console.log("I am from "+this.className);
+		}
+
+//第四种
+	
+//student.prototype原型对象
+
+	student.prototype.showClass = function() {
+	console.log('i am from'+this.className);
+	};
+
+	var p1= new  student('ton',15,1)
+	p1.showAge();
+	p1.showName();
+	p1.showClass();
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

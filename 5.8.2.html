@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡</title>
+	<!-- 面向过程改造成面向对象 -->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#btn{
+			overflow: hidden;
+		}
+		#btn li{
+			list-style: none;
+			margin-left: 5px;
+			width: 45px;
+			height: 25px;
+			/*background-color: #000;*/
+			color: blue;
+			border-radius: 20px;
+			float: left;
+			margin-top: 10px;
+			border: 1px solid #000;
+		}
+		.active{
+			background-color: red;
+		}
+		#content li{
+			width: 500px;
+			height: 300px;
+			display: none;
+			list-style: none;
+			border:1px solid #000;
+			margin: 5px;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+		//	new tab('btn','content');
+		// }
+		// function tab(btnid,contentid){
+		// 	var 
+		var obtn =document.getElementById('btn').children;
+	
+		var ocon =document.getElementById('content').children;
+	
+		for (var i = 0; i < obtn.length; i++) {
+			obtn[i].index=i;
+			obtn[i].onclick = function(){
+				
+				for (var j = 0; j < obtn.length; j++) {
+					obtn[j].className = '';
+					ocon[j].style.display = 'none';
+
+				}
+				 obtn[this.index].className = 'active';
+				ocon[this.index].style.display = 'block';
+
+			}
+		}
+
+
+		}
+		
+	</script>
+</head>
+<body>
+<input type="button" name="">
+<ul id="btn">
+	<li class="active">btn1</li>
+	<li>btn1</li>
+	<li>btn1</li>
+	<li>btn1</li>
+	
+</ul>
+<ul id="content">
+	<li>con1</li>
+	<li>con2</li>
+	<li>con3</li>
+	<li>con4</li>
+	
+</ul>
+
+</body>
+</html>

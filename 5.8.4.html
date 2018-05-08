@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<!-- 面向过程改成面向对象 -->
+	<style type="text/css">
+	*{
+
+	}
+		#box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		// var obox = null;
+		// var disx=0;
+		// var disy=0;
+window.onload = function(){
+	new fla();
+	//new方法会创建一个对象，并且返回回来，这个对象
+	//var d=new fla（）    d就等于函数里面的this 
+}
+		function fla(){
+			 this.obox =document.getElementById('box');
+
+			 //obox节点
+			 this.disx=0;
+			 this.disy=0;
+			  console.log(this);
+
+			 var _self=this;
+			 this.obox.onmousedown =function(){
+			 _self.fndown();}
+	//法二
+
+		// this.obox.onmousedown = this.fndown;
+		// this.obox.onmousedown = this.fndown.bind(this);
+	//法一
+		//节点上面添加方法         鼠标点击下来，就会调用这个方法，如果没有bind就是this是指代的this.obox。。。bind的作用就是改变this指向。
+			
+	
+	}
+	fla.prototype.fndown= function(ev){
+		console.log(this);
+			var oevent =ev||event;
+			this.disx=oevent.clientX-this.obox.offsetLeft;
+			this.disy=oevent.clientY-this.obox.offsetTop;
+			//	console.log(disx+"##"+disy);
+				
+
+			document.onmousemove =this.move.bind(this);
+			document.onmouseup = this.up;
+	}
+	fla.prototype.move =function(ev){
+		
+			var oevent =ev||event;
+				// var l=oevent.clientX-disx;
+				// var t=oevent.clientY-disy;
+				// console.log(l+"##"+t);
+				this.obox.style.left=oevent.clientX-this.disx+'px';
+				this.obox.style.top=oevent.clientY-this.disy+'px';
+
+	}
+	fla.prototype.up =function(ev){
+		console.log(this);
+		document.onmousemove= null;
+				document.onmouseup=null;
+	}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+
+</body>
+</html>
