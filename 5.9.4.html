@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播图</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+
+</head>
+<body>
+<div id="div"></div>
+</body>
+<script type="text/javascript">
+	function carousel(id){
+		//罗列属性初始化，绑定事件
+		this.obox= document.getElementById('id');
+		this.oImg=null;
+		this.aimg=arr;
+		this.init();
+	}
+	carousel.prototype.init  = function(){
+		//放图片
+		this.oImg= document.createElement('ul');
+		for (var i = 0; i < this.aimg; i++) {
+			var oli = document.createElement('li');
+			//var oimg2 = document.createElement('img');
+			oli.style.position = 'absolute';
+			oli.style.left = 0;
+			oli.style.top = 0;
+			if (i==0) {
+				oli.style.opacity = 1;
+				oli.style.z-Index = 50;
+			}else{
+			oli.style.opacity = 0.5;
+			oli.style.z-Index = 0;}
+			//oImg2.src=this.oImg2[i];
+			oli.appendChild(oImg);
+			this.oImg.appendChild(oli);
+
+
+		}
+		//按钮
+		// this.leftbtn= document.createElement('span');
+		// this.rightbtn= document.createElement('span');
+		// this.leftbtn.className = 'leftbtn';
+		// this.rightbtn.className = 'rightbtn';
+		// this.leftbtn.style.z-Index= 5;
+		// this.rightbtn.style.z-Index= 5;
+		// this.leftbtn.innerHTML= "&lt";
+		// this.rightbtn.innerHTML= "&gt";
+
+		// this.btmbtn= document.createElement('ul');
+		// this.btmbtn.className= 'btmbtn';
+		// this.btmbtn.style.z-Index=99;
+		// for (var i = 0; i < this.aImg.length; i++) {
+		// 	this.aImg[i]
+		// }
+
+
+		this.obox.append(this.oImg);//添加父容器里面
+
+	}
+	new carousel('div',['images/jd1.jpg','images/jd2.jpg']);
+	//数组形式传进来了
+
+
+</script>
+</html>

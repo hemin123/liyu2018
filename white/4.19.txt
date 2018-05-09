@@ -1,0 +1,75 @@
+数组排序
+
+
+
+var arr =[10,25,54,44,1,888];
+		//arr.sort();
+		// 排序函数，系统函数  这个函数直接就可以进行排序
+		arr.sort(function(n1,n2){
+				if (n1<n2) {
+				return -100;}
+				else if (n1>n2) { return 199; }
+				else return 0;
+				//return n2 - n1;
+			
+          //默认的排序是字符串排序，如果想要数学上的排序，需要另外写函数	
+
+
+
+
+
+
+
+
+以前讲的都是所有语言都有的
+
+DOM
+
+js特有的性质
+
+其他语言没有
+
+节点定义
+
+子节点
+
+
+
+获取父节点  box.parentNode  
+
+
+ box.parentNode  .style.background  = 'blue';
+
+
+box.offsetParent.style.background  = 'blue';
+
+这个是把box当成绝对定位，然后去找这是相对谁定位的，相对谁，谁就是父亲元素。然后给谁设置
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+讲json时候讲for  in
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<!-- 面向过程改成面向对象 -->
+	<style type="text/css">
+	*{
+
+	}
+		#box{
+			width: 150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		// var obox = null;
+		// var disx=0;
+		// var disy=0;
+window.onload = function(){
+	new fla({width:100,height:100,background:'blue'});
+	new  limite({width:100,height:100,background:'skyblue'  })
+}
+
+fla.prototype.init = function(){
+	
+}
+//this.obox
+
+		function fla(option){
+		 this.obox =document.getElementById('box');
+	 	this.obox =document.createElement('div');
+	 	this.obox.style.width=option.width+'px';		 
+		this.obox.style.height=option.height+'px';
+		 this.obox.style.background=option.background;
+		 this.obox.style.position='absolute';
+		 document.body.appendChild(this.obox);
+		 console.log(this);
+		 this.disx=0;
+			 this.disy=0;
+			  console.log(this);	
+
+			 //属性罗列
+			
+
+			 var _self=this;
+			 //事件绑定
+			 this.obox.onmousedown =function(){
+			 _self.fndown();}
+	//法二
+		// this.obox.onmousedown = this.fndown.bind(this);
+	//法一			
+	
+	}
+
+
+
+	fla.prototype.fndown= function(ev){
+		console.log(this);
+			var oevent =ev||event;
+			this.disx=oevent.clientX-this.obox.offsetLeft;
+			this.disy=oevent.clientY-this.obox.offsetTop;
+
+			document.onmousemove =this.move.bind(this);
+			document.onmouseup = this.up;
+	}
+	fla.prototype.move =function(ev){
+		
+			var oevent =ev||event;
+				// var l=oevent.clientX-disx;
+				// var t=oevent.clientY-disy;
+				// console.log(l+"##"+t);
+				this.obox.style.left=oevent.clientX-this.disx+'px';
+				this.obox.style.top=oevent.clientY-this.disy+'px';
+
+	}
+	fla.prototype.up =function(ev){
+		console.log(this);
+		document.onmousemove= null;
+				document.onmouseup=null;
+	}
+	function limite(option){
+		fla.call(this,option);
+
+
+	}
+	limite.prototype= Object.create(fla.prototype);
+	limite.prototype.constructor=limite ;
+	limite.prototype.move =function(ev){
+//运用继承的知识。这样让他们执行这个move
+console.log(limite);
+			var oevent =ev||event;
+				var l=oevent.clientX-this.disx;
+				var t=oevent.clientY-this.disy;
+				console.log(l+"##"+t);
+				if (l<0) {
+					l=0;
+				}else if(l>window.innerWidth-this.obox.offsetWidth){
+					l=window.innerWidth-this.obox.offsetWidth;
+
+				}
+				if (t<0) {
+						t=0;
+				}else if(t>window.innerHeight-this.obox.offsetHeight){
+					t=window.innerHeight-this.obox.offsetHeight;
+
+					}
+
+				this.obox.style.left=l+'px';
+				this.obox.style.top=t+'px';
+
+	}
+
+	</script>
+</head>
+<body>
+	<!-- <div id="box"></div> -->
+
+</body>
+</html>

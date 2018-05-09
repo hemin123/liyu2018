@@ -1,0 +1,16 @@
+
+
+¼üÅÌÊÂ¼şwindow.onkeydown =function(ev){	
+
+	}
+oevent = event || ev
+oevent.keyCode
+
+
+
+
+
+
+window.innerWidth-odiv.affsetWidth
+
+l=

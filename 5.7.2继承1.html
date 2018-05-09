@@ -25,16 +25,11 @@
 
 	//student.prototype=person.prototype;
 	//第一种，很少用，忽略
-// for(key in person.prototype){
-// 	student.prototype[key]=person.prototype[key];
-// }
+for(key in person.prototype){
+	student.prototype[key]=person.prototype[key];
+}
 //第二种，常用
 
-console.log(student.prototype);
-student.prototype = new person();
-student.prototype.constructor= student;
-console.log(student.prototype);
-//第三种
 
 
 //第四种

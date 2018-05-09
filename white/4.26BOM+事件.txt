@@ -1,0 +1,108 @@
+window代表一个浏览器对象
+
+window.open()
+
+BOM
+
+bom - window基础
+
+
+
+定义一个方法a
+
+定义变量
+
+
+定义函数
+
+
+
+
+window.open('about:black','_blank')
+window.open('about:black')
+window.open('about:black','_self')
+window.open('https://www.baidu.com')
+
+
+
+window。close =（）；
+自能关闭自己打开的网页
+
+
+
+
+
+
+
+
+
+
+window.navigator.userAgent
+
+获取客户端信息。用的啥浏览器，啥内核
+
+
+window.location
+
+
+location。href =‘www。’
+window。location =‘www。’
+window。location。assign =‘www。’
+
+
+获取地址
+
+
+
+
+window.history
+
+window.history.go(1);
+
+window.history.go(-1);
+
+
+
+
+var res = prompt('pls  type your namne ?')
+alert ('you name '+ res);
+
+
+var res = confirm ('areyou sure ')
+if(res)
+{
+console.log('del');
+else{
+console.log('nothing')
+	}
+}
+
+
+
+
+
+
+
+
+documnent.onclick = function()[
+
+alert( "abc")
+console.log( document.childNodes[2]);
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

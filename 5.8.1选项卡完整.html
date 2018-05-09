@@ -3,27 +3,37 @@
 <head>
 	<title>选项卡</title>
 	<!-- 面向过程改造成面向对象 -->
+	<!-- 
+		//1.取消函数嵌套
+		//2.添加全局变量
+		//3.onload变构造函数
+		//4.把函数该为原型对象上的方法,把全局变量改为构造函数中的属性,然后修改this
+	 -->
 	<style type="text/css">
 		*{
 			margin: 0;
 			padding: 0;
 		}
-		#btn{
+		.btn{
 			overflow: hidden;
 		}
-		#btn li{
+		.btn li{
 			list-style: none;
-			margin-left: 5px;
-			width: 40px;
-			height: 20px;
+			margin-left: 8px;
+			width: 50px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
 			background-color: #000;
 			color: white;
 			border-radius: 20px;
 			float: left;
 			margin-top: 10px;
 			border: 1px solid #000;
+			cursor: pointer;
+
 		}
-		.active{
+		.btn .active{
 			background-color: red;
 			z-index: 5
 		}
@@ -31,10 +41,11 @@
 		#content li{
 			width: 500px;
 			height: 300px;
-			/*display: none;*/
+			display: none;
 			list-style: none;
 			border:1px solid #000;
 			margin: 5px;
+
 		}
 	</style>
 	<script type="text/javascript">
@@ -44,11 +55,11 @@
 		// function tab(btnid,contentid){
 		// 	var 
 		//
-		var obtn = null;
-		var ocon= null;
+		// var obtn = null;
+		// var ocon= null;
 		window.onload = function(){
-			new tab;
-			console.log(tab);
+			new tab();
+			//定义对象
 		}
 function tab(){
 		 this.obtn =document.getElementById('btn').children;
@@ -58,15 +69,22 @@ function tab(){
 		for (var i = 0; i < this.obtn.length; i++) {
 			this.obtn[i].index=i;
 			
-			this.obtn[i].onclick =this.fnclick;
-			console.log(tab);
-			//_self.fnclick(this);
-
-			//this.obtn[i].onclick =this.fnclick.bind(this,this.abtn[i]);
+			//this.obtn[i].onclick =this.fnclick;
+				//不可用
+			// this.obtn[i].onclick = function(){
+			// 	_self.fnclick(this);
+			// }
+			//方法一
+			//this是传进来的参数，this指代的btn按下去的那一个.
+			
+		this.obtn[i].onclick = this.fnclick.bind(this,this.obtn[i]);	
+			
+//this.obtn[i].onclick = this.fnclick.bind(this);
+			//方法二
 		}
-			 tab.prototype.fnclick= function(obtns){
-				console.log(this);
-				for (var j = 0; j < this.obtn.length; j++) {
+}	 
+		tab.prototype.fnclick = function(obtns){
+			for (var j = 0; j < this.obtn.length; j++) {
 					this.obtn[j].className = '';
 					this.ocon[j].style.display = 'none';
 
@@ -77,25 +95,23 @@ function tab(){
 
 			}
 		
-
-}
-		
+	
 	</script>
 </head>
 <body>
-<input type="button" name="">
-<ul id="btn">
-	<li>btn1</li>
+
+<ul class="btn" id="btn">
+	<li class="active">btn1</li>
 	<li>btn1</li>
 	<li>btn1</li>
 	<li>btn1</li>
 	
 </ul>
 <ul id="content">
-	<li>con1</li>
-	<li>con1</li>
-	<li>con1</li>
-	<li>con1</li>
+	<li style="display: block;">con1</li>
+	<li>con21</li>
+	<li>con31</li>
+	<li>con41</li>
 	
 </ul>
 

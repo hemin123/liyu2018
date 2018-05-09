@@ -14,13 +14,7 @@
 	// person.prototype.showAge = function() {
 	// 	console.log('i am'+this.age)
 	// };
-	Object.defineProperty(person.prototype,"showAge",{
-		value:function(){
-			console.log("i ams"+this.age);
-	}});
-	//用这种方法定义（prototype）属性。也可以访问到。
-	
-	
+
 	function student(name,age,className){
 		person.call(this,name,age);
 		//s属性继承
@@ -28,20 +22,27 @@
 	}
 
 
-console.log(student.prototype);
-student.prototype = new person();
-//新定义一个对象，
-student.prototype.constructor= student;
-console.log(student.prototype);
-//第三种
 
+
+
+		Object.defineProperty(person.prototype,"showAge",{value:function(){
+		console.log("i am"+this.age+"year");
+		}});
+
+		var obj= Object.create(person.prototype);
+		student.prototype = obj;
+		student.prototype.constructor = student;
+		student.prototype.showClassName = function(){
+			console.log("I am from "+this.className);
+		}
 
 //第四种
-student.prototype.showClass = function() {
-		console.log('i am from'+this.className);
-	};
+	
+//student.prototype原型对象
 
-		
+	student.prototype.showClass = function() {
+	console.log('i am from'+this.className);
+	};
 
 	var p1= new  student('ton',15,1)
 	p1.showAge();
