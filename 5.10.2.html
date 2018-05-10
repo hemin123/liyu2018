@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则</title>
+	<script type="text/javascript">
+		var str="6sfod6pio1hfa216uh 345 hewo9";
+		var result = [];
+		var tmp='';
+		for (var i = 0; i < str.length+1; i++) {
+			if (!isNaN(parseInt(str.charAt(i)))) {
+				console.log();
+				tmp+=str.charAt(i);
+			}
+			else if(tmp){
+				result.push(tmp);
+				tmp='';
+			}
+		}
+		// if (tmp) {
+		// 	result.push(tmp);
+		// 	tmp='';
+		// }
+		console.log(result);
+
+		// var reg=/\d+/g;
+		// console.log(str.match(reg));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

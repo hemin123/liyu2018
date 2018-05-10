@@ -14,31 +14,34 @@
 <div id="div"></div>
 </body>
 <script type="text/javascript">
-	function carousel(id){
+	function carousel(id,arr){
 		//罗列属性初始化，绑定事件
-		this.obox= document.getElementById('id');
-		this.oImg=null;
-		this.aimg=arr;
+		this.obox= document.getElementById(id);
+		this.oImgUI = null;
+		this.aImg = arr;
 		this.init();
 	}
 	carousel.prototype.init  = function(){
 		//放图片
-		this.oImg= document.createElement('ul');
-		for (var i = 0; i < this.aimg; i++) {
+		this.oImgUI= document.createElement('ul');
+		for (var i = 0; i < this.aImg.length; i++) {
 			var oli = document.createElement('li');
-			//var oimg2 = document.createElement('img');
+			var oImg2 = document.createElement('img');
 			oli.style.position = 'absolute';
 			oli.style.left = 0;
 			oli.style.top = 0;
-			if (i==0) {
-				oli.style.opacity = 1;
-				oli.style.z-Index = 50;
-			}else{
-			oli.style.opacity = 0.5;
-			oli.style.z-Index = 0;}
-			//oImg2.src=this.oImg2[i];
-			oli.appendChild(oImg);
-			this.oImg.appendChild(oli);
+			oli.style.opacity=0.5;
+			oli.style.zIndex=0;
+
+			// if (i==0) {
+			// 	oli.style.opacity = 1;
+			// 	oli.style.zIndex = 50;
+			// }else{
+			// oli.style.opacity = 0.5;
+			// oli.style.zIndex = 0;}
+			oImg2.src = this.aImg[i];
+			oli.appendChild(oImg2);
+			this.oImgUI.appendChild(oli);
 
 
 		}
@@ -60,7 +63,7 @@
 		// }
 
 
-		this.obox.append(this.oImg);//添加父容器里面
+		this.obox.appendChild(this.oImgUI);//添加父容器里面
 
 	}
 	new carousel('div',['images/jd1.jpg','images/jd2.jpg']);

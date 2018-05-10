@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>过滤</title>
+</head>
+<body>
+
+<textarea name="" id="txt" cols="30" rows="10"></textarea>
+<input type="button" id="btn" value="submit">
+<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+</body>
+<script type="text/javascript">
+	var otxt1 =document.getElementById('txt');
+	var otxt2 =document.getElementById('txt1');
+	var obtn =document.getElementById('btn');
+	obtn.onclick = function(){
+		var str = otxt1.value;
+		var reg =/淘宝|京东/g;
+		//淘宝或者京东
+		otxt2.value=str.replace(reg,'*');
+	}
+</script>
+</html>

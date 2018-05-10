@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>匹配html标签</title>
+</head>
+<body>
+
+<textarea name="" id="txt" cols="30" rows="10"></textarea>
+<input type="button" id="btn" value="submit">
+<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+</body>
+<script type="text/javascript">
+	var otxt1 =document.getElementById('txt');
+	var otxt2 =document.getElementById('txt1');
+	var obtn =document.getElementById('btn');
+	obtn.onclick = function(){
+		var str = otxt1.value;
+		 var reg=/<\w+>/
+		 	//   \w表示任意字符（英文字符，数字 下划线）
+		// +表示同时匹配多个
+		//var reg =/[<\w+>\/]/g;
+		//var reg =/<[<\w|\/]+>/g;
+		
+		var reg =/<[^<>]+>/g;
+		//除了这两个之外的
+	
+		otxt2.value=str.replace(reg,' ');
+	}
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>匹配汉字</title>
+	<script type="text/javascript">
+		var str = 'a你就会k';
+		console.log(str.charCodeAt());
+		var reg = /[\u4e00-\u9fa5]+/g;
+		// console.log(str.test(str));
+		console.log(str.length);
+		console.log(str.replace(reg,'*'));
+
+//\/两个斜线，有一个是转义
+		 function get(str){
+		 	// return str.replace(/[\u4e00-\u9fa5]/g,'aa').length
+		 	return str.replace(/[\u4e00-\u9fa5]/g,'aa')
+		 }
+		 console.log(get(str));
+	</script>
+</head>
+<body>
+
+</body>
+</html>
