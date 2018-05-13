@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则</title>
+	<script type="text/javascript">
+		var str = 'abc4d2018-12-23jhe';
+		var str1 = 'abcd2018-12-23jhe';
+		var reg= /\d{4}-\d{2}-\d{2}/g;
+
+		console.log(str.search('b'));
+		console.log(str.search(/b/));
+	//效果一样，search就是接收一个正则。
+		console.log(str.match(/\d{4}-\d{2}-\d{2}/g));
+
+		console.log(str.match(reg));
+		//console.log(str.math(reg));
+		//不懂
+		console.log(reg.exec(str));
+		//exec与march效果一样一个字符串一个在数字
+
+		console.log(str1.split(/\d/));
+		//效果是把字母分开
+		console.log(str1.replace(/\d/g,'*'));
+		//替换
+		console.log(str1.replace(/\d/g,function(march){
+			return march*1+1;
+		}));
+		//回掉
+</script>
+</head>
+<body>
+
+</body>
+</html>

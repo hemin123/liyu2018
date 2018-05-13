@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单脚本</title>
+</head>
+<body>
+	<form action="http://www.baidu.com" id="form1">
+		<div>
+			<input type="text" name="name">
+		</div>
+		<div>
+			<input type="text">
+		</div>
+		<div>
+			<input type="submit" value="提交">
+		</div>
+		<div>
+			<input type="checkbox" value="lanqi" name="fa" checked="checked">篮球
+			<input type="checkbox" value="lanqi2" name="fa">组曲
+		</div>
+	</form>
+	<form action="http://www.baidu.com" id="form2">
+		<div>
+			<input type="text" name="name">
+		</div>
+		<div>
+			<input type="text">
+		</div>
+		<div>
+			<input type="submit" >
+			<input type="submit" > 
+		</div>
+		
+	</form>
+</body>
+<script type="text/javascript">
+	//var oform = document.getElementById('form1');
+	var aform = document.forms;
+	var aform1=aform[0];
+	console.log(aform[1]);
+
+	console.log(aform1.elements);
+	//单个form所有元素
+	console.log(aform1.name);
+	console.log(aform1['name']);
+	aform1.name.disabled=true;
+	//完全禁止，不提交给后台
+
+	var se=aform1.fa;
+	console.log()
+	console.log(se[0].checked)
+	console.log(se[1].checked)
+</script>
+</html>
