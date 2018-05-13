@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单脚本</title>
+</head>
+<body>
+	<form action="http://www.baidu.com" id="form1">
+		<div>
+			姓名<input type="text" name="name">
+		</div>
+		<div>
+			年纪<input type="text">
+		</div>
+		<div>
+			<input type="submit" value="提交">
+		</div>
+		
+	
+	<!-- 
+	提交表单的方法，原生html三种提交方式
+
+	 -->
+	 <input type="submit">
+	 <button type="submit">提 交</button>
+	 <input type="image" src="5.jpg">
+<!-- js提交方式，先阻止默认，然后再写obtn。onclick事件 -->
+	 <input type="button" value="提交" id="tijiao">
+
+
+	<input type="reset">
+	<button type="reset">重置</button>
+
+	 <input type="button" value="提交" id="tijiao1">
+		
+	 </form>
+</body>
+<script type="text/javascript">
+	var oform = document.getElementById('form1');
+	var obtn= document.getElementById('tijiao');
+	var obtn1= document.getElementById('tijiao1');
+	obtn.onclick = function(){
+		oform.submit();
+	}
+	oform.onsubmit = function(){
+		//提交前运行的
+		console.log('submit');
+		return false;
+		//提交前执行的
+	}
+	oform.onreset = function(){
+		console.log('reset');
+		// return false;
+		//重置前执行
+	}
+	obtn1.onclick = function(){
+		// return false;
+	}
+
+	
+</script>
+</html>
