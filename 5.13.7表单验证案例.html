@@ -208,27 +208,83 @@
         }
     </style>
     <script type="text/javascript">
-    window.onload = function(){
-       var oForm = document.forms[0];
-       var oUserName = oForm.username;
-       var aCancel= document.querySelectorAll('.cancel');
-        var aMsg = document.querySelectorAll('.msg');
-
-       oUserName.focus();
-
-       aMsg[0].className = 'tiptext';
-       aMsg[0].innerHTML =  '设置后不可更改<br>中英文均可,最长14个英文或7个汉字';
-
-       oUserName.oninput =function(){
-        if (oUserName.value.length>0) {
-            aCancel[0].style.display ='block';
-        }else{
-            aCancel[0].style.display = 'none';
+         function genLen (str){
+            return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
         }
-       }
 
+    window.onload = function(){
 
-    }
+        var oForm = document.forms[0];
+        var oUserName = oForm.username;
+        var aCancel= document.querySelectorAll('.cancel');
+        var aMsg = document.querySelectorAll('.msg');
+        init();
+        function init (){
+                //设置默认焦点
+               oUserName.focus();
+
+               //设置提示信息
+               aMsg[0].className = 'tiptext';
+               aMsg[0].innerHTML =  '设置后不可更改<br>中英文均可,最长14个英文或7个汉字';
+        }
+        checkUserName();
+        function checkUserName(){
+           //检听用户名的输入事件
+           oUserName.oninput =function(){
+                if (oUserName.value.length>0) {
+                    aCancel[0].style.display ='block';
+                }else{
+                    aCancel[0].style.display = 'none';
+                }
+            }
+
+           aCancel[0].onclick = function(){
+                oUserName.value = ' ';
+                aCancel[0].style.display = 'none';
+                oUserName.focus();  
+            }
+
+            oUserName.onblur = function(){
+                aMsg[0].className = 'msg';
+                var sVal =oUserName.value;
+                var reg1= /[\u4e00-\u9fa5|a-z|0-9_]/; //汉字
+                var reg2 = /^\d+$/;
+                var reg3 = /^\s+$/;   //  \s是空格
+                //用户名不能
+
+                if (sVal=='') {
+
+                }
+            
+
+                if (genLen(sVal)>14) {
+                    aMsg[0].className = 'err';
+                    aMsg[0].innerHTML = '用户名不能超过7个汉字或14个字符';
+                    oUserName.style.borderColor = 'red';
+                }else if(reg3.test(sVal)){
+                    aMsg[0].className = 'err';
+                    aMsg[0].innerHTML= '请输入用户名'
+                    oUserName.style.borderColor = 'red';
+                }
+
+                else if (!reg1.test(sVal)||reg2.test(sVal)) {
+                     aMsg[0].className = 'err';
+                    aMsg[0].innerHTML = '用户名仅支持中英文、数字和下划线，且不能为纯数字';
+                    oUserName.style.borderColor = 'red';
+                
+                }else{
+                    aMsg[0].className = 'ok';
+                    aMsg[0].innerHTML = '';
+                    oUserName.style.borderColor = '#ddd';
+                }
+            }
+         
+         }
+        
+        checkPhone();
+        function checkPhone(){
+            //监听
+        }
     </script>
 </head>
 

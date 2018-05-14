@@ -20,24 +20,26 @@
 	提交表单的方法，原生html三种提交方式
 
 	 -->
-	 <input type="submit">
-	 <button type="submit">提 交</button>
+	 <input type="submit" value="提交1">
+	 <button type="submit">提 交2</button>
 	 <input type="image" src="5.jpg">
 <!-- js提交方式，先阻止默认，然后再写obtn。onclick事件 -->
 	 <input type="button" value="提交" id="tijiao">
 
 
-	<input type="reset">
-	<button type="reset">重置</button>
+	<input type="reset" value="重置1" id="cz1">
+	<button type="reset">重置2</button>
 
-	 <input type="button" value="提交" id="tijiao1">
+	 <input type="button" value="重置3" id="chongzhi1">
 		
 	 </form>
 </body>
 <script type="text/javascript">
 	var oform = document.getElementById('form1');
+	var obtn1= document.getElementById('chongzhi1');
+	var ocz1= document.getElementById('cz1');
 	var obtn= document.getElementById('tijiao');
-	var obtn1= document.getElementById('tijiao1');
+	
 	obtn.onclick = function(){
 		oform.submit();
 	}
@@ -45,14 +47,18 @@
 		//提交前运行的
 		console.log('submit');
 		return false;
-		//提交前执行的
+		//阻止默认的提交，这个时候只有js写的提交函数可以提交成功，其他都不可以
 	}
 	oform.onreset = function(){
 		console.log('reset');
 		// return false;
 		//重置前执行
 	}
+	ocz1.onclick = function(){
+		return false;
+	}
 	obtn1.onclick = function(){
+		oform.reset();
 		// return false;
 	}
 
