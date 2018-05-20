@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包</title>
+	<script type="text/javascript">
+		// var name = 'tom';
+		// function show(){
+		// 	var name1 ='ttt';
+		// 	console.log(name);
+		// }
+		// show();
+		// console.log(name1);
+		//拿不到
+	/*
+		var name = 'tom';
+
+		function show(){
+			var name1 ='ttt';
+			console.log(name);
+			console.log(name1);
+
+			function fn(){
+				var name2 = 'gggg';
+				console.log(name);
+				console.log(name1);
+				console.log(name2);
+				//本函数没有回去父元素找。
+			}
+
+			fn();
+		}
+		show();
+		console.log(name1);
+		//z
+	*/
+
+
+		function show(){
+				var name1 ='ttt';
+				console.log(name);
+				console.log(name1);
+
+				function fn(){
+					var name2 = 'gggg';
+					return name2;
+				//return返回name2;
+				}
+
+				fn();
+			}
+			show();
+			console.log(name1);
+			//z
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

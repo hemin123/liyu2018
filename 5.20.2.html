@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>异常处理</title>
+	<script type="text/javascript">
+		function mutiple(n1,n2){
+			if (isNaN(parseInt(n1))||isNaN(parseInt(n2))) {
+				throw new Error('not a number');
+			}
+			return n1=n2;
+		}
+		//自己写一个程序，报告异常。
+			try{
+				console.log(mutiple(12,'aaa'));
+			}catch(e){
+				console.log(e);
+			}finally{
+				console.log('end');
+			}
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>语法错误</title>
+	<script type="text/javascript">
+
+		//console.log(32545)；
+		//Uncaught SyntaxError: Invalid or unexpected token
+		
+		var a=1;
+		//a();
+		//Uncaught TypeError: a is not a function
+		debugger;
+		function fact(n){
+			if (n<5) {return false;}
+			n--;
+			fact(4);
+		}
+		fact(44);
+		//Uncaught RangeError: Maximum call stack size exceeded
+
+		var sum =0;
+		debugger;
+		for (var i = 0; i < 5; i++) {
+			sum+=i;
+		}
+			
+	</script>
+</head>
+<body>
+
+</body>
+</html>
