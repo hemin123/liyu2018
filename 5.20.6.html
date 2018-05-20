@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>传参示例</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			width: 500px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+		.active{
+			background: red;
+		}
+	</style>
+	
+</head>
+<body>
+	<ul>
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+</body>
+
+<script type="text/javascript">
+		var oli = document.getElementsByTagName('li');
+		var last=0;
+		for (var i = 0; i < oli.length; i++) {
+			// oli[i].onmouseover = function(){
+			// 	for (var j = 0; j < oli.length; j++) {
+			// 		oli[j].className='';
+			// 	}
+			// 	ali[last].className='';
+			// 	this.className = 'active';
+			// 	last=this.index;
+			// }
+			(function(index){
+				oli[index].onmouseover= function(){
+					oli[last].className = '';
+					this.className= 'active';
+					last=index;
+				}
+			})(i);
+
+
+
+
+		}
+	</script>
+
+</html>

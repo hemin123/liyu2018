@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>封闭空间传参</title>
+	
+</head>
+<body>
+	<input type="button" id="btn">
+	<div></div>
+
+</body>
+	<script type="text/javascript">
+		// var obtn = document.getElementById('btn');	
+		// var odiv = document.getElementByTagName('div');	
+		// obtn.onclick = function(){
+		// 	alert('hfi');
+		// }
+
+		(function(d,w){
+			var oBtn = d.getElementById('btn');
+			var oDiv = d.getElementsByTagName('div');
+			oBtn.onclick = function(){
+				alert('abc');
+			}
+			w.oBtn=oBtn;
+			//函数传参
+		})(document,window);
+					//window是为了返回oBtn
+		oBtn.onmouseover = function(){
+			alert('mouseover');
+		}
+		//oBtn是传参传回来的，调用的是定义在window下面的一个属性
+
+
+		</script>
+
+</html>
