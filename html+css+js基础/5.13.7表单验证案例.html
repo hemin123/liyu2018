@@ -211,6 +211,16 @@
          function genLen (str){
             return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
         }
+         function setErr(oMsg,sMsg,oInput){
+            oMsg.className = 'err';
+            oMsg.innerHTML = sMsg;
+            oInput.style.borderColor = 'red';            
+        }
+        function setOk(oMsg,oInput){
+            oMsg.className = 'ok';
+            oMsg.innerHTML = '';
+            oInput.style.borderColor = '#ddd';           
+        }
 
     window.onload = function(){
 
@@ -218,6 +228,7 @@
         var oUserName = oForm.username;
         var aCancel= document.querySelectorAll('.cancel');
         var aMsg = document.querySelectorAll('.msg');
+        var oPhone = oForm.phone;
         init();
         function init (){
                 //设置默认焦点
@@ -230,7 +241,7 @@
         checkUserName();
         function checkUserName(){
            //检听用户名的输入事件
-           oUserName.oninput =function(){
+            oUserName.oninput =function(){
                 if (oUserName.value.length>0) {
                     aCancel[0].style.display ='block';
                 }else{
@@ -238,7 +249,7 @@
                 }
             }
 
-           aCancel[0].onclick = function(){
+            aCancel[0].onclick = function(){
                 oUserName.value = ' ';
                 aCancel[0].style.display = 'none';
                 oUserName.focus();  
@@ -265,10 +276,8 @@
                     aMsg[0].className = 'err';
                     aMsg[0].innerHTML= '请输入用户名'
                     oUserName.style.borderColor = 'red';
-                }
-
-                else if (!reg1.test(sVal)||reg2.test(sVal)) {
-                     aMsg[0].className = 'err';
+                }else if(!reg1.test(sVal)||reg2.test(sVal)) {
+                    aMsg[0].className = 'err';
                     aMsg[0].innerHTML = '用户名仅支持中英文、数字和下划线，且不能为纯数字';
                     oUserName.style.borderColor = 'red';
                 
@@ -277,14 +286,51 @@
                     aMsg[0].innerHTML = '';
                     oUserName.style.borderColor = '#ddd';
                 }
-            }
-         
-         }
+            }         
+        }
+   
         
         checkPhone();
-        function checkPhone(){
-            //监听
-        }
+       function checkPhone(){
+                oPhone.onfocus = function(){
+                    aMsg[1].className = 'tiptext';
+                    aMsg[1].innerHTML = '请输入中国大陆手机号,其他用户不可见';
+                    oPhone.style.borderColor = '#488ee7';               
+                }
+                oPhone.onblur = function(){
+                    aMsg[1].className = 'msg';
+                    oPhone.style.borderColor = '#ddd';
+                    var sVal = oPhone.value;
+                    var reg1 = /^\s+$/;   //空格
+                    var reg2 = /^1[35789]\d{9}$/;
+                    if(sVal == ''){
+                        bPhone = false;
+                    }
+                    else if(reg1.test(sVal)){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                        bPhone = false;
+                    }
+                    else if(!reg2.test(sVal)){
+                        setErr(aMsg[1],'手机号码格式不正确',oPhone);  
+                        bPhone = false;
+                    }                
+                    else{ 
+                        setOk(aMsg[1],oPhone);
+                        bPhone = true;
+                    }
+                }
+                oPhone.onkeydown = function(ev){
+                    var oEvent = ev || event;
+                    if((oEvent.keyCode < 48 || oEvent.keyCode > 57 ||oPhone.value.length > 10)
+                        && oEvent.keyCode != 8
+                        && oEvent.keyCode !=37
+                        && oEvent.keyCode !=39
+                        ){
+                        return false;
+                    }
+                }
+        } 
+}       
     </script>
 </head>
 
