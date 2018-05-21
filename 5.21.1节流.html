@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>窗口变化、、节流</title>
+	<style type="text/css">
+	body{
+		height: 3000px;
+	}
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	 var timer = null;
+	// window.onresize = function(){
+	// 	timer= setTimeout(function(){
+	// 		console.log(window.innerWidth);
+	// 	},400)
+	// }
+
+	window.onresize = throttle(function(){
+		//屏幕大小变化时候，频繁拉动
+		console.log('sss');
+	},400)
+	window.onsroll = throttle(function(){
+		console.log('wwwwwwwwwwwww');
+	},400)
+	function throttle (fn,delay){
+		return function(){
+			clearTimeout(timer);
+			//先清空定时器，然后再打开一个，某一次不触发的时候再执行处理
+			timer = setTimeout(fn,delay);
+		}
+	}
+</script>
+</html>

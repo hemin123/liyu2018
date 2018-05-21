@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>设计模式</title>
+	<script type="text/javascript">
+		(
+		function(w){
+			function Teacher(name){
+				this.name =name;
+				this.students = [];
+			}
+			Teacher.prototype= {
+				constrctor:Teacher,
+				__proto__:Object.prototype,
+				register:function(msg){
+					this.students.push(msg);
+				},
+				pulish:function(){
+					for (var i = 0; i < this.students.length; i++) {
+						this.students[i].listen(msg);
+					}
+				}
+			}
+			w.Teacher= Teacher;
+		}
+		)(window);
+
+		(function(w){
+			function student(name,Teacher){
+				this.name =name;
+				this.msg='';
+
+			}
+			student.prototype={
+				constrctor:Teacher,
+				__proto__:Object.prototype,
+				listen:function(msg){
+					this.msg=msg;
+				}
+			}
+			w.student=student;
+		})(window);
+
+		var teach= new Teacher('tom');
+		var s1 = new student('hh',teach);
+		var s2 = new student('jj',teach);
+		var s3 = new student('ss',teach);
+		//学生调用老师上的方法。
+		console.log(teach);
+		console.log(s1);
+
+			teach.pubish('zzzzzzz');
+		console.log(s1.msg);
+	</script>
+</head>
+<body>
+	<p>观察者模式（订阅号）发布者与接收者</p>
+老师对象数组
+	存储对象的数组
+	学生
+
+</body>
+</html>
