@@ -4,31 +4,70 @@
 	<title>汇率计算</title>
 </head>
 <body>
-<p>
+<!-- <p>
 	人民币<input type="text">
 </p>
 <p>
 	港币<input type="text">
-</p>
+</p> -->
 
 </body>
 <script type="text/javascript">
 	(function(w){
-		function Local(){
-			this.foreign=[];
-			this.init
+		function Local(name){
+			this.oInput=null;
+			this.foreigns=[];
+			this.init(name);
 		}
-		Local.proto={
-			constructor:Local;
-			init:function(){
+		Local.prototype={
+			constructor:Local,
+			init:function(name){
 				var op= document.createElement('p');
-				
-
+				op.innerHTML=name;
+				this.oInput = document.createElement('input');
+				op.appendChild (this.oInput);
+				document.body.appendChild(op);
+			},
+			register:function(foreign){
+				this.foreigns.push(foreign);
+			},
+			pubish:function(){
+				this.oInput.oninput = function(){
+					for (var i = 0; i < this.foreigns.length; i++) {
+						this.foreigns[i].listen(this.oInput.value)
+					}
+				}.bind(this);
 			}
 		}
-	}
+		w.Local =Local;
+	})(window);
 
-	)(window);
+
+	(function(w){
+		function Foreign(name,rate,local){
+			this.rate =rate;
+			this.oInput = null;
+			local.register(this);
+			this.init(name);
+		}
+		Foreign.prototype={
+			constructor:Foreign,
+			init:function(name){
+			var op = document.createElement('p');
+			op.innerHTML=name;
+			this.oInput = document.createElement('input');
+			op.appendChild(this.oInput);
+			document.body.appendChild(op);
+			},
+			listen:function(val){
+				this.oInput.value=val / this.rate;
+			}
+
+		},
+		w.Foreign =Foreign;
+	})(window);
+	var cny = new Local('人民币')
+	var cny = new Local('人民币',6,cny);
 </script>
 </html>
 
