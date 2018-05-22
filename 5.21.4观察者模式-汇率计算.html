@@ -33,13 +33,16 @@
 			},
 			register:function(foreign){
 				this.foreigns.push(foreign);
+
 			},
 			pubish:function(){
 				this.oInput.oninput = function(){
 					for (var i = 0; i < this.foreigns.length; i++) {
 						this.foreigns[i].listen(this.oInput.value);
+						//foreigns上面的listen
 					}
 				}.bind(this);
+				//bind就是local对象了
 			}
 		}
 		w.Local =Local;
@@ -53,6 +56,8 @@
 			this.rate =rate;
 			this.oInput = null;
 			local.register(this);
+			//注册上去
+
 			this.init(name);
 		}
 		Foreign.prototype={

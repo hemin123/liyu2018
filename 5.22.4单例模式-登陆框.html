@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>单例模式</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#login{
+			width: 250px;
+			height: 250px;
+			background: #ccc;
+			margin: 50px auto;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+
+		(function(w){
+			var obj = null;
+			function loginlayer(){
+				if (!obj) {
+				var oDiv = document.createElement('div');
+				oDiv.id = 'login';
+				document.body.appendChild(oDiv);
+				obj=oDiv;
+				}
+			}
+// `		w.loginlayer = loginlayer;
+		})();
+
+		//function get
+		var obtn = document.getElementById('btn');
+		var login= document.getElementById('login');
+		obtn.onclick = function(){
+			login.style.display = 'block';
+		}
+	</script>
+</head>
+<body>
+<input type="button" id="btn" value="登陆">
+<div id="login"></div>
+</body>
+</html>

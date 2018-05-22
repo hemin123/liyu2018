@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>单例模式</title>
+	<script type="text/javascript">
+		// function Person(name){
+			// this.name =  name ;
+		// }
+		// var s1= new Person('ttt');
+		// var s2= new Person('ttt');
+
+
+		//()();
+		//前面包函数，后面是执行的。
+
+
+		(function(w){
+			function king (name){
+				this.name = name;
+				this.id= math.redom();
+				}
+			king.protoType = {
+				constrctor:king,
+
+				__proto__:Object.protoType,
+			say:function(){
+				console.log(this.name+this.id+'say');
+			}
+
+			}
+			king.getking = (function(){
+				var king =null;
+				return function(){
+					if (!king) {
+						king= new king;
+
+					}else{
+
+					}
+				}
+
+			})();
+
+		})(window);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

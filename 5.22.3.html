@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>单例模式</title>
+	<script type="text/javascript">
+
+		// function Person(name){
+		// 	this.name =  name ;
+
+		// 	return this;
+		// 	默认return this。
+
+		// }
+		// var s1= new Person('ttt');
+		// var s2= new Person('ttt');
+		// console.log(s1);
+
+
+
+
+		(function(w){
+			function king (){
+				var fn=function(){
+					var king = null;
+					return function(){
+						if (!king) {
+							king= {
+								name:'hhh',
+								id: math.random();
+							}
+						}
+					}
+				}
+			
+			
+				}
+			king.protoType = {
+				constrctor:king,
+
+				__proto__:Object.protoType,
+			say:function(){
+				console.log(this.name+this.id+'say');
+			}
+
+			}
+			king.getking = (function(){
+				var king =null;
+				return function(){
+					if (!king) {
+						king= new king;
+
+					}else{
+
+					}
+				}
+
+			})();
+
+		})(window);
+		king.
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
