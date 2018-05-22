@@ -13,11 +13,13 @@
 
 </body>
 <script type="text/javascript">
+	//本币
 	(function(w){
 		function Local(name){
 			this.oInput=null;
 			this.foreigns=[];
 			this.init(name);
+			//调用初始化函数
 		}
 		Local.prototype={
 			constructor:Local,
@@ -26,6 +28,7 @@
 				op.innerHTML=name;
 				this.oInput = document.createElement('input');
 				op.appendChild (this.oInput);
+				//DOM添加input
 				document.body.appendChild(op);
 			},
 			register:function(foreign){
@@ -34,15 +37,17 @@
 			pubish:function(){
 				this.oInput.oninput = function(){
 					for (var i = 0; i < this.foreigns.length; i++) {
-						this.foreigns[i].listen(this.oInput.value)
+						this.foreigns[i].listen(this.oInput.value);
 					}
 				}.bind(this);
 			}
 		}
 		w.Local =Local;
+		//暴露出去，window对象上面
 	})(window);
 
 
+	//外币
 	(function(w){
 		function Foreign(name,rate,local){
 			this.rate =rate;
@@ -67,7 +72,10 @@
 		w.Foreign =Foreign;
 	})(window);
 	var cny = new Local('人民币')
-	var cny = new Local('人民币',6,cny);
+	var cn = new Foreign('日语',6,cny);
+	var cn = new Foreign('港币',0.6,cny);
+	var cn = new Foreign('美元',2,cny);
+	cny.pubish();
 </script>
 </html>
 
