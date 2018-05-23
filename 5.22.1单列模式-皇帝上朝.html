@@ -9,6 +9,7 @@
 		// var s1= new Person('ttt');
 		// var s2= new Person('ttt');
 
+		//这样new，会new出来多个，需求是不管怎么new，只构建一个
 
 		//()();
 		//前面包函数，后面是执行的。
@@ -17,31 +18,23 @@
 		(function(w){
 			function king (name){
 				this.name = name;
-				this.id= math.redom();
+				this.id= Math.random();
 				}
-			king.protoType = {
+			king.prototype = {
 				constrctor:king,
-
 				__proto__:Object.protoType,
 			say:function(){
 				console.log(this.name+this.id+'say');
 			}
 
 			}
-			king.getking = (function(){
-				var king =null;
-				return function(){
-					if (!king) {
-						king= new king;
-
-					}else{
-
-					}
-				}
-
-			})();
-
+			
+			w.king = king;
 		})(window);
+
+		for (var i = 0; i < 5; i++) {
+			new king('hhh').say();
+			}
 
 	</script>
 </head>

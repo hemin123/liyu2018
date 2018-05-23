@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数组</title>
+	<script type="text/javascript">
+		var arr = [11,45,1,71,1,44,89];
+		/*
+		arr.forEach(function(value,index){
+			console.log(index+'value'+value);
+			//不可以返回,没返回值
+			//index是数组元素的下标，value是数组元素的值
+		})
+
+
+
+		var arr2 = arr.map(function(value,index){
+			return 10;
+			//函数返回一个数组，数组的返回的值
+			//数组中元素个数和原数组一样，值全部是返回的那一个值。
+		})
+		console.log(arr);
+		console.log(arr2);
+
+		var arr2 = arr.filter(function(value,index){
+			//return value >= 60;
+			//  判断真假，真的话返回，假的话不返回
+			return 0;
+			//函数，返回0 arr2 没有元素
+			//如果直接写数字，返回真
+			
+		});
+		console.log(arr2);
+		*/
+
+		var arr2 = arr.every(function(value,index){
+			return value >= 60;
+			return 0;
+			//函数，返回  真假
+		});
+		console.log(arr2);
+/*
+		var arr2 = arr.some(function(value,index){
+			//有一个为真
+			return value >= 60;
+			return 0;
+			//函数，
+		});
+		console.log(arr2);
+		*/
+
+	</script>
+</head>
+<body>
+<h1>数组</h1>
+<h1>学习HTTP</h1>
+<p>
+	http,超文本传输协议<br>
+	FTP文件传输协议 POP3 TCP/IP<br>
+	https加密了<br>
+	http加上SSL保障网站的安全性<br>
+	OSI开放式系统互连的七层架构<br>
+	<span>
+	计算机网络很核心的内容，以前讲过<br>
+	物理层<br>
+	简化出一个TCPIP四层模型</span>
+	三次握手，然后再进行发送<br>
+	请求行/请求体/空白行/请求体参数<br>
+	接收以后做响应<br>
+	响应头（）<br>
+	<h3>http请求过程</h3>
+	浏览器响应<br>
+
+	http请求两种方法GET  POST<br>
+
+	协议：域名：端口号/文件位置<br>
+
+
+</p>
+
+</body>
+</html>
