@@ -17,9 +17,12 @@
 
 		(function(w){
 			function king (name){
+				var sef = this;
 				this.name = name;
 				this.id= Math.random();
 				}
+
+				
 			king.prototype = {
 				constrctor:king,
 				__proto__:Object.protoType,
@@ -32,11 +35,11 @@
 				var king =null;
 				return function(){
 					if (!king) {
-						king= new king;
+						king= new king();
 
-					}else{
 
 					}
+					return king;
 				}
 
 			})();

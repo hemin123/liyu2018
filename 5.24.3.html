@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax</title>
+</head>
+<body>
+<input type="button" value="按钮" name="" id="btn">
+</body>
+<script type="text/javascript">
+	var obtn = document.getElementById('btn');
+	obtn.onclick = function(){
+
+		var oajax = new XMLHttpRequest();
+		oajax.open("GET","http://127.0.0.1:3000/text1.txt",true);
+		//发送请求  yibu异步true
+		oajax.send();
+
+		//监听
+		oajax.onreadystatechange = function(){
+			console.log(oajax.readyState);
+			if (oajax.readyState==4) {
+				console.log('get data' ,oajax.responseText);
+			}
+
+		}
+	}
+</script>
+</html>
