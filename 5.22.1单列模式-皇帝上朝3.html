@@ -16,38 +16,54 @@
 
 
 		(function(w){
-			function king (name){
+			var king =null;
+			function King (){
 				var sef = this;
-				this.name = name;
-				this.id= Math.random();
+				var fn =(function(){
+				return function(){
+					if (!king) {
+						
+					sef.name = 'name';
+					sef.id= Math.random();
+					king =sef;
+						
+					}
+					return  king;
+				//返回一个对象
+				}
+				})();
+				return fn();
+				
+				
+
+				
 				}
 
 				
-			king.prototype = {
-				constrctor:king,
-				__proto__:Object.protoType,
+			King.prototype = {
+				constrctor:King,
+				__proto__:Object.prototype,
 			say:function(){
 				console.log(this.name+this.id+'say');
 			}
 
 			}
-			king.getking = (function(){
+			King.getking = (function(){
 				var king =null;
 				return function(){
 					if (!king) {
-						king= new king();
-
-
+						king= new King();
 					}
 					return king;
 				}
 
 			})();
-			w.king = king;
+			w.King = King;
 		})(window);
 
-		for (var i = 0; i < 5; i++) {
-			new king('hhh').say();
+		King.getking();
+		for (var i = 1; i < 5; i++) {
+			new King().say();
 			}
 
 	</script>

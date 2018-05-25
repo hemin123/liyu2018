@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>ajax</title>
 </head>
 <body>
@@ -19,7 +20,12 @@
 		oajax.onreadystatechange = function(){
 			console.log(oajax.readyState);
 			if (oajax.readyState==4) {
+				console.log(oajax.status);
+				if(oajax.status==200){
 				console.log('get data' ,oajax.responseText);
+			}else{
+				console.log('get data fail:',oajax.status)
+			}
 			}
 
 		}
