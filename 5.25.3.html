@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ajax</title>
+</head>
+<body>
+<input type="button" value="按钮" name="" id="btn">
+<ul id="uli">
+	<li></li>
+</ul>
+</body>
+<script type="text/javascript">
+	var obtn = document.getElementById('btn');
+	var uli = document.getElementById('uli');
+	obtn.onclick = function(){
+
+		var oajax = new XMLHttpRequest();
+		oajax.open("GET","http://127.0.0.1:3000/5.25.1.txt",true);
+		//发送请求  yibu异步true
+		oajax.send();
+
+		//监听
+		oajax.onreadystatechange = function(){
+			console.log(oajax.readyState);
+			if (oajax.readyState==4) {
+				console.log(oajax.status);
+				if(oajax.status==200){
+				console.log('get data' ,oajax.responseText);
+				var arr = JSON.parse(oajax,responseText);
+				for (var i = 0; i < arr.length; i++) {
+				
+				var oli = document.createElement(li);
+				oli.innerHTML = '姓名'+arr[i].name+'年龄'+arr[i].age
+				uli.append(oli);
+				}
+				
+			}else{
+				console.log('get data fail:',oajax.status)
+			}
+			}
+
+		}
+	}
+</script>
+</html>
