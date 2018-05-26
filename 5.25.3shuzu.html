@@ -6,13 +6,17 @@
 </head>
 <body>
 <input type="button" value="按钮" name="" id="btn">
+<ul id="uli">
+	<li></li>
+</ul>
 </body>
 <script type="text/javascript">
 	var obtn = document.getElementById('btn');
+	var oul = document.getElementById('uli');
 	obtn.onclick = function(){
 
 		var oajax = new XMLHttpRequest();
-		oajax.open("GET","http://127.0.0.1:3000/text1.txt",true);
+		oajax.open("GET","http://127.0.0.1:3000/5.25.3.txt",true);
 		//发送请求  yibu异步true
 		oajax.send();
 
@@ -23,9 +27,24 @@
 				console.log(oajax.status);
 				if(oajax.status==200){
 				console.log('get data' ,oajax.responseText);
-			}else{
-				console.log('get data fail:',oajax.status)
-			}
+				//默认字符串
+				var arr = JSON.parse(oajax.responseText);
+				console.log(arr[0]);
+				console.log(arr[1]);
+					for (var i = 0; i < arr.length; i++) {
+					
+					var oli = document.createElement('li');
+					 oli.innerHTML = "姓名"+arr[i].name +"年龄"+ arr[i].age;
+
+					oul.appendChild(oli);
+					
+					}
+				}
+				else{
+					console.log('get data fail:',oajax.status)
+					}
+				
+				
 			}
 
 		}

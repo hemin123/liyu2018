@@ -3,11 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>ajax</title>
+	<!-- 
+			 5.24.2.js 
+			 获取数据，然后输出到界面
+			 html中的json
+			 http://127.0.0.1:3000/5.24.3.json
+	 -->
+	
 </head>
 <body>
 <input type="button" value="按钮" name="" id="btn">
 <ul id="uli">
-	<li></li>
+	<li>姓名：xxx班级：4</li>
 </ul>
 </body>
 <script type="text/javascript">
@@ -27,10 +34,13 @@
 				console.log(oajax.status);
 				if(oajax.status==200){
 				console.log('get data' ,oajax.responseText);
-				var obj = JSON.parse(oajax,responseText);
+				console.log(typeof oajax.responseText);
+				// 在网络传输的都是文本，都是txt都是字符串
+				var obj = JSON.parse(oajax.responseText);
+				// 需要解析一下
 				console.log(obj.name);
 				console.log(obj.age);
-				var oli = document.createElement(li);
+				var oli =document.createElement('li');
 				oli.innerHTML = '姓名'+obj.name+'年龄'+obj.age
 				uli.append(oli);
 			}else{

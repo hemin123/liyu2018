@@ -18,11 +18,10 @@
 		var oajax = new XMLHttpRequest();
 		oajax.open('POST','http://127.0.0.1:3000/postreq',true);
 		oajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
 		//请求头
-
 		
 		oajax.send("name=tom&age=18");
+		//船chuansong
 
 		//监听
 		oajax.onreadystatechange = function(){
@@ -31,13 +30,6 @@
 				console.log(oajax.status);
 				if(oajax.status==200){
 				console.log('get data' ,oajax.responseText);
-				// var arr = JSON.parse(oajax,responseText);
-				// for (var i = 0; i < arr.length; i++) {
-				
-				// var oli = document.createElement(li);
-				// oli.innerHTML = '姓名'+arr[i].name+'年龄'+arr[i].age
-				// uli.append(oli);
-				// }
 				
 			}else{
 				console.log('get data fail:',oajax.status)

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>post请求</title>
+</head>
+<body>
+<input type="button" value="按钮发送POST请求" name="" id="btn">
+<ul id="uli">
+</ul>
+</body>
+<script type="text/javascript">
+	(function(w){
+		function ajax(method,url,data,fnsucc,fnfail){
+
+			//創建ajax對象
+			var oAjax = new XMLHttpRequest();//XHR
+			if(method == "POST"){//POST请求
+				//2.和服务器建立连接
+				oAjax.open(method,url,true);
+				oAjax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				//3.发送请求
+				oAjax.send(data);		
+			}else{
+			 	if(data){
+					url = url + "?" + data;
+				}
+				//2.和服务器建立连接
+				oAjax.open(method,url,true);
+				//3.发送请求
+				oAjax.send();
+			}
+			
+			//chuansong
+			//监听
+			oAjax.onreadystatechange = function(){
+				console.log(oAjax.readyState);
+				if(oAjax.status == 200){
+	            		fnsucc(oAjax.responseText);
+	            	}else{
+	            		if(fnFaild){
+	            			fnfail(oAjax.status);
+	            		}
+	            	}
+
+			}
+
+		}
+	
+	w.ajax=ajax;
+	})(window);
+
+	var obtn = document.getElementById('btn');
+	obtn.onclick = function(){
+		ajax('GET',
+			'http://127.0.0.1:3000/5.24.3.json',
+			"",
+			function(val){
+			   console.log('get data',val);
+			});
+	}
+</script>
+</html>
