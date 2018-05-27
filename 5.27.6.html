@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery核心</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 20px;
+			height: 80px;
+			border: 2px solid #000;
+		}
+
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		var res = $(function(){
+			console.log($(null));
+			console.log($(false));
+			console.log($(''));
+			console.log($(undefined));
+			console.log($(0));
+
+
+			console.log($('div'));
+			console.log($('#box'));
+			console.log($('<h1>hhhh</h1><p>666666</p>'));
+			var obox = document.getElementById('box');
+			console.log(obox);
+			// jQuery对象
+			console.log(jQuery);
+
+		})
+		console.log(res);
+		console.log($('res'));
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	<div></div>
+	<div></div>
+	<div></div>
+
+</body>
+</html>

@@ -2,7 +2,15 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>post请求</title>
+	<title>跨域请求</title>
+	<!--
+		 端口号80  443
+		 dns解析就是解析域名到ip
+
+		 域名端口都一样不发生跨域，不一样就发送跨域
+		 
+
+	 -->
 </head>
 <body>
 <input type="button" value="按钮发送POST请求" name="" id="btn">
@@ -38,7 +46,7 @@
 				if(oAjax.status == 200){
 	            		fnsucc(oAjax.responseText);
 	            	}else{
-	            		if(fnfaild){
+	            		if(fnfail){
 	            			fnfail(oAjax.status);
 	            		}
 	            	}
@@ -53,8 +61,9 @@
 	var obtn = document.getElementById('btn');
 	obtn.onclick = function(){
 		ajax('GET',
-			'http://127.0.0.1:3000/5.24.3.json',
+			'http://www.b.com:3000/5.24.3.json',
 			"",
+			// 域名不一样。给一个权限，跨域
 			function(val){
 			   console.log('get data',val);
 			});

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>冲突jquery</title>
+<!-- 	
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous">
+  	
+  </script> -->
+
+  <script type="text/javascript">
+  	
+	(function(w){
+		function text(){
+			alert('aaa');
+		}
+		w.$=text;
+	})(window);
+		
+  </script>
+  <script src="jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		//当页面DOM结构加载完毕后执行回调函数   
+	var kz =jQuery.noConflict();
+		// $();
+		kz(function(){
+			var name = 'sshhhhs';
+			alert(name);
+		})
+	$();
+	//法一
+	   jQuery.noConflict();
+		// $();
+		jQuery(function(){
+			var name = 'sshh00000hhs';
+			alert(name);
+		})
+	$();
+
+
+
+	</script>
+</head>
+<body>
+<div>
+	<img src="555.jpg" alt="">
+</div>
+</body>
+</html>
