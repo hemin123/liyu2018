@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jqueryholdread</title>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$.holdRead(true);
+		$(function(){
+			console.log(142);
+		})
+		var obtn = document.getElementsByTagName('input')
+		obtn.onclick = function(){
+			$.holdRead(false);
+		}
+	</script>
+</head>
+<body>
+	<input type="button">
+	核心函数讲完
+
+</body>
+</html>

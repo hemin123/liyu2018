@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性与属性节点</title>
+	<!-- 还不会 -->
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+	$(function(){
+		var obj ={};
+		obj.name = 'aa';
+		console.log(obj.name);
+		var odiv = document.getElementById('box');
+		odiv.name = 'bb';
+		odiv.id = 'bb';
+		console.log(odiv.name);
+		// 写在标签上的叫节点属性name id class
+		// 如何在控制台查看是不是属性节点
+
+	})
+	</script>
+
+</head>
+<body>
+<div class="hhh" id="box"></div>
+</body>
+</html>

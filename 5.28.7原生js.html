@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原生js属性</title>
+	<script type="text/javascript">
+		var odiv = document.getElementById('box1');
+		console.log(odiv.getAttribute('class'));
+		console.log(odiv.id);
+		console.log(odiv[id]);
+		console.log(odiv.getAttribute('index'));
+		odiv['index']='bbb';
+		odiv.index='bbb';
+		odiv.getAttribute(index,'jjj');
+		//中括号和打点只能操作原生的，自带的属性，自己设置的属性不行。get可以
+	</script>
+</head>
+<body>
+<div id="box1" class="hh"></div>
+</body>
+</html>

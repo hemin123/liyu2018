@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq内容过滤</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//返回的都是jq对象，相当于选择器
+			console.log($('div:empty'))
+			console.log($('div:parent'))
+			console.log($('div:contains(我)'))
+			console.log($('div:has(p)'))
+							//有没有
+			console.log($('div:contains()'))
+		})
+	</script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div>符合垃圾放假啦和</div>
+<div>ihi哦我发黑虎泉王菲和覅u胡恢复后返回</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq基本过滤</title>
+		<script src="jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				console.log($('div:eq(0)'));
+				console.log($('div:eq(-1)'));//最后一个
+				console.log($('div:eq(2)'));
+				console.log($('div:eq(2)').index());
+				// index看第几个元素
+			})
+		</script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq选择器</title>
+	<style type="text/css">
+		div{
+			width: 222px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			console.log($('div'));
+			console.log($('#box'));
+			console.log($('.div1'));
+			//以前写的js选择器都可以用
+			//返回的是jQuery对象
+		})
+	</script>
+</head>
+<body>
+<div id="box"></div>
+<div class="div1"></div>
+<div id="box"></div>
+<input type="button">
+
+</body>
+</html>

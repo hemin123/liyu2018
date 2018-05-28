@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery静态方法--数组</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var ali = document.getElementsByTagName('li');
+			var arr=[45,57,45,41,45];
+			var like ={0:'jj',1:'kkk',2:'uuu',length:3};
+								//伪数组
+			
+			
+			arr.forEach(function(value,index){
+				console.log(value);
+			})
+
+			/*
+			ali.forEach(function(value,index){
+				console.log(value);
+			})
+			like.forEach(function(value,index){
+				console.log(value);
+			})
+			//只可以遍历数组，这两个forEach遍历不了
+			*/
+			
+			//有下标0 1 2 ..，有length属性就可以遍历
+			$.each(ali,function(index,value){
+				console.log(value,":::",index);
+			})
+			$.each(arr,function(index,value){
+				console.log(value,":::",index);
+			})
+			$.each(like,function(index,value){
+				console.log(value,":::",index);
+			})
+			//jquery可以遍历自己定义的数组，伪数组
+
+
+			// arr.map(function(value,index){
+			// 	console.log(value);
+			// })
+			/*
+			ali.map(function(value,index){
+				console.log(value);
+			})
+			like.map(function(value,index){
+				console.log(value);
+			})
+			*/
+			//map只可以遍历数组
+
+
+			$.map(ali,function(index,value){
+				console.log(value,":::",index);
+			})
+			$.map(arr,function(index,value){
+				console.log(value,":::",index);
+			})
+			$.map(like,function(index,value){
+				console.log(value,":::",index);
+			})
+			//都可以遍历
+
+
+
+		})
+
+	</script>
+</head>
+<body>
+	<ul>
+		<li>3</li>
+		<li>3</li>
+		<li>33</li>
+		<li>333</li>
+		<li>3333</li>
+	</ul>
+
+</body>
+</html>

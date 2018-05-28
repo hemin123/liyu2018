@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq获取attr与prop</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		// 真假属性用prop其他用remove
+		$(function(){
+			$('input').attr('value');
+			console.log($('input').attr('value'));
+			console.log($('input').prop('value'));
+			//获取jq对象第一个元素属性值
+			console.log($('input').attr('value','bbb'));
+			//获取的是第一个，设置的是所有
+			console.log($('input').prop('value','hhh'));
+
+			console.log($('input').removeAttr('value'));
+			console.log($('input').removeProp('value'));
+			//attrremove会删去prop会变成undefined。
+
+			console.log($('input').eq(-1));
+			console.log($('input').eq(-1).attr('checked'));
+			console.log($('input').eq(-1).prop('checked'));
+			//有真有假attr会是undefined prop输出布尔值
+
+			$('input').eq(-1).attr('checked',true);
+			$('input').eq(-1).prop('checked',true);
+
+			$('input').eq(-1).prop('checked',true);
+
+
+
+		})
+	</script>
+</head>
+<body>
+<input type="text" value="aaa">
+<input type="text" value="aaa">
+<input type="text" value="aaa">
+<input type="checkbox" checked="checked" value="aaa">
+</body>
+</html>
