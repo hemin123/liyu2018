@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自动触发a标签</title>
+<!-- 
+注意a标签用trigger不阻止事件冒泡,但是会阻止默认行为,如果需要发生默认行为需要触发  a标签的子元素
+
+ -->
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('a').click  (function(ev){
+				alert('click');
+			
+			})
+			//$('a').eq(1).trigger('click');
+			//$('span').eq(1).trigger('click');
+			//$('input').eq(1).triggerHandler('click');
+
+
+
+			$('input').eq(1).click(function(){
+				alert(545);
+			});
+
+			//$('input').eq(1).trigger('click');
+			//$('input').eq(1).triggerHandler('click');
+			//trigger会自动提交
+			//triggerHandler不会自动提交
+			
+		})
+	</script>
+</head>
+<body>
+<a href="http://www.baidu.com">跳转不跳转</a>
+<a href="http://www.baidu.com"><span>跳转不跳转</span></a>
+<div></div>
+<form action="http://www.baidu.com">
+	<input type="text" name="username">
+	<input type="submit" value=提交>
+
+</form>
+</body>
+</html>

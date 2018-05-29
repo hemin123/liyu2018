@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件绑定</title>
+	<style type="text/css">
+		div{
+			width: 500px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 法一（有些事件可能绑定不了）
+		// $('div').click(function(){
+		// 	alert(42);
+		// });
+		// $('div').mouseover(function(){
+		// 	alert(342);
+		// });
+		// // 法二
+		$('div').on('click',function(){
+			alert(242);
+		})
+		$('div').on('mouseover',function(){
+			alert(242);
+		})
+/*
+		function text1(){
+			console.log(11);
+			alert(45);
+		}
+		$('div').click(function(){
+			text1();
+		});
+*/
+		//$('div').off();
+		// 选中对象的全是事件移除
+		//$('div').off('onmouseover')
+
+		//$('div').off('click',text1());
+		//函数移除
+		// 移除的三种方法
+		//jQuery对象.off() 移除所有的事件
+		//jQuery对象.off('事件名') 移除所有事件名对应的事件
+		//jQuery对象.off('事件名',函数名)移除事件名对应的函数名的相关事件
+	})
+</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

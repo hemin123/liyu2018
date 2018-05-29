@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自动触发</title>
+	<!-- 
+	两种方式
+		$('div').trigger('click');
+		$('div').triggerHandler('click'); 
+	-->
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width:50px ;
+			height:50px;
+			background: red;
+
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('div').click(function(){
+				alert('触发');
+			})
+			//$('div').trigger('click');
+			$('div').triggerHandler('click');
+
+		})
+	</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

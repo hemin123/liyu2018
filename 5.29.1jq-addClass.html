@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq 添加删除类-class</title>
+	<style type="text/css">
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var obtn = document.getElementsByTagName('button')[0];
+			var obtn1 = document.getElementsByTagName('button')[1];
+			var obtn2 = document.getElementsByTagName('button')[2];
+			obtn.onclick = function(){
+				// 三种方法
+				$('div').addClass('box');
+				
+				// $('div').toggleClass('box');
+
+				// $('div').attr('class','box');
+				// attr也可以一般不这样用
+			}
+			obtn1.onclick = function(){
+				$('div').removeClass();
+			}
+			obtn2.onclick = function(){
+				$('div').toggleClass('box');
+			}
+		})
+	</script>
+</head>
+<body>
+	<button>添加</button>
+	<button>删除</button>
+	<button>没有就添加，有的话删除</button>
+<div></div>
+</body>
+</html>

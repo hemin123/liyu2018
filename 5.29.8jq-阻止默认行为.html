@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>阻止默认行为</title>
+	<!-- 
+	阻止默认
+		方法一 return false
+		方法二 event.preventDefault()
+	 -->
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('a').click  (function(ev){
+				alert('click');
+				//两种方法阻止默认行为
+				//return false;
+				//ev.preventDefault();
+			})
+		})
+	</script>
+</head>
+<body>
+<a href="http://www.baidu.com">跳转不跳转</a>
+</body>
+</html>

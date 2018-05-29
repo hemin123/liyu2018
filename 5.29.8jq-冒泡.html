@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq事件冒泡</title>
+	<!-- 
+		阻止冒泡（加在最里面的盒子）
+		方法一 return false
+		方法二 event.stopPropagation()
+
+	 -->
+	<style type="text/css">
+		.fa2{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		.fa1{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.fa{
+			width: 50px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+
+	</style>
+		<script src="jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.fa').click(function(ev){
+				alert('进入');
+				//ev.stopPropagation();
+				return false;
+
+			});
+			$('.fa1').click(function(){
+				alert(45);
+			});
+			$('.fa2').click(function(){
+				alert('over');
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="fa2">
+		<div class="fa1">
+			<div class="fa"></div>
+		</div>
+	</div>
+
+</body>
+</html>

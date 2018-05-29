@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自动触发区别</title>
+	<style type="text/css">
+		.fa2{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		.fa1{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.fa{
+			width: 50px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+
+	</style>
+		<script src="jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.fa').click(function(){
+				alert('进入');
+
+			});
+			$('.fa1').click(function(){
+				alert(45);
+			});
+			$('.fa2').click(function(){
+				alert('over');
+			});
+			$('div').trigger('click');
+			//$('.fa').triggerHandler('click');
+			//jQuery对象.trigger('事件名') 不阻止事件冒泡和默认行为的事件触发
+
+			//jQuery对象.triggerHandler('事件名') 阻止事件冒泡和默认行为的事件触发
+		})
+	</script>
+</head>
+<body>
+	<div class="fa2">
+		<div class="fa1">
+			<div class="fa"></div>
+		</div>
+	</div>
+
+</body>
+</html>
