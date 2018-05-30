@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-事件委托</title>
+	<!-- <script src="jquery-1.12.4.js"></script> -->
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			/*
+			$('li').click(function(){
+				console.log(this);
+				alert($(this).html());
+			})
+			$('ul').delegate('li','click',function(){
+				//事件委托(绑定一次)
+				alert('aa');
+				alert($(this).html());
+			})
+			*/
+
+
+			$('button').click(function(){
+				// $('ul').delegate('li','click',function(){
+				// 	this.innerHTML='hskdhk';
+				// })
+				console.log(this);
+				//忘了
+			})
+
+		})
+	</script>
+</head>
+<body>
+	<button>dian点击j</button>
+	<ul>
+		<li>li1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

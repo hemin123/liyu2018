@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-自定义动画\</title>
+	<style type="text/css">
+		div{
+			width: 80px;
+			height: 150px;
+			background: red;
+			margin-top: 10px;
+			/*display: none;*/
+		}
+
+	</style>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			$('button').click(function(){
+				$('div').eq(0).animate({
+					width:500,
+					
+				},1000,'swing'
+				)
+				//先慢后快
+				$('div').eq(1).animate({
+					width:500,
+					
+				},1000,'linear'
+				)
+				//匀速
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>动画</button>
+	
+	<div></div>
+	<div></div>
+</body>
+</html>

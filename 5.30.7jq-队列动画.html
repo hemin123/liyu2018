@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-列队动画\</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*display: none;*/
+		}
+
+	</style>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			$('button').click(function(){
+				/*
+				$('div').animate({
+					width:500
+		
+				},1000);
+				$('div').animate({
+				
+					height:"-=50"
+				},1000);
+				$('div').animate({
+					width:300
+				},1000);
+				*/
+				/*
+				$('div').animate({
+					width:500
+		
+				},1000).animate({
+					opacity:0.3
+				},1000);
+				*/
+				$('div').animate({
+					width:500,
+					
+				},1000,function(){
+					$('div').animate({
+						opacity:0.3
+					},1000);
+				})
+
+				//三种实现方法
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>动画</button>
+	
+	<div></div>
+</body>
+</html>

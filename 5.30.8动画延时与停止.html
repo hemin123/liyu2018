@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-列队动画\</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*display: none;*/
+		}
+
+	</style>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			$('button').eq(0).click(function(){
+			
+			$('div').animate({
+					width:500,
+			
+				},2000).delay(3000);
+			//执行完本次动画，延时3s执行下面的程序
+			$('div').animate({
+					
+					height:"-=50"
+				},2000)
+
+		
+			$('div').animate({
+					
+				width:20
+				},2000)
+
+			})
+			$('button').eq(1).click(function(){
+			$('div').stop();
+			})
+	/*如果不传参数,停止当前正在执行的动画,然后把后续的动画执行完毕
+第一个参数默认是false,表示不清空,如果是true,后续动画不执行
+第二个参数默认是false,表示停止在当前状态,如果是ture,则跳到正在执行动画的最后状态*/
+		})
+	</script>
+</head>
+<body>
+	<button>动画</button>
+	
+	<button>停止动画</button>
+	<div></div>
+</body>
+</html>

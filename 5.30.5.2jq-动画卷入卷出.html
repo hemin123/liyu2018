@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-动画卷入卷出</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*display: none;*/
+		}
+
+	</style>
+<script src="jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').slideDown(1000);
+			})
+			$('button').eq(1).click(function(){
+				$('div').slideUp(1000);
+			})
+			$('button').eq(2).click(function(){
+				$('div').slideToggle(1000,function(){
+					alert('取反');
+				});
+			})
+		})
+	</script>
+</head>
+<body>
+<button>进入</button>
+	<button>消失</button>
+	<button>有的话变没没的话变有</button>
+	<div></div>
+</body>
+</html>

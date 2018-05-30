@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-事件移入移出</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+		width: 250px;
+			height: 250px;
+			background: yellow;	
+
+
+		}
+		.son{
+			width: 50px;
+			height: 50px;
+			background: red;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// $('.father').onmouseover(function(){
+			// 	alert(24);
+			// })
+			// $('.father').onmouseout(function(){
+			// 	alert(243);
+			// })
+			// //1
+			$('.father').mouseenter(function(){
+				alert(24);
+			})
+			$('.father').mouseleave(function(){
+				alert(243);
+			 })
+			// //2
+			// $('.father').hover(function(){
+			// 	// alert(42);
+			// 	console.log(7986);
+			// })
+			//hover与ouseover等效         移入触发一次，移除触发一次
+
+		})
+	</script>
+</head>
+<body>
+<div class="father">
+	<div class="son"></div>
+</div>
+</body>
+</html>

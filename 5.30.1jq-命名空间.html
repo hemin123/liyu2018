@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>命名空间</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.grad{
+			width: 450px;
+			height: 450px;
+			background: blue;
+		}
+		.father{
+		width: 250px;
+			height: 250px;
+			background: yellow;	
+
+
+		}
+		.son{
+			width: 50px;
+			height: 50px;
+			background: red;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.son').on('click.zs',function(){
+				alert('0click.zs');
+			})
+			$('.son').on('click.ls',function(){
+				alert('click.ls');
+			})
+			$('.father').on('click.zs',function(){
+				alert('click.zs');
+			})
+			$('div').trigger('click.zs');
+			//自动触发只触发zs的
+
+			
+		})
+	</script>
+</head>
+<body>
+<div class ="grad">
+	<div class="father">
+		<div class="son">	</div>
+	</div>
+</div>
+</body>
+</html>
