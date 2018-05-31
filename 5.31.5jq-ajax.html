@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax接口</title>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('button').click(function(){
+				$.ajax({
+					url:'http://127.0.0.1:3000/5.24.3.json',
+					type:"GET",
+					// data:"name=name&age=12",
+					data:{"name":18,"age":30},
+					dataType:'json',
+					success:function(data,stataing,jqxhr){
+						console.log("success",data,stataing,jqxhr);
+					},
+					error:function(stataing,jqxhr){
+						console.log("err",stataing,jqxhr);
+					}
+
+					// success:function(data){
+					// 	console.log(data);
+					// }
+				})		
+			})
+		})
+		
+	</script>
+</head>
+<body>
+<button>获取</button>
+</body>
+</html>

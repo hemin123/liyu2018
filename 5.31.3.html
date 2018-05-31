@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>替换节点</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('button').click(function(){
+	
+				var $h1= $('<h1>jjjj</h1>');
+				//$('div').replaceWith($h1);
+				$('div').replaceWith('<h2>hh</h2>');
+				//$h1.replaceAll('div');
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div>hhhhhh</div>
+</body>
+</html>

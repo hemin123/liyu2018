@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>复制节点</title>
+	<style type="text/css">
+		div{
+			width: 150px;
+			height: 40px;
+			background: red;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('div').click(function(){
+				console.log('hhh');
+			})
+			$('button').click(function(){
+			
+				
+				var $div =$('div').clone();
+				console.log($div);
+				$('body').append($div);
+				var $div =$('div').clone(false);
+				console.log($div);
+				$('body').append($div);
+				//默认是false不会复制事件,true会复制事件
+
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div>hhhhhh</div>
+</body>
+</html>

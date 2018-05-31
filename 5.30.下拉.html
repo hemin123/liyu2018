@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>下拉框</title>
+	<style type="text/css">
+		.one,.two{
+			width: 200px;
+			height: 100px;
+			
+			display: inline-block;
+			/*margin: 50px auto;*/
+			/*border: 1px solid #000;*/
+		}
+		.one,.two{
+			background: red;
+			width: 80px;
+			height: 20px;
+			position: relative;
+			top: 2px;
+			left: 20px;
+			cursor: pointer;
+		}
+		ul{
+			display: none;
+		}
+		ul li{
+			list-style: none;
+			width: 80px;
+			height: 20px;
+			border: 1px solid #000;
+			text-align: center;
+			cursor: pointer;
+			position: relative;
+			top: -15px;
+			left: -40px;
+		}
+
+
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.one').eq(0).mouseenter(function(){
+				$('ul').eq(1).fadeIn(200);
+			})
+			$('.one').eq(0).mouseleave(function(){
+				$('li').eq(1).fadeOut(200);
+			})
+
+
+		})
+	</script>
+</head>
+<body>
+	<div class="one">	
+		<div class="one1">
+		<span>选项一</span>
+		<i class="iconfont">&and;</i>
+		</div>
+	<ul >
+		<li>
+			
+
+		</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	</div>
+	<div class="two">
+		<div class="two1">
+		<span>选项二</span>
+		<i class="iconfont">&and;</i>
+		</div>
+		
+	<ul>
+
+		<li>
+			
+		</li>
+		<li>11</li>
+		<li>22</li>
+		<li>33</li>
+	</ul>
+
+	</div>
+	
+	
+</body>
+</html>

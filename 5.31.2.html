@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>删除节点</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('button').click(function(){
+	
+				 var vas = $('div').remove();
+				//又返回值
+				//$('div').empty();
+				// $('div').detach();
+
+				console.log(vas);
+				$('body').append(vas)
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div>hhhhhh</div>
+</body>
+</html>
