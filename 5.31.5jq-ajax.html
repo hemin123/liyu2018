@@ -8,15 +8,30 @@
 			$('button').click(function(){
 				$.ajax({
 					url:'http://127.0.0.1:3000/5.24.3.json',
+	//用  5.24.2.js
 					type:"GET",
 					// data:"name=name&age=12",
 					data:{"name":18,"age":30},
+	//用5.24.3.js
 					dataType:'json',
 					success:function(data,stataing,jqxhr){
 						console.log("success",data,stataing,jqxhr);
 					},
 					error:function(stataing,jqxhr){
 						console.log("err",stataing,jqxhr);
+					},
+					complete:function(jqxhr,stataing){
+						console.log("complete",jqxhr,stataing)
+					},
+					// timeout:1000
+
+					statusCode:{
+						404:function(){
+							console.log("not found");
+						}
+					},
+					headers:{
+						"text":"kuazhu"
 					}
 
 					// success:function(data){
