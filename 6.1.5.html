@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对象级别插件</title>
+	<!-- 
+			jq对象上面添加方法
+
+			未完成
+	 -->
+	<style>
+		div{
+			width: 555px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		;(function($){
+			console.log($.prototype == $.fn);
+		
+			$.fn.extend({
+				setColor:function(option){
+					var defaults = {
+					color:'red'
+				}
+				option = $.extend(defaults,option)
+
+				this.each(function(){
+					this.style.color = option.color;
+				})
+				
+				}
+
+			});
+
+
+
+
+
+		})(jquery);
+	</script>
+	<script type="text/javascript">
+		$(function(){
+
+			$.prototype.setColor = function(option){
+				console.log(this);
+				
+				//this.css('color','red');
+
+				console.log(option);
+
+				var defaults = {
+					color:'red'
+				}
+				option = $.extend(defaults,option)
+
+				this.each(function(){
+					this.style.color = option.color;
+				})
+				
+				//this.css('color',option.color);
+			}
+
+
+			$('button').click(function(){
+				//$('div').css('color','red');
+				$('div').setColor({
+					color:"blue"
+				});
+				//$('div').setColor();
+
+
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div>erggg</div>
+</body>
+</html>

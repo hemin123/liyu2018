@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>类级别插件静态方法</title>
+<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	console.log($);
+	function Person(){
+
+	}
+	Person.sayhi= function(){
+		alert('hi');
+
+	}
+	Person.sayhi();
+	//$.sayhi();
+	//法一
+
+	$.extend({
+		sayhi:function(){
+			alert('hsi');
+		}
+	});
+	$.sayhi();
+	//法二
+
+	var obj={
+		sayhi:function(){
+			alert('jio');
+		}
+	}
+	obj.sayhi();
+	$.zs = obj;
+
+	$.zs.sayhi();
+	//法三
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

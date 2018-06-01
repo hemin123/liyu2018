@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jqXHR</title>
+		<script src="jquery-1.12.4.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			$('button').click(function(){
+				var jqXHR=$.ajax({
+					url:'./5.24.3.json',
+					type:'GET',
+					dataType:'json',
+				});
+				jqXHR.done(function(){
+					console.log("done")
+				});
+				jqXHR.fail(function(){
+					console.log("fail");
+				});
+				jqXHR.always(function(){
+					console.log("always");
+				});
+
+			})
+
+		})
+	</script>
+</head>
+<body>
+<button>获取</button>
+</body>
+</html>

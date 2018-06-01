@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax接口</title>
+<script src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(document).ajaxStart(function(){
+				console.log("start");
+			})
+			$(document).ajaxStop(function(){
+				console.log("stop");
+			})
+			$(document).ajaxSuccess(function(){
+				console.log("success");
+			})
+			$(document).ajaxComplete(function(){
+				console.log("complete");
+			})
+			$(document).ajaxError(function(){
+				console.log("error");
+			})
+
+			$('button').click(function(){
+				$.ajax({
+					url:'./5.24.3.json',
+					type:'GET',
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+
+					}
+
+
+				})
+			});
+		})
+		
+	</script>
+</head>
+<body>
+<button>获取</button>
+</body>
+</html>
