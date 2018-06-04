@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>turnjs-dome</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 900px;
+			height: 600px;
+			border: 1px solid #000;
+			position: relative;
+			top: 30px;
+			left: 250px;
+		}
+		.book{
+			width: 900px;
+			height: 600px;
+			background: red;
+			position: absolute;
+		}
+
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	<script src="./turnjs4/lib/turn.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			// $('.book').turn();
+			$('.book').turn();
+		})
+	</script>
+</head>
+<body>
+
+	<div class="box">
+		<div class="book">
+			<div style="background: url(./turnjs4/samples/basic/pages/1.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/2.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/3.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/4.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/5.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/3.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/4.jpg);">
+			</div>
+			<div style="background: url(./turnjs4/samples/basic/pages/5.jpg);">
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

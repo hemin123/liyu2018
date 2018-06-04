@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单</title>
+	<script src="jquery-1.12.4.js"></script>
+	<script src="6.3jquery.validate.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#reg').validate({
+				rules:{
+					usename:{
+					required:true,
+					rangelength:[2,8]
+					}
+				}
+
+			})
+		})
+	</script>
+</head>
+<body>
+	<form action="https://www.baidu.com/" id="reg">
+	<div>姓名
+		<input type="text" name="usename" id="usename">
+	</div>	
+	<div>
+		<input type="submit">
+	</div>	
+
+
+
+	</form>
+
+</body>
+</html>

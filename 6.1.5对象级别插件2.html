@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对象级别插件</title>
+	<!-- 
+			jq对象上面添加方法
+
+			
+	 -->
+	<style>
+		div{
+			width: 555px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="jquery-1.12.4.js"></script>
+	
+	<script type="text/javascript">
+
+		$(function(){
+
+			$.prototype.setColor = function(option){
+				console.log(this);
+				
+				//this.css('color','red');
+
+				console.log(option);
+
+				var defaults = {
+					color:'red'
+				}
+				option = $.extend(defaults,option)
+				//jq的方法
+				//extend就是option有值的话取option，
+				//			没有的话取defauls
+				this.each(function(){
+					//each指代每个dom节点
+					this.style.color = option.color;
+				})
+				
+				//this.css('color',option.color);
+			}
+
+
+			$('button').click(function(){
+				//$('div').css('color','red');
+				//默认的自带的css属性
+
+				// $('div').setColor({
+				// 	color:"blue"
+				// });
+				$('div').setColor();
+				//传递参数不传递参数设置字体颜色
+
+
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div>erggg</div>
+	<div>erggg</div>
+	<div>erggg</div>
+	<div>erggg</div>
+</body>
+</html>
