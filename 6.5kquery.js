@@ -22,7 +22,7 @@ var
 				});
 				this[0] = document;
 				this.length = 1;
-				return this;
+				
 			//处理字符串	
 			}else if(kQuery.isString(selector)){
 				
@@ -32,7 +32,7 @@ var
 					
 
 					[].push.apply(this,tmpDom.children);
-					return this;
+					
 				//选择器处理	
 				}else{
 					var doms = document.querySelectorAll(selector);
@@ -44,8 +44,9 @@ var
 					this.length = doms.length;
 					*/
 					[].push.apply(this,doms);
-					return this;
-				}	
+					
+				}
+				return this;	
 			}
 		
 

@@ -3,20 +3,60 @@
 <head>
 	<title></title>
 	<script src="jquery-1.12.4.js"></script>
+	<script src="6.5kjquery.js"></script>
 
 	<script type="text/javascript">
 		function Person(){
 
 		}
 		var obj = {
+			test1:function(){
+				console.log('test1');
+			},
+			test2:function(){
+				console.log('test2');
+			}
+		}
+/*
+		for(key in obj){
+				Person[key]=obj[key];
+		}
+		Person.test1();
+		Person.test2();
+		//法一
+*/
 
+		/*Person.extend= function(obj){
+			//给person上面加方法
+			for(key in obj){
+				this[key]=obj[key];
+				//this就是person
+			}
 		}
 
-		Person.extend = Person.prototupe.extend = function(obj){
+		Person.extend(obj);
+		Person.test1();
+		Person.test2();*/
+
+
+
+		/*Person.prototype.test3 = function(){
+			console.log('text3');
+		}
+		var p =new Person();
+		p.test3();*/
+
+
+
+		Person.extend = Person.prototype.extend = function(obj){
 			for(key in obj){
 				this[key]=obj[key];
 			}
 		}
+
+		var obj{}
+
+
 	</script>
 </head>
 <body>

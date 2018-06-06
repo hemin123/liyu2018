@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>attr</title>
+<script src="jquery-1.12.4.js"></script>
+	<!-- <script src="6.6kquery.js"></script> -->
+	<script type="text/javascript">
+		$(function(){
+			$('button')[0].onclick =function(){
+				console.log($('div').attr());
+				console.log($('div').attr('name'));
+				console.log($('div').attr({
+
+					class:'jjj'
+				}));
+
+
+
+				console.log($('div').removeAttr());
+				console.log($('div').removeAttr('name'));
+
+
+
+				console.log($('input').val('ccc'));
+
+
+
+
+
+			}
+		})
+	</script>
+</head>
+<body>
+	<button></button>
+	<input type="text">
+	<div class="box1" name='hh'>333</div>
+	<div class="box2" name='hho'>3333</div>
+
+
+</body>
+</html>
