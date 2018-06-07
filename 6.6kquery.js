@@ -182,6 +182,12 @@ kQuery.extend({
 			}
 		}
 		return retArr;
+	},
+	//转化为数组
+	toWords:function(str){
+		var reg=
+		console.log(str);
+		return str;
 	}
 });
 
@@ -194,33 +200,39 @@ kQuery.fn.extend({
 			})
 			return this;
 			
-
 		}else{
 			return this[0].innerHTML;
+			//不传返回内容   html类型
 		}
 	},
 	text:function(content){
 		if (content) {
-			this.each(function(content){
-				this.innerHTML=content;
-			})
+			this.each(function(){
+				this.innerText=content;
+			});
+			return this;
 
 		}else{
 			var str='';
 			this.each(function(){
-				str+=this.innerHTML;
-			})
+				str+=this.innerText;
+				//文本类型
+			});
 			return str;
 
 		}
 
 	},
-	/*attr:function(arg1,arg2){
+	attr:function(arg1,arg2){
 		if (kQuery.isObject(arg1)) {
-			var dom = this;
-			kQuery.each(arg1,function(attr,val){
-
+			//obj类型的话走这里
+			this.each(function(){
+				var dom = this;
+				kQuery.each(arg1,function(attr,val){
+					dom.setAttribute(attr,val);
+				})
 			})
+			
 		}else{
 			if (arguments.length==1) {
 				//获取第一个dom节点属性值
@@ -228,11 +240,11 @@ kQuery.fn.extend({
 			}else if(arguments.length==2){
 				this.each(function(){
 					this.setAttribute(arg1,arg2);
-				})
+				});
 
 			}
 		}
-	}*/
+	},
 	removeAttr:function(attr){
 		if (attr) {
 			this.each(function(){
@@ -247,8 +259,13 @@ kQuery.fn.extend({
 	},
 	val:function(val){
 		if (val) {
+			this.each(function(){
+				this.value=val;
+			});
+			return this;
 
 		}else{
+			return this[0].value;
 
 		}
 
@@ -256,7 +273,12 @@ kQuery.fn.extend({
 	css:function(arg1,arg2){
 		if (kQuery.isString(arg1)) {
 			if (arguments.length ==1) {
-				return getComputedStyle(this[0],false)[arg1];
+				
+				if(this[0].currentStyle){//兼容低级浏览器
+					return this[0].currentStyle[arg1];
+				}else{
+					return getComputedStyle(this[0],false)[arg1];
+				}
 
 			}else if (arguments.length ==2) {
 				this.each(function(){
@@ -277,16 +299,97 @@ kQuery.fn.extend({
 
 
 	hasClass:function(str){
-		var res=false;
-		if (str) {
+		var res = false;
+		if(str){
+			//判断是否存在指定单词的正则
+			var reg = eval('/\\b'+str+'\\b/');
+			// eval里面放字符串，同时也是js代码
+			//eval是
 			this.each(function(){
-				//传进来的class存在吗
-				console.log(this.className);
+				//判断传入的参数是否存在在DOM节点的className上
+				if(reg.test(this.className)){
+					res = true;
+					return false;
+				}
 			})
 		}
 		return res;
 
 	},
+
+	addClass:function(str){
+		var names = kQuery.toWords(str);
+		this.each(function(){
+			//如果有参数对应的class不添加,如果没有就添加
+			var $this = kQuery(this);//DOM节点转kquery对象
+			for (var i = 0; i < names.length; i++) {
+				this.className =this.className + ' ' +names[i];
+
+
+			}
+		/*	if(!$this.hasClass(str)){
+				//如果没有的话添加，有的话不添加
+				this.className =this.className + ' ' + str;
+			}*/
+		})
+		return this;
+	},
+	removeClass:function(str){
+		var names = kQuery.toWords(str);
+		this.each(function(){
+			//如果有参数对应的class不添加,如果没有就添加
+			var $this = kQuery(this);//DOM节点转kquery对象
+			for (var i = 0; i < names.length; i++) {
+				if ($this.hasClass(names[i])) {
+					var reg= eval('/\\b'+names[i]+'\\b/');
+					this.className = this.className.replace(' ');
+
+				}
+			}
+			
+		})
+		return this;
+	},
+	toggleClass:function(){
+
+	}
+})
+
+kQuery.fn.extend({
+	empty:function(){
+		this.each(function(){
+			this.innerHTML = '';
+		});
+		return this;
+	},
+	remove:function(){
+		if (selector) {
+
+		}else{
+			this.each(function(){
+				var parentNode = this.parentNode;
+				parentNode.removeChild(this);
+			});
+		}
+	},
+	append:function(){
+		if (source) {
+			var $source=kQuery
+			
+		}
+	}
+	append:function(){
+		if (source) {
+			var $source=
+
+		}
+	}
+})
+
+kQuery.fn.extend({
+	on:function(eventName,fn){
+
+	}
 })
 
 

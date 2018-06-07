@@ -22,8 +22,17 @@
 	<script type="text/javascript">
 		$(function(){
 			$('button')[0].onclick = function(){
-				console.log($('div').css('width','300px'));
-				console.log($('div').css('width'));
+				// console.log($('div').css('width','300px'));
+				// console.log($('div').css('width'));
+				console.log($('div').css({
+					width:'300px',
+					height:'300px'
+				}));
+
+				console.log($('div').hasClass('box2'));
+				// 判断有没有传入的那个class
+				console.log($('div').addClass('hr'));
+				console.log($('div').removeClass('hr'));
 			};
 		})
 
