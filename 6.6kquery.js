@@ -185,12 +185,13 @@ kQuery.extend({
 	},
 	//转化为数组
 	toWords:function(str){
-		var reg=
-		console.log(str);
-		return str;
+		var reg=/\b\w+\b/g;
+		// console.log(str);
+		return str.match(reg);
 	}
 });
 
+//kquery对象属性
 kQuery.fn.extend({
 	html:function(content){
 		console.log('hhh');
@@ -318,6 +319,10 @@ kQuery.fn.extend({
 	},
 
 	addClass:function(str){
+		var reg=/\b\w+\b/g;
+				//匹配单词，匹配类
+		console.log(str.match(reg));
+		       //根据正则的规则把str返回成一个数组
 		var names = kQuery.toWords(str);
 		this.each(function(){
 			//如果有参数对应的class不添加,如果没有就添加
@@ -334,27 +339,62 @@ kQuery.fn.extend({
 		})
 		return this;
 	},
-	removeClass:function(str){
-		var names = kQuery.toWords(str);
-		this.each(function(){
-			//如果有参数对应的class不添加,如果没有就添加
-			var $this = kQuery(this);//DOM节点转kquery对象
-			for (var i = 0; i < names.length; i++) {
-				if ($this.hasClass(names[i])) {
-					var reg= eval('/\\b'+names[i]+'\\b/');
-					this.className = this.className.replace(' ');
+	removeClass:function(str){	
+		if (str) {
+			var names = kQuery.toWords(str);
+			this.each(function(){
+				//如果有参数对应的class不添加,如果没有就添加
+				var $this = kQuery(this);//拿到kquery对象
+				for (var i = 0; i < names.length; i++) {
+					if ($this.hasClass(names[i])) {//DOM节点转kquery对象
+						console.log('把'+this.className+'上的'+names[i]+'删掉')
+						var reg= eval('/\\b'+names[i]+'\\b/');
+						this.className = this.className.replace(reg,'');
 
+					}
 				}
-			}
-			
-		})
+				
+			});
+		}else{
+			this.each(function(){
+				this.className = '';
+			});
+		}
+		
 		return this;
 	},
-	toggleClass:function(){
+	toggleClass:function(str){
+		if (str) {
+			var names=kQuery.toWords(str);
+			this.each(function(){
+				console.log(this);
+				var $this= kQuery(this);
+				console.log($this);
+				for (var i = 0; i < names.length; i++) {
+					if ($this.hasClass(names[i])) {
+						//如果有的话，删除
+						$this.removeClass(names[i]);
+					}else{
+						//没有的话添加
+						$this.addClass(names[i]);
+					}
+				}
+			});
+
+		}else{
+			this.each(function(){
+				this.className = '';
+			});
+
+		}
+		//返回的是对象
+		console.log(this);
+		return this;
 
 	}
-})
+});
 
+//dom
 kQuery.fn.extend({
 	empty:function(){
 		this.each(function(){
@@ -362,35 +402,103 @@ kQuery.fn.extend({
 		});
 		return this;
 	},
-	remove:function(){
+	remove:function(selector){
 		if (selector) {
+			//获取所有的dom节点
+			var doms=document.querySelectorAll(selector);
+			this.each(function(){
+				for (var i = 0; i < doms.length; i++) {
+					//对象上面的dom节点和取出来的dom节点比较如果一样，就删除
+					if(doms[i]==this){
+						//删除
+					var parentNode = this.parentNode; //父元素
+					parentNode.removeChild(this);
+
+					}
+				}
+			});
 
 		}else{
+			//this是一个个dom节点，dom节点不能直接自己删自己
+			//需要父元素取出 然后去删除
 			this.each(function(){
-				var parentNode = this.parentNode;
+				var parentNode = this.parentNode; //父元素
 				parentNode.removeChild(this);
 			});
 		}
 	},
-	append:function(){
-		if (source) {
-			var $source=kQuery
-			
+	append:function(source){
+		if(source){//传进来的话
+			//source可能是
+			//1、kquery对象  2、DOM节点  3、HTML代码片段
+			//分情况加到this里面
+			var $source = kQuery(source);//转化为jq对象
+			this.each(function(index,value){
+				
+				var parentNode = this;//保存外面的this
+				if(index == 0){//第一个DOM元素直接插入
+					$source.each(function(){
+						//这里面的this是source里面的对象
+						parentNode.appendChild(this);
+					})
+				}else{//第一个DOM元素复制一份再插入
+					$source.each(function(){
+						//复制一份dom节点
+						var dom = this.cloneNode(true);
+						//复制一份插入
+						parentNode.appendChild(dom);
+						// parentNode.appendChild(this);
+					})					
+				}
+			})
 		}
-	}
+		return this;
+	},
 	append:function(){
 		if (source) {
-			var $source=
+			//var $source=
 
 		}
 	}
-})
+});
 
 kQuery.fn.extend({
 	on:function(eventName,fn){
+		this.each(function(){
+		
+			kQuery.addEvent(this,eventName,fn);
 
+
+		})	
 	}
-})
+	off:function(eventName,fnName){
+		if (arguments.length == 0) {
+
+		}else if (arguments.length == 1){
+			this.each(function(){
+				if (this.bucketEvent) {
+
+				}
+			});
+
+		}else if (arguments.length == 2){
+
+		}
+	}
+	clone:function(copy){
+		var res=[];
+		this.each(function(){
+			if (copy) {
+
+			}else{
+				var dom = this.cloneNode(true);
+				res.push(dom);
+
+			}
+		});
+		return kQuery(res);
+	}
+});
 
 
 

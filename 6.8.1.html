@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件测试</title>
+<script src="jquery-1.12.4.js"></script>
+	<!-- <script src="6.6kquery.js"></script> -->
+	<script type="text/javascript">
+		$(function(){
+			function test1(){
+				alert(0);
+			}
+			$('button').on('click',test1);
+			$('button').on('mouseenter',test1);
+			$('button').on('mouseleave',test1);
+
+		})
+
+	</script>
+</head>
+<body>
+	<button>btn1</button>
+	<button>btn2</button>
+	<button>btn3</button>
+
+</body>
+</html>

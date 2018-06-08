@@ -26,12 +26,23 @@
 
 				console.log($('div').hasClass('box2'));
 				// 判断有没有传入的那个class
-				console.log($('div').addClass('hr'));
-				console.log($('div').removeClass('hr'));
+				//console.log($('div').addClass('hr'));
+				//添加class
+				//console.log($('div').addClass('hr   hhh   yyy'));
 
 
-				console.log($('div').removeClass('hr'));
-				console.log($('div').removeClass('hr'));
+				//console.log($('div').removeClass('hr box1'));
+				//清除class
+				//console.log($('div').removeClass('hr'));
+				//console.log($('div').removeClass());
+									//全部类都清除
+
+
+				// console.log($('div').toggleClass());
+				//全部清除			
+				console.log($('div').toggleClass(' box2'));		//有的话删，没有的话添加	
+				// console.log($('div').toggleClass('hr box1 box3'));			
+
 			};
 		})
 
@@ -39,8 +50,8 @@
 </head>
 <body>
 	<button>ddd</button>
-	<div class="box1" name="sss"></div>
-	<div class="box2" name="ees"></div>
+	<div class="box1 hr box3" name="sss"></div>
+	<div class="box2 hr box1" name="ees"></div>
 
 </body>
 </html>

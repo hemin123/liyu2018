@@ -8,10 +8,21 @@
 	<script type="text/javascript">
 		$(function(){
 			$('button')[0].onclick = function(){
-				$('div').empty();
-				$('div').append('p');
-				$('div').prappend('p');
-			}
+				//console.log($('div').empty());
+				//清div的内容innerhtml
+			
+
+				 // console.log($('div').remove());
+					//不接收参数，删除所有的dom节点
+				console.log($('div').remove('.box1'));
+										//传进去的是选择器
+
+
+
+				console.log($('div').append('<p>pppppp</p>'));
+				console.log($('div').append($('p')));
+				console.log($('div').append($('p')[0]));
+			};
 		})
 
 
