@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		填充文字
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="700" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+
+	 ctx.save();
+	 ctx.beginPath();
+	 ctx.strokeStyle = '#f00';
+	 ctx.strokeRect(100,100,200,50);
+
+	 //绘制矩形
+	 var str= "helllo kitte";
+
+	 ctx.fillText(str,0,100);
+
+	 // ctx.textBaseline = 'middle';
+
+	 ctx.font = "50px sans-serif";
+	 ctx.textAlign = 'left';
+	 ctx.strokeText(str,0,300);
+
+
+</script>
+</html>

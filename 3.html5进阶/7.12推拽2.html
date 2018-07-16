@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<style type="text/css">
+		.container{
+			width: 500px;
+			height:500px;
+			background: blue;
+
+		}
+			.target{
+			width: 100px;
+			height:100px;
+			background: red;
+
+		}
+
+	</style>
+</head>
+<body>
+<div class="container" id="container">	</div>
+<div class="target" id="target" draggable='true'></div>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#target').on('dragstart',function(ev){
+			//ev.originalEvent.dataTransfer.getData('targetId')
+			ev.originalEvent.dataTransfer.setData('targetId',ev.target.id)
+			//数据传送
+			dataTransfer.setDragImage
+		}).on('drag',function(ev){
+			console.log('drag');
+		}).on('dragend',function(ev){
+			console.log('dragend');
+		});
+		$('#container').on('drop',function(){
+			//数据接收，不写死
+			$('#container').append($('#target'));
+			// 拖拽
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+			console.log('drager');
+			//阻止默认行为
+
+		}).on('dragover',function(){
+			console.log('dragover');
+		}).on('dragenter',function(){
+			console.log('dragenter');
+		}).on('dragleave',function(){
+			console.log('dragleave');
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,31 @@
+
+
+*{
+	margin: 0;
+	padding: 0;	
+}
+@rem:32;
+
+.rem(@attr,@px){
+    @{attr}:unit(@px/@rem,rem);
+}
+.rem(@attr,@px1,@px2){
+    @{attr}:unit(@px1/@rem,rem) unit(@px2/@rem,rem) ;
+}
+img{
+	// width: 120/32 rem;
+	.rem(width,120);
+	float: left;
+}
+
+
+.container{
+			// font-size: 15px;
+		}
+		
+		h1{
+			/*font-size: 2em;*/
+			/*font-size: 2vw;*/
+			font-size: 0.2rem;
+
+		}

@@ -1,0 +1,86 @@
+body {
+  background: red;
+}
+h2 {
+  color: #ffff00;
+  background: pink;
+}
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: pink;
+  margin-top: 5px;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: pink;
+  margin-top: 5px;
+  font-size: 30px;
+}
+.box3 {
+  width: 100px;
+  height: 100px;
+  background: pink;
+  margin-top: 5px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+.box4 {
+  width: 100px;
+  height: 100px;
+  background: pink;
+  margin-top: 5px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+.box5 {
+  border-width: 10px;
+  border-color: transparent #0000ff transparent transparent;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-style: solid;
+}
+.box6 {
+  width: 20px ;
+  height: 20px;
+  border-style: solid;
+  border-width: 40px;
+  border-color: green pink  white orange;
+}
+.list {
+  width: 220px;
+  background: #ff0;
+}
+.list li {
+  list-style: none;
+  width: 100px;
+  height: 80px;
+  background: #0f0;
+  border: 3px dashed #ccc;
+  box-sizing: border-box;
+}
+.list li a {
+  display: inline-block;
+  background: green;
+}
+.list li:hover {
+  background: #f45348;
+}
+.box7 {
+  background: #ffff00;
+  font-size: calc(50px - 10px);
+  width: calc(100% - 30px);
+}
+.box8 {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+.box9 {
+  width: 100px !important;
+  height: 100px !important;
+  background: pink !important;
+  margin-top: 5px !important;
+}

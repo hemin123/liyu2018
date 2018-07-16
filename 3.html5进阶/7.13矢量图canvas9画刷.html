@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="400" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+
+	 ctx.save();
+	 ctx.beginPath();
+	 var img = new Image();
+	 img.src='./img/1.jpg';
+
+	 img.onload = function(){
+	 	var pattern = ctr.createPattern(img,'repeat');
+
+	 	ctx.fillStyle=pattern;
+	 	ctr.pattern.fillReach()
+	 }
+
+
+</script>
+</html>

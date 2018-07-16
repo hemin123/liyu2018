@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas圆形</title>
+	<!-- 
+		圆形圆弧
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="400" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+
+
+	 ctx.beginPath();
+	 //cxt.beginPath();重新开始路径,绘制时不会绘制之前的路径
+	 ctx.strokeStyle = '#f00';
+	 ctx.arc(300,155,44,0,2*Math.PI,true);
+	 //cxt.arc(圆心x,圆心y,半径,起始角度,终止角度,是否是逆时针(true为逆时针))
+
+	ctx.stroke();
+
+</script>
+</html>

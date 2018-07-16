@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		绘制三角形，还有就是widthheight的设置
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	 		/*width: 400px;
+	 		height: 400px;*/
+	 		/*直接对图形进行缩放*/
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="400" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+	console.log(ctx);
+	ctx.moveTo(0,0);
+	ctx.lineTo(100,100);
+	ctx.lineTo(100,200);
+	ctx.strokeStyle='#f00';
+	ctx.fillStyle='#ff0';
+	ctx.lineWidth=10;
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+
+	// ctx.beginPath();
+	// ctx.lineTo(300,0);
+	// ctx.lineTo(300,50);
+	// ctx.stroke();
+
+</script>
+</html>

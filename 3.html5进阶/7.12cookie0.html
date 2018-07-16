@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cookis</title>
+	<!-- 
+		cookis最大4k
+	 -->
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//1存
+	
+	//document.cookie = 'name=ggg';
+	//console.log(document.cookie);
+
+	//过期时间设置
+
+	var oDate= new Date();
+	oDate.setDate(oDate.getDate()+14);  //设置过期时间
+	// document.cookie = "name=tom;expires=99";
+	document.cookie = "name=tom;expires="+oDate;
+
+
+</script>
+</html>

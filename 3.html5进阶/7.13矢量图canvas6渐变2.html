@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="400" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+
+	ctx.save();
+	 ctx.beginPath();
+	 ctx.strokeStyle = '#f00';
+
+	 var radialGradient = ctx.createRadialGradient(100,100,0,100,100,80); 
+
+	 radialGradient.addColorStop(0.3,'red');
+	 radialGradient.addColorStop(1,'pink');
+
+	 ctx.fillStyle =  radialGradient;
+	 ctx.arc(100,100,90,0,2*Math.PI,true);
+	 ctx.fill();
+
+	 ctx.restore();
+
+	  ctx.beginPath();
+	 ctx.strokeStyle = '#f00';
+
+	 var radialGradient = ctx.createRadialGradient(200,200,0,200,200,80); 
+
+	 radialGradient.addColorStop(0.3,'rgb(144,25,77)');
+	 radialGradient.addColorStop(1,'rgb(151,151,151)');
+
+	 ctx.fillStyle =  radialGradient;
+	 ctx.arc(200,200,90,0,2*Math.PI,true);
+	 ctx.fill();
+
+	
+
+</script>
+</html>

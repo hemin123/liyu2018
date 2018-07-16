@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>视图</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/*
+		width 500
+		1366px;屏幕      1600
+	    136px =1rem
+	    */
+		.container{
+			font-size: 15px;
+		}
+		img{
+			float: left;
+		
+			width: 4rem;
+			/*相对根元素font-size,根据屏幕变化,变化font-size*/
+		}
+		h1{
+			
+			font-size: 0.2rem;
+
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<img src="1.jpg" alt="">
+		<h1>sfknjkjkljlkjlk</h1>
+	</div>
+
+</body>
+<script type="text/javascript">
+	(function(win,doc){
+		//获取元素,获取宽度
+		var oroot = doc.getElementsByTagName('html')[0];
+
+		function refontsize(){
+			var iwidth= doc.body.clientWidth || win.documentElement.clientWidth;
+			console.log(iwidth);
+			var ifontsize = iwidth/10;
+			oroot.style.fontSize =ifontsize+'px';
+		}
+		
+
+		win.addEventListener('resize',refontsize,false);
+		 doc.addEventListener('DOMContentLoaded',refontsize,false);
+
+	})(window,document)
+</script>
+</html>

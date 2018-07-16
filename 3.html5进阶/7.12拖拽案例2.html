@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拼图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 500px;
+			height: 300px;
+			margin: 100px auto;
+		}
+		.container li{
+			list-style: none;
+			width: 100px;
+			height: 150px;float: left;
+			background: red;
+		}
+		.container img{
+			width: 100px;
+			height: 150px;
+
+		}
+	</style>
+</head>
+<body>
+	<ul class="container">
+		<li draggable='true'><img src="img/01.png" alt=""></li>
+		<li draggable='true'><img src="img/02.png" alt=""></li>
+		<li draggable='true'><img src="img/05.png" alt=""></li>
+		<li draggable='true'><img src="img/04.png" alt=""></li>
+		<li draggable='true'><img src="img/03.png" alt=""></li>
+		<li draggable='true'><img src="img/06.png" alt=""></li>
+		<li draggable='true'><img src="img/07.png" alt=""></li>
+		<li draggable='true'><img src="img/08.png" alt=""></li>
+		<li draggable='true'><img src="img/09.png" alt=""></li>
+		<li draggable='true'><img src="img/10.png" alt=""></li>
+	</ul>
+
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var targeEle = null;
+		$('.container').on('dragstart','li',function(){
+			targeEle = this;
+			console.log(targeEle);
+			ev.originalEvent.dataTransfer.set()
+		})
+		.on('drop','li',function(){//交换
+			if (targeEle!=this) {
+				var tmp=targeEle.innerHTML;
+				targeEle.innerHTML=this.innerHTML;
+				this.innerHTML=tmp;
+			}
+
+		}).on('dragover','li',function(ev){
+			ev.preventDefault();
+			//阻止
+		})
+		
+	})
+</script>
+</html>

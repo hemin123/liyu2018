@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  width: 3.75rem;
+  float: left;
+}
+h1 {
+  /*font-size: 2em;*/
+  /*font-size: 2vw;*/
+  font-size: 0.2rem;
+}

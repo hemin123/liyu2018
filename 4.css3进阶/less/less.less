@@ -1,0 +1,152 @@
+
+// 安装库函数less，sublime里面变色
+
+//定义的变量不会在css中显示，编译成css时候自动都去掉了
+@ccc:yellow;
+@w:100px;
+@h:100px;
+body{
+	background:red;
+}
+h2{
+	color:@ccc;
+	background: pink;
+}
+.box1{
+	width: @w;
+	height: @h;
+	background: pink;
+	margin-top: 5px;
+}
+.box2{
+	.box1;
+	//相当于写了所有的box1的样式
+	font-size: 30px;
+
+}
+//带参数的调用     不传递参数的话会报错
+.border-radius(@border-width){
+	//兼容性处理
+	-o-border-radius:@border-width;
+	border-radius: @border-width;
+}
+//带默认参数的使用，不传递参数的话自动使用默认参数
+.border-radius-def(@border-width:20px){
+	//兼容性处理
+	-o-border-radius:@border-width;
+	border-radius: @border-width;
+}
+.box3{
+	.box1;
+	.border-radius(10px);
+}
+.box4{
+	.box1;
+	.border-radius-def();
+}
+//匹配模式
+// .triangle{
+// 	width: 0;
+// 	height:0;
+// 	overflow: hidden;
+// 	border-width:10px;
+// 	border-color:pink transparent transparent
+// 	transparent;
+// 	border-style: solid;
+
+// }
+.triangle(top,@w:10px,@c:pink){
+	border-width:@w;
+	border-color:@c transparent transparent
+	transparent;
+}
+.triangle(left,@w:10px,@c:pink){
+	border-width:@w;
+	border-color:transparent @c  transparent
+	transparent;
+}
+.triangle(bottom,@w:10px,@c:pink){
+	border-width:@w;
+	border-color:transparent transparent @c 
+	transparent;
+}
+.triangle(right,@w:10px,@c:pink){
+	border-width:@w;
+	border-color: transparent transparent
+	transparent @c;
+}
+
+.triangle(@_,@w:10px,@c:pink){
+	width: 0;
+	height:0;
+	overflow: hidden;
+	border-style: solid;
+
+}
+// transparent设置为透明
+
+.box5{
+	//.strang(top);
+	.triangle(left,10px,blue);
+}
+.box6{
+	width: 20px ;
+	height: 20px;
+	border-style: solid;
+	border-width: 40px;
+	border-color: green pink  white orange;
+}
+
+
+
+.list{
+	width: 220px;
+	background: #ff0;
+	li{
+		list-style: none;
+		width: 100px;
+		height: 80px;
+		background: #0f0;
+		border:3px dashed #ccc;
+		box-sizing: border-box;
+		span{
+			
+		}
+		a{
+			display: inline-block;
+			background: green;
+		}
+		&:hover{
+			background: #f45348;
+		}
+	}
+}
+
+
+.box7{
+	background: @ccc;
+	font-size:~'calc(50px - 10px)';
+	width:~'calc(100% - 30px)';
+	//calc函数用域动态计算
+}
+
+//不能自己定义函数，只能使用定义好的
+.setStyle(@attr,@value){
+	@{attr}:unit(@value,px);
+}
+// sess可以定义函数，less不可以定义函数
+
+.box8{
+	.setStyle(width,100);
+	.setStyle(height,100);
+	// .setStyle(background,'red');
+	background: red;
+}
+
+.box9{
+	.box1 !important;
+}
+
+
+
+

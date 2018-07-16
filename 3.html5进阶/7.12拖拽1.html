@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>拖拽</title>
+	<style type="text/css">
+		.container{
+			width: 500px;
+			height: 500px;
+			background: blue;
+			position: relative;
+
+		}.target{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+<div class="container" id="container">	</div>
+<div class="target" id="target" draggable='true'></div>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#container').on('drop',function(){
+			$('#container').append($('#target'));
+			console.log('#target');
+			// 拖拽
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+			//阻止默认行为
+
+		})
+	})
+</script>
+</html>

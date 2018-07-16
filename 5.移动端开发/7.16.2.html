@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>视图</title>
+	<link rel="stylesheet" href="css/7.16rem.css">
+</head>
+<body>
+
+	<div class="container">
+		<img src="1.jpg" alt="">
+		<h1>remless</h1>
+	</div>
+
+</body>
+<script type="text/javascript">
+	(function(win,doc){
+		//获取元素,获取宽度
+		var oroot = doc.getElementsByTagName('html')[0];
+
+		function refontsize(){
+			var iwidth= doc.body.clientWidth || win.documentElement.clientWidth;
+			console.log(iwidth);
+			var ifontsize = iwidth/10;
+			oroot.style.fontSize =ifontsize+'px';
+		}
+		
+
+		win.addEventListener('resize',refontsize,false);
+		 doc.addEventListener('DOMContentLoaded',refontsize,false);
+
+	})(window,document)
+</script>
+</html>

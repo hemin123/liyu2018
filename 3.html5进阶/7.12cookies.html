@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cookis</title>
+	<!-- 
+		cookis最大4k
+	 -->
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//1存
+
+
+	function setCookie(key,value,iDate){
+	var oDate= new Date();
+	oDate.setDate(oDate.getDate()+iDate);	//过期时间
+	 // document.cookie = "name=tom;expires="+oDate;
+	document.cookie = key+"="+value+";expires="+oDate;
+	}
+	setCookie('sex','nan',2);
+
+	
+	//2获取
+	function getCookie(key){
+		var value='';
+		var str = document.cookie;		
+		//console.log(str);
+		var arr1=str.split(';');
+		for (var i = 0; i < arr1.length; i++) {
+			var arr2=arr1[i].split('=');
+			//逐个把函数进行划分
+			if (arr2[0].trim()==key.stim('=')) {
+				//trim用来去掉空格
+				value=arr2[1];
+				break;
+			}
+		}
+		return value;
+
+	}
+
+	// getCookie('sex');
+	
+	// 3删除   remove
+	function removeCookie(key){
+		setCookie(key,false,-1);
+	}
+	setCookie('name','hhh',10);
+	setCookie('name3','h3hh',10);
+	removeCookie('name');
+
+
+</script>
+</html>

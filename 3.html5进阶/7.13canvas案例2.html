@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		坐标平移
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	 		background: #000;
+	 		margin-left: 200px ;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="800" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+	ctx.beginPath();
+
+function getRandom(min,max){
+	return Math.round((min+(max-min)*Math.random()));
+
+}
+function Ball (x,y,color){
+	this.x=x;
+	this.y=y;
+	this.color = color;
+	this.r = 40;
+
+	this.dx=getRandom(-5,5);
+	this.dy=getRandom(-5,5);
+	this.dr=getRandom(1,3);
+}
+
+Ball.prototype = {
+	constructor:Ball,
+	render:function(){
+		ctx.save();
+		ctx.beginPath();
+
+		ctx.fillStyle= this.color;
+		ctx.arc(this.x,this.y,this.r,0,2*Math.PI,true);
+		ctx.fill();
+		ctx.restore();
+	},
+	update:function(){
+		this.x+=this.dx;
+		this.y+=this.dy;
+		this.r-=this.dr;
+		if (this.r<0) {
+			this.r=0;
+		}
+	}
+}
+
+	// var ball=new Ball(100,100,red);
+
+	var colorarr = ['red','green','blue','pink','tomato','yellow','white'];
+	var ballarr = [];
+
+oCanvas.addEventListener('mousemove',function(ev){
+	var ball = new Ball(ev.offsetX,ev.offsetY,colorarr[getRandom(0,colorarr.length-1)]);
+	ballarr.push(ball);
+	
+});
+setInterval(function(){
+	ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+	for (var i = 0; i < ballarr.length; i++) {
+		ballarr[i].render();
+		ballarr[i].update();
+	}
+
+},50)
+
+	
+
+
+</script>
+</html>

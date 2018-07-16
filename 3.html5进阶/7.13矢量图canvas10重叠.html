@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<!-- 
+		
+	 -->
+	 <style>
+	 	canvas{
+	 		border: 1px solid #000;
+	
+	 	}
+	 </style>
+</head>
+<body>
+
+<canvas width="400" height="445" id="canvas">
+	您的浏览器不支持请更换高版本
+</canvas>
+
+</body>
+<script type="text/javascript">
+	var oCanvas = document.getElementById('canvas');
+	//oCanvas.width=200;
+	//oCanvas.height=200;
+	//设置大小
+
+	var ctx = oCanvas.getContext('2d');
+	 ctx.beginPath();
+	 ctx.strokeStyle = '#f0f';
+	 ctx.arc(100,155,44,0,2*Math.PI,true);
+	 ctx.stroke();
+	
+	 ctx.clip();
+
+ 
+ 	ctx.beginPath();
+	 ctx.strokeStyle = '#f00';
+	 ctx.strokeRect(100,100,100,50);
+	 //绘制矩形
+	 ctx.fillRect(100,100,100,50);
+	 // 填充
+	
+
+
+</script>
+</html>
