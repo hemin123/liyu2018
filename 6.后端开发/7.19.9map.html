@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>map</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	let obj1 = {name:'4e'};
+	let obj2 = {};
+	obj2[obj1]='gggg';
+
+	console.log(obj2);
+	console.log(obj2[obj1]);
+
+	for(key in obj2){
+		console.log(key);
+		console.log(obj2[key]);
+
+	}
+	*/
+
+	var obj1={name:"tom"};
+	let map =new Map();
+
+	map.set('name','tom');
+	map.set(obj1,'tom');
+
+	console.log(map.get(obj1));
+	//map.delete("name");
+	console.log(map);
+	// map.crean
+	console.log(map.has('name'));
+/*
+	// map key还是对象
+	for(key of map.keys()){
+		console.log(key)
+	}
+	for(value of map.values()){
+			console.log(value)
+	}
+	for(entry of map.entries()){
+				console.log(entry)
+	}
+*/
+
+</script>
+</html>

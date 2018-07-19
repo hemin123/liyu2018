@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>扩展运算-数组-对象</title>
+</head>
+<body>
+
+</body>
+<script >
+	/*
+	var arr=[2,22,3,89];
+	console.log(arr);
+	console.log(...arr);
+	
+
+	var arr=[2,3,89];
+	function show (n1,n2,n3){
+		console.log(n1,n2,n3);
+	}
+	show(arr);
+	show(2,33,54);
+	show.apply(null,arr);
+	show(...arr);
+
+	var arr=[2,22,3,89];
+
+	function sum (n1,n2){
+		return n1+n2;
+	}
+		console.log(sum(11,15,157));
+		console.log(sum(...[11,15]));
+
+	function sum(){
+		var result =0;
+
+		for (var i = 0; i < arr.length; i++) {
+			result += arr[i]
+		}
+		return result;
+	}
+*/
+
+
+	function sum2(arr){
+		var result =0;
+
+		for (var i = 0; i < arr.length; i++) {
+			result += arr[i]
+		}
+		return result;
+	}
+	var arr=[44,44,44];
+	console.log(sum2(22,34,4,4));
+	console.log(sum2(...arr));
+	console.log(Math.max(1,5,45));
+	
+	console.log(Math.max.apply(null,arr));
+	//求最大
+/*	
+	var arr=[44,4,4,45,22];
+	var arr2=arr;
+
+for (var i = 0; i < arr1.length; i++) {
+	arr2.push(arr1[i]);
+}
+
+var arr2=[...arr];
+var arr2=arr.concat();
+var arr2=arr.slice();
+
+	arr2.push(222);
+	console.log(arr,arr2);
+
+
+*/
+
+//深拷贝浅拷贝
+
+
+var obj1={name:'tom',age:45};
+var obj2={...obj1};
+//。。赋值内容一样
+ obj2.name= 'ssd';
+console.log(obj1,obj2);
+
+var obj1={name:'tom',age:45,friend:{name:'dd',age:'ddd'}};//        friend是地址，指向那里面的东西
+var obj2={...obj1}; //扩展对象
+ obj2.name= 'ssd';
+ obj2.friend.name= 'ssd';
+ //friend地址
+console.log(obj1,obj2);
+
+
+
+
+</script>
+</html>

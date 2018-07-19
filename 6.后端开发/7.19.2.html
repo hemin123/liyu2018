@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>let</title>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+</body>
+<script type="text/javascript">
+	var obtn = getElementsByTagName('button');
+/*
+	for (var i = 0; i < obtn.length; i++) {
+		obtn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+	for (var i = 0; i < obtn.length; i++) {
+		obtn[i].index = i;
+		obtn[i].onclick = function(){
+			console.log(this.index);
+		}
+	}
+	for (var i = 0; i < obtn.length; i++) {
+		(function(i){
+			obtn(i).onclick = function(){
+				console.log(i);
+			}
+		})(i)
+		
+	}
+	*/
+		//let
+	for (let i = 0; i < obtn.length; i++) {
+		obtn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+</script>
+</html>

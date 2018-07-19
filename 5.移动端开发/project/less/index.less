@@ -16,6 +16,7 @@
 
 //公共变量
 @border-color: #e5e5e5;
+@DJ-color: #8e8e8e;
 
 .header{
 	.rem(height,45);
@@ -32,3 +33,160 @@
 	}
 	border:1px solid @border-color;
 }
+
+.add{
+	.rem(height,45);
+	.rem(line-height,45);
+	.rem(font-size,15);
+	.add-icon{
+		.rem(margin-left,15);
+		.rem(width,15);
+		color:@DJ-color;
+	}
+	.add-add{
+		display: inline-block;
+		.rem(width,200);
+		color:@DJ-color;
+	}
+	.add-right{
+		// display: inline-block;
+		// .rem(width,120);
+		color:red;
+		text-align: center;
+		
+	}
+	border:1px solid @border-color;
+	border-top:none;
+}
+
+.secret{
+	.rem(height,45);
+	.rem(line-height,45);
+	.rem(font-size,18);
+	.secret-icon{
+		.rem(width,30);
+		.rem(margin-left,10);
+		text-align: center;
+		color:red;
+	}
+	.secret-JD{
+		display: inline-block;
+		.rem(width,25);
+		color:@DJ-color;
+	}
+	.secret-title{
+		display: inline-block;
+		.rem(width,100);
+		font-weight:bold;
+	}
+	border:1px solid @border-color;
+	border-top:none;
+
+}
+
+.free{
+	.rem(height,45);
+	.rem(line-height,45);
+	.rem(font-size,14);
+	color:@DJ-color;
+	.free-title{
+		// display: inline-block;
+		.rem(margin-left,10);
+		
+	}
+	border:1px solid @border-color;
+	border-top:none;
+}
+.nev{
+	.rem(height,140);
+	
+	.nev-top{
+		.rem(height,100);
+		.rem(font-size,18);
+		.rem(margin,3);
+		box-sizing: border-box;
+		position: relative;
+		.nev-icon{
+			position: absolute;
+			top: 0;
+			.rem(width,40);
+			text-align:center;
+			.rem(line-height,120);
+			// background: pink;
+		
+		}
+		.nev-img{
+			position: absolute;
+			.rem(left, 40);
+			.rem(top,5);
+			.rem(width,80);
+			.rem(height,90);
+			 .rem(padding-top,5);
+		
+		}
+		.nev-box{
+			position: absolute;
+			.rem(left, 120);
+			.rem(width,160);
+			.rem(height,120);
+			.rem(margin-left,10);
+			// background: red;
+			box-sizing: border-box;
+		
+			.nev-title{
+				display: inline-block;
+				// background: green;
+				width: 100%;
+				.rem(height,50);
+				.rem(font-size,15);
+				.rem(margin-top,10);
+			}
+			.nev-kg{
+				.rem(font-size,15);
+				width:100%;
+				.rem(height,15);
+				color:#8e8e8e;
+			}
+			.nev-price{
+				width: 50%;
+				.rem(font-size,15);
+				.rem(height,35);
+				.rem(line-height,35);
+				display: inline-block;
+
+			}
+			.nec-one{
+				background: #f5f5f5;
+				color:#888888;
+				display: inline-block;
+				.rem(font-size,25);
+				.rem(width,20);
+				.rem(height,25);
+				.rem(line-height,25);
+				text-align: center;
+
+			}
+		}
+	}
+
+	.nev-bottom{
+		.rem(height,50);
+		.rem(font-size,15);
+		float: right;
+		.rem(padding-right,20);
+		color:#929292;
+	}
+	border:1px solid @border-color;
+	border-top:none;
+
+}
+.footer{
+		width:100%;
+		.rem(height,60);
+		background: red;
+		// border:144px solid #000;
+		position: fixed;
+		bottom:0;
+		left: 0;
+		z-index: 888;
+	}

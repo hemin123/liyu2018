@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>symbol</title>
+</head>
+<body>
+
+</body>
+<script >
+	var obj = {name:'tom'};
+	
+	obj.name ='ksk';
+
+	console.log(obj);
+
+	let s1=Symbol('name');
+	let obj = {[s1]:"tom"};
+	//可以解决命名冲突问题
+	let s2=Symbol('name');
+	obj[s2]="llll";
+	//唯一性
+	console.log(typeof s2);
+	console.log(s1===s2);
+	console.log(obj);
+	console.log(obj[s1]);
+	//不可枚举，for in循环不出来
+
+	for(key of obj)
+</script>
+</html>
