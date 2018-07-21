@@ -1,0 +1,9 @@
+
+// var obj ={
+// 	name:'age'
+// }
+
+var a={
+	"name":"Tom",
+	"age":18
+}

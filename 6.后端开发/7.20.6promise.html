@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>promise</title>
+</head>
+<body>
+
+</body>
+<script type="">
+	let loading =()=>{
+		let image = new image();
+		image.onload =()=>{
+			console.log("success loaded")
+		}
+		image.onerr =()=>{
+			console.log("fail loaded")
+		}
+		image.src = url;
+	}
+	loading('img/a.jpg'),()=>{
+		console.log("success loading");
+	},()=>{
+		console.log("fail");
+	}
+
+
+	let  getLoadingImgPromise =()=>{
+		let promise=new promise((resolve,reject)=>{
+			let image= new image();
+		
+		image.onload =()=>{
+			resolve()
+		}
+		image.onerr =()=>{
+			reject();
+		}
+		image.src = url;
+		})
+	}
+//than  catch   
+
+</script>
+</html>

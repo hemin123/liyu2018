@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>箭头函数的定义</title>
+</head>
+<body>
+
+</body>
+<script type="">
+	//function谁调用this是谁
+	//箭头函数=>谁定义this是谁
+	function Timer1(id){
+		this.id = id ;
+		setTimeout(function(){//这个函数挂在window上面。this是window
+			console.log(this.id)
+		},500)
+	}
+	var timer= new Timer1('100');
+
+	function Timer2(id){
+			this.id = id ;
+			setTimeout(()=>{//这个函数挂在window上面。this是window
+				console.log(this.id)
+			},500)
+		}
+		var timer= new Timer2('100');
+
+</script>
+</html>

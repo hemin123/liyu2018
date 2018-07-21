@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>箭头函数普通函数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+// 1.
+/*
+	var person1= function(){
+
+	}
+	let person = ()=>{
+
+	}
+	// let p =new person;
+	console.log(person1.prototype);
+	console.log(person.prototype);
+*/
+	function show1(){
+		console.log(arguments);
+	}
+	show1(11,22);
+	let show =(...args)=>{
+		console.log(args);
+	}
+	console.log(11,12);
+	
+
+	function fact(n){
+		if (n<=1) {return 1;}
+		else{
+			return n*fact(n-1);
+			return n*arguments.callee(n-1);
+		}
+	}
+	console.log(fact(5));
+	let fnfact =fact;
+	console.log(fnfact(5));
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对象ES5andES6</title>
+</head>
+<body>
+
+</body>
+<script >
+/*
+	// 构造函数
+	function person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	// 原型
+	person.prototype= {
+		//这是对象上面有方法。
+		constructor:person,
+		//属性
+		showname:function(){
+			console.log(0+"show"+this.name);
+		}
+	};
+	person.say = function(){
+	console.log("静态方法，动态加属性，属性是个方法")
+	}
+	var p=new person("tom",18);
+	p.showname();
+
+	console.log(p);
+
+	person.say ();
+
+*/
+
+	class person{
+
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		//属性
+		showname(){
+			console.log(0+"show"+this.name);
+		}
+
+		static say(){
+			console.log("静态方法， ")
+		}
+
+	}
+	let p=new person("TOF",44);
+	console.log( person);
+	console.log(typeof person);
+	console.log( person.prototype);
+	p.showname();
+	// p.prototype.say();
+
+
+//继承
+	class student extends person{
+		constructor(name,age,major){
+			super(name,age);
+			this.major = major;
+			// 传进去。super调用父类的constructor
+
+		}
+		showmajor(){
+			console.log("major");
+		}
+	}
+
+	let  e = new student("hhh",54,"kkkk");
+	e.showname();
+	e.showmajor();
+
+
+</script>
+</html>

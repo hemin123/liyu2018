@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数定义，重要以后常用</title>
+</head>
+<body>
+
+</body>
+<script type="">
+	//箭头函数的定义
+	function sum(x,y){
+		console.log(x,y);
+		return x+y;
+	}
+	let sum ={x,y}=>{
+		console.log(x,y);
+		return x+y;
+	}
+	console.log(sum(2,3));
+
+	let sum ={x,y}=>x+y;
+	console.log(sum(2,3));
+
+	let sum =x =>{
+		console.log(x);
+		return x+55;
+	}
+	console.log(sum(2));
+
+	let sum =x => x+55;
+	console.log(sum(2));
+
+	let sum =() => {
+	console.log(11);}
+	sum();
+
+
+//排序小例子
+	let arr =[11,11,55,44,888,4];
+	arr.sort();
+	arr.sort(function(n1,n2){
+		return n2-n1;
+	});
+	arr.sort((n1,n2)=>{return n2-n1});
+	arr.sort((n1,n2) => n2-n1);
+console.log(arr)
+</script>
+</html>

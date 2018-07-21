@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数参数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+/*	
+	function show (msg){
+		msg = msg|| 'hhh';
+		console.log(msg);
+
+	}
+	show();   //不传使用默认参数，传空格会大空格
+	show(' ');
+	
+	function show(msg){          //这个函数有毛病
+		console.log(msg);
+		console.log(typeof msg);
+		if (typeof msg === undefined) {
+			msg = 'hhh';
+		}
+	
+		console.log(msg);
+
+	}
+	//show(4);
+	show(' ');
+
+
+	//上面两种方法都可以都是es5的方法】
+
+	function show (msg='hello'){//默认参数，不传时候用
+		console.log(msg);
+	}
+
+	show();
+	show('');
+
+//默认参数放后面，必须要传的参数放前面，要不然会出错
+	function show (msg='hello',name){//1直接传出粗
+			console.log(msg,name);
+		}
+
+		// show(,"hhh");
+		show('',"hhh");
+		show("hhh");
+		show('');
+	
+	function show (name,msg='hello'){//1直接传
+			console.log(msg,name);
+		}
+
+		// show(,"hhh");
+		show('',"hhh");
+		show("hhh");
+		show('');
+	
+
+	function show (name,{age=28,sex='nv'}={}){
+									//2.结构解析
+		console.log(name,age,sex);
+	}
+	show('am',{age:56,sex:"nam"});
+*/
+	function show (name,...arg){//3、扩展运算符
+		//。。。rest参数  接收参数,前面是必须传的，后面扩展运算符接收。
+		console.log(name,arg[0],arg[1])
+	}
+	show('aaa',15,"new")//可以传很多很多参数
+/*	
+*/
+</script>
+</html>

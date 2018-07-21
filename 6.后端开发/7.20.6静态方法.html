@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>promise</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	let p1 = promise.resolve();
+	let p2 = promise.resolve(p1);
+
+	// console.log(p1==p2);
+let thanobj = {
+	then:() =>{
+		console.log('44i');
+	}
+	
+}
+let p3 =  promise.resolve(thanobj);
+
+
+</script>
+</html>
