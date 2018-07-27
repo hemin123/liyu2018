@@ -1,0 +1,42 @@
+body{
+	background: pink;
+}
+.wall{
+	width: 800px;
+	height: 600px;
+	float: left;
+	padding: 40px;
+	border:1px solid #000;
+	/*position: relative;*/
+}
+.wish{
+	width: 100px;
+	height: 250px;
+	background: red;
+	overflow: hidden;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+	/*position: absolute;*/
+}
+.close {
+    position: absolute;
+    display: inline-block;
+    right: 5px;
+    top: 1px;
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+}
+.card{
+	width: 100px;
+	height: 300px;
+	float: right;
+	padding: 20px;
+}
+.text{
+	width: 100px;
+	height: 250px;
+}
+.submit{
+	width: 100px;
+	height: 50px;
+}
