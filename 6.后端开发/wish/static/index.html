@@ -2,19 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>许愿墙</title>
+	<title>许愿</title>
 	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<div class="wall">
-			<div class="wish" style="background: blue">
-				<a href="javascript:;" class="close" data-id='1111'></a>
+		{% for author in authors %}
+			<div class="wish" style="background: {{item.color}}">
+				<a href="javascript:;" class="close" data-id='{{item.id}}'></a>
 				1111
 			</div>
-			<div class="wish" style="background: blue">
-				<a href="javascript:;" class="close" data-id='2222'></a>
-				2222
-			</div>			
+		{% endfor %}
+
+			<!-- <ul>
+			{% for author in authors %}
+			    <li{% if loop.first %} class="first"{% endif %}>{{ author }}</li>
+			{% endfor %}
+			</ul> -->
+			<!-- <div class="wish" style="background: blue">
+						<a href="javascript:;" class="close" data-id='1111'></a>
+						1111
+					</div>
+					<div class="wish" style="background: blue">
+						<a href="javascript:;" class="close" data-id='2222'></a>
+						2222
+					</div>	 -->		
 	</div>
 	<div class="form-box">
 		<div>

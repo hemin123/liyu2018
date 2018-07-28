@@ -4,6 +4,9 @@
 * @Last Modified by:   TomChen
 * @Last Modified time: 2018-07-27 10:39:44
 */
+
+//$ npm install swig  --save
+
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
@@ -11,6 +14,7 @@ const mime = require('./mime.json');
 const url = require('url');
 const WishModel = require('./WishModel.js');
 const querystring=require('querystring');
+const swig = require('swig');
 
 const server = http.createServer((req,res)=>{
 	console.log("req.url:::",req.url);
@@ -23,6 +27,7 @@ const server = http.createServer((req,res)=>{
 	if(pathname === '/index.html' || pathname === '/'){//显示首页
 		WishModel.get((err,data)=>{
 			if(!err){
+				/*
 				let html = `<!DOCTYPE html>
 							<html lang="en">
 							<head>
@@ -54,6 +59,12 @@ const server = http.createServer((req,res)=>{
 							<script src="js/jquery.pep.js"></script>
 							<script src="js/index.js"></script>
 							</html>`;
+				*/
+
+var template = swig.compileFile(__dirname+'/static/index.html');
+var html = template({
+   data:data
+});
 				res.setHeader('Content-Type','text/html;charset=UTF-8');
 				res.end(html);	
 			}
