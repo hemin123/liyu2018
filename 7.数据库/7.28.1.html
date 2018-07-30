@@ -1,0 +1,127 @@
+关系数据库 
+非关系数据库 
+mongoDB
+
+
+mongo进入终端，开始写指令
+
+use 名字
+创建数据库,集合
+
+db  查看当前在哪个
+db.user.ins{}
+db.  .insert({})
+db.  .save({})
+
+show dbs 显示所有数据库
+
+db.dropDatabase()删除数据
+
+插入一条对象> db.user.insert({"dat1a":"hhhh","ag1e":111})
+插入一个数组> db.user.insert([{"dat1a":"hhhh","ag1e":111}])
+
+ db.user.find()显示数据内容
+
+show 
+show collections 显示集合
+删除集合
+db.COLLECTION_NAME.drop()  
+db.user.drop() 
+
+ db.user.find($not:age:{$gt:19})
+ db.user.find({age:19})
+ db.user.find(age:{$gt:19})
+文档地址https://docs.mongodb.com/manual/reference/operator/query/
+
+
+> db.user.find({hhhh:18}) 
+> db.user.find({hhhh:{$gt:18}})       $gt大于
+> db.user.find({hhhh:{$gte:18}})       $gte大于等于
+> db.user.find({hhhh:{$lt:18}})       $lt小于
+> db.user.find({hhhh:{$lte:18}})       $lte小于等于
+> db.user.find({hhhh:{$lt:18,$gt:18}})       $lte小于等于
+
+> db.user.find({$or:[{hhhh:{$lt:18}}]})
+
+$eq	匹配等于指定值的值。
+$gt	匹配大于指定值的值。
+$gte	匹配大于或等于指定值的值。
+$in	匹配数组中指定的任何值。
+$lt	匹配小于指定值的值。
+$lte	匹配小于或等于指定值的值。
+$ne	匹配所有不等于指定值的值。
+$nin	匹配数组中指定的值。
+
+$and使用逻辑连接查询子句AND将返回与两个子句的条件匹配的所有文档。
+$not反转查询表达式的效果并返回与查询表达式不匹配的文档。
+$nor使用逻辑连接查询子句NOR将返回所有无法匹配两个子句的文档。
+$or	使用逻辑连接查询子句OR将返回与任一子句的条件匹配的所有文档。
+
+> db.user.find({$or:[{hhhh:{$lt:18}},{he:"h2e"}]})
+		多个条件按数组格式写
+
+
+skip(num)
+limit(num)   游标可以用
+toArray()
+length()
+count()
+pretty()方便查看，显示成数组样子
+sort({ field: value }),1升序,-1降序
+
+db.user.find().sort({age:-1})     降序排列
+db.user.find().{name:1,id:0};
+
+> db.user.find({},{hhhh:1})   有hhhh的显示
+> db.user.find({},{_id:0})    隐藏id
+
+db.user.findone 返回文档
+不传返回第一个
+ "_id" : ObjectId("5b5e7557b3779da2d7fb5d5a")
+
+
+ db.user.updata（{name：“jj}，{$set：{age：1}}）
+ db.user.updata（{name：“jj}，{$set：{age：1}}）.{multi:true})
+默认变更一个
+
+"_id" : ObjectId("5b5e7557b3779da2d7fb5d5a")
+db.user.updata({},{},{})
+		条件  更新  效果
+
+remove
+> db.user.remove({hhhh:99})  删所有
+> db.user.remove({hhhh:99},true) 删一个
+
+
+集合间关系
+
+db.boy.findOne({"name":"zhao"}).wife
+{ "name" : "susu", "sex" : "18" }
+
+
+db.girl.find()
+{ "_id" : ObjectId("5b5ed991cf1f4eadff8dbace"), "name" : "xiaowang", "sex" : "58" }
+{ "_id" : ObjectId("5b5ed99ccf1f4eadff8dbacf"), "name" : "xiaowang1", "sex" : "8" }
+db.boy.insert({"name":"wang1","sex":"14","w_id":ObjectId("5b5ed99ccf1f4eadff8dbacf") })
+WriteResult({ "nInserted" : 1 })
+db.boy.find()
+{ "_id" : ObjectId("5b5ecf28cc480d4b8ecf62fb"), "name" : "li", "sex" : "4" }
+{ "_id" : ObjectId("5b5ecf3dcc480d4b8ecf62fc"), "name" : "wang", "sex" : "14" }
+{ "_id" : ObjectId("5b5ed015cc480d4b8ecf62fd"), "name" : "zhao", "sex" : "14", "wife" : { "name" : "susu", "sex" : "18" } }
+{ "_id" : ObjectId("5b5edb5acf1f4eadff8dbad0"), "name" : "wang1", "sex" : "14", "w_id" : ObjectId("5b5ed99ccf1f4eadff8dbacf") }
+var w_id = db.boy.findOne("name":"wang1").W_id
+2018-07-30T17:34:57.257+0800 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:32
+
+var w_id = db.boy.findOne({"name":"wang1"}).w_id
+w_id
+ObjectId("5b5ed99ccf1f4eadff8dbacf")
+db.boy.find({w_id:w_id}).pretty()
+{
+	"_id" : ObjectId("5b5edb5acf1f4eadff8dbad0"),
+	"name" : "wang1",
+	"sex" : "14",
+	"w_id" : ObjectId("5b5ed99ccf1f4eadff8dbacf")
+}
+
+
+

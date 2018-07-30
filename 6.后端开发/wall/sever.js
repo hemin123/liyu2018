@@ -2,16 +2,22 @@
 const http = require('http');
 const fs=require('fs');
 const path=require('path');
-const mime ='./mime.json';
+const mime =require('./mime.json');
 const url =require('url');
-const model=require('./file.js');
+// const model=require('./file.js');
+
+const querystring=require('querystring');
+const swig=require('swig');
 
 const server =http.createServer((req,res)=>{
-	let requrl = url.parse(req.url,true);
-	console.log(requrl);//是个对象有好多属性
-	let pathname=requrl.pathname;
-	console.log(pathname);//路径
+	let reqUrl = url.parse(req.url,true);
+	// console.log(requrl);//是个对象有好多属性
+	let pathname=reqUrl.pathname;
+	// console.log(pathname);//路径
 	let fileName =req.url;
+
+
+/*
 	if (pathname=='/'||pathname=='/index.html') {
 		model.get((err,data)=>{
 			if (!err) {
@@ -95,12 +101,37 @@ const server =http.createServer((req,res)=>{
 				res.setHeader('Content-Type', mimeType+';charset=utf-8');
 				res.end(data);
 			}else{
+				res.setHeader('Content-Type','text/html;charset=utf-8');
 				res.statusCode = 404;
 				res.end('not found ');
 			}
 		})
 
 	}
+*/
+
+		if (fileName.lastIndexOf('.')==-1) {
+			fileName=fileName+'/index.html';
+		}
+		// name = path.extname(file);// .html
+		console.log(fileName);
+		//console.log(path);
+		let filepath = path.normalize(__dirname+fileName);
+		console.log(filepath);
+		let fileExtname=path.extname(filepath);
+
+		fs.readFile(filepath,(err,data)=>{
+			if (!err) {
+				let mimeType=mime[fileExtname]||"text/html";
+				res.setHeader('Content-Type', mimeType+';charset=utf-8');
+				res.end(data);
+			}else{
+				res.setHeader('Content-Type','text/html;charset=utf-8');
+				res.statusCode = 404;
+				res.end('not found ');
+			}
+		});
+
 
 	
 	
