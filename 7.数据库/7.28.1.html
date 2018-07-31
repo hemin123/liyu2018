@@ -15,7 +15,7 @@ db.  .save({})
 
 show dbs 显示所有数据库
 
-db.dropDatabase()删除数据
+db.dropDatabase()删除最大的哪个   kuaxhu
 
 插入一条对象> db.user.insert({"dat1a":"hhhh","ag1e":111})
 插入一个数组> db.user.insert([{"dat1a":"hhhh","ag1e":111}])
@@ -80,8 +80,8 @@ db.user.findone 返回文档
  "_id" : ObjectId("5b5e7557b3779da2d7fb5d5a")
 
 
- db.user.updata（{name：“jj}，{$set：{age：1}}）
- db.user.updata（{name：“jj}，{$set：{age：1}}）.{multi:true})
+ db.user.update（{name：“jj}，{$set：{age：1}}）
+ db.user.update（{name：“jj}，{$set：{age：1}}）.{multi:true})
 默认变更一个
 
 "_id" : ObjectId("5b5e7557b3779da2d7fb5d5a")
