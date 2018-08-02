@@ -8,18 +8,21 @@ const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'myproject';
 
-// Use connect method to connect to the server
-MongoClient.connect(url,{ useNewUrlParser: true}, function(err, client) {
- 
-  console.log("Connected successfully to server");
-  //如果没有创建返回db对象
-  const db = client.db(dbName);
+
 
   //集合
  const study = db.collection('study2');
 
  
- function getDB(){
+ function getDB(callback){
+	// Use connect method to connect to the server
+	MongoClient.connect(url,{ useNewUrlParser: true}, function(err, client) {
+	 
+	  console.log("Connected successfully to server");
+	  //如果没有创建返回db对象
+	  const db = client.db(dbName);
+
+	  callback(db,client);
 
  }  
 
@@ -54,11 +57,25 @@ let add = (options,callback)=>{
 			callback(err);
 		}
 	})
+	getDB(db,client)=>{
+		const col = db.collection('wish');
+		options._id = uuidv1();
+		options.color=colorarr[getRandom(0,colorarr.length-1)];
+		col.insertOne(options,function(err,data){
+			if(!err){
+				callback(null,options);
+			}else{
+				callback(err);
+			}
+			client.close();
+		})
+
+	}
 }
 
 let get = (callback)=>{
 
-  study.find({}).toArray(function(err,data){
+ /* study.find({}).toArray(function(err,data){
   	if (!err) {
   		console.log(result);
   		let obj = JSON.parse(data);
@@ -66,6 +83,19 @@ let get = (callback)=>{
   	}else{
   		console.log(err);
   	}
+  })*/
+  getDB((db,client)=>{
+  	const col = db.collection('wish');
+  	col.find({}).toArray(function(err,docs){
+  		if (!err) {
+  			// console.log(docs);
+  			callback(docs);
+  		}else{
+  			// console.log('err::',err);
+  			callback(err);
+  		}
+  		client.close();
+  	})
   })
 
 }
