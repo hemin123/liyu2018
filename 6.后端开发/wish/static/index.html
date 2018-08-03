@@ -7,10 +7,10 @@
 </head>
 <body>
 	<div class="wall">
-		{% for author in authors %}
+		{% for item in data %}
 			<div class="wish" style="background: {{item.color}}">
 				<a href="javascript:;" class="close" data-id='{{item.id}}'></a>
-				{{item.content}}
+				{{ item.content }}
 			</div>
 		{% endfor %}
 

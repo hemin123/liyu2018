@@ -1,7 +1,7 @@
 
 // getting-started.js
 const mongoose = require('mongoose');
-const UserModel = require('./8.2.2.js');
+const UserModel = require('./8.2.2user.js');
 const  moment =require('moment');
 
 mongoose.connect('mongodb://localhost/test2',{});

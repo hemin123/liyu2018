@@ -18,10 +18,10 @@ var mongoose = require('mongoose');
 	  locked:{
 	  	type:Boolean    //布尔值
 	  },
-	  // createdAt:{
-	  // 	type:Date,
-	  // 	default：Date.now
-	  // },
+	  createdAt:{
+	  	type:Date,
+	  	default:Date.now,
+	  },
 	  friends:{
 	  	type:Array
 	  }

@@ -61,10 +61,10 @@ const server = http.createServer((req,res)=>{
 							</html>`;
 				*/
 
-var template = swig.compileFile(__dirname+'/static/index.html');
-var html = template({
-   data:data
-});
+			var template = swig.compileFile(__dirname+'/static/index.html');
+			var html = template({
+			   data:data
+			});
 				res.setHeader('Content-Type','text/html;charset=UTF-8');
 				res.end(html);	
 			}

@@ -1,25 +1,20 @@
-/*
-* @Author: TomChen
-* @Date:   2018-07-27 10:29:02
-* @Last Modified by:   TomChen
-* @Last Modified time: 2018-07-27 10:34:03
-*/
 const fs = require('fs');
 const uuidv1 = require('uuid/v1');
 
 const filePath = './data.json';
 
-	function getRandom(min,max) {	
-		return Math.round(min + (max-min)*Math.random());
-	}
-	const colorarr =['#f00','#ff0','red','#ff6700','pink'];
+let getRandom = (min,max)=> {	
+	return Math.round(min + (max-min)*Math.random());
+}
+
+const colorArr = ['#f10','#ff0','#ff5600','#0f1'];
 
 let add = (options,callback)=>{
 	fs.readFile(filePath,(err,data)=>{
 		if(!err){
 			let obj = JSON.parse(data);
 			options.id = uuidv1();
-			options.color=colorarr[getRandom(0,colorarr.length-1)];
+			options.color = colorArr[getRandom(0,colorArr.length-1)];
 			obj.push(options);
 			let str = JSON.stringify(obj);
 

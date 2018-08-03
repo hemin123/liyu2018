@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hhh</title>
+</head>
+<body>
+	<button id="get">get请求</button>
+	<button id="post">post请求</button>
+	<button id="put">put请求</button>
+	<button id="delete">delete请求</button>
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="">
+	$(function(){
+		$('#get').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'get'
+			})
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(err){
+				console.log(err);
+			})
+		})
+		$('#post').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'post'
+			})
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(err){
+				console.log(err);
+			})
+		})
+		$('#put').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'put'
+			})
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(err){
+				console.log(err);
+			})
+		})
+		$('#delete').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'delete'
+			})
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(err){
+				console.log(err);
+			})
+		})
+		
+	})
+</script>
+</html>
