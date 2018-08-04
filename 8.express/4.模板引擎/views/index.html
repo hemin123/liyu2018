@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+</head>
+<body>
+	<div>
+		content
+		{{ content }}
+	</div>
+	<div>
+		{{obj.name}}
+	</div>
+	
+	<div>
+		{% if name==='tom' %}
+		hhhhhello
+		{% endif %}
+	</div>
+	<div>
+		{% if name==='tom' %}
+		hhhhhello
+		{% elseif name == "tom2" %}
+		  tom2
+		{% else %} 
+			hello guy
+		{% endif %}
+	</div>
+	<div>
+		{% for key,val in arr %}
+		<p> {{ key }}{{ val }} </p>
+		{% endfor %}
+	</div>
+
+
+
+变量引用{{}}
+
+表达式{}
+
+</body>
+</html>

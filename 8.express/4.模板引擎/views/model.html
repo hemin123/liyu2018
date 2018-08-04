@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<style>
+		.top{
+			width: 100%;
+			height: 50px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+new{% block content %}{% endblock %}
+	<div class="top">
+		hhhhhhhhhhhhhhhhhhhhhhhhh
+	</div>
+	<p>
+		ggggggggggggggggggg
+	</p>
+
+变量引用{{}}
+
+表达式{}
+
+</body>
+{% include "./footer.html" %}
+</html>

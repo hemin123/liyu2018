@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hhh</title>
+</head>
+<body>
+	<button id="get">get请求</button>
+	<button id="post">post请求</button>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="">
+	$(function(){
+
+
+		$('#post').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'post',
+				data:{"name":"hhh","age":18}
+			})
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(err){
+				console.log(err);
+			})
+		})
+		
+		
+	})
+</script>
+</html>
