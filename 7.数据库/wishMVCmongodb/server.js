@@ -67,7 +67,7 @@ const server = http.createServer((req,res)=>{
 		if (model[action]) {
 			console.log(111);
 			model[action].apply(null,[req,res].concat(args));
-			console.log(222);
+			console.log(222);//动态传参apply
 		}                //apply执行函数
 
 		// apply  call  band面向对象

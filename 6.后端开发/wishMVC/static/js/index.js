@@ -50,8 +50,8 @@
 		var self =this;
 		// console.log($this.data('id'));
 		$.ajax({
-			url:'/del',
-			data:'id='+$this.data('id'),
+			url:'/wish/del/'+$this.data('id'),
+
 			dataType:'json'
 		})
 		.done(function(data){
@@ -66,8 +66,8 @@
 	//增加许愿卡
 	$('.sub-btn').on('click',function(){
 		let val = $('#content').val();
-		$.ajax({
-			url:'/add',
+		$.ajax({       //post请求需要data
+			url:'/wish/add',
 			data:{content:val},
 			dataType:'json',
 			type:'POST'

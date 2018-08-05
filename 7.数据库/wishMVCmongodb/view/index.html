@@ -1,43 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>许愿</title>
-	<link rel="stylesheet" href="../static/css/index.css">
+	<meta charset="utf-8">
+	<title>首页</title>
 </head>
 <body>
-	<div class="wall">
-		{% for author in authors %}
-			<div class="wish" style="background: {{item.color}}">
-				<a href="javascript:;" class="close" data-id='{{item.id}}'></a>
-				{{item.content}}
-			</div>
-		{% endfor %}
-
-			<!-- <ul>
-			{% for author in authors %}
-			    <li{% if loop.first %} class="first"{% endif %}>{{ author }}</li>
-			{% endfor %}
-			</ul> -->
-			<!-- <div class="wish" style="background: blue">
-						<a href="javascript:;" class="close" data-id='1111'></a>
-						1111
-					</div>
-					<div class="wish" style="background: blue">
-						<a href="javascript:;" class="close" data-id='2222'></a>
-						2222
-					</div>	 -->		
-	</div>
-	<div class="form-box">
-		<div>
-			<textarea name="content" id="content" cols="30" rows="20"></textarea>
-		</div>
-		<div>
-			<a href="javascript:;" class="sub-btn">许愿</a>
-		</div>
-	</div>	
+<a href="/wish/index">去许愿</a>
 </body>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jquery.pep.js"></script>
-<script src="./js/index.js"></script>
 </html>

@@ -58,7 +58,7 @@ let remove = (id,callback)=>{
 			let str = JSON.stringify(newObj);
 			fs.writeFile(filePath,str,(err)=>{
 				if(!err){
-					callback(null);
+					callback(null,'sucess');
 				}else{
 					callback(err);
 				}
