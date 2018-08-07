@@ -17,11 +17,11 @@ router.post("/",(req,res)=>{
 
 //插件 https://github.com/expressjs/body-parser
 // parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-//app.use(bodyParser.json())
-//console.log(req.body)
+// app.use(bodyParser.json())
+// console.log(req.body)
 
 
 	res.send('add blog data');

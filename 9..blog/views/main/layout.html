@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/blog.css">
+    <link rel="stylesheet" href="./css/common.css">
+  </head>
+  <body>
+
+  <nav class="navbar navbar-default navbar-fixed-top" id="nua-navbar">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">个人博客</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+      
+            <li class="active"><a href="#">主页</a></li>
+            <li><a href="list.html">HTML/CSS</a></li>
+            <li><a href="#">Javascript</a></li>
+            <li><a href="#">经验总结</a></li>
+            <li><a href="#">个人感悟</a></li>
+           
+          </ul>
+         
+          
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    
+
+<div class="main">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+         <!--  设置图片宽高 -->
+  {% block content %}{% endblock %}           
+
+        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">
+          {% if userInfo._id %}
+          <div class="user-panel" id='user-info'>
+            欢迎<span>{{ userInfo.username }}</span>
+            <a href="./admin">后台管理</a>
+            <a class="link" href="javascript:;" id='logout'>退出</a>
+          </div>  
+          {% else %}
+          <div class="form-horizontal user-panel" style="display: none;" id='register'>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">用户名</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name='username' placeholder="请输入用户名">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">密码</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" name="password" placeholder="请输入密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">重复密码</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" name="repassword" placeholder="请再次输入密码">
+              </div>
+            </div>  
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-6">
+                <a href="javascript:;" class="btn btn-primary" id='sub-register'>提交</a>
+                <a href="javascript:;" class="link" id='go-login'>已有账号,去登录</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <p class="text-danger err"></p>
+              </div>
+            </div>            
+          </div>          
+          <div class="form-horizontal user-panel" id='login'>
+            <div class="form-group">  
+              <label class="col-sm-4 control-label">用户名</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name='username' placeholder="请输入用户名">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">密码</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" name="password" placeholder="请输入密码">
+              </div>
+            </div>            
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-6">
+                <a href="javascript:;" class="btn btn-primary" id='sub-login'>提交</a>
+                <a href="javascript:;" class="link" id='go-register'>免费注册</a>
+              </div>
+            </div>
+              <div class="form-group">
+              <div class="col-sm-12">
+                <p class="text-danger err"></p>
+              </div>
+            </div>            
+          </div>  
+          {% endif %}
+
+
+
+
+
+          <div class="ad">
+            <img src="./img/3.jpg" alt="">
+            
+          </div>
+          <div class="ad">
+            <img src="./img/4.jpg" alt="">
+          </div>
+
+          <div class="panel panel-default autor">
+            <div class="panel-heading">
+              <h3 class="panel-title">博主介绍</h3>
+            </div>
+            <div class="panel-body">
+              <div class="media-left">
+                <a href="#">
+                  <img src="./img/6.jpg" alt="6.jpg" class="img-circle">
+                </a>
+              </div>
+              <div class="media-right">
+                  <h4>姓名</h4>
+                 Panel content
+              </div>
+             
+            </div>
+          </div>
+          <div class="panel panel-default hot-title">
+            <div class="panel-heading">
+              <h3 class="panel-title">点击排行</h3>
+            </div>
+            <div class="panel-body"id="hot-list">
+  
+              <ul class="list-group" >
+                <li class="list-group-item"><a href="#" class="link text-ellipsis">Cras justoras justoras justoras justoras justoras justo odio</a></li>
+                <li class="list-group-item"><a href="#" class="link text-ellipsis">Dapibusras justoras justoras justoras justo ac facilisis in</a>
+                </li>
+                <li class="list-group-item"><a href="#" class="link text-ellipsis">Morbi ras justoras justoras justoras justoleo risus</a></li>
+                <li class="list-group-item"><a href="#" class="link text-ellipsis">Portras justoras justoras justoa ac consectetur ac</a></li>
+                <li class="list-group-item"><a href="#" class="link text-ellipsis">Vestras justoras justoras justoibulum at eros</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">推荐</h3>
+            </div>
+            <div class="panel-body">
+              <img src="./img/7.png" alt="7.png">
+            </div>
+          </div>
+        </div>
+    </div>
+   
+  </div>
+</div>
+<footer>
+  <p>
+    Blog Design 豫ICP备11002373号-1.
+  </p>
+</footer>
+    <p class="footer"></p>
+  
+
+  
+
+   
+
+
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/blog.js"></script>
+  </body>
+
+</html>
