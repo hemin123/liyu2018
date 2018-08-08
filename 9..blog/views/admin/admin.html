@@ -4,27 +4,3 @@
 {% block title %}博客后台{% endblock %}
 
 
-{% block content %}
-
-<table class="table table-striped">
-  <tr>
-    <td>编号</td>
-    <td>姓名</td>
-    <td>管理员</td>
-  </tr>
-  {% for user in users %}
-  <tr>
-    <td>{{ user.id }}</td>
-    <td>{{ user.username }}</td>
-    <td>{{ if user.isAdmin }}
-      是
-      {{ else }}
-      否
-      {{ endif }}
-
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-
-{% endblock %}

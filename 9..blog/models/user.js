@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
   },
   isAdmin:{
   	type:Boolean,
-  	default:false//默认是普通用户
+  	default:true//默认是普通用户
   }
 });
 

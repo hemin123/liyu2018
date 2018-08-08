@@ -20,12 +20,42 @@ router.get("/",(req,res)=>{
 })
 
 router.get('/users',(req,res)=>{
-	UserModel.find({},'_id username isAdmin')
+/*	UserModel.find({},'_id username isAdmin')
 	.then((user)=>{
-		res.rnder('admin/user_list',
+		// console.log(user);
+		res.render('admin/user_list',
 			{userInfo:req.userInfo,
-				users:users});
+				users:user});	
+	})*/
 
+	let page =req.query.page;
+	let limit = 2;
+	// page-1)*limite
+	UserModel.estimatedDocumentCount({})
+	.then((count)=>{
+		let pages = Math.ceil(count / limit);
+		if(page > pages){
+			page = pages;
+		}
+		let list = [];
+
+		for(let i = 1;i<=pages;i++){
+			list.push(i);
+		}
+		
+		let skip = (page - 1)*limit;
+
+		UserModel.find({},'_id username isAdmin')
+		.skip(skip)
+		.limit(limit)
+		.then((users)=>{
+			res.render('admin/user_list',{
+				userInfo:req.userInfo,
+				users:users,
+				page:page*1,
+				list:list
+			});			
+		})
 
 	})
 	
