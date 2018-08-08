@@ -55,7 +55,11 @@
           {% if userInfo._id %}
           <div class="user-panel" id='user-info'>
             欢迎<span>{{ userInfo.username }}</span>
+            {% if userInfo.isAdmin %}
             <a href="./admin">后台管理</a>
+            {% else %}
+            <a href="./use">用户后台</a>
+            {% endif %}
             <a class="link" href="javascript:;" id='logout'>退出</a>
           </div>  
           {% else %}
