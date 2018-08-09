@@ -1,12 +1,12 @@
 {% extends './layout.html' %}
 
 
-{% block title %}新增分类{% endblock %}
+{% block title %}编辑分类{% endblock %}
 
 
 {% block content %}
 
-<form class="form-horizontal" action="/category/add" method="post">
+<form class="form-horizontal" action="/category/edit" method="post">
   <div class="form-group">
     <label for="name" class="col-sm-2 control-label">菜单名</label>
     <div class="col-sm-4">
@@ -27,4 +27,9 @@
     </div>
   </div>
 </form>
+{% endblock %}
+{% block end %}
+<script src="/js/category.js"> </script>
+
+
 {% endblock %}

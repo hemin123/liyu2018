@@ -81,10 +81,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //处理路由
-app.use("/",require('./routes/index.js'))
-app.use("/user",require('./routes/user.js'))
-app.use("/admin",require('./routes/admin.js'))
-app.use("/category",require('./routes/category.js'))
+app.use("/",require('./routes/index.js'));
+app.use("/user",require('./routes/user.js'));
+app.use("/admin",require('./routes/admin.js'));
+app.use("/category",require('./routes/category.js'));
+app.use("/article",require('./routes/article.js'));
 
 
 app.listen(3000,()=>{

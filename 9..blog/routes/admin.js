@@ -1,5 +1,9 @@
+// ajax  a标签 表单提交前后台的处理
+
+
 const Router = require('express').Router;
 const UserModel = require('../models/user.js');
+// const pages = require('../util/page.js');
 const router = Router();
 
 router.use((req,res,next)=>{
@@ -58,6 +62,25 @@ router.get('/users',(req,res)=>{
 		})
 
 	})
+
+/*	var options={
+	page:req.query.page,
+	model:UserModel,
+	show:'_id username isAdmin',
+
+	}*/
+
+	/*pages.page(options)
+	.then(data){
+		res.render('admin/user_list',{
+			userInfo:req.userInfo,
+			users:users,
+			page:page*1,
+			list:list
+		});		
+	}*/
+
+
 	
 })
 
