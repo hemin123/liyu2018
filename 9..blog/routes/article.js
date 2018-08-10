@@ -114,33 +114,32 @@ router.get("/edit/:id",(req,res)=>{
 	});
 });
 
-router.post("/edit",(req,res)=>{
-	
+router.post('/edit',(req,res)=>{
 	let body = req.body;
-	console.log("body:::",body);
+	console.log("body:::::",body);
+	console.log("body:::::",body.id);
+	console.log("body:::::",body.category);
+	let id =body.id;
 	let options = {
 		category:body.category,
 		title:body.title,
 		intro:body.intro,
 		content:body.content
 	}
-	console.log("body:::",options);
-
-	ArticleModel.update({_id:body.id},options,(err,raw)=>{
+	ArticleModel.update({_id:id},options,(err,raw)=>{
 		if(!err){
 			res.render('admin/sucess',{
 				userInfo:req.userInfo,
-				message:'修改成功',
+				message:'编辑文章成功',
 				url:'/article'
-			})					
+			})	
 		}else{
 	 		res.render('admin/error',{
 				userInfo:req.userInfo,
-				message:'修改失败,数据库操作失败'
-			})					
+				message:'编辑文章失败,数据库操作失败'
+			})	
 		}
-	})
-		
+	});
 })
 
 router.get("/delete/:id",(req,res)=>{
@@ -148,7 +147,7 @@ router.get("/delete/:id",(req,res)=>{
 	
 	ArticleModel.remove({_id:id},(err,raw)=>{
 		if(!err){
-			res.render('admin/success',{
+			res.render('admin/sucess',{
 				userInfo:req.userInfo,
 				message:'删除文章成功',
 				url:'/article'
