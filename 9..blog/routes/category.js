@@ -56,6 +56,7 @@ router.get("/",(req,res)=>{
 	
 	// res.end("hhhh");
 })
+
 router.get("/add",(req,res)=>{
 
 	res.render('admin/category_add',{
@@ -122,16 +123,28 @@ router.post("/add",(req,res)=>{
 
 		}
 	})
-	router.post('/edit',(req,res)=>{
-		/*res.render('admin/category_edit',{
-					userInfo:req.userInfo
-				});*/
-		res.end("hhhh");
-	})
+
 	 
 })
 
+router.get('/edit/:id',(req,res)=>{
+	console.log('hhh');
+		res.render('admin/category_edit',{
+					userInfo:req.userInfo
+				});
+		// res.end("hhhh");
 
+		
+})
+router.post('/edit/:id',(req,res)=>{
+	console.log('hhh');
+		res.render('admin/category_edit',{
+					userInfo:req.userInfo
+				});
+		// res.end("hhhh");
+
+		
+})
 
 
 module.exports = router;
