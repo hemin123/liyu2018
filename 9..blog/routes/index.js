@@ -56,4 +56,72 @@ router.get("/articles",(req,res)=>{
 	})
 });
 
+
+//详情页
+router.get("/view/:id",(req,res)=>{
+	let id = req.params.id;  //取id
+	ArticleModel.findByIdAndUpdate(id,{$inc:{click:1}},{new:true})
+	.populate('category','name')
+	.then(article=>{
+		getCommonData()
+		.then(data=>{
+			res.render('main/detail',{
+				userInfo:req.userInfo,
+				article:article,
+				categories:data.categories,
+				topArticles:data.topArticles
+			})			
+		})
+	})
+
+	//res.end("come");
+});
+
+//列表页
+/*router.get("/list/:id",(req,res)=>{
+	let id = req.params.id;  //取id
+	// ArticleModel.findById(id)
+	console.log(ArticleModel.find({},' _id  title intro'));
+	ArticleModel.find()
+	.then(article=>{
+		res.render('main/lists',{
+			userInfo:req.userInfo,
+			article:article,
+			list:list
+		})			
+	})
+
+	// res.end("come");
+});*/
+router.get("/list/:id",(req,res)=>{
+	let id = req.params.id;  //取id
+	CategoryModel.find({},'_id name')
+	.sort({order:1})
+	.then((categories)=>{
+		let options = {
+			page: req.query.page,
+			model:ArticleModel, 
+			query:{}, 
+			projection:'-__v', 
+			sort:{_id:-1}, 
+			populate:[{path:'category',select:'name'},{path:'user',select:'username'}]
+		}
+
+		pagination(options)
+		.then((data)=>{
+			res.render('main/list',{
+				userInfo:req.userInfo,
+				articles:data.docs,
+				page:data.page,
+				list:data.list,
+				pages:data.pages,
+				categories:categories,
+				url:'/articles'
+			});	
+		})	
+	})
+
+	// res.end("come");
+});
+
 module.exports = router;

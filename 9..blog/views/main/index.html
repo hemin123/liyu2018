@@ -36,10 +36,11 @@
                 <span class="sr-only">Next</span>
               </a>
           </div>  
-          {% for article in articles %}
+          {% for article in articles %} 
           <div class="panel panel-default">
+                
                 <div class="panel-heading">
-                  <h3 class="panel-title"><a href="detail.html" class="link">{{ article.title }}</a></h3>
+                  <h3 class="panel-title"><a href="/view/{{ article.id }}" class="link">{{ article.title }}</a></h3>
                 </div>
               <div class="panel-body">
                   {{ article.intro }}
@@ -47,6 +48,7 @@
               <div class="panel-footer"><span class="glyphicon glyphicon-user"></span>{{ article.user.username }} <span class="glyphicon glyphicon-th-large"></span>
                 {{ article.category.name }}
                 <span class="glyphicon glyphicon-time"></span>{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }} <span class="glyphicon glyphicon-star" aria-hidden="true"></span><em>{{ article.click }}</em>人已阅读</div>
+
           </div> 
           {% endfor %}
           <!-- <div class="panel panel-default">
@@ -74,27 +76,55 @@
                 JavaScript
                 <span class="glyphicon glyphicon-time"></span>2018-07-01 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>1000人已阅读</div>
           </div>    -->
-          <div class="container ye">
-            <nav aria-label="Page navigation">
-              <ul class="pagination" id="page">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-              </ul>
-            </nav>     
-          </div>
+       <!--    <div class="container ye" id="page">
+         <nav aria-label="Page navigation">
+           <ul class="pagination" id="page">
+           <li>
+             <a href="#" aria-label="Previous">
+               <span aria-hidden="true">&laquo;</span>
+             </a>
+           </li>
+           <li><a href="#">1</a></li>
+           <li><a href="#">2</a></li>
+           <li><a href="#">3</a></li>
+           <li><a href="#">4</a></li>
+           <li><a href="#">5</a></li>
+           <li>
+             <a href="#" aria-label="Next">
+               <span aria-hidden="true">&raquo;</span>
+             </a>
+           </li>
+           </ul>
+         </nav>     
+       </div> -->
+
+        
+
+  
+
+      <nav aria-label="Page navigation" id="page">
+        <ul class="pagination">
+          <li>
+            <a href="javascript:;" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          {% for i in list%}
+          {% if i == page %}
+          <li class="active"><a href="javascript:;">{{ i }}</a></li>
+          {% else %}
+          <li><a href="javascript:;">{{ i }}</a></li>
+          {% endif %}
+          
+          {% endfor %}
+          <li>
+            <a href="javascript:;" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
 
 
     {% endblock %}

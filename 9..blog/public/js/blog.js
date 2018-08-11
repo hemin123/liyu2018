@@ -131,4 +131,153 @@
 		})		
 	});
 
+	/*$('#page').on('click',function(){
+		$.ajax({
+			url:"/article?page=",
+			dataType:'json',
+			type:'get'
+		})
+		.done(function(result){
+			var options={
+
+			}
+			// pagination(options)
+			if(result.code == 0){
+				
+			}
+		})
+		.fail(function(err){
+			console.log(err);
+		})		
+	});
+
+	function buildarticle(articles){
+		let html='';
+		html+=`
+		<div class="panel panel-default">
+                
+                <div class="panel-heading">
+                  <h3 class="panel-title"><a href="detail.html" class="link">{{ article.title }}</a></h3>
+                </div>
+              <div class="panel-body">
+                  {{ article.intro }}
+              </div>
+              <div class="panel-footer"><span class="glyphicon glyphicon-user"></span>{{ article.user.username }} <span class="glyphicon glyphicon-th-large"></span>
+                {{ article.category.name }}
+                <span class="glyphicon glyphicon-time"></span>{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }} <span class="glyphicon glyphicon-star" aria-hidden="true"></span><em>{{ article.click }}</em>人已阅读</div>
+
+        </div> `;
+
+	}
+	function buildpage(list,page){
+		let html = 
+              		`<li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>`;
+
+        html+=`<li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>`;
+        html+=`      
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>` ; 
+
+	}*/
+
+	 $('#page').on('click','a',function(){
+	 	var $this = $(this);
+
+	 	var page = 1;
+	 	var currentPage = $('#page').find('.active a').html();
+	 	if($this.attr('aria-label') == 'Previous'){//上一页
+	 		page = currentPage - 1;
+	 	}else if($this.attr('aria-label') == 'Next'){//下一页
+	 		page = currentPage*1 + 1;
+	 	}else{
+	 		page = $(this).html();
+	 	} 
+
+	 	$.ajax({
+	 		url:'/articles?page='+page,
+	 		type:'get',
+	 		dataType:'json'
+	 	})
+	 	.done(function(result){
+	 		if(result.code == 0){
+	 			buildArticleList(result.data.docs);
+	 			buildPage(result.data.list,result.data.page)
+	 		}
+	 	})
+	 	.fail(function(err){
+	 		console.log(err)
+	 	})
+
+	 })
+
+	function buildArticleList(articles){
+	 	var html = '';
+	 	for(var i = 0;i<articles.length;i++){
+	 	var data = moment(articles[i].createdAt).format('YYYY年MM月DD日 HH:mm:ss ');
+	 	html +=`<div class="panel panel-default content-item">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">
+			    	<a href="/view/${articles[i]._id}" class="link" target="_blank">${ articles[i].title }</a>
+				</h3>
+			  </div>
+			  <div class="panel-body">
+				${ articles[i].intro }
+			  </div>
+			  <div class="panel-footer">
+				<span class="glyphicon glyphicon-user"></span>
+				<span class="panel-footer-text text-muted">
+					${ articles[i].user.username }
+				</span>
+				<span class="glyphicon glyphicon-th-list"></span>
+				<span class="panel-footer-text text-muted">
+					${ articles[i].category.name }
+				</span>
+				<span class="glyphicon glyphicon-time"></span>
+				<span class="panel-footer-text text-muted">
+					${ data }
+				</span>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				<span class="panel-footer-text text-muted">
+					<em>${ articles[i].click }</em>已阅读
+				</span>
+			  </div>
+			</div>`
+		}
+		$('#article-list').html(html);
+	 }
+
+	function buildPage(list,page){
+	 	var html = `<li>
+				      <a href="javascript:;" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>`
+
+	    for(i in list){
+	    	if(list[i] == page){
+	    		html += `<li class="active"><a href="javascript:;">${list[i]}</a></li>`;
+	    	}else{
+	    		html += `<li><a href="javascript:;">${list[i]}</a></li>`
+	    	}
+	    }
+
+	 	html += `<li>
+			      <a href="javascript:;" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>`
+		$('#page .pagination').html(html)	    
+	}
+
 })(jQuery);

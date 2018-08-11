@@ -16,7 +16,7 @@ let pagination = (options)=>{
 		
 		let page = 1;
 
-		if(!isNaN(parseInt(options.page))){
+		if(!isNaN(parseInt(options.page))){//isNaN判断是是不是数字
 			page = parseInt(options.page);
 		}
 
