@@ -128,10 +128,16 @@ router.post("/add",(req,res)=>{
 })
 
 router.get('/edit/:id',(req,res)=>{
-	console.log('hhh');
+	let id = req.params.id;
+	CategoryModel.findById(id)
+	.then((category)=>{
 		res.render('admin/category_edit',{
-					userInfo:req.userInfo
-				});
+			userInfo:req.userInfo,
+			category:category
+		});
+	})
+	console.log('hhh');
+		
 		// res.end("hhhh");
 
 		

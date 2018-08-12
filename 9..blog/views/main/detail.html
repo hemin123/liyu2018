@@ -13,17 +13,21 @@
           <div class="panel-heading">
             <h3 class="panel-title">{{ article.title }}</h3>
             <p class="sub-title">
-              <span class="text-muted">{{ article.category.name }}</span>
-              <span class="text-muted">CSS</span>
-              <span class="text-muted">{{ article.createAt | date('Y年m月d日 H：i：s',-8*60) }}</span>
+              <span class="text-muted">
+                {{ article.category.name }}
+              </span>
+            
+              <span class="text-muted">{{ article.createAt | date('Y年m月d日 H:i:s',-8*60) }}</span>
+              <span class="text-muted"><em>{{ article.click }}</em> 人已阅读</span>
             </p>
           </div>
         <div class="panel-body">
           <div class="well">
-             <strong>简介：</strong>在 Bootstrap 2 中，我们
+             <strong>简介：</strong>{{ article.intro }}
           </div>
           <p>
-            外的文件。
+            {{ article.content | safe }}
+            <!-- 不加safe会按纯文本显示 -->
           </p>
         </div>
        

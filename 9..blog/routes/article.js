@@ -2,7 +2,6 @@
 const Router = require('express').Router;
 const CategoryModel = require('../models/category.js');
 const ArticleModel = require('../models/article.js');
-const  pagination = require('../util/pagination.js');
 var multer  = require('multer');//npm install --save multer
 var upload = multer({ dest: 'public/uploads/' });
 const router = Router();
@@ -28,15 +27,16 @@ router.get("/",(req,res)=>{
 	// ArticleModel
 	// .find()
 	// .
-	let options = {
-		page:req.query.page,
-		model:ArticleModel,
-		query:{},
-		projection:'-__v',
-		sort:{_id:-1},
+	/*let options = {
+		page:req.query.page,//页码
+		model:ArticleModel,//操作的数据模型
+		query:{},//查询条件
+		projection:'-__v',//投影
+		sort:{_id:-1},//排序
 
-	}
-	pagination(options)
+	}*/
+	ArticleModel.getPaginationArticles(req)
+
 	.then((data)=>{
 		res.render('admin/article',{
 			userInfo:req.userInfo,

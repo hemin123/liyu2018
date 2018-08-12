@@ -36,33 +36,24 @@
                 <span class="sr-only">Next</span>
               </a>
           </div>  
-          {% for article in articles %} 
-          <div class="panel panel-default">
-                
-                <div class="panel-heading">
-                  <h3 class="panel-title"><a href="/view/{{ article.id }}" class="link">{{ article.title }}</a></h3>
-                </div>
-              <div class="panel-body">
-                  {{ article.intro }}
-              </div>
-              <div class="panel-footer"><span class="glyphicon glyphicon-user"></span>{{ article.user.username }} <span class="glyphicon glyphicon-th-large"></span>
-                {{ article.category.name }}
-                <span class="glyphicon glyphicon-time"></span>{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }} <span class="glyphicon glyphicon-star" aria-hidden="true"></span><em>{{ article.click }}</em>人已阅读</div>
 
-          </div> 
-          {% endfor %}
-          <!-- <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">移动设备优先</h3>
-                </div>
-              <div class="panel-body">
-                在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。
-              </div>
-              <div class="panel-footer"><span class="glyphicon glyphicon-user"></span>Tom <span class="glyphicon glyphicon-th-large"></span>
-                JavaScript
-                <span class="glyphicon glyphicon-time"></span>2018-07-01 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>1000人已阅读</div>
-          </div>   -->
 
+         <!--  {% for article in articles %} 
+         <div class="panel panel-default">
+               
+               <div class="panel-heading">
+                 <h3 class="panel-title"><a href="/view/{{ article.id }}" class="link">{{ article.title }}</a></h3>
+               </div>
+             <div class="panel-body">
+                 {{ article.intro }}
+             </div>
+             <div class="panel-footer"><span class="glyphicon glyphicon-user"></span>{{ article.user.username }} <span class="glyphicon glyphicon-th-large"></span>
+               {{ article.category.name }}
+               <span class="glyphicon glyphicon-time"></span>{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }} <span class="glyphicon glyphicon-star" aria-hidden="true"></span><em>{{ article.click }}</em>人已阅读</div>
+         
+         </div> 
+         {% endfor %}
+                  -->
 
 
           <!-- <div class="panel panel-default">
@@ -100,30 +91,30 @@
 
         
 
-  
-
-      <nav aria-label="Page navigation" id="page">
-        <ul class="pagination">
-          <li>
-            <a href="javascript:;" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          {% for i in list%}
-          {% if i == page %}
-          <li class="active"><a href="javascript:;">{{ i }}</a></li>
-          {% else %}
-          <li><a href="javascript:;">{{ i }}</a></li>
-          {% endif %}
-          
-          {% endfor %}
-          <li>
-            <a href="javascript:;" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {% include './article_list.html' %}
+    
+     <!--  <nav aria-label="Page navigation" id="page">
+       <ul class="pagination">
+         <li>
+           <a href="javascript:;" aria-label="Previous">
+             <span aria-hidden="true">&laquo;</span>
+           </a>
+         </li>
+         {% for i in list%}
+         {% if i == page %}
+         <li class="active"><a href="javascript:;">{{ i }}</a></li>
+         {% else %}
+         <li><a href="javascript:;">{{ i }}</a></li>
+         {% endif %}
+         
+         {% endfor %}
+         <li>
+           <a href="javascript:;" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+           </a>
+         </li>
+       </ul>
+     </nav> -->
 
 
 
