@@ -12,3 +12,11 @@
 .custom .panel-body{
 	background: #fff;
 }
+.commit-list{
+	/*background: red;*/
+}
+
+#comment-btn{
+	height: 75px;
+	line-height: 75px;
+}

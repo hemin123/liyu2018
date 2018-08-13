@@ -135,22 +135,83 @@ router.get('/edit/:id',(req,res)=>{
 			userInfo:req.userInfo,
 			category:category
 		});
-	})
-	console.log('hhh');
-		
+	});		
 		// res.end("hhhh");
-
 		
-})
-router.post('/edit/:id',(req,res)=>{
+});
+router.post('/edit',(req,res)=>{
+	let body = req.body;
+	/*.then(category=>{
+		if (category.name == body.name&&category.order == body.order) {
+			res.render('admin/error',{
+				userInfo:userInfo
+			})
+		}
+	})
 	console.log('hhh');
 		res.render('admin/category_edit',{
 					userInfo:req.userInfo
 				});
 		// res.end("hhhh");
+*/
 
+	CategoryModel.findById(body.id)
+	.then((category)=>{
+		if(category.name == body.name && category.order == body.order){
+	 		res.render('admin/error',{
+				userInfo:req.userInfo,
+				message:'请修改数据后提交'
+			})				
+		}else{
+			CategoryModel.findOne({name:body.name,_id:{$ne:body.id}})
+			.then((newCategory)=>{
+				if(newCategory){
+			 		res.render('admin/error',{
+						userInfo:req.userInfo,
+						message:'编辑分类失败,已有同名分类'
+					})						
+				}else{
+					CategoryModel.update({_id:body.id},{name:body.name,order:body.order},(err,raw)=>{
+						if(!err){
+							res.render('admin/sucess',{
+								userInfo:req.userInfo,
+								message:'修改分类成功',
+								url:'/category'
+							})					
+						}else{
+					 		res.render('admin/error',{
+								userInfo:req.userInfo,
+								message:'修改分类失败,数据库操作失败'
+							})					
+						}
+					})					
+				}
+			})
+		}
+	})
 		
 })
+
+router.get("/delete/:id",(req,res)=>{
+	let id = req.params.id;
+	
+	CategoryModel.remove({_id:id},(err,raw)=>{
+		if(!err){
+			res.render('admin/sucess',{
+				userInfo:req.userInfo,
+				message:'删除分类成功',
+				url:'/category'
+			})				
+		}else{
+	 		res.render('admin/error',{
+				userInfo:req.userInfo,
+				message:'删除分类失败,数据库操作失败'
+			})				
+		}		
+	})
+
+});
+
 
 
 module.exports = router;

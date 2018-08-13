@@ -1,0 +1,32 @@
+{% extends './layout.html' %}
+
+
+{% block title %}资源列表{% endblock %}
+
+
+{% block content %}
+<a href="/resource/add" class="btn btn-primary">新增图片</a>
+<table class="table table-striped">
+  <tr>   
+    <th>title</th>
+    <th>缩略图</th>
+    <th>路径</th>
+    <th>操作</th>
+  </tr>
+	{% for resource in resources %}
+	<tr>
+		<td>{{ resource.title }}</td>
+		<td>{{ article.category.name }}</td>
+		<td>{{ article.createdAt|date('Y年m月d日 h:i:s',-8*60)  }}</td>
+		<td>{{ article.username }}</td>
+		<td>{{ article.click }}</td>
+		<td>
+			<a href="/article/delete/{{ article._id.toString() }}">删除</a>
+		</td>
+
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
+

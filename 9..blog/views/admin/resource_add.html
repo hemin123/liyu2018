@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+
+
+{% block title %}新增资源{% endblock %}
+
+
+{% block content %}
+
+<form class="form-horizontal" id="article-add" action="/resource/add" method="post"  enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">名称</label>
+    <div class="col-sm-5">
+      <input type="text" name="name" class="form-control" id="inputPassword3">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">文件</label>
+    <div class="col-sm-5">
+      <input type="file" name="file" class="form-control" >
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="submit" class="btn  btn-primary" id="btn-sub">上传</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
+
+{% block end %}
+<script src="/lib/ckeditor.js"> </script>
+<script src="/lib/translations/zh-cn.js"> </script>
+<script src="/js/article.js"></script>
+{% endblock %}

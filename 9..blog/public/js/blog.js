@@ -289,6 +289,8 @@
 		$('#page .pagination').html(html)	    
 	}
 
+
+
 	$('#comment-btn').on('click',function(){
 		var articleId = $('#article-id').val();
 		var commentContent = $('#comment-content').val();
@@ -301,7 +303,7 @@
 		}
 
 		$.ajax({
-			url:'commit/add',
+			url:'/comment/add',
 			type:'post',
 			dataType:'json',
 			data:{id:articleId,commentContent}
