@@ -29,7 +29,7 @@ CommentSchema.statics.getPaginationComments = function(req,query={}){
         query:query, //查询条件
         projection:'-__v', //投影，
         sort:{_id:-1}, //排序
-        populate:[{path:'category',select:'name'},{path:'user',select:'username'}]
+        populate:[{path:'article',select:'title'},{path:'user',select:'username'}]
       }
       pagination(options)
       .then((data)=>{
