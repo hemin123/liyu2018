@@ -309,11 +309,36 @@
 			data:{id:articleId,commentContent}
 		})
 		.done(function(result){
-			console.log(result);
+			// console.log(result);
+			if(result.code == 0){
+				//1.渲染评论列表
+				buildCommentList(result.data.docs)
+				//2.渲染分页
+				buildPage($commentPage,result.data.list,result.data.page)
+
+				$('#comment-content').val('')
+			}
 		})
 		.fail(function(err){
-			console.log(err);
+			console.log(err)
 		})
 	})
+	function buildCommentList(comments){
+		var html = '';
+		for(var i = 0;i<comments.length;i++){
+			var createdAt = moment(comments[i].createdAt).format('YYYY年MM月DD日 HH:mm:ss ');
+			html += `
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				  	${ comments[i].user.username } 发表于 ${createdAt}
+				  </div>
+				  <div class="panel-body">
+				    ${ comments[i].content }
+				  </div>
+				</div>
+			`
+		}
+		$('#comment-list').html(html);
+	}
 
 })(jQuery);

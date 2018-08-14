@@ -2,6 +2,7 @@
 const Router = require('express').Router;
 const CategoryModel = require('../models/category.js');
 const ArticleModel = require('../models/article.js');
+const pagination = require('../util/pagination.js')
 var multer  = require('multer');//npm install --save multer
 var upload = multer({ dest: 'public/uploads/' });
 const router = Router();
