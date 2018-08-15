@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">个人博客</a>
+          <a class="navbar-brand" href="/">{{ site.name }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,10 +31,7 @@
           <ul class="nav navbar-nav">
       
             <li class="active"><a href="#">主页</a></li>
-            <!-- <li><a href="list.html">HTML/CSS</a></li>
-            <li><a href="#">Javascript</a></li>
-            <li><a href="#">经验总结</a></li>
-            <li><a href="#">个人感悟</a></li> -->
+
             {% for category in categories %}
                     <li><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
             {% endfor %}
@@ -132,9 +129,13 @@
             <img src="/img/3.jpg" alt="">
             
           </div>
-          <div class="ad">
-            <img src="/img/4.jpg" alt="">
-          </div>
+          {% for ad in site.ads %}
+            <div class="ad">
+              <a href="{{ ad.url }}" class="thumbail" target="_blank">
+                 <img src="{{ ad.path }}" class="img-responsive" alt="Responsiveimage">
+              </a>
+            </div>
+          {% endfor %}
 
           <div class="panel panel-default autor">
             <div class="panel-heading">
@@ -143,12 +144,12 @@
             <div class="panel-body">
               <div class="media-left">
                 <a href="#">
-                  <img src="/img/6.jpg" alt="6.jpg" class="img-circle">
+                  <img src="{{ site.author.image }}" alt="6.jpg" class="img-circle">
                 </a>
               </div>
               <div class="media-right">
-                  <h4>姓名</h4>
-                 Panel content
+                  <h4>{{ site.author.name }}</h4>
+                 {{ site.author.intro }}
               </div>
              
             </div>
@@ -175,7 +176,7 @@
               <h3 class="panel-title">推荐</h3>
             </div>
             <div class="panel-body">
-              <img src="/img/7.png" alt="7.png">
+              <img src="{{ site.author.wechat }}" alt="">
             </div>
           </div>
         </div>
@@ -185,7 +186,7 @@
 </div>
 <footer>
   <p>
-    Blog Design 豫ICP备11002373号-1.
+    Blog Design {{ site.icp }}
   </p>
 </footer>
     <p class="footer"></p>

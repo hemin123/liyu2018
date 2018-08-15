@@ -2,19 +2,28 @@
 	$('#btn-sub').on('click',function(){
 	
 		var passwordReg = /^\w{3,10}$/;
-		var $passwords = $('#passwords');
-		var password = $passwords.find("[name='password']").val();
-		var repassword = $passwords.find("[name='repassword']").val();
-		var errMsg = '';
-		//密码:3-10个字符
-		if(!passwordReg.test(password)){
-			errMsg = '密码为3-10个字符'
-		}
-		else if(password != repassword){
-			errMsg = '两次密码不一致'
-		}
 
-		if(errMsg){//验证不通过
+		var password = $("[name='password']").val();
+		var repassword = $("[name='repassword']").val();
+
+		var $errs=$('.err');
+
+		//密码:3-10个字符
+		if( !passwordReg.test(password)){
+			$errs.eq(0).html('密码为3-10个字符');
+			return false;
+		}else{
+			$errs.eq(0).html('');
+		}
+		if(password != repassword){
+			$errs.eq(1).html('两次密码不一致');
+			return false;
+		}else{
+			$errs.eq(1).html('');
+		}
+	})
+
+		/*if(errMsg){//验证不通过
 			//显示错误信息
 			$passwords.find('.err').html(errMsg);
 			return;
@@ -41,7 +50,7 @@
 				console.log(err)
 			})
 		}
-	})
+	})*/
 
 
 

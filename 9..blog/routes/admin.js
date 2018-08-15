@@ -99,6 +99,70 @@ router.get('/site',(req,res)=>{
 	})
 })
 
+router.post("/site",(req,res)=>{
+	let body = req.body;
+	let site ={
+		name:body.name,
+		author:{
+			name:body.authorName,
+			intro:body.authorIntro,
+			image:body.authorImage,
+			wechat:body.authorWechat
+		},
+		icp:body.icp
+	}
+	site.carouseles =[];
+	// typeof body.carouselUrl=='object'类型走下面对象 数组
+	//length判断没用   object就是数组
+	if (body.carouselUrl.length && (typeof body.carouselUrl=='object')) {
+		for (let i = 0; i < body.carouselUrl.length; i++) {
+			site.carouseles.push({
+				url:body.carouselUrl[i],
+				path:body.carouselPath[i]
+			})
+		}
+	}else{//string
+		site.carouseles.push({
+			url:body.carouselUrl,
+			path:body.carouselPath
+		})
+
+	}
+
+	site.ads = [];
+	if (body.adUrl.length && (typeof body.adUrl=='object')) {
+		for (var i = 0; i < body.adUrl.length; i++) {
+			site.ads.push({
+				url:body.adUrl[i],
+				path:body.adPath[i]
+			})
+		}
+	}else{
+		site.ads.push({
+			url:body.adUrl,
+			path:body.adPath
+		})
+	}
+	let strSite =JSON.stringify(site);
+	let filePath =path.normalize(__dirname+'/../site-info.json');
+	fs.writeFile(filePath,strSite,(err)=>{
+		if (!err) {
+			res.render('admin/sucess',{
+				userInfo:req.userInfo,
+				message:'更新站点信息成功',
+				url:'/admin/site'
+			})
+		}else{
+			res.render('admin/error',{
+				userInfo:req.userInfo,
+				message:'删除失败，写入错误'
+			})
+		}
+	})
+
+})
+
+
 router.get('/password',(req,res)=>{
 	res.render('admin/password',{
 		userInfo:req.userInfo
@@ -108,15 +172,17 @@ router.get('/password',(req,res)=>{
 router.post('/password',(req,res)=>{
 	let body=req.body;
 	console.log(body);
-	console.log(req.userInfo);
-	UserModel
-	.update({_id:req.userInfo._id},{password:hmac(body.password)})
-	// .update({username:body.username,password:hmac(body.password)})
-	.then((raw)=>{
+
+	UserModel.update({_id:req.userInfo._id},{
+		password:hmac(req.body.password)
+	})
+	.then(raw=>{
+		req.session.destroy();
 		res.render('admin/sucess',{
-			userInfo:req.userInfo
-			// massage:"成功"
-		});
+			userInfo:req.userInfo,
+			message:'更新密码成功',
+			url:'/'
+		})			
 	})
 
 })

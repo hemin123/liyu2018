@@ -23,6 +23,7 @@ router.get("/",(req,res)=>{
 				pages:pageData.pages,
 				categories:data.categories,
 				topArticles:data.topArticles,
+				site:data.site,
 				url:'/articles'
 			});
 		})
@@ -70,6 +71,7 @@ router.get("/view/:id",(req,res)=>{
 					page:pageData.page,
 					list:pageData.list,
 					pages:pageData.pages,
+					site:data.site,
 					category:article.category._id.toString()
 				})			      	
 			})
@@ -102,6 +104,7 @@ router.get("/list/:id",(req,res)=>{
 				categories:data.categories,
 				topArticles:data.topArticles,
 				category:id,
+				site:data.site,
 				url:'/articles'
 			});	
 		})	

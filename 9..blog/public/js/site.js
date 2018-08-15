@@ -7,7 +7,7 @@
 	$('.btn-add').on('click',function(){
 		var $this = $(this);
 		var $dom =$this.siblings().eq(0).clone(true);
-		$dom.find('[type:"text"]').val('');
+		$dom.find('[type="text"]').val('');
 		$(this.parentNode).append($dom);
 	})
 })(jQuery);
