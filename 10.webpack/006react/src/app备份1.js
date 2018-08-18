@@ -21,48 +21,33 @@ class app extends React.Component{
 
 	handledel(index){
 
-		/*const list =[...this.state.list];
+		const list =[...this.state.list];
 		list.splice(index,1);
 		this.setState ({	
 			list:list
-		})*/
-		// console.log(index);
-		this.setState((preState)=>{
-			const list =[...preState.list];
-			list.splice(index,1)
-			return {
-				list
-			}
 		})
+		// console.log(index);
 	}
 
 
 	handleadd(){
-		console.log(0);
-		this.setState({
-			list:[...preState.list,preState.value],
-			value:''	
-		})
-
-		this.setState((preState)=>(
+			console.log(0);
+			this.setState((preState)=>(
 			{
 				list:[...preState.list,preState.value],
-				value:''	
+
+value:''	
 			}
 
-		))
-	}
+			))
+				}
 	handlechange(e){
-		/*console.log(e.target);
-		console.log(e.target.value);
-		this.setState ({
-			value:e.target.value
-		})*/
+			console.log(e.target);
+			console.log(e.target.value);
+			this.setState ({
+				value:e.target.value
+			})
 			// console.log(this.state);
-		const value =e.target.value;
-		this.setState((preState)=>({
-			value
-		}))
 	}
 	render(){
 		// <Fragment></Fragment>不会生成新的标签
