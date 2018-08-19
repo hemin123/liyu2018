@@ -22,9 +22,9 @@ npm yarn -g
 
 yarn指令可以用npm代替
 
-setState用于组件内传数据
+		setState用于组件内传数据
 
-props用于组件间传数据
+		props用于组件间传数据
 
 react的特点
 1 声明式(数据驱动)

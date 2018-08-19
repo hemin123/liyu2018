@@ -13,8 +13,10 @@ Son.defaultProps ={
 
 执行顺序
 
+只要state有改变 render方法就会被执行
+
 	state  pr
-父组件render 那个父组件里包函的子组件都是执行一遍（render）
+父组件render 那个父组件里包函的子组件都执行一遍（render）
 
 
 数据

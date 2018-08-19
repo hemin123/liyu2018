@@ -3,17 +3,32 @@
 import React,{Component} from 'react';
 
 class Son extends Component{
-	handledelete(index,props){
 
-		console.log(this.props.index);
-		this.props.handledel(this.props.index);
+	// constructor(){
+	// 	super(props);
+
+	// 	this.handledelete=this.handledelete.bind(this)
+	// }
+
+	handledelete(index,props){
+		 console.log(this.props.index);
+		 this.props.handledel(this.props.index);
+		 // const { handledel , index } = this.props;
+		 // handledelete(index);
+
+
 	}
 	render(){
 		return (
-			<li onClick={this.handledelete.bind(this) }> 
+			<li onClick={this.handledelete }> 
 			{this.props.content}
 			</li>)
-	}
+		// const { content } = this.props;
+		// return (
+		// 		<li onClick={this.handledelete }> 
+		// 		{content}
+		// 		</li>)
+	 }
 
 }
 

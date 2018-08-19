@@ -3,7 +3,8 @@ import React,{Component} from 'react';
 
 import Son from './son.js';
 import axios from  'axios';
-import './app.css'
+
+import './app.css';
 // jss语法
 class app extends React.Component{
 	constructor(props){
@@ -35,18 +36,29 @@ shouldComponentUpdate(nextProps, nextState){
 componentDidMount(){
 
 //发送ajax请求
-	axios
+	/*axios
 	.get('http://127.0.0.1:3000/api/data')
 	.then((data)=>{
 		console.log(data);
-		// this.setState ({	
-		// 	list:data.data
-		// })
+		this.setState ({	
+			list:data.data
+		})
 	})
 	.catch((e)=>{
 		console.log("err:::"+e);
 
-})
+	})*/
+	axios
+	.get('http://127.0.0.1:3000/api/getData')
+	.then((data)=>{
+		// console.log(data);
+		this.setState({
+			list:data.data
+		})
+	})
+	.catch((e)=>{
+		console.log('err:::',e);
+	})
 }	
 
 	handledel(index){
@@ -65,18 +77,18 @@ componentDidMount(){
 			this.setState((preState)=>(
 			{
 				list:[...preState.list,preState.value],
-
-value:''	
-			}
-
-			))
-				}
+				value:''	
+			}),()=>{
+				console.log(this.ul.querySelectorAll('li'))
+			});
+	}
 	handlechange(e){
 			// console.log(e.target);
 			// console.log(e.target.value);
-			console.log(this.input);
+			console.log(this.input);//可以拿到DOM节点
+			const input = this.input.value;
 			this.setState ({
-				value:e.target.value
+				input
 			})
 			// console.log(this.state);
 	}
@@ -99,13 +111,15 @@ value:''
 				<input 
 				value={this.state.value} 
 				onChange ={this.handlechange}
-				ref={(input)=>{
+				ref={(input)=>{  //取DOM节点
 					this.input=input;
 				}}
 				 />
 				
 				<button onClick ={this.handleadd}>添加</button>
-				<ul>					
+				<ul ref={(ul)=>{
+					this.ul=ul
+				}}>					
 					{		
 						this.getItems()	
 					}
@@ -116,7 +130,7 @@ value:''
 	}
 }
 
-
+//导出组件
 export default app;
 
 

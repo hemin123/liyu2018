@@ -39,18 +39,18 @@ class app extends React.Component{
 
 	handleadd(){
 		console.log(0);
-		/*this.setState({
+		this.setState({
 			list:[...this.state.list,this.state.value],
 			value:''	
-		})*/
+		})
 
-		this.setState((preState)=>(
-			{
-				list:[...preState.list,preState.value],
-				value:''	
-			}
+		// this.setState((preState)=>(
+		// 	{
+		// 		list:[...preState.list,preState.value],
+		// 		value:''	
+		// 	}
 
-		))
+		// ))
 	}
 	handlechange(e){
 		/*console.log(e.target);
