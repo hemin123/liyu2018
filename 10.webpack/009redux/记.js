@@ -1,7 +1,5 @@
 
-antd
-
-
+封装函数
 
 ui库
 
@@ -12,6 +10,16 @@ ant design https://ant.design/index-cn
 
 
 蚂蚁金服
+
+redux
+
+npm install --save redux
+
+
+redux thunk中间件
+
+安装
+
 
 
 
