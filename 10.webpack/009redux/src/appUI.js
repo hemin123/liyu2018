@@ -2,7 +2,7 @@
 import { Input,Button,Row,Col,List } from 'antd';
 
 	//写组件
-class AppUI extends Component{
+/*class AppUI extends Component{
 		render(){
 		return(
 			<div className="App">
@@ -24,7 +24,7 @@ class AppUI extends Component{
 			</div>
 
 		)}
-}	
+}	*/
 /*const appUI =(props)=>{
 		return(
 			<div className="App">
@@ -46,5 +46,33 @@ class AppUI extends Component{
 
 		)
 }	*/
+
+const AppUI = (props)=> {
+	return (
+		<div className="App">
+		    <Row>
+		      <Col span={18} >
+		      	<Input 
+		      		value={props.value} 
+		      		onChange={props.handleChange}
+		      	/> 
+		      </Col>
+		      <Col span={6} >
+		      	<Button type="primary" onClick={props.handleadd}>
+		      		增加
+		      	</Button>
+		      </Col>
+		    </Row>
+		    <List
+		      style={{ marginTop: 10 }}
+		      bordered
+		      dataSource={props.list}
+		      renderItem={(item,index) => (<List.Item onClick={()=>{props.handledel(index)}}>{item}</List.Item>)}
+		    />			    			
+		</div>				
+	);
+}
+
+
 
 export default AppUI;

@@ -64,10 +64,10 @@ class App extends Component{
 			    />			    			
 			</div>				
 		)*/
-		return(
-			<AppUI />
-		)
 		/*return(
+			<AppUI />
+		)*/
+		return(
 			<appUI 
 				value ={this.state.value}
 				list ={this.state.list}
@@ -76,7 +76,7 @@ class App extends Component{
 				handleadd={this.handleadd}
 
 			/>
-		)*/
+		)
 	}
 }
 export default App;
