@@ -52,9 +52,13 @@ class Todolist extends Component{
 
 //参数传递
 const mapstateprops =(state)=>{
+	console.log(state);
 	return {
-		value:state.todolist.value,
-		list:state.todolist.list
+		/*value:state.todolist.value,
+		list:state.todolist.list*/
+
+		value:state.get('todolist').get('value'),
+		list:state.get('todolist').get('list')
 
 	}
 }

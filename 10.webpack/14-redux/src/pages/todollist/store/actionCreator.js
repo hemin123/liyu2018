@@ -4,28 +4,30 @@
 * @Last Modified by:   TomChen
 * @Last Modified time: 2018-08-20 17:09:15
 */
-import {CHANGE_VALUE,ADD_ITEM,DELETE_ITEM,LOAD_INIT_DATA  } from './actionTypes.js'
+// import {CHANGE_VALUE,ADD_ITEM,DELETE_ITEM,LOAD_INIT_DATA  } from './actionTypes.js'
+
+import * as types   from './actionTypes.js'
 import axios from 'axios';
 export const chageValueAction = (payload)=>{
 	return {
-		type:CHANGE_VALUE,
+		type:types.CHANGE_VALUE,
 		payload
 	}
 }
 export const addItemAction = ()=>{
 	return {
-		type:ADD_ITEM
+		type:types.ADD_ITEM
 	}
 }
 export const deleteItemAction = (payload)=>{
 	return {
-		type:DELETE_ITEM,
+		type:types.DELETE_ITEM,
 		payload
 	}
 }
 export const loadInitDataAction = (payload)=>{
 	return {
-		type:LOAD_INIT_DATA,
+		type:types.LOAD_INIT_DATA,
 		payload
 	}
 }
