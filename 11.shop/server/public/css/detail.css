@@ -1,0 +1,22 @@
+
+.custom {
+	min-height: 600px;
+}
+
+.custom .panel-title{
+	font-size: 30px;
+}
+.custom .sub-title span{
+	margin-left: 5px;
+}
+.custom .panel-body{
+	background: #fff;
+}
+.commit-list{
+	/*background: red;*/
+}
+
+#comment-btn{
+	height: 75px;
+	line-height: 75px;
+}

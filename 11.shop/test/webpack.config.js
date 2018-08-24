@@ -25,13 +25,6 @@ module.exports = {
 		//出口文件存储路径
 		path:path.resolve(__dirname,'dist')
 	},
-  resolve:{
-    alias:{
-      pages:path.resolve(__dirname,'src/pages'),
-      util:path.resolve(__dirname,'src/util'),
-      api:path.resolve(__dirname,'src/api')
-    }
-  },
 	//配置loader
   module: {
     rules: [
@@ -83,7 +76,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: './dist',
-    port:3001,
+    port:3002,
     // historyApiail
     historyApiFallback:true
   }
