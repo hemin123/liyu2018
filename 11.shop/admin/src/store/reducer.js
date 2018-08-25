@@ -7,10 +7,12 @@ import { combineReducers } from 'redux-immutable';
 // import { reducer } from '../pages/todollist/store'
 // import { reducer as todolistReducer } from '../pages/todollist/store'
 import { reducer as loginReducer } from '../pages/login/store'
+import { reducer as homeReducer } from '../pages/home/store'
 
 export default  combineReducers({
 	// todolist :todolistReducer,
-	login :loginReducer
+	login :loginReducer,
+	home :homeReducer
 })
 
 

@@ -14,8 +14,9 @@ export const request = (options)=>{
 		.then(result=>{
 			let data = result.data;
 			if(data.code == 10){
-				window.location.href = '/login';
-				reject(data.message);
+				 window.location.href = '/login';
+				 reject(data.message);
+				// resolve(data);
 			}else{
 				resolve(data);
 			}

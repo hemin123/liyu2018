@@ -1,0 +1,10 @@
+
+.side .ant-menu-item{
+	background: #fff  !important
+}
+
+.side .ant-menu-item:after{
+	border-right: none  !important
+}
+
+

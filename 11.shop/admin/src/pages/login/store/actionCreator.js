@@ -7,7 +7,7 @@ import { message } from 'antd';
 import {request,setUserName} from 'util';
 import {ADMIN_LOGIN } from 'api';
 
-const getloginRequestAction = ()=>{
+/*const getloginRequestAction = ()=>{
 	return {
 		type:types.LOGIN_REQUEST
 	}
@@ -16,7 +16,7 @@ const getloginDoneAction = ()=>{
 	return {
 		type:types.LOGIN_DONE
 	}
-}
+}*/
 
 export const getLoginAction=(values)=>{
 	return (dispatch)=>{
@@ -29,11 +29,12 @@ export const getLoginAction=(values)=>{
  		.then((result)=>{
         console.log(result);
         if (result.code==0) {
+          setUserName(result.data.username);
           window.location.href='/';
           console.log(result.data);
        
         }else if(result.code==10){
-
+        
          message.error(result.message);
         }
          /*this.setState({

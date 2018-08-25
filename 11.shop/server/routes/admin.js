@@ -11,7 +11,7 @@ const fs=require('fs');
 const path=require('path');
 const router = Router();
 
-/*
+
 router.get("/init",(req,res)=>{
 	//插入数据到数据库
 	new UserModel({
@@ -26,7 +26,7 @@ router.get("/init",(req,res)=>{
 			res.send('err')				
 		}
 	})
-});*/
+});
 
 router.post("/login",(req,res)=>{
 	let body = req.body;
@@ -60,7 +60,16 @@ router.post("/login",(req,res)=>{
 
 })
 
-
+router.post("/count",(req,res)=>{
+	res.json({
+		code:0,
+		data:{
+			usernum:300,
+			ordernum:301,
+			productnum:302
+		}
+	})
+})
 
 router.use((req,res,next)=>{
 	if (req.userInfo.isAdmin){
