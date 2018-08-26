@@ -60,7 +60,7 @@ router.post("/login",(req,res)=>{
 
 })
 
-router.post("/count",(req,res)=>{
+router.get("/count",(req,res)=>{
 	res.json({
 		code:0,
 		data:{
@@ -75,7 +75,11 @@ router.use((req,res,next)=>{
 	if (req.userInfo.isAdmin){
 		next();
 	} else{
-		res.send('<h1>使用管理员账号登陆</h1>')
+		// res.send('<h1>使用管理员账号登陆</h1>')
+		res.send({
+			code:10
+		});
+
 	}
 })
 

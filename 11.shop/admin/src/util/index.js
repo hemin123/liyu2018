@@ -9,11 +9,13 @@ export const request = (options)=>{
         axios({
 			method: options.method || 'get',
 			url: options.url || '',
-			data: options.data || null
+			data: options.data || null,
+			withCredentials:true
 		})
 		.then(result=>{
 			let data = result.data;
 			if(data.code == 10){
+				removeUserName();
 				 window.location.href = '/login';
 				 reject(data.message);
 				// resolve(data);

@@ -1,9 +1,11 @@
 import React,{ Component } from 'react';
+
 import Layout from 'common/layout'
 import { Card, Col, Row } from 'antd';
-import {actionCreator } from './store'
+
 import { connect } from 'react-redux'
 
+import  { actionCreator }  from './store';
 // connect
 class Home extends Component{
 	componentDidMount(){

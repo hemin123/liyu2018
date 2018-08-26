@@ -27,10 +27,10 @@ class mySide extends Component {
 	            	<NavLink to="/">首页</NavLink>
 	            </Menu.Item>
 	            <Menu.Item key="2">
-	            	<NavLink to="/user">分类</NavLink>
+	            	<NavLink to="/user">用户</NavLink>
 	            </Menu.Item>
 	            <Menu.Item key="3">
-	            	<NavLink to="/category">用户</NavLink>
+	            	<NavLink to="/category">分类</NavLink>
 	            </Menu.Item>
 	            <Menu.Item key="4">
 	            	<NavLink to="/">商品管理</NavLink>
