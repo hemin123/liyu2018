@@ -11,6 +11,7 @@ import {
 import Login from 'pages/login/index.js'
 import Home from 'pages/home/index.js'
 import User from 'pages/user/index.js'
+import Category from 'pages/category/index.js'
 import ErrorPage from 'common/errorpage'
 import Layout from './common/layout'
 //引入css
@@ -46,7 +47,9 @@ class App extends Component{
 
 				<Switch>
 					<ProtectedRoute exact path='/' component={ Home } />				
-					<ProtectedRoute  path='/user' component={ User } />				
+					<ProtectedRoute  path='/user' component={ User } />
+					<ProtectedRoute  path='/category' component={ Category } />
+
 					<LoginRoute path='/login' component={ Login } />	
 					<Route  component={ ErrorPage } />	
 				

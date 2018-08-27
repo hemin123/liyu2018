@@ -6,9 +6,9 @@ import {fromJS }  from 'immutable'
 import * as types from './actionType.js'
 
 const defaultState = fromJS({
-	usernum:15,
-	ordernum:45,
-	productnum:122
+	usernum:222,
+	ordernum:333,
+	productnum:444
 })
 
 export default (state=defaultState,action)=>{

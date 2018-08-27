@@ -6,6 +6,7 @@ const UserModel = require('../models/user.js');
 // const pages = require('../util/page.js');
 const CommentModel = require('../models/comment.js');
 const hmac = require('../util/hmac.js');
+const pagination = require('../util/pagination.js');
 
 const fs=require('fs');
 const path=require('path');
@@ -52,12 +53,25 @@ router.post("/login",(req,res)=>{
 			 res.json(result);
 
 		}else{
-			result.code = 10;
+			result.code = 1;
 			result.message = '用户名和密码错误'
 			res.json(result);
 		}
 	})
 
+})
+
+
+router.use((req,res,next)=>{
+	if (req.userInfo.isAdmin){
+		next();
+	} else{
+	 // res.send('<h1>使用管理员账号登陆</h1>')
+		 res.send({
+		 	code:10
+		 });
+
+	}
 })
 
 router.get("/count",(req,res)=>{
@@ -70,18 +84,35 @@ router.get("/count",(req,res)=>{
 		}
 	})
 })
-
-router.use((req,res,next)=>{
-	if (req.userInfo.isAdmin){
-		next();
-	} else{
-		// res.send('<h1>使用管理员账号登陆</h1>')
-		res.send({
-			code:10
-		});
-
+router.get('/users',(req,res)=>{
+	let options={
+		page:req.query.page,
+		model:UserModel,
+		query:{},
+		projection:'',
+		sort:{_id:-1}
 	}
+	pagination(options)
+	.then((result)=>{
+		res.json({
+			code:0,
+			data:{
+				current:result.current,
+				total:result.total,
+				pageSize:result.pageSize,
+				list:result.list
+
+			}
+		})
+	})
+	
 })
+
+
+
+
+
+
 
 //显示首页
 router.get("/",(req,res)=>{
@@ -106,47 +137,7 @@ router.get('/comments',(req,res)=>{
 })
 
 
-router.get('/users',(req,res)=>{
-/*	UserModel.find({},'_id username isAdmin')
-	.then((user)=>{
-		// console.log(user);
-		res.render('admin/user_list',
-			{userInfo:req.userInfo,
-				users:user});	
-	})*/
 
-	let page =req.query.page;
-	let limit = 2;
-	// page-1)*limite
-	UserModel.estimatedDocumentCount({})
-	.then((count)=>{
-		let pages = Math.ceil(count / limit);
-		if(page > pages){
-			page = pages;
-		}
-		let list = [];
-
-		for(let i = 1;i<=pages;i++){
-			list.push(i);
-		}
-		
-		let skip = (page - 1)*limit;
-
-		UserModel.find({},'_id username isAdmin')
-		.skip(skip)
-		.limit(limit)
-		.then((users)=>{
-			res.render('admin/user_list',{
-				userInfo:req.userInfo,
-				users:users,
-				page:page*1,
-				list:list
-			});			
-		})
-
-	})
-	
-})
 
 router.get('/site',(req,res)=>{
 	let filePath =path.normalize(__dirname+'/../site-info.json');

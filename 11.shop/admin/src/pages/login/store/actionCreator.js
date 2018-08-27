@@ -44,7 +44,7 @@ export const getLoginAction=(values)=>{
     })  
     .catch((err)=>{
       console.log(err);
-        message.error("网络错误");
+        message.error("网络错误login");
         /*this.setState({
             isFetching:true
           })*/

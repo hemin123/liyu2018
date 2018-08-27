@@ -8,14 +8,13 @@ import { connect } from 'react-redux'
 import  { actionCreator }  from './store';
 // connect
 class Home extends Component{
-	componentDidMount(){
+	componentDidMount(){//home一加载执行
 		this.props.handleCount();
 	}
 	render(){
 		return(
 			<div> 
 				<Layout>				
-{/*{this.props.usernum}*/}
 				    <Row gutter={16}>
 				      <Col span={8}>
 				        <Card title="人数" bordered={false} hoverable={true}>{this.props.usernum}</Card>

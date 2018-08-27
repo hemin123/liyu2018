@@ -17,7 +17,7 @@ const setCountAction = (payload)=>{
 export const getCountAction=()=>{
 	return (dispatch)=>{
 		request({
-      url:ADMIN_COUNT,
+      url:types.ADMIN_COUNT,
 
 		})
  		.then((result)=>{
@@ -30,7 +30,7 @@ export const getCountAction=()=>{
     })  
     .catch((err)=>{
       console.log(err);
-        message.error("网络错误");
+        message.error("网络错误home");
        
     })
 	}

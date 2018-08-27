@@ -7,16 +7,25 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  username:{
-  	type:String
-  },
-  password:{
-  	type:String
-  },
-  isAdmin:{
-  	type:Boolean,
-  	default:true//默认是普通用户
-  }
+    username:{
+    	type:String
+    },
+    password:{
+    	type:String
+    },
+    isAdmin:{
+      type:Boolean,
+      default:true//默认是普通用户
+    },  
+    phone:{
+      type:String,
+    },  
+    email:{
+      type:String,
+    } 
+  },{ 
+   timestamps:true//第二个参数
+
 });
 
 

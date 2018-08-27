@@ -10,6 +10,27 @@ const hmac = require('../util/hmac.js')
 
 const router = Router();
 
+router.get("/init",(req,res)=>{
+	const users =[];
+	for (var i = 0; i <100; i++) {
+		users.push({
+			username:'test',
+			password:hmac('test'+i),
+			isAdmin:false,
+			phone:'121421'+i,
+			email:'i@'+i,
+
+		})
+		UserModel.create(users)
+		.then((result)=>{
+			res.send('ok');
+		
+		})
+	}
+	//插入数据到数据库
+	
+});
+
 //注册用户
 router.post("/register",(req,res)=>{
 	let body = req.body;
