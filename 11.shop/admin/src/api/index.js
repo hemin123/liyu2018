@@ -8,5 +8,7 @@ export const  ADMIN_LOGIN = SERVER + 'admin/login';
 export const  ADMIN_COUNT = SERVER + 'admin/count';
 export const  USER_LOGIN = SERVER + 'user/logout';
 export const  GET_USER = SERVER + 'admin/users';
+export const  ADD_CATEGORY = SERVER + 'category';
+export const  GET_CATEGORY = SERVER + 'category';
 
 

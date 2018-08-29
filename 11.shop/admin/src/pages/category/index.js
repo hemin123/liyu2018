@@ -1,12 +1,10 @@
 
 import React,{ Component } from 'react';
-import { Table } from 'antd';
 import Layout from 'common/layout'
-import { connect } from 'react-redux'
 import {Route,Switch}from 'react-router-dom'
 
-import List from './list.js' 
-import Add from './add.js' 
+import CategoryList from './list.js' 
+import CategoryAdd from './add.js' 
 
 class Category extends Component{
 
@@ -14,8 +12,11 @@ class Category extends Component{
 		return(
 			<div>
 				<Switch>
-					<Route path='/category/add' Component={ Add } />
-					<Route path='/category' Component={ List } />				
+					<Route path='/category/add' component={ CategoryAdd } />
+					<Route path='/category/:pid?' component= {CategoryList } />	
+					{/*component是Route上面的属性，需要小写component，不是react里面的
+
+					*/}			
 				</Switch>
 				
 			</div>

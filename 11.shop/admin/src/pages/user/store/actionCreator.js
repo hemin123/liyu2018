@@ -42,7 +42,7 @@ export const getPageAction=(page)=>{
  		.then((result)=>{  
     if (result.code==0) {
 
-        dispatch(getsetpageAction(result.data))
+        dispatch(getsetpageAction(result.data));
         console.log("result",result);
       }  else{
         message.error('err')

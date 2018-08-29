@@ -8,31 +8,101 @@ router.use((req,res,next)=>{
 	if (req.userInfo.isAdmin){
 		next();
 	} else{
-		res.send('<h1>使用管理员账号登陆</h1>')
+	 // res.send('<h1>使用管理员账号登陆</h1>')
+		 res.send({
+		 	code:10
+		 });
+
 	}
 })
+router.post("/",(req,res)=>{
+	let body = req.body;
+	CategoryModel
+	.findOne({name:body.name,pid:body.pid})
+	.then((cate)=>{
+		if(cate){
+	 		res.json({
+	 			code:1,
+	 			message:"添加分类失败,分类已存在"
+	 		})
+		}else{
+			new CategoryModel({
+				name:body.name,
+				pid:body.pid
+			})
+			.save()
+			.then((newCate)=>{
+				if(newCate){
+					if(body.pid == 0){//如果添加的是一级分类,返回新的一级分类
+						CategoryModel.find({pid:0},"_id name")
+						.then((categories)=>{
+							res.json({
+								code:0,
+								data:categories
+							})	
+						})						
+					}else{
+						res.json({
+							code:0
+						})
+					}
+					
+				}
+			})
+			.catch((e)=>{
+		 		res.json({
+		 			code:1,
+		 			message:"添加分类失败,服务器端错误"
+		 		})
+			})
+		}
+	})
+})
+router.get("/",(req,res)=>{
+	let pid = req.query.pid;
+	let page =req.query.page;
+
+	if (page) {
+		CategoryModel
+		.getPaginationCategories(page,{pid:pid})
+		.then((result)=>{
+			res.json({
+				code:0,
+				data:{
+					current:result.current,
+					total:result.total,
+					pageSize:result.pageSize,
+					list:result.list
+				}
+			})		
+		})	
+	}else{
+		CategoryModel.find({pid:pid},"_id name pid order")
+		.then((categories)=>{
+			res.json({
+				code:0,
+				data:categories
+			})
+			
+		})
+		.catch((e)=>{
+			res.json({
+				code:1,
+				message:'新增失败。服务器错误'
+			})
+		})
+	}
+
+	 
+})
+
+
+
+
+
 
 //显示首页
 router.get("/",(req,res)=>{
-
-	/*let options = {
-		page:req.query.page,
-		model:CategoryModel,
-		query:{},
-		projection:'_id name order',
-		sort:{order:1}
-	}
-	pagination(options)
-	.then((data)=>{
-		res.render('/admin/category_list',{
-		userInfo:req.userInfo,
-		categories:data.docs,
-		page:data.page,
-		list:data.list,
-		pages:data.pages,
-		url:'/category'
-		});
-	})*/
 
 	let options = {
 		page: req.query.page,//需要显示的页码
