@@ -1,6 +1,6 @@
 
 import React,{ Component } from 'react';
-import { Table,Breadcrumb,Button,Divider,Modal,InputNumber } from 'antd';
+import { Table,Breadcrumb,Button,Divider,Modal,InputNumber,Input } from 'antd';
 import Layout from 'common/layout'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -18,58 +18,18 @@ const data = [{
   name: 'test',
   isAdmin:false
 }];
-const columns = [{
-  title: 'id',
-  dataIndex: 'id',
-  key: 'id',
-}, {
-  title: '分类名称',
-  dataIndex: 'name',
-  key: 'name',
-} ,{
-  title: '排序',
-  dataIndex: 'order',
-  key: 'order',
-  render:(order,record)=>{
-  	return <InputNumber defaultValue={order} />
-  }
 
-}, {
-  title: '操作',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="javascript:;"
-		onClick={()=>{
-	  		this.props.showUpdateModal(record.id,record.name)
-	  	}}
-      >
-      更新分类
-      </a>
-      {
-      	record.pid ==0
-      	?(<span>
-      		<Divider type="vertical" />
-      		<Link to={"/category/"+ record.id}> 查看子分类</Link>
-
-      	</span>)
-       	:null
-  		}
-    </span>
-  ),
-}
-];
 
 
 class CategoryList extends Component{
-	  constructor(props){
-      super(props);
-      this.state ={
-				pid :this.props.match.params.pid||0
-      }
-			 console.log(this.props.match.params);
+	constructor(props){
+    super(props);
+    this.state ={
+		pid :this.props.match.params.pid||0
+    }
+		console.log(this.props.match.params);
 		
-		}
+	}
 		componentDidMount(){
 			//第一个参数是父级id，第二个参数的页码
 			this.props.handlePage(this.state.pid , 1);
@@ -84,22 +44,64 @@ class CategoryList extends Component{
 			      })
 					}
 		}
+
 	render(){
 		const pid =this.state.pid;
-		const data =this.props.list.map((user)=>{
-		return{
-			key:user.get('_id'),
-			username:user.get('username'),
-			isAdmin:user.get('isAdmin'),
-			phone:user.get('phone'),
-			email:user.get('email'),
-			creatAt:user.get('creatAt')
+		//复制到组件里面才可以拿到this
+		const columns = [{
+		  title: 'id',
+		  dataIndex: 'id',
+		  key: 'id',
+		}, {
+		  title: '分类名称',
+		  dataIndex: 'name',
+		  key: 'name',
+		} ,{
+		  title: '排序',
+		  dataIndex: 'order',
+		  key: 'order',
+		  render:(order,record)=>{
+		  	return <InputNumber defaultValue={order} />
+		  }
+
+		}, {
+		  title: '操作',
+		  key: 'action',
+		  render: (text, record) => (
+		    <span>
+		       <a href="javascript:;"
+				  	onClick={()=>{
+				  		this.props.showUpdateModal(record.id,record.name)
+				  	}}
+				  >
+		      更新分类
+		      </a>
+		      {
+		      	record.pid ==0
+		      	?(<span>
+		      		<Divider type="vertical" />
+		      		<Link to={"/category/"+ record.id}> 查看子分类</Link>
+
+		      	</span>)
+		       	:null
+		  		}
+		    </span>
+		  ),
 		}
-		}).toJS();
+		];
+		const data  = this.props.list.map((category)=>{
+			return {
+				key:category.get('_id'),
+				id:category.get('_id'),
+				name:category.get('name'),
+				order:category.get('order'),
+				pid:category.get('pid'),
+			}
+		}).toJS();	
 		return(
 			<Layout>
 				<div>
-					<Breadcrumb>
+				<Breadcrumb>
 	  				<Breadcrumb.Item>分类管理</Breadcrumb.Item>
 	  				<Breadcrumb.Item>分类列表</Breadcrumb.Item>
 	  			</Breadcrumb>
@@ -135,9 +137,15 @@ class CategoryList extends Component{
 							title="修改分类名称"
 							visible={this.props.updateModalVisible}
 							onOk={this.props.handleUpdateName}
-							onCancel={this.props.handleCancelName}
+							onClick={this.props.handleCloseUpdate}
 						>
-						<p>Some contents...</p>
+						<Input 
+							value={this.props.updateName}
+							onChange={(e)=>{
+								this.props.handleChangeName(e.target.value)
+
+							}}
+						/> 
 						</Modal>	
 
 				</div>			
@@ -157,6 +165,7 @@ const mapStateToProps =(state)=>{
     pageSize:state.get('category').get('pageSize'),
     list:state.get('category').get('list'),
     updateModalVisible:state.get('category').get('updateModalVisible'),	
+    updateName:state.get('category').get('updateName'),	
   }
 }
 const mapDispathProps=(dispatch)=>{
@@ -167,6 +176,17 @@ const mapDispathProps=(dispatch)=>{
     },
 	showUpdateModal:(updateId,updateName)=>{
 		dispatch(actionCreator.getShowUpdateModalAction(updateId,updateName));
+	},
+	handleChangeName:(newName)=>{
+      dispatch(actionCreator.getChangeNameAction(newName))
+	},
+	handleUpdateName:()=>{
+		dispatch(actionCreator.getUpdateNameAction());
+
+	},
+	handleCloseUpdate:()=>{
+	dispatch(actionCreator.getCloseUpdateAction());
+
 	}
   }
 }

@@ -12,6 +12,7 @@ import Login from 'pages/login/index.js'
 import Home from 'pages/home/index.js'
 import User from 'pages/user/index.js'
 import Category from 'pages/category/index.js'
+import Product from 'pages/product/index.js'
 import ErrorPage from 'common/errorpage'
 import Layout from './common/layout'
 //引入css
@@ -49,6 +50,7 @@ class App extends Component{
 					<ProtectedRoute exact path='/' component={ Home } />				
 					<ProtectedRoute  path='/user' component={ User } />
 					<ProtectedRoute  path='/category' component={ Category } />
+					<ProtectedRoute  path='/product' component={ Product } />
 
 					<LoginRoute path='/login' component={ Login } />	
 					<Route  component={ ErrorPage } />	

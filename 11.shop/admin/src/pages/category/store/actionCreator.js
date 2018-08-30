@@ -5,7 +5,7 @@ import axios from 'axios';
 import { message } from 'antd';
 
 import {request,setUserName} from 'util';
-import {ADD_CATEGORY,GET_CATEGORY } from 'api';
+import {ADD_CATEGORY,GET_CATEGORIES,UPDATE_CATEGORY_NAME } from 'api';
 
 const getAddRequstAction = ()=>{
 	return {
@@ -19,7 +19,7 @@ const getAddDoneAction = ()=>{
 }
 const setLevelOneCategories = (payload)=>{
 	return {
-		type:types.SET_CATEGORY,
+		type:types.SET_LEVEL_ONE_CATEGORIES,
 		payload
 	}
 }
@@ -42,6 +42,8 @@ const getSetPageAction = (payload)=>{
 
   }
 }
+
+
 /*
 export const getAddAction=(values)=>{
 	return (dispatch)=>{
@@ -69,6 +71,7 @@ export const getAddAction=(values)=>{
     })
 	}
 }*/
+
 export const getAddAction = (values)=>{
 	return (dispatch)=>{
 		dispatch(getAddRequstAction())
@@ -98,13 +101,14 @@ export const getLevelOneCategoriesAction = ()=>{
 	return (dispatch)=>{
         request({
 			method:'get',
-			url:GET_CATEGORY,
+			url:GET_CATEGORIES,
 			data:{
 				pid:0
 			}
 		})
 		.then((result)=>{
 			if(result.code == 0){
+				console.log(result);
 				dispatch(setLevelOneCategories(result.data))	
 			}else{
 				message.error(result.message)
@@ -119,7 +123,7 @@ export const getPageAction =(pid,page)=>{
 	return (dispatch)=>{
 		dispatch(getPageRequstAction());
 		request({
-			url:GET_CATEGORY,
+			url:GET_CATEGORIES,
 			data:{
 				pid:pid,
 				page:page
@@ -127,6 +131,7 @@ export const getPageAction =(pid,page)=>{
 		})
  		.then((result)=>{
  			if (result.code==0) {
+ 				console.log("result"+result);
  		      dispatch(getSetPageAction(result.data))
 		
  			}else{
@@ -154,3 +159,74 @@ export const getShowUpdateModalAction = (updateId,updateName)=>{
 		}
 	}
 }
+
+
+
+
+export const getCloseUpdateModalAction = ()=>({
+	type:types.CLOSE_UPDATE_MODAL
+})
+export const getChangeNameAction = (payload)=>({
+	type:types.CHANGE_NAME,
+	payload
+})
+
+
+export const getUpdateNameAction = (pid)=>{
+	return (dispatch,getState)=>{
+		const state = getState().get('category');
+        request({
+			method: 'put',
+			url: UPDATE_CATEGORY_NAME,
+			data: {
+				id:state.get('updateId'),
+				name:state.get('updateName'),
+				pid:pid,
+				page:state.get('current')
+			}
+		})
+		.then((result)=>{
+			if(result.code == 0){
+				dispatch(getSetPageAction(result.data))
+				dispatch(getCloseUpdateModalAction());	
+			}else{
+				message.error(result.message)
+			}
+		})
+		.catch((err)=>{
+			message.error('网络错误,请稍后在试!')
+		})
+	}	
+}
+
+export const getUpdateOrderAction = (pid,id,newOrder)=>{
+	return (dispatch,getState)=>{
+		const state = getState().get('category');
+        request({
+			method: 'put',
+			url: UPDATE_CATEGORY_ORDER,
+			data: {
+				id:id,
+				order:newOrder,
+				pid:pid,
+				page:state.get('current')
+			}
+		})
+		.then((result)=>{
+			if(result.code == 0){
+				dispatch(getSetPageAction(result.data))
+			}else{
+				message.error(result.message)
+			}
+		})
+		.catch((err)=>{
+			message.error('网络错误,请稍后在试!')
+		})
+	}	
+}
+export const  getCloseUpdateAction= ()=>({
+	type:types.CLOSE_UPDATE_MODAL
+})
+
+
+

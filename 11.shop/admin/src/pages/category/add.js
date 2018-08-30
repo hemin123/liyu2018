@@ -14,7 +14,9 @@ class NormalCategoryAdd extends Component{
 	      super(props);
 	      this.handleSubmit=this.handleSubmit.bind(this);
 	}
-
+	componentDidMount(){
+		this.props.getLevelOneCategory();
+	}
 	handleSubmit(e) {
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
@@ -84,9 +86,9 @@ class NormalCategoryAdd extends Component{
 						    <Select initialValue="0" style={{ width: 120 }} >
 						      <Option value="0">根分类</Option>
 						      {
-						      	/*this.props.levelOneCategories.map((category)=>{
+						      	this.props.levelOneCategories.map((category)=>{
 						      		return <Option key={category.get('_id')} value={category.get('_id')}>根分类/{category.get('name')}</Option>
-						      	})*/
+						      	})
 						      }
 						      
 						    </Select>
@@ -111,7 +113,7 @@ class NormalCategoryAdd extends Component{
 const mapStateToProps =(state)=>{
   return{
     isAddFetching:state.get('category').get('isAddFetching'),
-	levelOneCategories:state.get('category').get('levelOneCategories')
+	levelOneCategories:state.get('category').get('levelOnecategories')
   }
 }
 const mapDispathProps=(dispatch)=>{

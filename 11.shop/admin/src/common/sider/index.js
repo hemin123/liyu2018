@@ -33,7 +33,7 @@ class mySide extends Component {
 	            	<NavLink to="/category">分类</NavLink>
 	            </Menu.Item>
 	            <Menu.Item key="4">
-	            	<NavLink to="/">商品管理</NavLink>
+	            	<NavLink to="/product">商品管理</NavLink>
 	            </Menu.Item>
 				    
 	        </Menu>

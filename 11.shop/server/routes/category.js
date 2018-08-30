@@ -4,6 +4,7 @@ const CategoryModel = require('../models/category.js');
 const pagination = require('../util/pagination.js');
 const router = Router();
 
+
 router.use((req,res,next)=>{
 	if (req.userInfo.isAdmin){
 		next();
@@ -58,7 +59,46 @@ router.post("/",(req,res)=>{
 		}
 	})
 })
+//获取分类
 router.get("/",(req,res)=>{
+	let pid = req.query.pid;
+	let page = req.query.page;
+	
+	if(page){
+		CategoryModel
+		.getPaginationCategories(page,{pid:pid})
+		.then((result)=>{
+			res.json({
+				code:0,
+				data:{
+					current:result.current,
+					total:result.total,
+					pageSize:result.pageSize,
+					list:result.list					
+				}
+			})	
+		})
+	}else{
+		CategoryModel.find({pid:pid},"_id name pid order")
+		.then((categories)=>{
+			res.json({
+				code:0,
+				data:categories
+			})	
+		})
+		.catch(e=>{
+	 		res.json({
+	 			code:1,
+	 			message:"获取分类失败,服务器端错误"
+	 		})		
+		})		
+	}
+
+});
+
+
+
+/*router.get("/",(req,res)=>{
 	let pid = req.query.pid;
 	let page =req.query.page;
 
@@ -95,6 +135,60 @@ router.get("/",(req,res)=>{
 
 	 
 })
+*/
+
+router.put("/updatename",(req,res)=>{
+	let body = req.body;
+	CategoryModel
+	.findOne({name:body.name,pid:body.pid})
+	.then((cate)=>{
+		if (cate) {
+			res.json({
+				code:1,
+				message:"更新失败，已存在"
+			})
+		}else{
+			CategoryModel
+			.update({_id:body.id},{name:body.name})
+			.then((cate)=>{
+				if (cate) {
+					CategoryModel
+					.getPaginationCategories(body.page,{pid:body.pid})
+					.then((result)=>{
+						res.json({
+							code:0,
+							data:{
+								current:result.current,
+								total:result.total,
+								pageSize:result.pageSize,
+								list:result.list
+							}
+						})
+					})
+				}else{
+					res.json({
+						code:1,
+						message:"更新失败数据操作错"
+					})
+				}
+			})
+			.catch((e)=>{
+				res.json({
+					code:1,
+					message:"添加分类失败catch"
+				})
+			})
+		}
+	})
+
+	
+})
+
+
+
+
+
+
 
 
 

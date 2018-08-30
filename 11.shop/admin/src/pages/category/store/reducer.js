@@ -12,20 +12,21 @@ import * as types from './actionType.js'
 
 const defaultState = fromJS({
 	isAddFetching:false,
-	categories:[],
+	levelOnecategories:[],
   	isPageFetching:false,
     total:1,
     current:1,
     pageSize:1,
     list:[],
+    updateModalVisible:false,
+    updateId:'',
+    updateName:''
 
 })
 
 export default (state=defaultState,action)=>{
 
-	if (action.type==types.SET_CATEGORY) {
-		state.set('categories',fromJS(action.payload))
-	}
+	
 	if (action.type==types.ADD_REQUEST) {
 		state.set('isAddFetching',true)
 	}
@@ -56,6 +57,18 @@ export default (state=defaultState,action)=>{
 			updateName:action.payload.updateName,
 		})		
 	}
+	if (action.type==types.SET_LEVEL_ONE_CATEGORIES) {
+		return state.set('levelOnecategories',fromJS(action.payload))
+	}
+	if (action.type==types.CHANGE_NAME) {
+		return state.set('updateName',action.payload)
+	}
+	if (action.type==types.CLOSE_UPDATE_MODAL) {
+		return state.set('updateModalVisible',false)
+	}
+
+
+	
 
 	return state;
 }
