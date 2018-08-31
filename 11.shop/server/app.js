@@ -50,6 +50,8 @@ app.use((req,res,next)=>{
 	next();
 })
 
+app.use(express.static('public'));
+
 app.use((req,res,next)=>{
 	req.userInfo=req.session.userInfo||{};
 	next();
@@ -69,6 +71,7 @@ app.use("/admin",require('./routes/admin.js'));
 app.use("/category",require('./routes/category.js'));
 app.use("/article",require('./routes/article.js'));
 app.use("/comment",require('./routes/comment.js'));
+app.use("/product",require('./routes/product.js'));
 // app.use("/home",require('./routes/home.js'));
 
 

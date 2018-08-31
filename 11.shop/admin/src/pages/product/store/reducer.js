@@ -15,11 +15,19 @@ const defaultState = fromJS({
 	list:[],
 	updateModalVisible:false,
 	updateId:'',
-	updateName:''		
+	updateName:'',		
 })
 
 export default (state=defaultState,action)=>{
-	
+	if(action.type==types.SET_CATEGORT_ERROR){
+		return({
+			
+		})
+	}
+		
+	if(action.type === types.SET_CATEGORY){
+		return state.set('isAddFetching',true)
+	}	
 	if(action.type === types.ADD_REQUEST){
 		return state.set('isAddFetching',true)
 	}

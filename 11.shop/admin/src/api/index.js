@@ -12,4 +12,7 @@ export const  ADD_CATEGORY = SERVER + 'category';
 export const  GET_CATEGORIES = SERVER + 'category';
 export const  UPDATE_CATEGORY_NAME = SERVER + 'category/updatename';
 
+export const  UPLOAD_PRODUCT_IMAGE = SERVER + 'product/uploadImage';
+export const  UPLOAD_PRODUCT_DETAIL_IMAGE = SERVER + 'product/uploadDetailImage';
+
 
