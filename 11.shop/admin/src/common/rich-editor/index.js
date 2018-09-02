@@ -1,37 +1,45 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-31 10:49:51
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-31 15:27:43
+*/
 import React,{ Component } from 'react';
 
-import Simditor  from 'simditor'
-import $  from 'jquery'
+import Simditor from 'simditor';
+
+import $ from 'jquery';
 
 import 'simditor/styles/simditor.css';
-// overflow:hidden富文本样式
-class RichEditor  extends Component{
+import './index.css'
+
+class RichEditor extends Component{
 	constructor(props){
 		super(props);
 
-		this.toolbar=[
-		  'title',
-		  'bold',
-		  'italic',
-		  'underline',
-		  'strikethrough',
-		  'fontScale',
-		  'color',
-		  'ol'    ,        
-		  'ul'     ,       
-		  'blockquote',
-		  'code'   ,   
-		  'table',
-		  'link',
-		  'image',
-		  'hr'  ,        
-		  'indent',
-		  'outdent',
-		  'alignment'
-		];
-
+		this.toolbar = [
+			'title',
+			'bold',
+			'italic',
+			'underline',
+			'strikethrough',
+			'fontScale',
+			'color',
+			'ol',
+			'ul',
+			'blockquote',
+			'code',
+			'table',
+			'link',
+			'image',
+			'hr',
+			'indent',
+			'outdent',
+			'alignment'
+		]
+		//jquery ajax跨域携带cookie设置
 		$.ajaxSetup({
-			xhrFields :{
+			xhrFields:{
 				withCredentials:true
 			}
 		})
@@ -39,28 +47,25 @@ class RichEditor  extends Component{
 
 	componentDidMount(){
 		this.editor = new Simditor({
-		  textarea: this.textarea,
+		  textarea: $(this.textarea),
 		  toolbar:this.toolbar,
 		  upload:{
-		  		url:this.props.url,
-		  		fileKey:'upload_'
-
-		  },
+		  	url: this.props.url,
+		  	fileKey: 'upload'
+		  }
 		});
 		this.editor.on('valuechanged',()=>{
 			this.props.getRichEditorValue(this.editor.getValue())
 		})
 	}
-		render(){
-			return (
-			
-					<textarea ref={(textarea)=>{
-						this.textarea =textarea
-					}}></textarea>
-				
-			)
-		}
 
+	render(){
+		return(
+			<div>
+				<textarea ref={(textarea)=>{this.textarea = textarea}}></textarea>
+			</div>
+		)
+	}
 }
-export default RichEditor
 
+export default RichEditor;

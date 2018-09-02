@@ -1,17 +1,19 @@
-
-
-.Login{
+/*
+* @Author: Tom
+* @Date:   2018-08-23 16:57:51
+* @Last Modified by:   Tom
+* @Last Modified time: 2018-08-23 17:28:45
+*/
+.Login {
 	width: 300px;
-	margin:150px auto; 
+	margin: 150px auto;
 }
-.Login .login-form{
-	background: rgba(0,0,0,0.8);;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 5px 5px;
+.Login .login-form {
+	background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px;
 }
 .Login .login-form-button{
 	width: 100%;
 }
-
-

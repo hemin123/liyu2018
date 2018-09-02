@@ -1,3 +1,9 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-25 10:32:38
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-25 10:38:16
+*/
 .Header .logo{
 	width: 120px;
     height: 31px;
@@ -7,11 +13,9 @@
     line-height: 31px;
     font-size: 30px;
 }
-
-.Header .down{
+.Header .userinfo{
 	float: right;
+	margin-right: 20px;
+	text-decoration: none;
+	color: #fff;
 }
-
-
-
-

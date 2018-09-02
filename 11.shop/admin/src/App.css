@@ -2,9 +2,12 @@
 * @Author: TomChen
 * @Date:   2018-08-17 10:26:29
 * @Last Modified by:   TomChen
-* @Last Modified time: 2018-08-17 16:41:55
+* @Last Modified time: 2018-08-27 14:38:57
 */
 *{
 	margin: 0;
 	padding: 0;
+}
+.ant-table-wrapper{
+	margin-top: 20px;
 }

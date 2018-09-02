@@ -1,22 +1,30 @@
-
+/*
+* @Author: TomChen
+* @Date:   2018-08-16 17:14:09
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-30 11:39:56
+*/
 import React,{ Component } from 'react';
-import { getUserName } from 'util'
 import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	Switch,
-	Redirect
-}from 'react-router-dom'
-import Login from 'pages/login/index.js'
-import Home from 'pages/home/index.js'
-import User from 'pages/user/index.js'
-import Category from 'pages/category/index.js'
-import Product from 'pages/product/index.js'
-import ErrorPage from 'common/errorpage'
-import Layout from './common/layout'
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+
+import Login from 'pages/login'
+import Home from 'pages/home'
+import User from 'pages/user'
+import Category from 'pages/category'
+import Product from 'pages/product'
+import ErrorPage from 'common/error-page'
+
+import { getUserName } from 'util'
+
 //引入css
 import './App.css';
+
 
 class App extends Component{
 	render(){
@@ -38,30 +46,22 @@ class App extends Component{
 				return <Route {...rest} component={Component} />
 			}
 		}
-
+			
 		return(
-		<Router>
-			<div className = "App">
-				
-				{/*<Layout  />
-				<Route path='/login' component={ Login } />	*/}
-
-				<Switch>
-					<ProtectedRoute exact path='/' component={ Home } />				
-					<ProtectedRoute  path='/user' component={ User } />
-					<ProtectedRoute  path='/category' component={ Category } />
-					<ProtectedRoute  path='/product' component={ Product } />
-
-					<LoginRoute path='/login' component={ Login } />	
-					<Route  component={ ErrorPage } />	
-				
-				</Switch>	
-			</div>
-		</Router>
+			<Router>
+				<div className="App">
+					<Switch>
+						<ProtectedRoute exact path="/" component={ Home } />				
+						<ProtectedRoute path="/user" component={ User } />				
+						<ProtectedRoute path="/category" component={ Category } />				
+						<ProtectedRoute path="/product" component={ Product } />				
+						<LoginRoute path="/login" component={ Login } />
+						<Route component={ ErrorPage }  />
+					</Switch>	
+				</div>		
+			</Router>	
 		)
 	}
 }
 
 export default App;
-
-

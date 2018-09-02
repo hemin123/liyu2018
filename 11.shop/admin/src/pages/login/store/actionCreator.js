@@ -1,61 +1,49 @@
-
-
-import * as types   from './actionType.js'
-import axios from 'axios';
+/*
+* @Author: TomChen
+* @Date:   2018-08-24 14:39:19
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-25 09:20:01
+*/
 import { message } from 'antd';
 
-import {request,setUserName} from 'util';
-import {ADMIN_LOGIN } from 'api';
+import { request,setUserName } from 'util'
+import { ADMIN_LOGIN } from 'api'
 
-const getloginRequestAction = ()=>{
+import * as types from './actionTypes.js'
+
+const getLoginRequstAction = ()=>{
 	return {
 		type:types.LOGIN_REQUEST
 	}
 }
-const getloginDoneAction = ()=>{
+
+const getLoginDoneAction = ()=>{
 	return {
 		type:types.LOGIN_DONE
 	}
 }
-
-export const getLoginAction=(values)=>{
+export const getLoginAction = (values)=>{
 	return (dispatch)=>{
-		dispatch(getloginRequestAction())
-		request({
-			method:'post',
-			url:ADMIN_LOGIN,
-			data:values
+		dispatch(getLoginRequstAction())
+        request({
+			method: 'post',
+			url: ADMIN_LOGIN,
+			data: values
 		})
- 		.then((result)=>{
-        console.log(result);
-        if (result.code==0) {
-          setUserName(result.data.username);
-          window.location.href='/';
-          console.log(result.data);
-       
-        }else if(result.code==10){
-        
-         message.error(result.message);
-        }
-         /*this.setState({
-            isFetching:true
-          })*/
-          dispatch(getloginDoneAction())
-    })  
-    .catch((err)=>{
-      console.log(err);
-        message.error("网络错误login");
-        /*this.setState({
-            isFetching:true
-          })*/
-         dispatch(getloginDoneAction())
-
-    })
+		.then((result)=>{
+			//登录成功	
+			if(result.code == 0){
+				//存储用的信息在浏览
+				setUserName(result.data.username)
+				window.location.href = '/'
+			}else if(result.code == 1){
+				message.error(result.message)
+			}
+			dispatch(getLoginDoneAction())
+		})
+		.catch((err)=>{
+			message.error('网络错误,请稍后在试!')
+			dispatch(getLoginDoneAction())				
+		})
 	}
-       
-
-
 }
-      
-
-

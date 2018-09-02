@@ -1,17 +1,22 @@
-
-
-import * as types   from './actionType.js'
-import axios from 'axios';
+/*
+* @Author: TomChen
+* @Date:   2018-08-24 14:39:19
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-30 11:02:12
+*/
 import { message } from 'antd';
 
-import {request,setUserName} from 'util';
-import {ADD_CATEGORY,GET_CATEGORIES,UPDATE_CATEGORY_NAME } from 'api';
+import { request } from 'util'
+import { ADD_CATEGORY,GET_CATEGORIES,UPDATE_CATEGORY_NAME,UPDATE_CATEGORY_ORDER   } from 'api'
+
+import * as types from './actionTypes.js'
 
 const getAddRequstAction = ()=>{
 	return {
 		type:types.ADD_REQUEST
 	}
 }
+
 const getAddDoneAction = ()=>{
 	return {
 		type:types.ADD_DONE
@@ -21,7 +26,7 @@ const setLevelOneCategories = (payload)=>{
 	return {
 		type:types.SET_LEVEL_ONE_CATEGORIES,
 		payload
-	}
+	}	
 }
 
 const getPageRequstAction = ()=>{
@@ -29,49 +34,18 @@ const getPageRequstAction = ()=>{
 		type:types.PAGE_REQUEST
 	}
 }
+
 const getPageDoneAction = ()=>{
 	return {
 		type:types.PAGE_DONE
 	}
 }
-
 const getSetPageAction = (payload)=>{
-  return{
-    type:types.SET_PAGE,
-    payload
-
-  }
-}
-
-
-/*
-export const getAddAction=(values)=>{
-	return (dispatch)=>{
-		dispatch(getAddRequestAction())
-		request({
-			method:'post',
-			url:GET_CATEGORY,
-			data:values,
-			withCredentials:true
-		})
- 		.then((result)=>{
- 			console.log("result"+result);
- 			if (result.code==0) {
- 			  dispatch(setCategoryAction(result.data))	
- 			}
-      
-    
-    })  
-    .catch((err)=>{
-      console.log(err);
-        message.error("网络错误category");         //发送ajax出问题了
-       
-         dispatch(getAddDoneAction())
-
-    })
+	return {
+		type:types.SET_PAGE,
+		payload
 	}
-}*/
-
+}
 export const getAddAction = (values)=>{
 	return (dispatch)=>{
 		dispatch(getAddRequstAction())
@@ -96,19 +70,20 @@ export const getAddAction = (values)=>{
 			dispatch(getAddDoneAction())				
 		})
 	}
-}    
+}
+
+
 export const getLevelOneCategoriesAction = ()=>{
 	return (dispatch)=>{
         request({
-			method:'get',
-			url:GET_CATEGORIES,
-			data:{
+			method: 'get',
+			url: GET_CATEGORIES,
+			data: {
 				pid:0
 			}
 		})
 		.then((result)=>{
 			if(result.code == 0){
-				console.log(result);
 				dispatch(setLevelOneCategories(result.data))	
 			}else{
 				message.error(result.message)
@@ -119,35 +94,31 @@ export const getLevelOneCategoriesAction = ()=>{
 		})
 	}	
 }
-export const getPageAction =(pid,page)=>{
+
+export const getPageAction = (pid,page)=>{
 	return (dispatch)=>{
 		dispatch(getPageRequstAction());
-		request({
-			url:GET_CATEGORIES,
-			data:{
+        request({
+			method: 'get',
+			url: GET_CATEGORIES,
+			data: {
 				pid:pid,
 				page:page
 			}
 		})
- 		.then((result)=>{
- 			if (result.code==0) {
- 				console.log("result"+result);
- 		      dispatch(getSetPageAction(result.data))
-		
- 			}else{
- 				message.error(result.message)
- 			}
-	        dispatch(getPageDoneAction())
-	    })  
-	    .catch((err)=>{
-	      console.log(err);
-	        message.error("网络错误");
-
-	        dispatch(getPageDoneAction())
-
-	    })
-	}
-
+		.then((result)=>{
+			if(result.code == 0){
+				dispatch(getSetPageAction(result.data))	
+			}else{
+				message.error(result.message)
+			}
+			dispatch(getPageDoneAction())
+		})
+		.catch((err)=>{
+			message.error('网络错误,请稍后在试!')
+			dispatch(getPageDoneAction())
+		})
+	}	
 }
 
 export const getShowUpdateModalAction = (updateId,updateName)=>{
@@ -159,10 +130,6 @@ export const getShowUpdateModalAction = (updateId,updateName)=>{
 		}
 	}
 }
-
-
-
-
 export const getCloseUpdateModalAction = ()=>({
 	type:types.CLOSE_UPDATE_MODAL
 })
@@ -224,9 +191,4 @@ export const getUpdateOrderAction = (pid,id,newOrder)=>{
 		})
 	}	
 }
-export const  getCloseUpdateAction= ()=>({
-	type:types.CLOSE_UPDATE_MODAL
-})
-
-
 

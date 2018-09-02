@@ -1,22 +1,27 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-20 09:18:25
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-25 15:19:59
+*/
+import { fromJS } from 'immutable'
 
-// import {CHANGE_VALUE,ADD_ITEM,DELETE_ITEM,LOAD_INIT_DATA  } from './actionTypes.js'
+import * as types from './actionTypes.js'
 
-
-import {fromJS }  from 'immutable'
-import * as types from './actionType.js'
-
+//用fromJS包装一个immutable对象
 const defaultState = fromJS({
-	usernum:222,
-	ordernum:333,
-	productnum:444
+	usernum:200,
+	ordernum:201,
+	productnum:202
 })
 
 export default (state=defaultState,action)=>{
-	if (action.type==types.SET_COUNT) {
+	
+	if(action.type ==  types.SET_COUNT){
 		return state.merge({
 			usernum:action.payload.usernum,
 			ordernum:action.payload.ordernum,
-			productnum:action.payload.productnum
+			productnum:action.payload.productnum			
 		})
 	}
 	return state;

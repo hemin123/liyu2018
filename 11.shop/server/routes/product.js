@@ -1,107 +1,181 @@
 const Router = require('express').Router;
+const ProductModel = require('../models/product.js');
+
 const path = require('path');
 const fs = require('fs');
+const multer = require('multer');
 
-const ResourceModel = require('../models/resource.js')
-const pagination = require('../util/pagination.js');
-
-
-const router = Router();
-const multer  = require('multer');//npm install --save multer
-// var upload = multer({ dest: '/public/resource/' });
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null,'public/product-images/')
+    cb(null, 'public/product-images/')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now()+path.extname(file.originalname));
+    cb(null, Date.now()+path.extname(file.originalname))
   }
 })
 
-const productModel=require('../models/product.js')
+const upload = multer({ storage: storage })
 
+const router = Router();
 
-var upload = multer({ storage: storage })
-
+//权限控制
 router.use((req,res,next)=>{
-	if (req.userInfo.isAdmin){
-		next();
-	} else{
+	if(req.userInfo.isAdmin){
+		next()
+	}else{
 		res.send({
 			code:10
 		});
 	}
 })
 
-router.post('/uploadImage',upload.single('file'),(req,res)=>{
-	const filePath ='http://127.0.0.1:3000/product-images/' +req.file.filename
+//处理商品图片
+router.post("/uploadImage",upload.single('file'),(req,res)=>{
+	const filePath = 'http://127.0.0.1:3000/product-images/'+req.file.filename;
 	res.send(filePath);
 	
 })
-router.post('/uploadDetailImage',upload.single('file'),(req,res)=>{
-	const filePath='http://127.0.0.1:3000/product-image/'+req.filename
+//处理商品详情图片
+router.post("/uploadDetailImage",upload.single('upload'),(req,res)=>{
+	const filePath = 'http://127.0.0.1:3000/product-images/'+req.file.filename;
 	res.json({
-		"sucess":true,
-		"msg":"上传成功",
-		"file_path":filePath
+		  "success": true,
+		  "msg": "上传成功",
+		  "file_path": filePath
 	});
 })
 
-
-
-router.post('/add',upload.single('file'),(req,res)=>{
-	// new ResourceModel
-	console.log('file');
-	console.log(req.file);
-	new ResourceModel({
-		name:req.body.name,
-		path:'/uploads/'+req.file.filename
+//添加商品
+router.post("/",(req,res)=>{
+	let body = req.body;
+	new ProductModel({
+		name:body.name,
+		category:body.category,
+		detail:body.detail,
+		description:body.description,
+		images:body.images,
+		price:body.price,
+		stock:body.stock
 	})
 	.save()
-	.then(resource=>{
-		res.render('admin/sucess',{
-			userInfo:req.userInfo,
-			message:'添加资源成功',
-			url:'/uploads'
+	.then((product)=>{
+		if(product){
+			res.json({
+				code:0,
+				message:'新增商品成功'
+			})
+		}
+	})
+	.catch((e)=>{
+ 		res.json({
+ 			code:1,
+ 			message:"添加分类失败,服务器端错误"
+ 		})
+	})
+})
 
-		})
+//获取商品
+router.get("/",(req,res)=>{
+	let page = req.query.page || 1;
+	ProductModel
+	.getPaginationProducts(page,{})
+	.then((result)=>{
+		res.json({
+			code:0,
+			data:{
+				current:result.current,
+				total:result.total,
+				pageSize:result.pageSize,
+				list:result.list					
+			}
+		})	
+	})
+	.catch((e)=>{
+ 		res.json({
+ 			code:1,
+ 			message:"获取分类失败,服务器端错误"
+ 		})
+	})		
+});
+//更新排序
+router.put("/updateOrder",(req,res)=>{
+	let body = req.body;
+	ProductModel
+	.update({_id:body.id},{order:body.order})
+	.then((product)=>{
+		if(product){
+			ProductModel
+			.getPaginationProducts(body.page,{})
+			.then((result)=>{
+				res.json({
+					code:0,
+					data:{
+						current:result.current,
+						total:result.total,
+						pageSize:result.pageSize,
+						list:result.list					
+					}
+				})	
+			})					
+		}else{
+	 		res.json({
+	 			code:1,
+	 			message:"更新排序失败,数据操作失败"
+	 		})					
+		}
+	})
+})
+
+//更新排序
+router.put("/updateStatus",(req,res)=>{
+	let body = req.body;
+	ProductModel
+	.update({_id:body.id},{status:body.status})
+	.then((product)=>{
+		if(product){
+			res.json({
+				code:0,
+				message:'更新状态成功'
+			})					
+		}else{
+			ProductModel
+			.getPaginationProducts(body.page,{})
+			.then((result)=>{
+				res.json({
+					code:1,
+					message:'更新状态失败',
+					data:{
+						current:result.current,
+						total:result.total,
+						pageSize:result.pageSize,
+						list:result.list					
+					}
+				})	
+			})							
+		}
 	})
 })
 
 
-
-
-
-//显示资源列表
-router.get("/",(req,res)=>{
-	let options = {
-        page: req.query.page,//需要显示的页码
-        model:ResourceModel, //操作的数据模型
-        query:{}, //查询条件
-        projection:'-__v', //投影，
-        sort:{_id:-1}, //排序
-    }
-    pagination(options)
-    .then(data=>{
-		 	res.render('admin/resource',{
-				userInfo:req.userInfo,
-				resources:data.docs,
-				page:data.page,
-				pages:data.pages,
-				list:data.list
-			});     	
-    })
-})
-router.get("/add",(req,res)=>{
-
-	res.render('admin/resource_add',{
-		userInfo:req.userInfo
-	});
-	// res.end("hhhh");
-})
-
-
-
+//商品信息获取
+router.get("/detail",(req,res)=>{
+	let id = req.query.id;
+	ProductModel
+	.findById(id,"-__v -order -status -createdAt -updatedAt")
+	.populate({path:'category',select:'_id pid'})
+	.then((product)=>{
+		res.json({
+			code:0,
+			data:product
+		})	
+	})
+	.catch((e)=>{
+ 		res.json({
+ 			code:1,
+ 			message:"获取分类失败,服务器端错误"
+ 		})
+	})		
+});
 
 
 

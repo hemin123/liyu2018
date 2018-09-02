@@ -1,3 +1,9 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-30 15:13:21
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-30 16:46:32
+*/
 import React,{ Component } from 'react';
 import { Select } from 'antd';
 
@@ -13,7 +19,9 @@ class CategorySelector extends Component{
 			levelOneCategories:[],
 			levelOneCategoryId:'',
 			levelTwoCategories:[],
-			levelTwoCategoryId:'',			
+			levelTwoCategoryId:'',	
+			needLoadLevelTwo:false	,	
+			isChanged:false		
 		}
 		this.handleLevelOneChange = this.handleLevelOneChange.bind(this)
 		this.handleLevelTwoChange = this.handleLevelTwoChange.bind(this)
@@ -22,7 +30,45 @@ class CategorySelector extends Component{
 	componentDidMount(){
 		this.loadLevelOneCategory();
 	}
-	
+
+	static getDerivedStateFromProps(props,state){
+		console.log("props",props);
+		console.log("state",state);
+
+		const levelOneCategoryIdChanged = props.parentCategoryId!==state.levelOneCategoryId;
+		const levelTwoCategoryIdChanged = props.categoryId !==state.levelTwoCategoryId;
+		if (!levelOneCategoryIdChanged && !levelTwoCategoryIdChanged) {
+			return null;
+		}
+		if (state.isChanged) {
+			return null;
+		}
+		if (props.parentCategoryId==0) {
+			return{
+				levelOneCategoryId:props.categoryId,
+				levelTwoCategoryId:'',
+				// isChanged:true
+			}
+		}else{
+			return{
+				levelOneCategoryId:props.parentCategoryId,
+				levelTwoCategoryId:props.categoryId	,
+				needLoadLevelTwo:true,
+				// isChanged:true		
+			}
+		}
+
+		return null;
+	}
+	componentDidUpdate(){
+		if (this.state.needLoadLevelTwo) {
+			this.loadLevelTwoCategory();
+			this.setState({
+				needToLoadLevelTwo:false
+			})
+			
+		}
+	}
 	loadLevelOneCategory(){
 		request({
 			method:'get',

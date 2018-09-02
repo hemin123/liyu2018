@@ -1,29 +1,24 @@
-
+/*
+* @Author: TomChen
+* @Date:   2018-08-27 15:19:33
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-30 11:45:25
+*/
 import React,{ Component } from 'react';
-import Layout from 'common/layout'
-import {Route,Switch}from 'react-router-dom'
+import { Switch,Route } from 'react-router-dom';
 
-import ProductList from './list.js' 
-import ProductSave from './save.js' 
+import ProductList from './list.js'
+import ProductSave from './save.js'
 
-class Category extends Component{
-
+class Product extends Component{
 	render(){
 		return(
-			<div>
-				<Switch>
-					<Route path='/product/save' component={ ProductSave } />
-					<Route path='/product/:pid?' component= {ProductList } />	
-					{/*component是Route上面的属性，需要小写component，不是react里面的
-
-					*/}			
-				</Switch>
-				
-			</div>
+			<Switch>
+				<Route path="/product/save/:productId?" component={ ProductSave } />
+				<Route path="/product" component={ ProductList } />
+			</Switch>
 		)
 	}
-
 }
-export default Category;
 
-
+export default Product;

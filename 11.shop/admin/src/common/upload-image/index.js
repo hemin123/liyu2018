@@ -1,28 +1,27 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-30 17:15:26
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-31 10:12:19
+*/
 import React,{ Component } from 'react';
-
 import { Upload, Icon, Modal } from 'antd';
 
-class UploadImage extends React.Component {
-  constructor (props){
-    super(props)
-    this.state = {
-      previewVisible: false,
-      previewImage: '',
-      fileList: [],
-
-    }
-    this.handlePreview =this.handlePreview.bind(this)
-    this.handleChange= this.handleChange.bind( this)
-    this.handleCancel=this.handleCancel.bind(this)
-  }
-
+class UploadImage extends Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			previewVisible: false,
+			previewImage: '',
+			fileList: [],
+		}
+		this.handlePreview = this.handlePreview.bind(this)
+		this.handleChange = this.handleChange.bind(this)
+		this.handleCancel = this.handleCancel.bind(this)
+	}
 
   handleCancel(){
-    this.setState({
-    previewVisible: false,
-
-    
-    })
+  	this.setState({ previewVisible: false })
   }
 
   handlePreview(file){
@@ -33,11 +32,10 @@ class UploadImage extends React.Component {
   }
 
   handleChange({ fileList }){
-    console.log(fileList);
-    this.setState({ fileList },()=>{
-      this.props.getFileList(fileList.map(file=>{
-        return file.response
-      }).join(','))
+  	this.setState({ fileList },()=>{
+        this.props.getFileList(fileList.map((file)=>{
+            return file.response
+        }).join(','))
     })
   }
 
@@ -68,5 +66,4 @@ class UploadImage extends React.Component {
     );
   }
 }
-
-export default UploadImage 
+export default UploadImage;

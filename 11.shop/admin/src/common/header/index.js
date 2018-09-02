@@ -1,61 +1,57 @@
-
-
-
+/*
+* @Author: TomChen
+* @Date:   2018-08-24 17:02:20
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-25 10:48:06
+*/
 import React,{ Component } from 'react';
+import { Layout,Menu, Dropdown, Icon } from 'antd';
 
-import { Layout, Menu,Dropdown, Breadcrumb, Icon } from 'antd';
-import './index.css';
-import { getUserName,request,removeUsername} from 'util';
-
+import { request,getUserName,removeUserName } from 'util';
 import { USER_LOGOUT } from 'api'
+
+import './index.css'
+
 const { Header } = Layout;
 
-
-class Head extends Component {
+class MyHeader extends Component{
 	constructor(props){
-		super();
-		this.handleLogout =this.handleLogout.bind(this);
+		super(props);
+		this.handleLogout = this.handleLogout.bind(this)
 	}
+
 	handleLogout(){
-		request:({
+		request({
 			url:USER_LOGOUT
 		})
 		.then((result)=>{
 			removeUserName();
-			window.location.href='/login'
+			window.location.href = '/login'
 		})
 	}
 
-
-	
-
 	render(){
 		const menu = (
-		  <Menu onClick={this.handleLogout}>	    
-		  
-		    <Menu.Item key="3"><Icon type="logout" />退出</Menu.Item>
+		  <Menu onClick={this.handleLogout}>
+		    <Menu.Item key="0">
+		      <Icon type="logout" />退出
+		    </Menu.Item>
 		  </Menu>
-		);
-		return (
+		);		
+		return(
 			<div className="Header">
-				<Header className="header">
-					 <div className="logo">MALL</div>			
-				     <Dropdown  className="down" overlay={menu} trigger={['click']}>
-					    <a className="ant-dropdown-link" href="#">
-					      用户{getUserName()} <Icon type="down" />
-					    </a>
-					  </Dropdown>,
-
-
-				</Header>			  
-
-			</div>	
-
-
+			    <Header className="header">
+			      <div className="logo">KMALL</div>
+			      <Dropdown className="userinfo" overlay={menu} trigger={['click']}>
+				    <a className="ant-dropdown-link" href="#">
+				      { getUserName() } <Icon type="down" />
+				    </a>
+				  </Dropdown>
+			    </Header>
+			</div>
 		)
-
-
 	}
+
 }
 
-export default Head
+export default MyHeader;

@@ -2,24 +2,26 @@
 * @Author: TomChen
 * @Date:   2018-08-20 09:18:25
 * @Last Modified by:   TomChen
-* @Last Modified time: 2018-08-20 16:29:23
+* @Last Modified time: 2018-08-24 14:58:26
 */
-// import {CHANGE_VALUE,ADD_ITEM,DELETE_ITEM,LOAD_INIT_DATA  } from './actionTypes.js'
+import { fromJS } from 'immutable'
 
+import * as types from './actionTypes.js'
 
-import {fromJS }  from 'immutable'
-import * as types from './actionType.js'
-
+//用fromJS包装一个immutable对象
 const defaultState = fromJS({
 	isFetching:false
 })
 
 export default (state=defaultState,action)=>{
-	if (action.type==types.LOGIN_REQUEST) {
-		state.set('isFetching',true)
+	
+	if(action.type === types.LOGIN_REQUEST){
+		return state.set('isFetching',true)
 	}
-	if (action.type==types.LOGIN_DONE) {
-		state.set('isFetching',false)
+
+	if(action.type === types.LOGIN_DONE){
+		return state.set('isFetching',false)
 	}
+
 	return state;
 }
