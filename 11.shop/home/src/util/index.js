@@ -46,6 +46,12 @@ var _util ={
 		if (type==='password') {
 			return /^[a-zA-Z0-9_]{3,10}$/.test(value)
 		}
+		if (type==='phone') {
+			return /^1[3568]\d{9}$/.test(value)
+		}
+		if (type==='email') {
+			return /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z0-9]{2,6}$/.test(value)
+		}
 	}
 }
 

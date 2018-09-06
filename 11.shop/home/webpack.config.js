@@ -106,7 +106,8 @@ module.exports = {
       inject:true,
       hash:true,
       chunks:['common','login']
-    }),new HtmlWebpackPlugin({
+    }),
+    new HtmlWebpackPlugin({
   		template:'./src/view/user-register.html',
   		filename:'user-register.html',
   		inject:true,

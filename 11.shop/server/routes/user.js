@@ -18,9 +18,27 @@ router.get("/userInfo",(req,res)=>{
 		})
 	}else{
 		res.json({
-			code:10
+			code:1
 		})
 	}
+});
+router.get("/checkUsername",(req,res)=>{
+	let username=req.query.username;
+	UserModel
+	.findOne({username:username})
+	.then((user)=>{
+		if(user){//已经有该用户
+			 res.json({
+			 	code:1,
+			 	message:'用户名存在'
+			 })
+			 
+		}else{
+			res.json({
+				code:0.
+			})
+		}
+	})
 });
 
 

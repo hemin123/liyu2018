@@ -37,6 +37,16 @@ var _user ={
 			success:success,
 			error:error
 		})
+	},
+	checkUsername:function(username,success,error){
+		_util.request({
+			url:'/user/checkUsername',
+			data:{
+				username:username
+			},
+			success:success,
+			error:error
+		})
 	}
 }
 
