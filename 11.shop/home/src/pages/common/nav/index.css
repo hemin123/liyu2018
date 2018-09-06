@@ -1,0 +1,28 @@
+
+
+.nav{
+	height: 30px;
+	line-height: 30px;
+	background: #fff;
+}
+.username{
+	color: #666;
+}
+.user-info{
+	float: left;
+}
+.nav-list{
+	float: right;
+}
+.nav-list li{
+	list-style: none;
+	display: inline-block;
+	margin-left: 10px;
+}
+ 
+
+
+
+
+
+

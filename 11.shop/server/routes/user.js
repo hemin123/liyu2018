@@ -10,6 +10,30 @@ const hmac = require('../util/hmac.js')
 
 const router = Router();
 
+router.get("/userInfo",(req,res)=>{
+	if (req.userInfo._id) {
+		res.json({
+			code:0,
+			data:req.userInfo
+		})
+	}else{
+		res.json({
+			code:10
+		})
+	}
+});
+
+
+router.use((req,res,next)=>{
+	if (req.userInfo._id) {
+		next()
+	}else{
+		res.json({
+			code:10
+		});
+	}
+})
+
 router.get("/init",(req,res)=>{
 	const users =[];
 	for (var i = 0; i <100; i++) {
@@ -75,7 +99,7 @@ router.post("/login",(req,res)=>{
 		message:''
 	}
 	UserModel
-	.findOne({username:body.username,password:hmac(body.password)})
+	.findOne({username:body.username,password:hmac(body.password),isAdmin:false})
 	.then((user)=>{
 		if(user){//登录成功
 
@@ -88,13 +112,15 @@ router.post("/login",(req,res)=>{
 			 res.json(result);
 
 		}else{
-			result.code = 10;
+			result.code = 1;
 			result.message = '用户名和密码错误'
 			res.json(result);
 		}
 	})
 
 })
+
+
 
 //退出
 router.get('/logout',(req,res)=>{
@@ -106,7 +132,8 @@ router.get('/logout',(req,res)=>{
 	req.cookies.set('userInfo',null);
 
 */
-req.cookies.set('userInfo,null');
+// req.cookies.set('userInfo,null');
+	req.session.destroy();
 	res.json(result);
 
 })

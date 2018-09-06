@@ -7,7 +7,7 @@
 import { message } from 'antd';
 
 import { request } from 'util'
-import { ADD_PRODUCT,GET_PRODUCTS,UPDATE_PRODUCT_ORDER,UPDATE_PRODUCT_STATUS,GET_PRODUCT_DETAIL } from 'api'
+import { SAVE_PRODUCT,GET_PRODUCTS,UPDATE_PRODUCT_ORDER,UPDATE_PRODUCT_STATUS,GET_PRODUCT_DETAIL } from 'api'
 
 import * as types from './actionTypes.js'
 
@@ -73,10 +73,17 @@ export const getSaveAction = (err,values)=>{
 		if(err){
 			return;
 		}
+		//新增处理
+		let method ='post';
+		//编辑处理
+		if (values.id) {
+			method='put';
+		}
+
 		dispatch(getSaveRequstAction())
         request({
-			method: 'post',
-			url: ADD_PRODUCT,
+			method: method,
+			url: SAVE_PRODUCT,
 			data: {
 				...values,
 				category:categoryId,
@@ -175,10 +182,33 @@ export const getUpdateStatusAction = (id,newStatus)=>{
 }
 
 
-const setEditProduct = (payload)=>({
-	type:types.SET_DEIT_PRODUCT,
+const setProductDetail = (payload)=>({
+	type:types.SET_PRODUCT_DETAIL,
 	payload
 })
+//直接改，复制一份
+export  const getProductDetailAction = (productId)=>{
+return (dispatch,getState)=>{
+		const state = getState().get('product');
+    request({
+			method: 'get',
+			url: GET_PRODUCT_DETAIL,
+			data: {
+				id:productId
+				
+			}
+		})
+		.then((result)=>{
+			// console.log(result)
+			if (result.code ==0) {
+				dispatch(setProductDetail(result.data))
+			}
+		})
+		.catch((err)=>{
+			message.error('网络错误,请稍后在试!')
+		})
+	}		
+}
 export  const getEditProductAction = (productId)=>{
 return (dispatch,getState)=>{
 		const state = getState().get('product');
@@ -186,7 +216,7 @@ return (dispatch,getState)=>{
 			method: 'get',
 			url: GET_PRODUCT_DETAIL,
 			data: {
-				id:productId,
+				id:productId
 				
 			}
 		})

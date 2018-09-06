@@ -23,10 +23,10 @@ const defaultState = fromJS({
 	list:[],
 	isSaveFetching:false,
 
-	editName:'',
-	editDescription:'',
-	editPrice:'',
-	editStock:'',
+	name:'',
+	description:'',
+	price:'',
+	stock:'',
 
 	
 	
@@ -85,17 +85,17 @@ export default (state=defaultState,action)=>{
 		return state.set('isPageFetching',false)
 	}
 
-	if(action.type === types.SET_DEIT_PRODUCT){
+	if(action.type === types.SET_PRODUCT_DETAIL){
 		return state.merge({
 			parentCategoryId:action.payload.category.pid,
 			categoryId:action.payload.category._id,
 			images:action.payload.image,
 			detail:action.payload.detail,
 
-			editName:action.payload.name,
-			editDescription:action.payload.description,
-			editPrice:action.payload.price,
-			editStock:action.payload.stock,
+			name:action.payload.name,
+			description:action.payload.description,
+			price:action.payload.price,
+			stock:action.payload.stock,
 		})		
 	}
 	

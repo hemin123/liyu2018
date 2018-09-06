@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+</head>
+<body>
+<%= require('html-loader!./common/logo.html')  %>
+<div class="form">
+	<div class="container">
+		<div class="form-box">
+			<h2 class="title">用户登录</h2>
+
+			<div class="error-item">
+					<i class="fa fa-minus-circle error-icon"></i>
+					<p class="error-msg">error</p>
+			</div>
+			<div class="form-item">
+				<label for="" class="form-label">
+					<i class="fa fa-user"></i>
+				</label>
+				<input type="text" class="form-content">
+			</div>
+			<div class="form-item">
+				<label for="" class="form-label">
+					<i class="fa fa-lock"></i>
+				</label>
+				<input type="password" class="form-content">
+			</div>
+			<div class="btn-item">
+				<a href="javascript:;" class="btn btn-submit">提交</a>
+			</div>
+			<div class="link-item">
+				<a href="./user-login.html" class="link "> 前去登陆</a>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+ <%= require('html-loader!./common/footer.html')  %>
+</body>
+</html>

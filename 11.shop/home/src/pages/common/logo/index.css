@@ -1,0 +1,26 @@
+
+
+.logo-box{
+	background: #fff;
+	height: 50px;
+}
+
+.logo-box .container{
+	width: 1200px;
+	margin: 0 auto;
+}
+.logo-box .container h1 a{
+	font-size: 35px;
+	color:#f21;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+

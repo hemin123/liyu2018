@@ -20,7 +20,7 @@ class CategorySelector extends Component{
 			levelOneCategoryId:'',
 			levelTwoCategories:[],
 			levelTwoCategoryId:'',	
-			needLoadLevelTwo:false	,	
+			needLoadLevelTwo:false,	
 			isChanged:false		
 		}
 		this.handleLevelOneChange = this.handleLevelOneChange.bind(this)
@@ -35,11 +35,13 @@ class CategorySelector extends Component{
 		console.log("props",props);
 		console.log("state",state);
 
-		const levelOneCategoryIdChanged = props.parentCategoryId!==state.levelOneCategoryId;
-		const levelTwoCategoryIdChanged = props.categoryId !==state.levelTwoCategoryId;
+		const levelOneCategoryIdChanged = props.parentCategoryId != state.levelOneCategoryId;
+		const levelTwoCategoryIdChanged = props.categoryId != state.levelTwoCategoryId;
+		console.log(levelOneCategoryIdChanged,levelTwoCategoryIdChanged)
 		if (!levelOneCategoryIdChanged && !levelTwoCategoryIdChanged) {
 			return null;
 		}
+		console.log('aaa')
 		if (state.isChanged) {
 			return null;
 		}
@@ -47,27 +49,29 @@ class CategorySelector extends Component{
 			return{
 				levelOneCategoryId:props.categoryId,
 				levelTwoCategoryId:'',
-				// isChanged:true
+				 isChanged:true
 			}
 		}else{
 			return{
 				levelOneCategoryId:props.parentCategoryId,
 				levelTwoCategoryId:props.categoryId	,
 				needLoadLevelTwo:true,
-				// isChanged:true		
+				 isChanged:true		
 			}
 		}
 
 		return null;
 	}
 	componentDidUpdate(){
+		
 		if (this.state.needLoadLevelTwo) {
 			this.loadLevelTwoCategory();
 			this.setState({
-				needToLoadLevelTwo:false
+				needLoadLevelTwo:false
 			})
 			
 		}
+		
 	}
 	loadLevelOneCategory(){
 		request({
@@ -138,7 +142,12 @@ class CategorySelector extends Component{
 			<div>
 				<Select 
 				style={{ width: 300,marginRight:10 }} 
-				onChange={this.handleLevelOneChange}>
+				onChange={this.handleLevelOneChange}
+				value={levelOneCategoryId}
+				defaultValue={levelOneCategoryId}
+				disabled ={this.props.disabled}
+
+				>
 					{levelOneOptions}
 				</Select>
 				{
@@ -147,7 +156,8 @@ class CategorySelector extends Component{
 						defaultValue={levelTwoCategoryId}
 						value={levelTwoCategoryId}
 						style={{ width: 300 }} 
-						onChange={this.handleLevelTwoChange}>
+						onChange={this.handleLevelTwoChange}
+						disabled ={this.props.disabled}>
 							{levelTwoOptions}
 					</Select>
 					: null

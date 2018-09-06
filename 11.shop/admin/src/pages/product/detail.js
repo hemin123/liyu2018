@@ -16,14 +16,14 @@ import RichEditor from 'common/rich-editor'
 
 import  { UPLOAD_PRODUCT_IMAGE,UPLOAD_PRODUCT_DETAIL_IMAGE } from 'api'
 
+import './detail.css'
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-class NormalProductSave extends Component{
+class NormalProductDetail extends Component{
 	constructor(props){
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		console.log(this.props.match.params.productId);//获取当前点击商品的Id
 		this.state ={
 			productId : this.props.match.params.productId
 		}
@@ -33,17 +33,7 @@ class NormalProductSave extends Component{
 			this.props.handleProductDetail(this.state.productId);
 		}
 	}
-
-	handleSubmit(e){
-		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
-			console.log("value"+values)
-			if (this.props.match.params.productId) {
-				values.id = this.state.productId;		
-			}
-		  	this.props.handleSave(err,values);
-		});
-	}	
+	
 	render(){
 			const {
 				parentCategoryId,
@@ -56,6 +46,14 @@ class NormalProductSave extends Component{
 				stock,			
 			} =this.props;
 		 //console.log(this.props);
+		 let imgBox ='';
+		 if (images) {
+		 	imgBox= images.split(',').map((img,index)=>(
+		 		<li key={index}>
+		 			<img src ={img} />
+		 		</li>
+		 	))
+		 }
 		const fileList =[];
 		if (images) {
 			const fileList =images.split(',').map((img,index)=>({
@@ -95,12 +93,7 @@ class NormalProductSave extends Component{
 				<div>
 					<Breadcrumb>
 						<Breadcrumb.Item>商品管理</Breadcrumb.Item>
-						<Breadcrumb.Item>
-							{
-								this.state.productId
-								? '编辑商品'
-								: '添加商品'
-							}
+						<Breadcrumb.Item>商品详情
 						</Breadcrumb.Item>
 					</Breadcrumb>
 					<Form style={{marginTop:30}}>
@@ -108,47 +101,30 @@ class NormalProductSave extends Component{
 				          {...formItemLayout}
 				          label="商品名称"
 				        >
-				          {getFieldDecorator('name', {
-				            rules: [
-				            {
-				              required: true, message: '请输入商品名称',
-				            }],
-				            initialValue:name
-				          })(
 				            <Input 
-				            	placeholder="商品名称"
+				            	disabled = {true}
+				            	defaultValue ={name}
 				            />
-				          )}
+				          
 				        </FormItem>
 				        <FormItem
 				          {...formItemLayout}
 				          label="商品描述"
-				        >
-				          {getFieldDecorator('description', {
-				            rules: [
-				            {
-				              required: true, message: '请输入商品描述',
-				            }],
-				            initialValue:description
-				          })(
+				        >			          
 				            <Input 
-				            	placeholder="商品描述"
+				              defaultValue ={description}
+				              disabled ={true}
 				            />
-				          )}
+				         
 				        </FormItem>				        
 				        <FormItem
 				          {...formItemLayout}
-				          label="所属分类"
-				          required={true}
-				          validateStatus={this.props.categoryIdValidateStatus}
-				          help={this.props.categoryIdHelp}
+				          label="所属分类"         
 				        >
 				        	<CategorySelector
 				        		parentCategoryId={parentCategoryId}
 				        		categoryId={categoryId}
-				        		getCategoryId={(parentCategoryId,categoryId)=>{
-				        			this.props.handleCategory(parentCategoryId,categoryId)
-				        		}}
+				        		disabled ={true}
 				        	 />
 
 				        </FormItem>	
@@ -156,78 +132,44 @@ class NormalProductSave extends Component{
 				          {...formItemLayout}
 				          label="商品价格"
 				        >
-				          {getFieldDecorator('price', {
-				            rules: [
-				            {
-				              required: true, message: '请输入商品价格',
-				            }],
-				            initialValue:price
-				          })(
 				            <InputNumber 
+				            	value ={price}
 				            	style={{width:300}}
 				            	min={0}
 								formatter={value => `${value}元`}
-      							parser={value => value.replace('元', '')}				            	
+      							parser={value => value.replace('元', '')}
+      							disabled ={true}				            	
 				            />
-				          )}
+				    
 				        </FormItem>
 				        <FormItem
 				          {...formItemLayout}
 				          label="商品库存"
-				        >
-				          {getFieldDecorator('stock', {
-				            rules: [
-				            {
-				              required: true, message: '请输入商品库存',
-				            }],
-				             initialValue:stock
-				          })(
+				        >			          
 				            <InputNumber 
 				            	style={{width:300}}
-				            	min={0}
+				            	value={stock}
 								formatter={value => `${value}件`}
-      							parser={value => value.replace('件', '')}					            	
+      							parser={value => value.replace('件', '')}
+      							disabled ={true}					            	
 				            />
-				          )}
+				         
 				        </FormItem>	
 				        <FormItem
 				          {...formItemLayout}
 				          label="商品图片"
 				        >
-							<UploadImage
-								action={UPLOAD_PRODUCT_IMAGE}
-								max={3}
-								
-								getFileList={
-									(fileList)=>{
-										console.log("file",fileList)
-										this.props.handleImages(fileList)
-									}
-								}
-								fileList={fileList}
-							 />
+							<ul className ='imgBox'>
+								{imgBox}
+							</ul>
 				        </FormItem>	
 				        <FormItem
 				          {...formItemLayout}
 				          label="商品详情"
 				        >
-							<RichEditor
-								url = {UPLOAD_PRODUCT_DETAIL_IMAGE}
-								getRichEditorValue = {(value)=>{
-									this.props.handleDetail(value)
-								}}
-								detail ={detail}
-							 />
+							<div dangerouslySetInnerHTML={{__html:detail}} /> 
 				        </FormItem>					        				        				        					        			        
-				        <FormItem {...tailFormItemLayout}>
-				        	<Button 
-				          		type="primary"
-				          		onClick={this.handleSubmit}
-				          		loading={this.props.isSaveFetching}
-				          	>
-				          	提交
-				        	</Button>
-				        </FormItem>				        					
+				       		        					
 					</Form>
 				</div>
 			</Layout>
@@ -236,14 +178,11 @@ class NormalProductSave extends Component{
 
 }
 
-const ProductSave = Form.create()(NormalProductSave);
+const ProductDetail = Form.create()(NormalProductDetail);
 
 const mapStateToProps = (state)=>{
 	return {
-		categoryIdValidateStatus:state.get('product').get('categoryIdValidateStatus'),
-		categoryIdHelp:state.get('product').get('categoryIdHelp'),
-		isSaveFetching:state.get('product').get('isSaveFetching'),
-
+	
 		parentCategoryId:state.get('product').get('parentCategoryId'),
 		categoryId:state.get('product').get('categoryId'),
 		images:state.get('product').get('images'),
@@ -257,18 +196,7 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
 	return{
-		handleSave:(err,values)=>{
-			dispatch(actionCreator.getSaveAction(err,values));
-		},
-		handleCategory:(parentCategoryId,categoryId)=>{
-			dispatch(actionCreator.getSetCategoryAction(parentCategoryId,categoryId));
-		},
-		handleImages:(fileList)=>{
-			dispatch(actionCreator.getSetImagesAction(fileList));
-		},
-		handleDetail:(value)=>{
-			dispatch(actionCreator.getSetDetailAction(value));
-		},
+		
 		handleProductDetail:(productId)=>{
 			dispatch(actionCreator.getProductDetailAction(productId));
 
@@ -278,4 +206,4 @@ const mapDispatchToProps = (dispatch)=>{
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProductSave);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetail);

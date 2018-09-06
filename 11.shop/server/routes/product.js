@@ -73,6 +73,35 @@ router.post("/",(req,res)=>{
  		})
 	})
 })
+//编辑商品
+router.put("/",(req,res)=>{
+	let body = req.body;
+	let update = {
+		name:body.name,
+		category:body.category,
+		detail:body.detail,
+		description:body.description,
+		images:body.images,
+		price:body.price,
+		stock:body.stock
+	}
+	ProductModel
+	.update({_id:body.id},update)
+	.then((raw)=>{
+		console.log("put",raw)		
+		res.json({
+			code:0,
+			message:'更新商品成功'
+		})
+		
+	})
+	.catch((e)=>{
+ 		res.json({
+ 			code:1,
+ 			message:"添加分类失败,服务器端错误"
+ 		})
+	})
+})
 
 //获取商品
 router.get("/",(req,res)=>{
