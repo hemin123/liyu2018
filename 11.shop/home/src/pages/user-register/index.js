@@ -44,7 +44,7 @@ var page ={
 				//没有注册
 				console.log('ok');
 				formErr.hide();
-			},function(){//已经注册
+			},function(message){//已经注册
 				formErr.show(message);
 			})
 		})
@@ -68,8 +68,9 @@ var page ={
 		console.log(formData);
 		if (validateResult.status) {
 			formErr.hide();
-			_user.login(formData,function(result){
-				_util.goHome();
+			_user.register(formData,function(result){
+				console.log("ok");
+				// window.location.href='./result.html';
 			},function(msg){
 				formErr.show(msg);
 			})
@@ -106,7 +107,7 @@ var page ={
 			result.msg ='两次密码不一致';
 			return result;
 		}
-		if (!_util.value(formData.phone,'require')) {
+		if (!_util.validate(formData.phone,'require')) {
 			result.msg ='手机号不能为空';
 			return result;
 		}
@@ -115,7 +116,7 @@ var page ={
 			return result;
 		}
 
-		if (!_util.value(formData.email,'require')) {
+		if (!_util.validate(formData.email,'require')) {
 			result.msg ='邮箱不能为空';
 			return result;
 		}

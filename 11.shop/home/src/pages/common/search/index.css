@@ -1,0 +1,51 @@
+
+.logo-box  a{
+	font-size: 35px;
+	color:#f21;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.search-box{
+	background: #fff;
+	height: 60px;
+}
+
+.logo{
+float: left;
+}
+.search{
+	float: left;
+	
+}
+.search-input{
+	width: 300px;
+	margin-left: 150px;
+	outline: none;
+	border: 2px solid #f21;
+	height: 38px;
+	padding-left: 10px;
+	float: left;
+
+}
+.btn-search{
+	/*display: inline-block;*/
+	width: 80px;
+	text-decoration: none;
+	float: left;
+	text-align: center;
+	height: 42px;
+	background: #f21;
+	color: #fff;
+	line-height: 38px;
+
+
+}
+
+
+
+
+
+
+
+

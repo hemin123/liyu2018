@@ -1,4 +1,5 @@
 
+var Hogan = require('hogan.js');
 
 var _util ={
 	request:function(params){
@@ -33,7 +34,20 @@ var _util ={
 		window.location.href ='./user-login.html'
 	},
 	goHome:function(){
-		window.location.href ='./user-login.html'
+		window.location.href ='./'
+	},
+	getParamFromUrl:function(key){
+		var query = window.location.search.substr(1);
+		var reg = new RegExp('(^|&)'+key+'=([^&]*)(&|$)');
+		var result = query.match(reg);
+		return result ? decodeURIComponent(result[2]) : null;
+
+	},
+	//模板渲染
+	render:function(tpl,data){
+		var template = Hogan.compile(tpl);
+		var html = template.render(data);
+		return html;
 	},
 	validate:function(value,type){
 		var value = $.trim(value);

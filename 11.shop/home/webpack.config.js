@@ -13,8 +13,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const publicPath='/';
 
 const getHtmlConfig = (name)=>({
-  template:'./src/view/'+name+'./html',
-  filename: name +'./html',
+  template:'./src/view/'+name+'.html',
+  filename: name +'.html',
   inject:true,
   hash:true,
   chunks:['common',name]
@@ -30,7 +30,9 @@ module.exports = {
   'common':'./src/pages/common/index.js',
   'login':'./src/pages/user-login/index.js',
   'index':'./src/pages/index/index.js',
-  'user-register':'./src/pages/user-register/index.js'
+  'user-register':'./src/pages/user-register/index.js',
+  'user-update-password':'./src/pages/user-update-password/index.js',
+  'user-center':'./src/pages/user-center/index.js'
   },
 	//指定出口
 	output:{
@@ -87,7 +89,18 @@ module.exports = {
                            
             }
         }               
-      }              
+      } ,    
+      {
+        test:/\.tpl$/,
+        exclude: /(node_modules)/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['env','es2015','react','stage-3'],
+                           
+            }
+        }               
+      }            
     ]
   },
   plugins: [
@@ -114,7 +127,8 @@ module.exports = {
   		hash:true,
       chunks:['common','user-register']
   	}),
-    // new HtmlWebpackPlugin(getHtmlConfig('user-register')),
+    new HtmlWebpackPlugin(getHtmlConfig('user-center')),
+    new HtmlWebpackPlugin(getHtmlConfig('user-update-password')),
   	new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
     filename:'css/[name].css' })

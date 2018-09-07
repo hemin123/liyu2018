@@ -1,0 +1,60 @@
+
+
+.content {
+
+}
+
+.label-item{
+	display: inline-block;
+}
+.content-item{
+	display: inline-block;
+}
+
+
+
+.side{
+	width: 150px;
+	height: 500px;
+	float: left;
+	margin-right: 20px;
+	box-sizing: border-box;
+	background: #fff;
+	margin-top: 30px;
+}
+.side .side-item a{
+	display: block;
+	width: 100%;
+	color: #000;
+	text-decoration: none;
+
+}
+
+.side .side-item a.active{
+border-right: 2px solid #f21;
+color: #f21;
+
+}
+.side .side-item a:hover {
+border-right: 2px solid #f21;
+color: #f21;
+
+}
+.side .side-item{
+	height: 30px;
+	/*color: #ff6700;*/
+	font-size: 15px;
+	text-align: center;
+	line-height: 30px;
+	
+}
+.user-page-wrap .content{
+	width: 1000px;
+	height: 500px;
+	float: left;
+	margin-top: 30px;
+	margin-right: 20px;
+	background: #fff;
+
+}
+
