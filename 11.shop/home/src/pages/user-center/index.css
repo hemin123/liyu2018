@@ -1,5 +1,5 @@
 
-
+ 
 .user-page-wrap{
 	border-top: 2px solid #f21;
 }
@@ -11,7 +11,21 @@
 }
 .user-form{
 	margin: 40px 40px;
+} 
+
+.form-item{
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
 }
-
-
+.label-item{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+.content-item{
+	display: inline-block;
+	width: 400px;
+	padding-left: 40px;
+}
 

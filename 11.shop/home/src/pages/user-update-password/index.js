@@ -1,12 +1,8 @@
-
-require('./index.css')
-require('pages/common/footer')
 require('pages/common/nav')
-require('pages/common/side')
 require('pages/common/search')
+require('pages/common/footer')
+require('./index.css')
 require('node_modules/font-awesome/css/font-awesome.min.css');
-console.log("user-login");
-
 
 var _util = require('util');
 var _user = require('service/user');
@@ -26,8 +22,8 @@ var formErr = {
 		.text('')			
 	}
 }
-
-var page ={
+//登录页面逻辑
+var page = {
 	init:function(){
 		this.onload();
 		this.bindEvent();
@@ -93,11 +89,10 @@ var page ={
 		}	
 		result.status = true;
 		return result;
-	}
 
+	}
 }
 
 $(function(){
 	page.init();
 })
-

@@ -11,16 +11,6 @@ const hmac = require('../util/hmac.js')
 const router = Router();
 
 
-//权限控制
-router.use((req,res,next)=>{
-	if(req.userInfo._id){
-		next()
-	}else{
-		res.json({
-			code:10
-		})
-	}
-})
 
 
 router.get("/username",(req,res)=>{
@@ -164,6 +154,18 @@ router.get('/logout',(req,res)=>{
 	req.session.destroy();
 	res.json(result);
 
+})
+
+
+//权限控制
+router.use((req,res,next)=>{
+	if(req.userInfo._id){
+		next()
+	}else{
+		res.json({
+			code:10
+		})
+	}
 })
 
 router.get("/userInfo",(req,res)=>{

@@ -48,7 +48,8 @@ var page ={
 		if (validateResult.status) {
 			formErr.hide();
 			_user.login(formData,function(result){
-				_util.goHome();
+				// _util.goHome();
+				window.location.href =_util.getParamFormUrl('redirect')||'./index.html'
 			},function(msg){
 				formErr.show(msg);
 			})
