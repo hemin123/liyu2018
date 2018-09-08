@@ -24,7 +24,7 @@ var nav ={
 		})
 	},
 	loadUserInfo:function(){
-		_user.getUserInfo(function(userInfo){
+		_user.username(function(userInfo){
 			// console.log(userInfo);
 			$('.not-login').hide();
 			$('.login')

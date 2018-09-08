@@ -2,8 +2,8 @@
 
 hogan.js模板插件
 
-
-
+http://www.bootcss.com/p/unslider/
+轮播图插件unslider
 
 
 

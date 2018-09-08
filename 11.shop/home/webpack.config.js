@@ -169,6 +169,7 @@ module.exports = {
   entry:{
         'common':'./src/pages/common/index.js',
         'index':'./src/pages/index/index.js',
+        'list':'./src/pages/list/index.js',
         'user-login':'./src/pages/user-login/index.js',
         'user-register':'./src/pages/user-register/index.js',
         'user-center':'./src/pages/user-center/index.js',
@@ -192,6 +193,7 @@ module.exports = {
         alias:{
             pages:path.resolve(__dirname,'./src/pages'),
             util:path.resolve(__dirname,'./src/util'),
+            images:path.resolve(__dirname,'./src/images'),
             service:path.resolve(__dirname,'./src/service'),
             node_modules:path.resolve(__dirname,'./node_modules'),
             common:path.resolve(__dirname,'./src/common')
@@ -245,6 +247,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
+    new HtmlWebpackPlugin(getHtmlConfig('list','列表页')),
     new HtmlWebpackPlugin(getHtmlConfig('user-login','用户登录')),    
     new HtmlWebpackPlugin(getHtmlConfig('user-register','用户注册')),    
     new HtmlWebpackPlugin(getHtmlConfig('user-center','用户中心')),    

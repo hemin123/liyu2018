@@ -48,7 +48,7 @@ var _user ={
 			error:error
 		})
 	},
-	getUsername:function(success,error){
+	username:function(success,error){
 		_util.request({
 			url:'/user/username',
 			success:success,
