@@ -14,6 +14,8 @@ require('util/carousel');
 var _util =require('util');
 
 var keywordstpl =require('./keywords.tpl');
+var carouseltpl =require('./carousel.tpl');
+var floortpl =require('./floor.tpl');
 
 var page ={
 	keywords:[
@@ -22,12 +24,31 @@ var page ={
 		{item:[{name:'手机'},{name:'电脑'}]},
 		{item:[{name:'手机'},{name:'电脑'}]}
 	],
+	carousel:[
+		{categoryId:'1111',image:require('images/carousel/1.jpg')},
+		{categoryId:'2222',image:require('images/carousel/2.jpg')},
+		{categoryId:'3333',image:require('images/carousel/3.jpg')}
+	],
 	floor:[
 		{
-			floor:"f1 家电",
+			title:"f1 家电",
 			item:[
-					{ text:'冰箱',categoryId:'111',img:require('images/floor/floor1-1.jpg')},
-					{ text:'冰箱',categoryId:'111',img:require('images/floor/floor1-1.jpg')}
+					{ image:require('images/floor/floor1-1.jpg'),text:'冰箱',categoryId:'111'},
+					{ image:require('images/floor/floor1-1.jpg'),text:'冰箱',categoryId:'222'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'333'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'333'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'444'}
+				]
+
+		},	
+		{
+			title:"f1 家电",
+			item:[
+					{ image:require('images/floor/floor1-1.jpg'),text:'冰箱',categoryId:'111'},
+					{ image:require('images/floor/floor1-1.jpg'),text:'冰箱',categoryId:'222'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'333'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'333'},
+					{ image:require('images/floor/floor1-2.jpg'),text:'冰箱',categoryId:'444'}
 				]
 
 		}	
@@ -44,6 +65,11 @@ var page ={
 		$('#keywords').html(html);
 	},
 	loadCarousel:function(){
+		var html=_util.render(carouseltpl,{
+			carousel:this.carousel
+		})
+		$('.carousel').html(html);
+
 		var $carousel = $('.carousel').unslider({
 			keys:true,
 			dots:true
@@ -56,9 +82,11 @@ var page ={
 		
 	},
 	loadFloor:function(){
-		
+		var html =_util.render(floortpl,{
+			floor:this.floor
+		});
+		$('.floor-wrap').html(html);
 	}
-
 
 }
 

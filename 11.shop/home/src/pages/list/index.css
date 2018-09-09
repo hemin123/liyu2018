@@ -1,23 +1,46 @@
 
 
 .list{
-	width: 1080px;
-	height: 50px;
-	background: #fff;
-	margin: 30px auto;
+	/*width: 1080px;*/
+	/*height: 50px;*/
+	/*background: #fff;*/
+	/*margin: 30px auto;*/
+	margin-top: 20px;
 }
+
 .list .sort-item{
 	border: 2px solid #f21;
 	display: inline-block;
-	/*width: 100px;*/
-	line-height: 40px;
+	line-height: 30px;
 	text-align: center;
-	height:40px;
-	padding-left:20px; 
-	padding-right:20px; 
-	background: #888;
+	height:30px;
+	width: 80px;
+	text-align: center;
 	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
 }
+.list .sort-item.active{
+	background-color: #f21;
+	border:1px solid #f21;
+	color: #fff;
+
+}
+ .sort-item .fa-sort-asc{
+ 	position: absolute;
+ 	top: 8px;
+ }
+
+.sort-item.asc .fa-sort-desc{
+	color: #888;
+}
+.sort-item.desc .fa-sort-asc{
+	color: #888;
+}
+
+
+
+
 
 
 

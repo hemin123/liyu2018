@@ -8,9 +8,14 @@ var _util = require('util');
 var page ={
 	init:function(){
 		this.bindEvent();
+		this.onload();
 	},
 	onload:function(){
-		// if ()
+		var keyword =_util.getParamFromUrl('keyword');
+
+		if (keyword){
+			$('#search-input').val(keyword);
+		}
 
 		// var keyword =
 		// $('search-input').val(keyword);
