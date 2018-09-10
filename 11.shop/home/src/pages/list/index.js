@@ -11,6 +11,7 @@ require('pages/common/side')
 require('node_modules/font-awesome/css/font-awesome.min.css');
 
 var _util = require('util');
+require('util/pagination');//引入分页插件
 var _product = require('service/product');
 var tpl = require('./index.tpl');
 
@@ -22,8 +23,17 @@ var page={
 		orderBy:_util.getParamFromUrl('orderBy')||'default'
 	},
 	init:function(){
+		this.initpagination();
 		this.bindEvent();
 		this.loadProduct();
+	},
+	initpagination:function(){
+		var $pagination=$('.pagination-box');
+		$pagination.on('page-change',function(e,value){
+			// console.log('xx',value)
+			_this.list.loadProduct();
+		});
+		$pagination.pagination();
 	},
 	bindEvent:function(){
 		var _this =this;
@@ -76,6 +86,13 @@ var page={
 				list:result.list
 			});
 			$('.product-list-box').html(html);
+
+			$('.pagination-box').pagination('render',{
+				current:result.current,
+				total:result.total,
+				pageSize:result.pageSize,
+				range:3
+			})
 		},function(){
 
 		})

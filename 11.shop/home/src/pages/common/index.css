@@ -29,7 +29,7 @@ body{
 
 }
 .container{
-	height: 30px;
+	/*height: 30px;*/
 	width: 1200px;
 	margin: 0 auto;
 }
@@ -52,4 +52,10 @@ body{
 }
 
 
-
+.empty-message{
+	text-align: center;
+	padding-top: 100px;
+	height: 300px;
+	font-size: 30px;
+	color: #f21;
+}

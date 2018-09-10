@@ -10,7 +10,9 @@
 		</li>
 	{{/list}}
 </ul>
-
+{{^list}}
+	<p class="empty-message">你要找的商品走丢了</p>
+{{/list}}
 
 
 
