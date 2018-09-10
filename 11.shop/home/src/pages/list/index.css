@@ -7,6 +7,9 @@
 	/*margin: 30px auto;*/
 	margin-top: 20px;
 }
+.sort{
+	margin-bottom: 20px;
+}
 
 .list .sort-item{
 	border: 2px solid #f21;
@@ -26,6 +29,8 @@
 	color: #fff;
 
 }
+
+
  .sort-item .fa-sort-asc{
  	position: absolute;
  	top: 8px;
@@ -38,8 +43,40 @@
 	color: #888;
 }
 
-
-
+.product-item{
+	float: left;
+	width: 208px;
+	height: 280px;
+	margin-right: 10px;
+	background-color: #fff;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 10px;
+}
+.product-item:hover{
+	box-shadow:0 1px 7px rgba(0,0,0,0.5);
+}
+.product-item:last-child{
+	margin-left: 0px;
+}
+.product-item a{
+	text-decoration: none;
+}
+.product-img{
+	width: 180px;
+	height:180px;
+	margin-top: 20px;
+}
+.product-price{
+	font-size: 18px;
+	color: #f21;
+}
+.product-name{
+	height: 40px;
+	line-height: 20px;
+	color: #f333;
+	font-size: 14px;
+}
 
 
 

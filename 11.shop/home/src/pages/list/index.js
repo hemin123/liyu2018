@@ -11,6 +11,8 @@ require('pages/common/side')
 require('node_modules/font-awesome/css/font-awesome.min.css');
 
 var _util = require('util');
+var _product = require('service/product');
+var tpl = require('./index.tpl');
 
 var page={
 	listParams:{
@@ -58,8 +60,25 @@ var page={
 	loadProduct:function(){
 		this.listParams.categoryId
 		?(delete this.listParams.keyword)
-		:(delete this.listParams.categoryId)
+		:(delete this.listParams.categoryId);
 		console.log(this.listParams);
+		_product.getProductList(this.listParams ,function(result){
+			console.log(result);
+			var list =result.list.map(function(product){
+				if (product.images) {
+					product.image=product.images.split(',')[0];
+				}else{
+					product.image=require('images/product-default.jpg')
+				}
+				return product
+			})
+			var html=_util.render(tpl,{
+				list:result.list
+			});
+			$('.product-list-box').html(html);
+		},function(){
+
+		})
 	}
 }
 

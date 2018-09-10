@@ -36,11 +36,12 @@ var page ={
 	submit:function(){
 		var keyword = $.trim($('#search-input').val());
 		console.log("hhh");
-		if (keyword) {
+		window.location.href="./list.html?keyword="+keyword		
+		/*if (keyword) {
 			window.location.href="./list.html?keyword="+keyword
 		}else{
-			// _util.goHome();
-		}
+			_util.goHome();
+		}*/
 
 		
 	},

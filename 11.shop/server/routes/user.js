@@ -6,6 +6,7 @@
 */
 const Router = require('express').Router;
 const UserModel = require('../models/user.js');
+const ProductModel = require('../models/product.js');
 const hmac = require('../util/hmac.js')
 
 const router = Router();
@@ -156,6 +157,48 @@ router.get('/logout',(req,res)=>{
 
 })
 
+router.get('/productList',(req,res)=>{
+	let page = req.query.page;
+	let query = {status:0};
+	if (req.query.categoryId) {
+		query.category=categoryId;
+
+	}else{
+		query.name = {$regex:new RegExp(req.query.keyword,'i')};
+	}
+	let projection='_id  name price images';
+	let sort ={order:-1}
+	if (req.query.orderBy == 'price_asc') {
+		sort={price:1}
+	}
+	if (req.query.orderBy == 'price_desc') {
+		sort={price:-1}
+	}
+
+	ProductModel.getPaginationProducts(page,query,projection,sort)
+	.then(result=>{
+		res.json({
+			code:0,
+			data:{
+				current:result.current,
+				total:result.total,
+				pageSize:result.pageSize,
+				list:result.list
+
+			}
+		})
+	})
+	.catch(e=>{
+			console.log(e)
+		res.json({
+		
+			code:1,
+			message:'获取信息失败'
+		})
+	})
+
+
+})
 
 //权限控制
 router.use((req,res,next)=>{
