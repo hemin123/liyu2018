@@ -1,7 +1,7 @@
 <ul class="pagination">
 	{{#pageArray}}
 		{{#disabled}}
-			<li class="page-item active" data-value={{value}}>{{name}}</li>
+			<li class="page-item disabled" data-value={{value}}>{{name}}</li>
 		{{/disabled}}
 		{{^disabled}}
 			{{#active}}

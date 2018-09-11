@@ -28,10 +28,12 @@ var page={
 		this.loadProduct();
 	},
 	initpagination:function(){
+		var _this =this;
 		var $pagination=$('.pagination-box');
 		$pagination.on('page-change',function(e,value){
 			// console.log('xx',value)
-			_this.list.loadProduct();
+			_this.listParams.pages=value;
+			_this.loadProduct();
 		});
 		$pagination.pagination();
 	},
@@ -64,7 +66,7 @@ var page={
 					_this.listParams.orderBy='price_desc';
 				}
 			}
-			_this.listParams.page=1;
+			// _this.listParams.page=1;
 			_this.loadProduct();
 		})
 	},

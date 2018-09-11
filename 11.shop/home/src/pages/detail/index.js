@@ -18,17 +18,29 @@ var page={
 	params:{
 		productId: _util.getParamFromUrl('productId')|| '',
 
-	}
+	},
 	init:function(){
-		this.bindEvent();
+		this.onload();
 		this.loadProductDetail();
+	},
+	onload:function(){
+		if (this.params.productId) {
+			this.loadProductDetail();
+		}
 	},
 	bindEvent:function(){
 		var _this =this;
 		
 	},
 	loadProductDetail:function(){
-		
+		_product.getProductDetail({productId:this.params.productId},function(product){
+			console.log(product);
+			if (product.images) {
+				product.images=product.images.split(',');
+			}
+		},function(msg){
+			_util.showErrorMsg(msg)
+		})
 	}
 }
 

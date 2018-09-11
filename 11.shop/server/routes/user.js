@@ -197,7 +197,25 @@ router.get('/productList',(req,res)=>{
 		})
 	})
 
+})
 
+router.get('/productDetail',(req,res)=>{
+	ProductModel
+	.findOne({status:0,_id:req.query.productId},"-__v -createAt -updateAt -category")
+	.then(product=>{
+		res.json({
+			code:0,
+			data:product
+		})
+	})
+	.catch(e=>{
+			console.log(e)
+		res.json({
+		
+			code:1,
+			message:'获取l详情失败'
+		})
+	})
 })
 
 //权限控制

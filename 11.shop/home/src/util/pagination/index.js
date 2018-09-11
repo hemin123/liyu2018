@@ -25,7 +25,7 @@ var tpl = require('./index.tpl');
 			})
 		},
 		render:function(options){
-			// console.log(options);
+			 console.log(options);
 
 			var pages=Math.ceil(options.total/options.pageSize);
 			if (pages<=1) {
@@ -33,12 +33,12 @@ var tpl = require('./index.tpl');
 			}
 			var start =options.current - options.range > 1 ? options.current-options.range : 1;
 			var end =options.current + options.range < pages ? options.current + options.range :pages;
-			
+		
 			var prev=options.current-1;
 			var next=options.current+1;
 			var hasPrev = prev >0 ? true:false;
 			var hasNext = next <=pages ? true:false;
-			
+			//页面数据
 			var pageArray=[];
 			pageArray.push({
 				name:'上一页',
@@ -60,7 +60,7 @@ var tpl = require('./index.tpl');
 
 			var html =_util.render(tpl,{
 				pageArray:pageArray,
-				pageArray:options.current,
+				current:options.current,
 				pages:pages,
 			});
 			this.$elem.html(html);
