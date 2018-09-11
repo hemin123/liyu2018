@@ -13,5 +13,8 @@
 		{{/disabled}}
 		
 	{{/pageArray}}
+	<li class="page-summ">
+		{{current}}/{{pages}}
+	</li>
 
 </ul>

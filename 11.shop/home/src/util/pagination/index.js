@@ -52,27 +52,16 @@ var tpl = require('./index.tpl');
 					active:(i==options.current)
 				})
 			}
-
-			var pageArray==[];
-			pageArray.push({
-				name:'下一页',
-				value:'next'
-			})
-			for (var i = start; i <= end; i++) {
-				pageArray.push({
-					name:i,
-					value:i,
-					active:(i==options.current)
-				})
-			}
 			pageArray.push({
 				name:'下一页',
 				value:next,
-				disabled:hasNext
+				disabled:!hasNext
 			})
 
 			var html =_util.render(tpl,{
-				pageArray:pageArray
+				pageArray:pageArray,
+				pageArray:options.current,
+				pages:pages,
 			});
 			this.$elem.html(html);
 		}
@@ -82,10 +71,10 @@ var tpl = require('./index.tpl');
 		total:1,
 		pagination:1,
 		range:3
-	}
+	};
 
 	$.fn.extend({
-		pagination:function(){
+		pagination:function(fn,options){
 			return this.each(function(){
 				var $this= $(this);
 				var pagination=$this.data('pagination');
@@ -93,11 +82,11 @@ var tpl = require('./index.tpl');
 					pagination=new Pagination($this);
 					$this.data('pagination',pagination)
 				}
-				if (typeof pagination[fn]=='function') {
+				if (typeof pagination[fn] == 'function') {
 					options=$.extend({},Pagination.DEFAULT,options);
 					pagination[fn](options)
 				}
-			})
+			});
 		}
 	})
 

@@ -64,6 +64,7 @@ var page={
 					_this.listParams.orderBy='price_desc';
 				}
 			}
+			_this.listParams.page=1;
 			_this.loadProduct();
 		})
 	},
@@ -72,6 +73,7 @@ var page={
 		?(delete this.listParams.keyword)
 		:(delete this.listParams.categoryId);
 		console.log(this.listParams);
+		$('.product-list-box').html('<p>loading</p>')
 		_product.getProductList(this.listParams ,function(result){
 			console.log(result);
 			var list =result.list.map(function(product){
@@ -90,11 +92,10 @@ var page={
 			$('.pagination-box').pagination('render',{
 				current:result.current,
 				total:result.total,
-				pageSize:result.pageSize,
-				range:3
+				pageSize:result.pageSize
 			})
-		},function(){
-
+		},function(msg){
+			_util.showErrorMsg(msg)
 		})
 	}
 }

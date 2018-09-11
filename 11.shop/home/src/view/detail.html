@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>kmall</title>
+	<meta name="description" content="跨足网 提供各类服饰、美容、家居、数码、话费/点卡充值… 数亿优质商品，款)等安全交易保障服务，让你安心享受网上购物乐趣！" />
+	<meta name="keyword" content="C2C,在线交易,网上交易,网上卖,购物网站,团购,网上贸易,安全购物,电子商务" />
+	
+</head>
+<body>
+<!-- <i class="fa fa-user">	</i> -->
+
+ <%= require('html-loader!./common/nav.html')  %>
+ <%= require('html-loader!./common/search.html')  %>
+	
+	<div class="detail">
+		<div class="container clearfix">
+			
+			<div class="product-intro clearfix">
+				<div class="product-img">
+					<div class="product-main-img">
+						<img src="" alt="" />
+					</div>
+					<ul class="product-small-img-item">
+						<li class="product-img-item">
+							<img src="" alt="" />
+						</li>
+						<li class="product-img-item">
+							<img src="" alt="" />
+						</li>
+					</ul>
+				</div>
+				<div class="product-info">
+					<h2 class="product-name">手机</h2>
+					<p class="product-description">xxxx</p>
+					<div class="product-info-item product-price">
+						<span class="label">价格</span>
+						<span class="info">￥111</span>
+					</div>
+					<div class="product-info-item">
+						<span class="label">库存</span>
+						<span class="info">￥111</span>
+					</div>
+					<div class="product-info-item">
+						<span class="label">数量</span>
+						<input type="text" class="count-input" />
+						<span class="count-btn plus">+</span>
+						<span class="count-btn minus">-</span>
+					</div>
+					<div class="add-cart">
+						<a href="javascript:;" class="btn"></a>
+					</div>
+				</div>
+				
+			</div>
+			<div class="product-detail">
+				<div class="tab">
+					<ul class="tab-list clearfix">
+						<li class="tab-item">商品详情</li>
+						<li class="tab-item">用户评论</li>
+					</ul>
+					<div class="tab-content">
+						detail.....
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ <!--安装包 
+ 	npm install html-loader --save-dev; -->
+ <%= require('html-loader!./common/footer.html')  %>
+</body>
+</html>

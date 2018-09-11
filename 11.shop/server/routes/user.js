@@ -161,7 +161,7 @@ router.get('/productList',(req,res)=>{
 	let page = req.query.page;
 	let query = {status:0};
 	if (req.query.categoryId) {
-		query.category=categoryId;
+		query.category=req.query.categoryId;
 
 	}else{
 		query.name = {$regex:new RegExp(req.query.keyword,'i')};
