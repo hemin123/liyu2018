@@ -15,5 +15,8 @@
 .result-box{
 	display: none;
 }
+.btns .btn{
+	width: 100px;
+}
 
 

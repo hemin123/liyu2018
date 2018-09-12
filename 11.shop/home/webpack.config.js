@@ -171,6 +171,7 @@ module.exports = {
         'index':'./src/pages/index/index.js',
         'list':'./src/pages/list/index.js',
         'detail':'./src/pages/detail/index.js',
+        'cart':'./src/pages/cart/index.js',
         'user-login':'./src/pages/user-login/index.js',
         'user-register':'./src/pages/user-register/index.js',
         'user-center':'./src/pages/user-center/index.js',
@@ -250,6 +251,7 @@ module.exports = {
     new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
     new HtmlWebpackPlugin(getHtmlConfig('list','列表页')),
     new HtmlWebpackPlugin(getHtmlConfig('detail','商品详情')),
+    new HtmlWebpackPlugin(getHtmlConfig('cart','购物车')),
     new HtmlWebpackPlugin(getHtmlConfig('user-login','用户登录')),    
     new HtmlWebpackPlugin(getHtmlConfig('user-register','用户注册')),    
     new HtmlWebpackPlugin(getHtmlConfig('user-center','用户中心')),    
@@ -267,6 +269,14 @@ module.exports = {
         "/user":{
             target:"http://127.0.0.1:3000",
             changeOrigin: true
+        },
+        "/product":{
+          target:"http://127.0.0.1:3000",
+          changeOrigin:true
+        },
+        "/cart":{
+          target:"http://127.0.0.1:3000",
+          changeOrigin:true
         }
     }
   }

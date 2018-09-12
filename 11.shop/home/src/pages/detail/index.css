@@ -20,7 +20,7 @@
 	height: 100%;
 }
 /*.product-small-img-item{*/
-.product-img-item{
+.product-small-img-item{
 	float: left;
 	width: 95px;
 	height: 95px;
@@ -29,7 +29,7 @@
 	box-sizing: border-box;
 
 }
-.product-img-item img{
+.product-small-img-item img{
 	width: 100%;
 	height: 100%;
 }
@@ -86,6 +86,8 @@
 	height: 20px;
 	line-height: 20px;
 	text-align: center;
+	user-select: none;
+	cursor: pointer;
 }
 .product-info .product-info-item.product-count  .plus{
 	top:0;

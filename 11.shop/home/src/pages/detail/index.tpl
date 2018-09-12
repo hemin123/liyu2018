@@ -3,37 +3,31 @@
 	<div class="product-intro clearfix">
 		<div class="product-img">
 			<div class="product-main-img">
-				<img src="http://127.0.0.1:3000/product-images/1536581975523.jpg" alt="" />
+				<img src="{{mainImg}}" alt="" />
 			</div>
-			<ul class="product-small-img-item">
-				<li class="product-img-item">
-					<img src="http://127.0.0.1:3000/product-images/1536581975523.jpg" alt="" />
+			<ul class="product-small-img-list clearfix">
+				{{#images}}
+				<li class="product-small-img-item">
+					<img src="{{.}}" alt="" />
 				</li>
-				<li class="product-img-item">
-					<img src="http://127.0.0.1:3000/product-images/1536581975523.jpg" alt="" />
-				</li>
-				<li class="product-img-item">
-					<img src="http://127.0.0.1:3000/product-images/1536581975523.jpg" alt="" />
-				</li>
-				<li class="product-img-item">
-					<img src="http://127.0.0.1:3000/product-images/1536581975523.jpg" alt="" />
-				</li>
+				{{/images}}
+
 			</ul>
 		</div>
 		<div class="product-info">
-			<h2 class="product-name">手机</h2>
-			<p class="product-description">xxxx</p>
+			<h2 class="product-name">{{name}}</h2>
+			<p class="product-description">{{description}}</p>
 			<div class="product-info-item price">
 				<span class="label">价格</span>
-				<span class="info">￥111</span>
+				<span class="info">￥{{price}}</span>
 			</div>
 			<div class="product-info-item">
 				<span class="label">库存</span>
-				<span class="info">141</span>
+				<span class="info">{{stock}}</span>
 			</div>
-			<div class="product-info-item">
+			<div class="product-info-item  product-count">
 				<span class="label">数量</span>
-				<input type="text" class="count-input" />
+				<input type="text" value="1" class="count-input" />
 				<span class="count-btn plus">+</span>
 				<span class="count-btn minus">-</span>
 			</div>
@@ -49,7 +43,7 @@
 				
 			</ul>
 			<div class="tab-content">
-				detail.....
+				{{{detail}}}
 			</div>
 		</div>
 	</div>
