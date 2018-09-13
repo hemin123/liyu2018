@@ -159,6 +159,172 @@ router.put("/unselectOne",(req,res)=>{
 		})
 	})
 });
+
+
+
+//全部选中购物车
+router.put("/selectAll",(req,res)=>{
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		//已有购物车
+		if(user.cart){
+			user.cart.cartList.forEach(item=>{
+				item.checked =true;
+			})
+		}
+		//没有购物车
+		else{
+			res.json({
+				code:1,
+				message:'还没有购物车'
+			})
+		}
+		user.save()
+		.then(newUser=>{
+			user.getCart()
+			.then(cart=>{
+				res.json({
+					code:0,
+					data:cart
+				})			
+			})
+		})
+	})
+});
+
+//全部取消购物车
+router.put("/unselectAll",(req,res)=>{
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		//已有购物车
+		if(user.cart){
+			user.cart.cartList.forEach(item=>{
+				item.checked =false;
+			})
+
+		}
+		//没有购物车
+		else{
+			res.json({
+				code:1,
+				message:'还没有购物车'
+			})
+		}
+		user.save()
+		.then(newUser=>{
+			user.getCart()
+			.then(cart=>{
+				res.json({
+					code:0,
+					data:cart
+				})			
+			})
+		})
+	})
+});
+
+//删除
+router.put("/deleteOne",(req,res)=>{
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		//已有购物车
+		if(user.cart){
+			let newCartList = user.cart.cartList.filter(item=>{
+				return item.product != req.body.productId
+			})
+			user.cart.cartList=newCartList;
+		}
+		//没有购物车
+		else{
+			res.json({
+				code:1,
+				message:'还没有购物车'
+			})
+		}
+		user.save()
+		.then(newUser=>{
+			user.getCart()
+			.then(cart=>{
+				res.json({
+					code:0,
+					data:cart
+				})			
+			})
+		})
+	})
+});
+//删除选中
+router.put("/deleteSelected",(req,res)=>{
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		//已有购物车
+		if(user.cart){
+			let newCartList = user.cart.cartList.filter(item=>{
+				return item.checked == false;
+			})
+			user.cart.cartList=newCartList;
+		}
+		//没有购物车
+		else{
+			res.json({
+				code:1,
+				message:'还没有购物车'
+			})
+		}
+		user.save()
+		.then(newUser=>{
+			user.getCart()
+			.then(cart=>{
+				res.json({
+					code:0,
+					data:cart
+				})			
+			})
+		})
+	})
+});
+//修改数量
+router.put("/updateCount",(req,res)=>{
+	let body = req.body;
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		//已有购物车
+		if(user.cart){
+			let cartItem = user.cart.cartList.find((item)=>{
+				return item.product == body.productId
+			})
+			if(cartItem){
+				cartItem.count = body.count
+			}else{
+				res.json({
+					code:1,
+					message:'购物车记录不存在'
+				})			
+			}
+
+		}
+		//没有购物车
+		else{
+			res.json({
+				code:1,
+				message:'还没有购物车'
+			})
+		}
+		user.save()
+		.then(newUser=>{
+			user.getCart()
+			.then(cart=>{
+				res.json({
+					code:0,
+					data:cart
+				})			
+			})
+		})
+	})
+});
+
+
+
 module.exports = router;
 
 

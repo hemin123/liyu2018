@@ -10,6 +10,7 @@ var nav ={
 	init:function(){
 		this.bindEvent();
 		this.loadUserInfo();
+		this.loadUsername();
 		this.loadCartInfo();
 		return this;
 	},
@@ -32,6 +33,15 @@ var nav ={
 			.find('.username')
 			.text(userInfo.username)
 		})
+	},
+	loadUsername:function(){
+		// _user.getUsername(function(user){
+		// 	$('.not-login').hide();
+		// 	$('.login')
+		// 	.show()
+		// 	.find('.username')
+		// 	.text(user.username)
+		// })
 	},
 	loadCartInfo:function(){
 

@@ -48,7 +48,7 @@
 		￥{{product.price}}
 	</li>
 	<li class="product-count">
-		<span class="count-btn minus">-</span><input type="text" value="{{count}}" class="count-input" /><span class="count-btn plus">+</span>
+		<span class="count-btn minus">-</span><input type="text" value="{{count}}" data-stock="{{product.stock}}"   class="count-input" /><span class="count-btn plus">+</span>
 	</li>
 	<li class="product-totalPrice">
 		￥{{totalPrice}}

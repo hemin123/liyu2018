@@ -13,6 +13,7 @@ var tpl = require('./index.tpl');
 var page = {
 
 	init:function(){
+		this.$box=$('.cart-box');
 		this.onload();
 		this.bindEvent();
 	},
@@ -22,7 +23,7 @@ var page = {
 	bindEvent:function(){
 		var _this = this;
 		//单个选中/取消
-		$('.cart-box').on('click','.select-one',function(){
+		this.$box.on('click','.select-one',function(){
 			var $this = $(this);
 			let productId = $this.parents('.cart-item').data('product-id')
 			//选中
@@ -41,6 +42,81 @@ var page = {
 					_this.showPageError();
 				})				
 			}
+
+		})
+		//全选
+		this.$box.on('click','.select-all',function(){
+			var $this = $(this);
+			if ($this.is(':checked')) {
+				_cart.selectAll(function(cart){
+					_this.renderCart(cart)
+				},function(msg){
+					_this.showPageError();
+				})
+			}	
+			else{
+				_cart.unselectAll(function(cart){
+					_this.renderCart(cart)
+				},function(msg){
+					_this.showPageError();
+				})
+			}
+		})
+		//删除
+		this.$box.on('click','.delete-one',function(){
+			var $this=$(this);
+			var productId = $this.parents('.cart-item').data('product-id')
+			if (_util.confirm('你确定要删除该条购物车信息吗？')) {
+				// alert('ok');
+				_cart.deleteOne({productId:productId},function(cart){
+					_this.renderCart(cart);
+				},function(msg){
+					_this.showPageError();
+
+				})
+			}
+		})	
+		//删除选中
+		this.$box.on('click','.delete-selected',function(){
+			if (_util.confirm('你确定要删除该条购物车信息吗？')) {
+				_cart.deleteSelected(function(cart){
+					_this.renderCart(cart);
+				},function(msg){
+					_this.showPageError();
+
+				})
+			}
+		})	
+		//更新购物车
+		this.$box.on('click','.count-btn',function(){
+			var $this = $(this);
+			var productId = $this.parents('.cart-item').data('product-id')
+			var $input = $this.siblings('.count-input');
+			var current = parseInt($input.val());
+			var max = $input.data('stock');
+			var min = 1;
+			var newCount = 0;
+			//增加
+			if ($this.hasClass('plus')) {
+				if (current>=max) {
+					_util.showPageError('上线');
+					return ;
+				}
+				 newCount = current +1;
+			}
+			//减少
+			else if($this.hasClass('minus')){
+				if (current<=min) {
+					_util.showPageError('下线');
+					return;
+				}
+				newCount = current-1;
+			}
+			_cart.updateCount({productId:productId,count:newCount},function(cart){
+				_this.renderCart(cart);
+			},function(msg){
+				_this.showPageError();
+			})
 		})
 	},
 	loadCart:function(){
@@ -61,10 +137,10 @@ var page = {
 		})
 		cart.notEmpty = !!cart.cartList.length;
 		var html = _util.render(tpl,cart)
-		$('.cart-box').html(html);
+		this.$box.html(html);
 	},
 	showPageError:function(){
-		$('.cart-box').html('<p class="empty-message">好像哪里出错了,刷新试试看!!!</p>')
+		this.$box.html('<p class="empty-message">好像哪里出错了,刷新试试看!!!</p>')
 	}
 }
 
