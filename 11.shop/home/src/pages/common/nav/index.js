@@ -4,6 +4,7 @@
 require('./index.css')
 
 var _user = require('service/user');
+var _cart = require('service/cart');
 var _util = require('util');
 
 var nav ={
@@ -11,7 +12,7 @@ var nav ={
 		this.bindEvent();
 		this.loadUserInfo();
 		this.loadUsername();
-		this.loadCartInfo();
+		this.loadCartCount();
 		return this;
 	},
 	bindEvent:function(){
@@ -43,7 +44,12 @@ var nav ={
 		// 	.text(user.username)
 		// })
 	},
-	loadCartInfo:function(){
+	loadCartCount:function(){
+		_cart.getCartCount(function(count){
+			$('.nav-list .cart-num').text(count || 0)
+		},function(msg){
+			$('.nav-list .cat-num').text(0)
+		})
 
 	}
 }

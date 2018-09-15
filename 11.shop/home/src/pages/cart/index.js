@@ -1,5 +1,5 @@
 
-require('pages/common/nav')
+var _nav = require('pages/common/nav')
 require('pages/common/search')
 require('pages/common/footer')
 
@@ -25,7 +25,7 @@ var page = {
 		//单个选中/取消
 		this.$box.on('click','.select-one',function(){
 			var $this = $(this);
-			let productId = $this.parents('.cart-item').data('product-id')
+			let productId = $this.parents('.product-item').data('product-id')
 			//选中
 			if($this.is(':checked')){
 				_cart.selectOne({productId:productId},function(cart){
@@ -65,7 +65,7 @@ var page = {
 		//删除
 		this.$box.on('click','.delete-one',function(){
 			var $this=$(this);
-			var productId = $this.parents('.cart-item').data('product-id')
+			var productId = $this.parents('.product-item').data('product-id')
 			if (_util.confirm('你确定要删除该条购物车信息吗？')) {
 				// alert('ok');
 				_cart.deleteOne({productId:productId},function(cart){
@@ -90,7 +90,7 @@ var page = {
 		//更新购物车
 		this.$box.on('click','.count-btn',function(){
 			var $this = $(this);
-			var productId = $this.parents('.cart-item').data('product-id')
+			var productId = $this.parents('.product-item').data('product-id')
 			var $input = $this.siblings('.count-input');
 			var current = parseInt($input.val());
 			var max = $input.data('stock');
@@ -116,8 +116,18 @@ var page = {
 				_this.renderCart(cart);
 			},function(msg){
 				_this.showPageError();
+
 			})
 		})
+		//btn-submit
+		this.$box.on('click','.btn-submit',function(){
+			if (_this.cart && _this.cart.totalCartPrice>0) {
+				window.location.href = './order-confirm.html';
+			}else{
+				_util.showPageError('请选择商品后提交')
+			}
+		})
+
 	},
 	loadCart:function(){
 		var _this = this;
@@ -128,6 +138,9 @@ var page = {
 		})
 	},
 	renderCart:function(cart){
+		_nav.loadCartCount();//渲染购物车
+		this.cart = cart;//缓存购物车数据用来提交
+		//购物车数据获取
 		cart.cartList.forEach(item=>{
 			if(item.product.images){
 				item.product.image = item.product.images.split(',')[0];
@@ -136,6 +149,7 @@ var page = {
 			}
 		})
 		cart.notEmpty = !!cart.cartList.length;
+		//渲染页面
 		var html = _util.render(tpl,cart)
 		this.$box.html(html);
 	},

@@ -6,6 +6,47 @@ const UserModel = require('../models/user.js');
 
 const router = Router();
 
+
+
+//获取购物车数量
+router.get('/getCartCount',(req,res)=>{
+	if (req.userInfo._id) {
+		UserModel.findById(req.userInfo._id)
+		.then(user=>{
+			if (user.cart) {
+				let count =0;
+				user.cart.cartList.forEach(item=>{
+					count+=item.count
+				})
+				res.json({
+					code:0,
+					data:count
+				})
+			}else{
+				res.json({
+					code:0,
+					data:0
+				})
+				
+			}
+		})
+		.catch(e=>{
+			res.json({
+				code:1,
+				message:'获取购物车失败'
+			})
+		})	
+	}else{
+		res.json({
+			code:0,
+			data:0
+		})
+	}
+	
+})
+
+
+
 //普通用户登录权限控制
 router.use((req,res,next)=>{
 	if(req.userInfo._id){

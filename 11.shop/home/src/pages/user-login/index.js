@@ -49,7 +49,7 @@ var page ={
 			formErr.hide();
 			_user.login(formData,function(result){
 				// _util.goHome();
-				window.location.href =_util.getParamFormUrl('redirect')||'./index.html'
+				window.location.href =_util.getParamFromUrl('redirect')||'./index.html';
 			},function(msg){
 				formErr.show(msg);
 			})

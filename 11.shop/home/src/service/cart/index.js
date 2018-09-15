@@ -20,6 +20,13 @@ var _cart = {
 			error:error		
 		})
 	},
+	getCartCount:function(success,error){//获取购物车数量
+		_util.request({
+			url:'/cart/getCartCount',
+			success:success,
+			error:error		
+		})
+	},
 	selectOne:function(data,success,error){
 		_util.request({
 			url:'/cart/selectOne',
@@ -79,7 +86,8 @@ var _cart = {
 			success:success,
 			error:error		
 		})
-	}	
+	},
+	
 }
 
 module.exports = _cart;

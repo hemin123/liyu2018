@@ -44,6 +44,7 @@
 }
 
 .product-item{
+	line-height:20px;
 	float: left;
 	width: 208px;
 	height: 280px;
@@ -60,6 +61,7 @@
 	margin-left: 0px;
 }
 .product-item a{
+
 	text-decoration: none;
 }
 .product-img{
@@ -68,12 +70,13 @@
 	margin-top: 20px;
 }
 .product-price{
+	height: 20px;
 	font-size: 18px;
 	color: #f21;
 }
 .product-name{
 	height: 40px;
-	line-height: 20px;
+	/*line-height: 20px;*/
 	/*color: #f333;*/
 	font-size: 14px;
 }
