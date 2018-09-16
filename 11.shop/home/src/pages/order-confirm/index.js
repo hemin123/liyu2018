@@ -10,6 +10,8 @@ var _util = require('util');
 var _shipping = require('service/shipping');
 var _order = require('service/order');
 
+var _modal = require('./modal.js');
+
 var shippingTpl = require('./shipping.tpl');
 var productTpl = require('./product.tpl');
 
@@ -26,8 +28,8 @@ var page = {
 	},
 	bindEvent:function(){
 		var _this = this;
-		this.$box.find('.close').on('click',function(){
-
+		$('.shipping-box').on('click','.shipping-add',function(){
+			_modal.show()
 		})
 
 	},
