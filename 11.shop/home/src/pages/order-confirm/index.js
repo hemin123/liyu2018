@@ -18,7 +18,7 @@ var productTpl = require('./product.tpl');
 var page = {
 
 	init:function(){
-		this.$box=$('.cart-box');
+		this.$shippingBox=$('.shipping-box');
 		this.onload();
 		this.bindEvent();
 	},
@@ -28,19 +28,45 @@ var page = {
 	},
 	bindEvent:function(){
 		var _this = this;
-		$('.shipping-box').on('click','.shipping-add',function(){
-			_modal.show()
+		//
+		this.$shippingBox.on('click','.shipping-add',function(){
+			_modal.show({
+				success:_this.renderShipping
+			})
 		})
+		//delete
+		this.$shippingBox.on('click','.shipping-delete',function(){
+			var $this = $(this);
+			var shippingId=$this.parents('.shipping-item').data('shipping-id');
+			if (_util.confirm("你確定要刪除地址嗎？")) {
+				_shipping.deleteShipping({shippingId:shippingId},function(shippings){
+					_this.renderShipping(shippings);
+				},function(msg){
+					_util.showErrorMsg(msg);
+				});	
+			}
+			
+
+		});
+		
 
 	},
+	//進去時候執行
 	loadShippingList:function(){
 		var _this = this;
-		this.renderShipping();
+		_shipping.getShippingList(function(shippings){
+			_this.renderShipping();
+		},function(msg){
+			_this.$shippingBox.html('<p class="empty-message">獲取失敗</p>')
+		});
+	
 		
 	},
 	renderShipping:function(shippings){
 
-		var html = _util.render(shippingTpl);
+		var html = _util.render(shippingTpl,{
+			shippings:shippings
+		});
 		$('.shipping-box').html(html);
 		
 	},

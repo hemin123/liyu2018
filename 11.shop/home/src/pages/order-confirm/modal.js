@@ -26,6 +26,7 @@ var formErr = {
 var _modal = {
 	show:function(){
 		this.$box = $('.modal-box');
+		this.options=options;
 		this.lodaModal();
 		this.bindEvent();
 	},
@@ -95,8 +96,9 @@ var _modal = {
 			formErr.hide();
 			_shipping.addShipping(formData,function(shippings){
 				console.log(shippings);
-				_util.showSuccessMsg('添加地址成功')
+				_util.showSuccessMsg('添加地址成功');
 				_this.hide();
+				_this.options.success(shippings);
 				// window.location.href='./result.html';
 			},function(msg){
 				formErr.show(msg);

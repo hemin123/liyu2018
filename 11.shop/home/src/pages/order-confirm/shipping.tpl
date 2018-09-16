@@ -23,6 +23,18 @@
 				<span class="link shipping-delete">删除</span>
 			</div>
 		</div>
+		{{#shippings}}
+		<div class="shipping-item"  data-shipping-id="{{_id}}">
+			<h3 class="shipping-title">{{provice}} {{city}} ({{name}})</h3>
+			<p class="shipping-detail">
+				{{provice}} {{city}} {{address}} {{phone}}
+			</p>
+			<div class="shipping-footer">
+				<span class="link shipping-edit">编辑</span>
+				<span class="link shipping-delete">删除</span>
+			</div>
+		</div>
+		{{/shippings}}
 		<div class="shipping-add">
 			
 			<i class="fa fa-plus"></i>
