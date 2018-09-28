@@ -40,13 +40,30 @@ router.post('/',(req,res)=>{
 	})
 	
 })
-//獲取登錄用戶
-router.post('/list',(req,res)=>{
+//获取登陆用戶
+router.get('/list',(req,res)=>{
 	UserModel.findById(req.userInfo._id)
 	.then(user=>{
 		res.json({
 			code:0,
 			data:user.shipping
+		})					
+	})
+	.catch(e=>{
+		res.json({
+			code:1,
+			message:'獲取失敗'
+		})
+	})
+	
+})
+//编辑对应id
+router.get('/',(req,res)=>{
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		res.json({
+			code:0,
+			data:user.shipping.id(req.query.shippingId)
 		})					
 	})
 	.catch(e=>{
@@ -73,7 +90,28 @@ router.put('/delete',(req,res)=>{
 	})
 	
 })
-
+//编辑地址
+router.put('/',(req,res)=>{
+	let body = req.body;
+	UserModel.findById(req.userInfo._id)
+	.then(user=>{
+		let shipping=user.shipping.id(body.shippingId);
+		shipping.name =body.name;
+		shipping.province =body.province;
+		shipping.city =body.city;
+		shipping.address =body.address;
+		shipping.phone =body.phone;
+		shipping.zip =body.zip;
+		user.save()
+		.then(newUser=>{
+			res.json({
+				code:0,
+				data:user.shipping
+			})			
+		})
+	})
+	
+})
 module.exports = router;
 
 

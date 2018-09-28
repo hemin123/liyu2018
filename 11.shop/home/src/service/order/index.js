@@ -11,6 +11,15 @@ var _order = {
 			error:error		
 		})
 	},
+	createOrder:function(data,success,error){
+		_util.request({
+			url:'/order/create',
+			method:'post',
+			data:data,
+			success:success,
+			error:error		
+		})
+	},
 }
 
 module.exports = _order;

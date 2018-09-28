@@ -24,7 +24,7 @@ var formErr = {
 }
 
 var _modal = {
-	show:function(){
+	show:function(options){
 		this.$box = $('.modal-box');
 		this.options=options;
 		this.lodaModal();
@@ -35,6 +35,10 @@ var _modal = {
 		//关闭弹窗
 		this.$box.find('.close').on('click',function(){
 			_this.hide();
+		})
+		//阻止冒泡
+		this.$box.find('.modal-container').on('click',function(e){
+			e.stopPropagation();
 		})
 		//省份城市联动
 		_this.$box.find('.province-select').on('change',function(){
@@ -51,20 +55,35 @@ var _modal = {
 		})
 	},
 	lodaModal:function(){
-		var html = _util.render(modalTpl);
+		var html = _util.render(modalTpl,{
+			data:this.options.data || {},
+			idEdit:!!this.options.data  //模板判断
+		});
 		this.$box.html(html);
 		this.loadProvinces();
 	},
 	loadProvinces:function(){
 		var provinces = _cities.getProvinces();
-		console.log(provinces);
+		// console.log(provinces);
 		var provincesSelectOptions = this.getSelectOptions(provinces);
-		this.$box.find('.province-select').html(provincesSelectOptions);
+		var $provinceSelect = this.$box.find('.province-select');
+		$provinceSelect.html(provincesSelectOptions);
+		console.log(this.options.data);
+		//编辑时候省份回填
+		if (this.options.data && this.options.data.province) {
+			$provinceSelect.val(this.options.data.province);
+			this.loadCities(this.options.data.province);
+		}
 	},
 	loadCities:function(provinceName){
 		var cities = _cities.getCities(provinceName);
 		var citiesSelectOptions = this.getSelectOptions(cities);
-		this.$box.find('.city-select').html(citiesSelectOptions);
+		var $citySelect =this.$box.find('.city-select');
+		$citySelect.html(citiesSelectOptions);
+		//城市回填
+		if (this.options.data && this.options.data.city) {
+			$citySelect.val(this.options.data.city);
+		}
 	},
 	getSelectOptions:function(arr){
 		let html = '<option value ="">请选择</option>';
@@ -94,15 +113,28 @@ var _modal = {
 		console.log(formData);
 		if (validateResult.status) {
 			formErr.hide();
-			_shipping.addShipping(formData,function(shippings){
+			//编辑
+			if (this.options.data) {
+				formData.shippingId = this.options.data._id;
+				_shipping.editShipping(formData,function(shippings){
+					console.log(shippings);
+					_util.showSuccessMsg('编辑地址成功');
+					_this.hide();
+					_this.options.success(shippings);
+				},function(msg){
+					formErr.show(msg);
+				})
+			}else{
+				_shipping.addShipping(formData,function(shippings){
 				console.log(shippings);
 				_util.showSuccessMsg('添加地址成功');
 				_this.hide();
 				_this.options.success(shippings);
-				// window.location.href='./result.html';
 			},function(msg){
 				formErr.show(msg);
 			})
+			}
+			
 		}else{
 			// console.log(validateResult)
 			formErr.show(validateResult.msg);

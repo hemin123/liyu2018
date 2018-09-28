@@ -16,6 +16,9 @@ var shippingTpl = require('./shipping.tpl');
 var productTpl = require('./product.tpl');
 
 var page = {
+	data:{
+		shippingId:null
+	},
 
 	init:function(){
 		this.$shippingBox=$('.shipping-box');
@@ -28,10 +31,15 @@ var page = {
 	},
 	bindEvent:function(){
 		var _this = this;
-		//
+		//新增
 		this.$shippingBox.on('click','.shipping-add',function(){
 			_modal.show({
-				success:_this.renderShipping
+				// success:_this.renderShipping
+				// success:function(shippings){
+				// 	_this.renderShipping(shippings);
+				// }
+				success:_this.renderShipping.bind(_this)
+
 			})
 		})
 		//delete
@@ -44,10 +52,51 @@ var page = {
 				},function(msg){
 					_util.showErrorMsg(msg);
 				});	
-			}
-			
-
+			}		
 		});
+		//编辑地址
+		this.$shippingBox.on('click','.shipping-edit',function(){
+			var $this = $(this);
+			var shippingId=$this.parents('.shipping-item').data('shipping-id');
+			
+			_shipping.getShipping({shippingId:shippingId},function(shipping){
+				console.log(shipping);
+				_modal.show({
+					data:shipping,
+					// success:_this.renderShipping
+					// success:function(shippings){
+					// 	_this.renderShipping(shippings);
+					// }
+					success:_this.renderShipping.bind(_this)
+				})
+			},function(msg){
+				_util.showErrorMsg(msg);
+			});		
+		});
+
+		//选择地址
+		this.$shippingBox.on('click','.shipping-item',function(){
+			var $this = $(this);
+			$this.addClass('active')
+			.siblings('.shipping-item').removeClass('active');
+			//兄弟元素
+			_this.data.shippingId = $this.data('shipping-id');
+		})	
+
+		//提交地址
+		$('.product-box').on('click','.btn-submit',function(){
+			console.log(_this.data.shippingId);
+			if (_this.data.shippingId) {
+				_order.createOrder({shippingId:_this.data.shippingId},function(order){
+						console.log(order);
+						// window.location.href="./payment.html?orderNo="+order.orderNo;
+				},function(msg){
+					_util.showErrorMsg(msg);
+				})
+			}else{
+				_util.showErrorMsg('请选择地址后提交！！')
+			}
+		})	
 		
 
 	},
@@ -55,18 +104,25 @@ var page = {
 	loadShippingList:function(){
 		var _this = this;
 		_shipping.getShippingList(function(shippings){
-			_this.renderShipping();
+			_this.renderShipping(shippings);
 		},function(msg){
-			_this.$shippingBox.html('<p class="empty-message">獲取失敗</p>')
+			_this.$shippingBox.html('<p class="empty-message">获取失敗</p>')
 		});
 	
 		
 	},
 	renderShipping:function(shippings){
+		var _this = this;
+		shippings.forEach(function(shipping){
+			if (shipping._id==_this.data.shippingId) {
+				shipping.isActive = true;
+			}
+		})
 
 		var html = _util.render(shippingTpl,{
 			shippings:shippings
 		});
+		console.log(this);
 		$('.shipping-box').html(html);
 		
 	},
